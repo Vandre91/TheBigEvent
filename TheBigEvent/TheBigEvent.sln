@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheBigEvent", "TheBigEvent\TheBigEvent.csproj", "{8CF8C993-F575-4D6A-BDD5-2A4D5FB413C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheBigEvent", "TheBigEvent\TheBigEvent.csproj", "{F2D63308-EDE1-4523-80D2-138FE1213400}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8CF8C993-F575-4D6A-BDD5-2A4D5FB413C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8CF8C993-F575-4D6A-BDD5-2A4D5FB413C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8CF8C993-F575-4D6A-BDD5-2A4D5FB413C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8CF8C993-F575-4D6A-BDD5-2A4D5FB413C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2D63308-EDE1-4523-80D2-138FE1213400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2D63308-EDE1-4523-80D2-138FE1213400}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2D63308-EDE1-4523-80D2-138FE1213400}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2D63308-EDE1-4523-80D2-138FE1213400}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
