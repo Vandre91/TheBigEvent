@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisualState xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ShowCheckBoxes="false">
+  <TopNode>[0-1003]C:\Users\victor\Documents\TheBigEvent\TheBigEvent\TheBigEvent.Test\bin\Debug\TheBigEvent.Test.dll</TopNode>
+  <SelectedNode>[0-1002]TheBigEvent.Test.TestUser.Checktest</SelectedNode>
+  <ExcludeCategories>false</ExcludeCategories>
+  <Nodes>
+    <Node UniqueName="[0-1003]C:\Users\victor\Documents\TheBigEvent\TheBigEvent\TheBigEvent.Test\bin\Debug\TheBigEvent.Test.dll" Expanded="true" />
+    <Node UniqueName="[0-1004]TheBigEvent" Expanded="true" />
+    <Node UniqueName="[0-1005]TheBigEvent.Test" Expanded="true" />
+    <Node UniqueName="[0-1000]TheBigEvent.Test.TestUser" Expanded="true" />
+  </Nodes>
+</VisualState>

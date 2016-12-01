@@ -1,0 +1,10 @@
+C:\Users\victor\Documents\TheBigEvent\TheBigEvent\TheBigEvent.Dal\bin\Debug\TheBigEvent.Dal.dll.config
+C:\Users\victor\Documents\TheBigEvent\TheBigEvent\TheBigEvent.Dal\bin\Debug\TheBigEvent.Dal.dll
+C:\Users\victor\Documents\TheBigEvent\TheBigEvent\TheBigEvent.Dal\bin\Debug\TheBigEvent.Dal.pdb
+C:\Users\victor\Documents\TheBigEvent\TheBigEvent\TheBigEvent.Dal\bin\Debug\EntityFramework.dll
+C:\Users\victor\Documents\TheBigEvent\TheBigEvent\TheBigEvent.Dal\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\victor\Documents\TheBigEvent\TheBigEvent\TheBigEvent.Dal\bin\Debug\EntityFramework.xml
+C:\Users\victor\Documents\TheBigEvent\TheBigEvent\TheBigEvent.Dal\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\victor\Documents\TheBigEvent\TheBigEvent\TheBigEvent.Dal\obj\Debug\TheBigEvent.Dal.csprojResolveAssemblyReference.cache
+C:\Users\victor\Documents\TheBigEvent\TheBigEvent\TheBigEvent.Dal\obj\Debug\TheBigEvent.Dal.dll
+C:\Users\victor\Documents\TheBigEvent\TheBigEvent\TheBigEvent.Dal\obj\Debug\TheBigEvent.Dal.pdb
