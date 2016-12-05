@@ -77,7 +77,7 @@
 
 <style>
 @import "~bootstrap/dist/css/bootstrap.min.css";
-@import "~font-awesome/css/font-awesome.css";
+/*@import "~font-awesome/css/font-awesome.css";*/
 
 body {
   background-image: url('../img/header1.jpg');
