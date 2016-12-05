@@ -19,7 +19,7 @@
                 </a>
             </div>
 
-   <div class = "collapse navbar-collapse" id = "mynav">
+   <div class="collapse navbar-collapse" id = "mynav">
                 <ul class="nav navbar-nav navbar-left ">
                     <li>
                         <router-link to="/Partner">Partenaire</router-link>
@@ -67,11 +67,11 @@
 	  <div class="social">
             <h6 class="smallh6">Suivez notre actualité</h6><br />
             <ul>
-	      <li><a href="https://www.facebook.com/mabanque.bnpparibas/">
+	      <li><a href="https://www.facebook.com/TBigEvent/">
 		  <i class="fa fa-facebook fa-2x"></i></a></li><br>
 	      <li><a href="https://www.instagram.com/bnpparibas/">
 		  <i class="fa fa-instagram fa-2x"></i></a></li><br>
-	      <li><a href="https://twitter.com/bnpparibas?lang=fr">
+	      <li><a href="https://twitter.com/TBigEvent">
 		  <i class="fa fa-twitter fa-2x"></i></a></li>
 	    </ul>
           </div>
@@ -85,8 +85,10 @@
 </template>
 
 <script>
+import 'bootstrap'
+export default {
 
-     require("../node_modules/bootstrap/dist/js/bootstrap.min.js")
+}
 </script>
 
 

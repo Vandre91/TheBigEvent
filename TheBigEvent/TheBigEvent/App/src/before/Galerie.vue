@@ -19,7 +19,10 @@
 </template>
 
 <script>
-     require("../../node_modules/bootstrap/dist/js/bootstrap.min.js")
+     // require("../../node_modules/bootstrap/dist/js/bootstrap.min.js")
+export default {
+    
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

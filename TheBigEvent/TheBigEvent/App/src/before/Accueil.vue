@@ -6,7 +6,7 @@
     <img class="logo" src="../../img/logo1.gif"></img>
     <h1>The Big Event</h1>
 <br /><br /><br />
-	<div id="my_carousel" class="carousel slide">
+<div id="my_carousel" class="carousel slide">
 	  <div class="carousel-inner">
 	    <div class="item active">
 	      <img src="../../img/1.jpg" style="margin:0px auto;"/>
@@ -26,13 +26,15 @@
 	  </a>
 	</div>
 
-
 <br /><br /><br />
 </div>
 </template>
 
 <script>
-     require("../../node_modules/bootstrap/dist/js/bootstrap.min.js")
+//     require("../../node_modules/bootstrap/dist/js/bootstrap.min.js")
+export default {
+    
+}
 </script>
 
 <style scoped>

@@ -4,7 +4,6 @@ import App from './App'
 // Les libs / dépendances
 
 import VueRouter from 'vue-router'
-import jQuery from 'jquery'
 
 // Les pages avant-connexion
 import Accueil from './before/accueil'
