@@ -3,25 +3,34 @@
 <div>
 
 <header>
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default" role = "navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <ul class="nav navbar-nav navbar-left">
+
+            <button type = "button" class = "navbar-toggle" 
+                data-toggle = "collapse" data-target = "#mynav">
+                <span class = "sr-only">Toggle navigation</span>
+                <span class = "icon-bar"></span>
+                <span class = "icon-bar"></span>
+                <span class = "icon-bar"></span>
+            </button>
+                <a class = "navbar-brand">
+                <router-link to="/"><img src="../img/logo.jpg" style="width:55px"></img></router-link>
+                </a>
+            </div>
+
+   <div class = "collapse navbar-collapse" id = "mynav">
+                <ul class="nav navbar-nav navbar-left ">
                     <li>
-                        <router-link to="/"><img src="../img/logo.jpg" style="width:60px"></img></router-link>
+                        <router-link to="/Partner">Partenaire</router-link>
                     </li>
                     <li>
-                        <a> <router-link to="/Partner">Partenaire</router-link></a>
+                        <router-link to="/Galerie">Galerie</router-link>
                     </li>
                     <li>
-                        <a> <router-link to="/Galerie">Galerie</router-link></a>
-                    </li>
-                    <li>
-                        <a> <router-link to="/whoarewe"> Qui-sommes-nous ?</router-link></a>
+                        <router-link to="/whoarewe"> Qui-sommes-nous ?</router-link>
                     </li>
                 </ul>
-            </div>
-            <div class="collapse navbar-collapse sidebar-navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a class="page-scroll" href="#about">Connexion</a>
@@ -31,7 +40,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
+            </div>
     </nav>
 </header>
 
@@ -75,9 +84,15 @@
 </div>
 </template>
 
+<script>
+
+     require("../node_modules/bootstrap/dist/js/bootstrap.min.js")
+</script>
+
+
 <style>
 @import "~bootstrap/dist/css/bootstrap.min.css";
-/*@import "~font-awesome/css/font-awesome.css";*/
+@import "~font-awesome/css/font-awesome.css";
 
 body {
   background-image: url('../img/header1.jpg');
@@ -155,12 +170,16 @@ li
     list-style: none;
 }
 
-.navbar-nav li a {
+.navbar-nav li {
   margin-bottom: 0px;
   padding-bottom: 0px;
   padding-top: 0px;
   line-height: 50px;
   color:#200000;
+}
+
+.navbar-brand {
+padding: 5px;
 }
 
 

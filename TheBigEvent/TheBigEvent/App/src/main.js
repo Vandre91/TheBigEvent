@@ -9,7 +9,6 @@ import jQuery from 'jquery'
 // Les pages avant-connexion
 import Accueil from './before/accueil'
 import Partenaire from './before/Partenaire'
-import Whoarewe from './before/Whoarewe'
 import Galerie from './before/Galerie'
 
 Vue.use(VueRouter);
@@ -21,7 +20,6 @@ const router = new VueRouter({
     { path: '/', component: Accueil, name: 'home' },
     { path: '/Partner', component: Partenaire},
     { path: '/galerie', component: Galerie},
-    { path: '/whoarewe', component: Whoarewe},
     { path: '*', redirect: '/before/accueil' }
 
    ]
