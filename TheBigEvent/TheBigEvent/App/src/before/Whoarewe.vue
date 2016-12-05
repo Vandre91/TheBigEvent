@@ -21,11 +21,12 @@
 </template>
 
 <script>
+
 export default {
   name: 'hello',
   data () {
     return {
-      msg: 'qui sommes nous'
+      msg: 'Qui-sommes-nous ?'
     }
   }
 }

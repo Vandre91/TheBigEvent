@@ -2,7 +2,8 @@ var path = require('path')
 var config = require('../config')
 var utils = require('./utils')
 var projectRoot = path.resolve(__dirname, '../')
-var webpack = require ('webpack')
+var webpack = require('webpack');
+
 
 
 var env = process.env.NODE_ENV
@@ -51,6 +52,10 @@ module.exports = {
         loader: 'json'
       },
       {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader'
+      },
+      {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url',
         query: {
@@ -69,7 +74,9 @@ module.exports = {
     ]
   },
   vue: {
-    loaders: utils.cssLoaders({ sourceMap: useCssSourceMap }),
+    loaders: {
+
+    },
     postcss: [
       require('autoprefixer')({
         browsers: ['last 2 versions']
@@ -78,9 +85,9 @@ module.exports = {
   },
   plugins: [
     new webpack.ProvidePlugin({
-      jQuery:'jquery',
-      $:'jquery',
-      jquery:'jquery'
+      jQuery: 'jquery',
+      $: 'jquery',
+      jquery: 'jquery'
     })
   ]
 }
