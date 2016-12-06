@@ -32,25 +32,60 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll" href="#about">Connexion</a>
+                   <li>
+
+                         
+                        <a data-toggle="modal" data-target=".bd-example-modal-sm" href="#">Connexion</a>
+                    
+                    <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <h1 style="text-align:center;">Connexion</h1>
+                        <form
+                            <label for="email">Adresse e-mail</label>
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" require>
+
+                            <label for="Password">Mot de passe</label>
+                            <input type="password" class="form-control" id="Password" placeholder="Password" require>
+<button type="submit" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" float="right" >Valider</button>
+                    </div>
+                    </div>
+                    </div>
+                    </form>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#services">Inscription</a>
-                    </li>
+                    
+
+                    <a data-toggle="modal" data-target=".bd-example-modal-lm" href="#1">Incription</a>
+                                       
+                                        <div class="modal fade bd-example-modal-lm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lm">
+                                        <div class="modal-content">
+                                            <h1 style="text-align:center;">Inscription</h1>
+                                                <label for="email">Adresse e-mail</label>
+                                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" require>
+
+                                                <label for="Password">Mot de passe</label>
+                                                <input type="password" class="form-control" id="Password" placeholder="Password" require>
+
+                                                <label for="Password">Confirmation du mot de passe</label>
+                                                <input type="password" class="form-control" id="Password" placeholder="Password" require>
+                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" float="right" >Valider</button>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        </li>
+
                 </ul>
-            </div>
-            </div>
     </nav>
 </header>
-
 
 <router-view></router-view>
 
 <footer>
 	<div class="col-3">
 	  <div class="contact">
-	    <h6 class="smallh6">Nous Contacter</h6><br>
+	    <h6 class="smallh6">Nous Contacter </h6><br>
 
 	    <ul>
         <li><i class="fa fa-map-marker fa-2x"></i></li><br>
@@ -106,6 +141,14 @@ body {
   background-size: cover;
 }
 
+label{
+    font-size: 20px;
+}
+
+button {
+    float: right;
+    margin-top:10px;
+}
 header {
     padding-bottom:30px;
 }
@@ -170,6 +213,11 @@ footer {
 li
 {
     list-style: none;
+}
+
+.modal-content{
+    padding:30px;
+    height:400px;
 }
 
 .navbar-nav li {
