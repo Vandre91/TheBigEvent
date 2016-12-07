@@ -111,8 +111,12 @@
 	    </ul>
           </div>
 	  <div class="apropo">
-            <h6 class="smallh6">A propos de nous</h6><br />
-	    <p class="psmall">quand t'a rien a dire mais tu parle tout de même car tu veux une bonne note dans ton PI, et la tu continue tu continue tu continue tu continue et au final ta un 15 t'es content</p>
+            <h6 class="smallh6">Qui sommes nous ?</h6><br />
+	    <p class="psmall">Equipe d'étudiants de semestre 4 IL 
+                        <br>Shane, Victor et Sandya
+                         <br> Projet informatique d'In'Tech
+
+        </p>
           </div>
 	</div>
 </footer>
@@ -124,6 +128,8 @@ import 'bootstrap'
 export default {
 
 }
+
+
 </script>
 
 
@@ -215,9 +221,13 @@ li
     list-style: none;
 }
 
+.modal-dialog lm {
+    height:70%;
+}
 .modal-content{
     padding:30px;
-    height:400px;
+    height:100%;
+    width:100%;
 }
 
 .navbar-nav li {

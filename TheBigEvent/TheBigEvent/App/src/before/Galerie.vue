@@ -17,7 +17,7 @@
 
   <div tabindex="-1" class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
-  <div class="modal-content">
+  <div class="modal-content " >
     <div class="modal-header">
 		<button class="close" type="button" data-dismiss="modal">×</button>
 		<h3 class="modal-title">Heading</h3>
@@ -60,9 +60,11 @@ $('.thumbnail').click(function(){
   width: 500px;
 }
 
-modal-content
+.modal-content
 {
-  height:200px;
+  height:100%;
+  width:100%;
+
 }
 
 .thumbnail {margin-bottom:6px;}
