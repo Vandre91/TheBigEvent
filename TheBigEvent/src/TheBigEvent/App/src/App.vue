@@ -27,7 +27,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#" @click="login('Base')">Connexion</a></li>
-                <li><a href="#" @click="login('Base')">Incription</a></li>
+                <li><a href="#" @click="login('Base1')">Incription</a></li>
             </ul>
     </nav>
 </header>

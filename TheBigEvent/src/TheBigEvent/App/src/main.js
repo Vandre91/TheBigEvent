@@ -8,6 +8,7 @@ import AuthService from './services/auth.js'
 import Accueil from './before/accueil.vue'
 import Partenaire from './before/Partenaire.vue'
 import Galerie from './before/Galerie.vue'
+import Board from './after/board.vue'
 
 Vue.use(VueRouter);
 
@@ -30,7 +31,10 @@ AuthService.logoutEndpoint = '/Account/LogOff';
 
 AuthService.providers = {
   'Base': {
-    endpoint: '/Account/Login' 
+    endpoint: '/Acount/Conexion' 
+  },
+  'Base1': {
+    endpoint: '/Acount/Login' 
   }
 };
 
