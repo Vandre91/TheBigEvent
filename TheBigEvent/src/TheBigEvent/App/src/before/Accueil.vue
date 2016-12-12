@@ -1,8 +1,6 @@
 <template>
   <div class="accueil">
 
-<!--     <div class="fave"></div>-->
-
     <img class="logo" src="../../img/logo1.gif"></img>
     <h1>The Big Event</h1>
 <br /><br /><br />
@@ -31,7 +29,6 @@
 </template>
 
 <script>
-//     require("../../node_modules/bootstrap/dist/js/bootstrap.min.js")
 export default {
     
 }
@@ -41,7 +38,6 @@ export default {
 
 .accueil {
   top : 50%;
-
 }
 
 h1 {
@@ -74,18 +70,5 @@ img {
     text-align : center;
 }
 
-.fave {
-  width: 70px;
-  height: 50px;
-  background: url(http://www.cssanimation.rocks/images/posts/steps/twitter_fave.png) no-repeat;
-  background-position: 0 0;
-  display:inline-block;
-  transform : scale(1.5,1.5);
-  margin-right:0px;
-  margin-bottom:-15px;
-}
-.fave:hover {
-  background-position: -3519px 0;
-  transition: background 1s steps(55);
-}
+
  </style>
