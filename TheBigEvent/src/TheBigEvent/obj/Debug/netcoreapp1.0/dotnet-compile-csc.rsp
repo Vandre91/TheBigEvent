@@ -7,8 +7,8 @@
 -debug:full
 -nostdlib
 -nologo
-"C:\Users\victor\Documents\Visual Studio 2015\Projects\TheBigEvent\src\TheBigEvent\obj\Debug\netcoreapp1.0\dotnet-compile.assemblyinfo.cs"
--out:"C:\Users\victor\Documents\Visual Studio 2015\Projects\TheBigEvent\src\TheBigEvent\bin\Debug\netcoreapp1.0\TheBigEvent.dll"
+"C:\Users\victor\Documents\TheBigEvent\TheBigEvent\src\TheBigEvent\obj\Debug\netcoreapp1.0\dotnet-compile.assemblyinfo.cs"
+-out:"C:\Users\victor\Documents\TheBigEvent\TheBigEvent\src\TheBigEvent\bin\Debug\netcoreapp1.0\TheBigEvent.dll"
 -r:"C:\Users\victor\.nuget\packages\Dapper\1.50.2\lib\netstandard1.3\Dapper.dll"
 -r:"C:\Users\victor\.nuget\packages\Microsoft.ApplicationInsights\2.1.0\lib\dotnet5.4\Microsoft.ApplicationInsights.dll"
 -r:"C:\Users\victor\.nuget\packages\Microsoft.ApplicationInsights.AspNetCore\1.0.0\lib\netstandard1.6\Microsoft.ApplicationInsights.AspNetCore.dll"
@@ -196,10 +196,10 @@
 -r:"C:\Users\victor\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll"
 -r:"C:\Users\victor\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll"
 -r:"C:\Users\victor\.nuget\packages\System.Xml.XmlDocument\4.0.1\ref\netstandard1.3\System.Xml.XmlDocument.dll"
--r:"C:\Users\victor\Documents\Visual Studio 2015\Projects\TheBigEvent\src\TheBigEvent.DAL\bin\Debug\netstandard1.6\TheBigEvent.DAL.dll"
--resource:"C:\Users\victor\Documents\Visual Studio 2015\Projects\TheBigEvent\src\TheBigEvent\obj\Debug\netcoreapp1.0\TheBigEventdotnet-compile.deps.json",TheBigEvent.deps.json
-"C:\Users\victor\Documents\Visual Studio 2015\Projects\TheBigEvent\src\TheBigEvent\Program.cs"
-"C:\Users\victor\Documents\Visual Studio 2015\Projects\TheBigEvent\src\TheBigEvent\Startup.cs"
-"C:\Users\victor\Documents\Visual Studio 2015\Projects\TheBigEvent\src\TheBigEvent\Controllers\AcountController.cs"
-"C:\Users\victor\Documents\Visual Studio 2015\Projects\TheBigEvent\src\TheBigEvent\Controllers\HomeController.cs"
-"C:\Users\victor\Documents\Visual Studio 2015\Projects\TheBigEvent\src\TheBigEvent\Services\UserServices.cs"
+-r:"C:\Users\victor\Documents\TheBigEvent\TheBigEvent\src\TheBigEvent.DAL\bin\Debug\netstandard1.6\TheBigEvent.DAL.dll"
+-resource:"C:\Users\victor\Documents\TheBigEvent\TheBigEvent\src\TheBigEvent\obj\Debug\netcoreapp1.0\TheBigEventdotnet-compile.deps.json",TheBigEvent.deps.json
+"C:\Users\victor\Documents\TheBigEvent\TheBigEvent\src\TheBigEvent\Program.cs"
+"C:\Users\victor\Documents\TheBigEvent\TheBigEvent\src\TheBigEvent\Startup.cs"
+"C:\Users\victor\Documents\TheBigEvent\TheBigEvent\src\TheBigEvent\Controllers\AcountController.cs"
+"C:\Users\victor\Documents\TheBigEvent\TheBigEvent\src\TheBigEvent\Controllers\HomeController.cs"
+"C:\Users\victor\Documents\TheBigEvent\TheBigEvent\src\TheBigEvent\Services\UserServices.cs"

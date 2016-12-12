@@ -1,12 +1,13 @@
 var path = require('path')
 var webpack = require('webpack')
+var wwwroot = "../../wwwroot";
 
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(wwwroot, './dist'),
     publicPath: '/dist/',
-    filename: 'build.js'
+    filename: 'TheBigEvent.js'
   },
   module: {
     rules: [
