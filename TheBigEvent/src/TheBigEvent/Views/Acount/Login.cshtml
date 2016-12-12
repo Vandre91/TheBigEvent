@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TheBigEvent</title>
+</head>
+<body>
+    <div id="app">
+    </div>
+    <ul>
+        @{
+            foreach (string u in (List<string>)ViewData["ListName"])
+            {
+                <li> @u</li>
+            }
+        }
+    </ul>
+
+    <form method="post" action="">
+        Mail <input name="Mail" /> <br>
+        Pass <input name="Passe" /><br>
+        Name <input name="FirstName" /><br>
+        LNam <input name="LastName" /><br>
+        City <input name="City" /><br>
+        Tele <input name="Tel" /><br>
+        ProN <input name="Pro" /><br>
+        Sire <input name="Siret" /><br>
+        Comp <input name="Compagny" /><br>
+        <input type="submit" />
+    </form>
+</body>
+</html>
