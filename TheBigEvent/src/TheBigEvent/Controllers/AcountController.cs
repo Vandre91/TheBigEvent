@@ -15,14 +15,14 @@ namespace TheBigEvent.Controllers
         // GET: /<controller>/
         public IActionResult Login()
         {
-            UserServices useService = new UserServices(@"Server = VIVI\SQLEXPRESS; Database =TheBigEvent.DB ; Trusted_Connection = True");
+            UserServices useService = new UserServices(@"Server = SHANE-PC\SQLEXPRESS; Database =TheBigEvent.DB ; Trusted_Connection = True");
             ViewData["ListName"] = useService.returnAllNameUser();
             return View();
         }
         [HttpPost]
         public IActionResult Login(string Mail, string Passe, string FirstName, string LastName, string City, string Tel, string Pro, string Siret, string Compagny)
         {
-            UserServices useService = new UserServices(@"Server = VIVI\SQLEXPRESS; Database =TheBigEvent.DB ; Trusted_Connection = True");
+            UserServices useService = new UserServices(@"Server = SHANE-PC\SQLEXPRESS; Database =TheBigEvent.DB ; Trusted_Connection = True");
             useService.addUser(Mail, Passe, FirstName, LastName, City, Tel, Pro, Siret, Compagny);
             ViewData["ListName"] = useService.returnAllNameUser();
             return View();
@@ -30,14 +30,14 @@ namespace TheBigEvent.Controllers
 
         public IActionResult Conexion()
         {
-            UserServices useService = new UserServices(@"Server = VIVI\SQLEXPRESS; Database =TheBigEvent.DB ; Trusted_Connection = True");
+            UserServices useService = new UserServices(@"Server = SHANE-PC\SQLEXPRESS; Database =TheBigEvent.DB ; Trusted_Connection = True");
             ViewData["Firstname"] = "";
             return View();
         }
         [HttpPost]
         public IActionResult Conexion(string Mail, string Passe)
         {
-            UserServices useService = new UserServices(@"Server = VIVI\SQLEXPRESS; Database =TheBigEvent.DB ; Trusted_Connection = True");
+            UserServices useService = new UserServices(@"Server = SHANE-PC\SQLEXPRESS; Database =TheBigEvent.DB ; Trusted_Connection = True");
             User user = useService.FindUser(Mail, Passe);
             if (user != null)
             {
