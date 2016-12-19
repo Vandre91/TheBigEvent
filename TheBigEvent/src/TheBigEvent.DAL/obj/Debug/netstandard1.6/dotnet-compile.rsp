@@ -1,5 +1,5 @@
---temp-output:C:\Users\Shane\Desktop\last\src\TheBigEvent.DAL\obj\Debug\netstandard1.6\
---out:C:\Users\Shane\Desktop\last\src\TheBigEvent.DAL\bin\Debug\netstandard1.6\TheBigEvent.DAL.dll
+--temp-output:C:\Users\Shane\Desktop\PI\TheBigEvent\src\TheBigEvent.DAL\obj\Debug\netstandard1.6\
+--out:C:\Users\Shane\Desktop\PI\TheBigEvent\src\TheBigEvent.DAL\bin\Debug\netstandard1.6\TheBigEvent.DAL.dll
 --define:DEBUG
 --define:TRACE
 --define:NETSTANDARD1_6
@@ -65,6 +65,6 @@
 --reference:C:\Users\Shane\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll
 --reference:C:\Users\Shane\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll
 --reference:C:\Users\Shane\.nuget\packages\System.Xml.XmlDocument\4.0.1\ref\netstandard1.3\System.Xml.XmlDocument.dll
-C:\Users\Shane\Desktop\last\src\TheBigEvent.DAL\User.cs
-C:\Users\Shane\Desktop\last\src\TheBigEvent.DAL\UserLink.cs
-C:\Users\Shane\Desktop\last\src\TheBigEvent.DAL\Properties\AssemblyInfo.cs
+C:\Users\Shane\Desktop\PI\TheBigEvent\src\TheBigEvent.DAL\User.cs
+C:\Users\Shane\Desktop\PI\TheBigEvent\src\TheBigEvent.DAL\UserLink.cs
+C:\Users\Shane\Desktop\PI\TheBigEvent\src\TheBigEvent.DAL\Properties\AssemblyInfo.cs

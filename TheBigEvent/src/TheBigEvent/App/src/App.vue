@@ -5,7 +5,8 @@
     <nav class="navbar navbar-default" role = "navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-            <button type = "button" class = "navbar-toggle" data-toggle = "collapse" data-target = "#mynav">
+            <button type = "button" class = "navbar-toggle" 
+                data-toggle = "collapse" data-target = "#mynav">
                 <span class = "sr-only">Toggle navigation</span>
                 <span class = "icon-bar"></span>
                 <span class = "icon-bar"></span>
@@ -25,8 +26,8 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" @click="login('Base')"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
-                <li><a href="#" @click="login('Base1')"><span class="glyphicon glyphicon-user"></span> Inscription</a></li>
+                <li><a href="#" @click="login('Base')">Connexion</a></li>
+                <li><a href="#" @click="login('Base1')">Incription</a></li>
             </ul>
     </nav>
 </header>
