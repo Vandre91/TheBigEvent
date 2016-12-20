@@ -7,31 +7,31 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="~/css/Conexion.css" rel="stylesheet">
+
     <title>TheBigEvent</title>
 </head>
 <body>
     <div id="app">
     </div>
-    <ul>
-        @{
-            foreach (string u in (List<string>)ViewData["ListName"])
-            {
-                <li> @u</li>
-            }
-        }
-    </ul>
 
-    <form method="post" action="">
-        Mail <input name="Mail" /> <br>
-        Pass <input name="Passe" /><br>
-        Name <input name="FirstName" /><br>
-        LNam <input name="LastName" /><br>
-        City <input name="City" /><br>
-        Tele <input name="Tel" /><br>
-        ProN <input name="Pro" /><br>
-        Sire <input name="Siret" /><br>
-        Comp <input name="Compagny" /><br>
-        <input type="submit" />
-    </form>
+    <h1 class="title"> Inscription</h1>
+
+    <div class="form-group">
+        <form method="post" action="">
+            <input name="Mail" class="form-control glyphicon-log-in" type="email" required="" placeholder="Email" /> <br>
+            <input name="Passe" class="form-control glyphicon-log-in" type="password" required="" placeholder="Mot de passe" /><br>
+            Professionnel : <input name="pro" type="checkbox" required="" placeholder="Pro" /><br>
+            <script>
+                if (pro == true)
+                    {
+
+                    }
+            </script>
+            <input name="Siret" class="form-control glyphicon-log-in" required="" placeholder="Numéro de siret" /><br>
+            <input name="Compagny" class="form-control glyphicon-log-in" required="" placeholder="Nom de l'entrprise'" /><br>
+            <input type="submit" class="btn btn-default" />
+        </form>
+    </div>
 </body>
 </html>

@@ -37,6 +37,10 @@ class AuthService {
         this.signedOutCallbacks.splice(this.signedOutCallbacks.indexOf(cb), 1);
     }
 
+    onMessage(e) {
+        console.log(e);
+    }
+
 
 }
 export default new AuthService();
