@@ -3,7 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheBigEvent", "TheBigEvent\TheBigEvent.csproj", "{F2D63308-EDE1-4523-80D2-138FE1213400}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{019BED02-6B26-4A67-BAF4-2CF4D170E11C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6EFF3C76-6A19-4B00-8BFD-8CF166716035}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "TheBigEvent", "src\TheBigEvent\TheBigEvent.xproj", "{F35D4DBC-FC1F-4AD3-828F-5A55A5164BF5}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "TheBigEvent.DAL", "src\TheBigEvent.DAL\TheBigEvent.DAL.xproj", "{980D5967-F8E3-40DC-936B-1496489E1D92}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TheBigEvent.DB", "TheBigEvent.DB\TheBigEvent.DB.sqlproj", "{CBADCE4E-7C83-4558-97B6-11BAFF992E74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,12 +22,27 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F2D63308-EDE1-4523-80D2-138FE1213400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F2D63308-EDE1-4523-80D2-138FE1213400}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F2D63308-EDE1-4523-80D2-138FE1213400}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F2D63308-EDE1-4523-80D2-138FE1213400}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F35D4DBC-FC1F-4AD3-828F-5A55A5164BF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F35D4DBC-FC1F-4AD3-828F-5A55A5164BF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F35D4DBC-FC1F-4AD3-828F-5A55A5164BF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F35D4DBC-FC1F-4AD3-828F-5A55A5164BF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{980D5967-F8E3-40DC-936B-1496489E1D92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{980D5967-F8E3-40DC-936B-1496489E1D92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{980D5967-F8E3-40DC-936B-1496489E1D92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{980D5967-F8E3-40DC-936B-1496489E1D92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBADCE4E-7C83-4558-97B6-11BAFF992E74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBADCE4E-7C83-4558-97B6-11BAFF992E74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBADCE4E-7C83-4558-97B6-11BAFF992E74}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{CBADCE4E-7C83-4558-97B6-11BAFF992E74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBADCE4E-7C83-4558-97B6-11BAFF992E74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBADCE4E-7C83-4558-97B6-11BAFF992E74}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F35D4DBC-FC1F-4AD3-828F-5A55A5164BF5} = {019BED02-6B26-4A67-BAF4-2CF4D170E11C}
+		{980D5967-F8E3-40DC-936B-1496489E1D92} = {019BED02-6B26-4A67-BAF4-2CF4D170E11C}
+		{CBADCE4E-7C83-4558-97B6-11BAFF992E74} = {019BED02-6B26-4A67-BAF4-2CF4D170E11C}
 	EndGlobalSection
 EndGlobal

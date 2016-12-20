@@ -1,0 +1,23 @@
+﻿
+.title {
+   text-align:center;
+}
+
+
+.form-group {
+    margin-top : 40px;
+        text-align: center;
+}
+
+.form-control {
+    display: initial;
+    margin-bottom : 20px;
+}
+
+.on {
+    display: block;
+}
+
+.off {
+    display: none;
+}

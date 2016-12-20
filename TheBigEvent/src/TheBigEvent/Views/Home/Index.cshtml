@@ -1,0 +1,22 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TheBigEvent</title>
+</head>
+<body>
+    <div id="app"></div>
+
+
+    <environment names="Development">
+        <script type="text/javascript" src="http://localhost:8080/dist/TheBigEvent.js"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script type="text/javascript" src="~/dist/TheBigEvent.js"></script>
+    </environment>
+</body>
+</html>
+
