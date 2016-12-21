@@ -14,6 +14,7 @@
 <body>
     <div id="app">
     </div>
+<<<<<<< HEAD
     <ul>
         @{
             foreach (string u in (List<string>)ViewData["ListName"])
@@ -38,6 +39,43 @@
             </script>
              <input name="Siret" class="form-control glyphicon-log-in" required="" placeholder="Numéro de siret"/><br>
              <input name="Compagny" class="form-control glyphicon-log-in" required="" placeholder="Nom de l'entrprise'"/><br>
+=======
+
+    <h1 class="title"> Inscription</h1>
+
+    <div class="form-group">
+        <form method="post" action="">
+            <input name="Mail" class="form-control glyphicon-log-in" type="email" required="" placeholder="Email" /> <br>
+            <input name="Passe" class="form-control glyphicon-log-in" type="password" required="" placeholder="Mot de passe" /><br>
+            Professionnel : <input name="pro" value="0" onChange="verif();" type="checkbox" id="check"/><br>
+            <script>
+                function verif() {
+                    var etat = document.getElementById('check').checked;
+
+                    if (etat)
+                    {
+                        document.getElementById('1').className = 'on';
+                        document.getElementById('check').value = '1';
+                        document.getElementById('siret').required = true;
+                        document.getElementById('compagny').required = true;
+                      
+                    }
+                    else
+                    {
+                        document.getElementById('1').className = 'off';
+                        document.getElementById('check').value = '0';
+                        document.getElementById('siret').required = null;
+                        document.getElementById('compagny').required = null;
+                    }
+                }
+            </script>
+            <br />
+            <div id="1" class="off">
+                <input id="siret" name="Siret" class="form-control glyphicon-log-in" placeholder="Numéro de siret" /><br>
+                <input id="compagny" name="Compagny" class="form-control glyphicon-log-in" placeholder="Nom de l'entrprise'" /><br>
+            </div>
+
+>>>>>>> master
             <input type="submit" class="btn btn-default" />
         </form>
     </div>

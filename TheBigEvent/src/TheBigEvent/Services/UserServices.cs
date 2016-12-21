@@ -15,6 +15,7 @@ namespace TheBigEvent.Services
             _uLink = new UserLink(connectionString);
         }
 
+<<<<<<< HEAD
         public List<string> returnAllNameUser()
         {
             List<string> tmpVar = new List<string>();
@@ -29,6 +30,11 @@ namespace TheBigEvent.Services
         public void addUser(string Mail, string Passe, string FirstName, string LastName, string City, string Tel, string Pro, string Siret, string Compagny)
         {
             _uLink.AddUser(Mail, Passe, FirstName, LastName, City, Tel, Pro, Siret, Compagny);
+=======
+        public void addUser(string Mail, string Passe, byte Pro, string Siret, string Compagny)
+        {
+            _uLink.AddUser(Mail, Passe, Pro, Siret, Compagny);
+>>>>>>> master
         }
         public User FindUser(string Mail, string Passe)
         {

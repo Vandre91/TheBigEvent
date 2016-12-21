@@ -1,0 +1,34 @@
+﻿@using TheBigEvent.Services
+
+@{
+    Token token = (Token)ViewData["Token"];
+    string email = (string)ViewData["Email"];
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/css/Conexion.css" rel="stylesheet">
+    <title>TheBigEvent</title>
+</head>
+<body>
+    <script>
+        (function () {
+            window.opener.postMessage(JSON.stringify({
+                type: 'authenticated',
+                payload: {
+                    bearer: {
+                        access_token: '@token.AccessToken',
+                        expires_in: @token.ExpiresIn,
+                    },
+                    email: '@email'
+                }
+            }));
+
+            window.close();
+        })();
+    </script>
+</body>
+</html>

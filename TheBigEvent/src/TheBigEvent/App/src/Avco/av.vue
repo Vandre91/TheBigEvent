@@ -1,19 +1,18 @@
 <template>
-  <div id="app">
-<<<<<<< HEAD
-
+<div class="fond">
 <header>
     <nav class="navbar navbar-default" role = "navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-            <button type = "button" class = "navbar-toggle" data-toggle = "collapse" data-target = "#mynav">
+            <button type = "button" class = "navbar-toggle" 
+                data-toggle = "collapse" data-target = "#mynav">
                 <span class = "sr-only">Toggle navigation</span>
                 <span class = "icon-bar"></span>
                 <span class = "icon-bar"></span>
                 <span class = "icon-bar"></span>
             </button>
             <a class = "navbar-brand">
-                <router-link to="/"><img src="../img/logo.jpg" style="width:55px"></img></router-link>
+                <router-link to="/"><img src="../../img/logo.jpg" style="width:55px"></img></router-link>
             </a>
         </div>
         <div class="collapse navbar-collapse" id = "mynav">
@@ -24,10 +23,17 @@
                 <li>
                     <router-link to="/Galerie">Galerie</router-link>
                 </li>
+                <li>
+                    <router-link to="/client">Client</router-link>
+                </li>
+                <li>
+                    <router-link to="/pro">Fournisseur</router-link>
+                </li>
+
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" @click="login('Base')"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
-                <li><a href="#" @click="login('Base1')"><span class="glyphicon glyphicon-user"></span> Inscription</a></li>
+                <li><a href="#" @click="login('Base')">Connexion</a></li>
+                <li><a href="#" @click="login('Base1')">Inscription</a></li>
             </ul>
     </nav>
 </header>
@@ -66,15 +72,13 @@
 	</div>
 </footer>
 
-  </div>
+</div>
 </template>
 
 <script>
-import 'bootstrap'
-import AuthService from './services/auth.js'
-import Vue from 'vue'
-import $ from 'jquery'
 
+import AuthService from '../services/auth.js'
+import Vue from 'vue'
 
     export default {
 
@@ -95,26 +99,12 @@ import $ from 'jquery'
         },
     };
 
-=======
-    <router-view></router-view>
-  </div>
-</template>
-
-
-<script>
-import 'bootstrap'
-import $ from 'jquery'
->>>>>>> master
 </script>
 
 <style>
 
-@import "~bootstrap/dist/css/bootstrap.min.css";
-@import "~font-awesome/css/font-awesome.css";
-<<<<<<< HEAD
-
-body {
-  background-image: url('../img/header1.jpg');
+.fond {
+  background-image: url('../../img/header1.jpg');
   background-repeat: no-repeat;
   background-position: center center;
   -webkit-background-size: cover;
@@ -198,6 +188,3 @@ padding: 5px;
     margin-top: 5%;
 }
 </style>
-=======
-</style>
->>>>>>> master

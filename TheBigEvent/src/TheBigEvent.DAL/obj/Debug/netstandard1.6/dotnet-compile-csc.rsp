@@ -8,8 +8,13 @@
 -debug:full
 -nostdlib
 -nologo
+<<<<<<< HEAD
 "C:\Users\Shane\Desktop\last\src\TheBigEvent.DAL\obj\Debug\netstandard1.6\dotnet-compile.assemblyinfo.cs"
 -out:"C:\Users\Shane\Desktop\last\src\TheBigEvent.DAL\bin\Debug\netstandard1.6\TheBigEvent.DAL.dll"
+=======
+"C:\Users\Shane\Desktop\PI\TheBigEvent\src\TheBigEvent.DAL\obj\Debug\netstandard1.6\dotnet-compile.assemblyinfo.cs"
+-out:"C:\Users\Shane\Desktop\PI\TheBigEvent\src\TheBigEvent.DAL\bin\Debug\netstandard1.6\TheBigEvent.DAL.dll"
+>>>>>>> master
 -r:"C:\Users\Shane\.nuget\packages\Dapper\1.50.2\lib\netstandard1.3\Dapper.dll"
 -r:"C:\Users\Shane\.nuget\packages\Microsoft.Win32.Primitives\4.0.1\ref\netstandard1.3\Microsoft.Win32.Primitives.dll"
 -r:"C:\Users\Shane\.nuget\packages\System.AppContext\4.1.0\ref\netstandard1.6\System.AppContext.dll"
@@ -63,6 +68,12 @@
 -r:"C:\Users\Shane\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll"
 -r:"C:\Users\Shane\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll"
 -r:"C:\Users\Shane\.nuget\packages\System.Xml.XmlDocument\4.0.1\ref\netstandard1.3\System.Xml.XmlDocument.dll"
+<<<<<<< HEAD
 "C:\Users\Shane\Desktop\last\src\TheBigEvent.DAL\User.cs"
 "C:\Users\Shane\Desktop\last\src\TheBigEvent.DAL\UserLink.cs"
 "C:\Users\Shane\Desktop\last\src\TheBigEvent.DAL\Properties\AssemblyInfo.cs"
+=======
+"C:\Users\Shane\Desktop\PI\TheBigEvent\src\TheBigEvent.DAL\User.cs"
+"C:\Users\Shane\Desktop\PI\TheBigEvent\src\TheBigEvent.DAL\UserLink.cs"
+"C:\Users\Shane\Desktop\PI\TheBigEvent\src\TheBigEvent.DAL\Properties\AssemblyInfo.cs"
+>>>>>>> master

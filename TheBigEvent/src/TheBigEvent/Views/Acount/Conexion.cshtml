@@ -14,6 +14,7 @@
 <body>
     <div id="app">
     </div>
+<<<<<<< HEAD
         <h4 class="title"> Connexion</h4>
 
         <form method="post" action="">
@@ -26,6 +27,20 @@
 
         </form>
         @{string u = ViewData["Firstname"].ToString(); } @u
+=======
+    <h1 class="title"> Connexion</h1>
+    <br />
+    <form method="post" action="">
+        <div class="form-group">
+            <input name="Mail" type="email" class="form-control glyphicon-log-in" required="" placeholder="Email" /> <br>
+            <input name="Passe" type="password" class="form-control glyphicon-log-in" required="" placeholder="Mot de passe" /><br>
+            <input type="submit" class="btn btn-default" />
+        </div>
+
+
+    </form>
+    @*@{string u = ViewData["Firstname"].ToString(); } @u*@
+>>>>>>> master
 
     </div>
 </body>
