@@ -3,6 +3,10 @@
    text-align:center;
 }
 
+<<<<<<< HEAD
+div{
+    margin-left:60px;
+=======
 
 .form-group {
     margin-top : 40px;
@@ -20,4 +24,5 @@
 
 .off {
     display: none;
+>>>>>>> master
 }
