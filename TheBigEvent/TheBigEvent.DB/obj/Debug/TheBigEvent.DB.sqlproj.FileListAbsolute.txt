@@ -12,8 +12,6 @@ C:\Users\Shane\Desktop\tbe_vue\TheBigEvent\TheBigEvent.DB\bin\Debug\TheBigEvent.
 C:\Users\Shane\Desktop\tbe_vue\TheBigEvent\TheBigEvent.DB\bin\Debug\TheBigEvent.DB.pdb
 C:\Users\Shane\Desktop\tbe_vue\TheBigEvent\TheBigEvent.DB\obj\Debug\TheBigEvent.DB.dll
 C:\Users\Shane\Desktop\tbe_vue\TheBigEvent\TheBigEvent.DB\obj\Debug\TheBigEvent.DB.pdb
-<<<<<<< HEAD
-=======
 C:\Users\Shane\Desktop\PI\TheBigEvent\TheBigEvent.DB\bin\Debug\TheBigEvent.DB.dacpac
 C:\Users\Shane\Desktop\PI\TheBigEvent\TheBigEvent.DB\bin\Debug\TheBigEvent.DB.dll
 C:\Users\Shane\Desktop\PI\TheBigEvent\TheBigEvent.DB\bin\Debug\TheBigEvent.DB.pdb
@@ -23,4 +21,3 @@ C:\Users\Shane\Desktop\PI\TheBigEvent\TheBigEvent.DB\obj\Debug\postdeploy.sql
 C:\Users\Shane\Desktop\PI\TheBigEvent\TheBigEvent.DB\obj\Debug\predeploy.sql
 C:\Users\Shane\Desktop\PI\TheBigEvent\TheBigEvent.DB\obj\Debug\TheBigEvent.DB.dll
 C:\Users\Shane\Desktop\PI\TheBigEvent\TheBigEvent.DB\obj\Debug\TheBigEvent.DB.pdb
->>>>>>> master

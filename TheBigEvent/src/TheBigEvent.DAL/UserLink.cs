@@ -24,10 +24,6 @@ namespace TheBigEvent.DAL
                 return con.Query<User>("Select * From tbe.tUser");
             }
         }
-<<<<<<< HEAD
-        public void AddUser(string _Mail, string _Passe, string _FirstName, string _LastName, string _City, string _Tel, string _Pro, string _Siret, string _Compagny)
-        {
-=======
         public void AddUser(string _Mail, string _Passe, byte _Pro, string _Siret, string _Compagny)
         {
             if (_Pro == 0)
@@ -35,16 +31,11 @@ namespace TheBigEvent.DAL
                 _Siret = null;
                 _Compagny = null;
             }
->>>>>>> master
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
                     "tbe.pUserAdd",
-<<<<<<< HEAD
-                    new { Passe = _Passe, FirstName = _FirstName, LastName = _LastName, City = _City, Tel = Int32.Parse(_Tel), Mail = _Mail, Pro = Boolean.Parse(_Pro), Siret = Int32.Parse(_Siret), Compagny = _Compagny },
-=======
                     new { Mail = _Mail, Passe = _Passe, Pro = _Pro, Siret = _Siret, Compagny = _Compagny },
->>>>>>> master
                     commandType: CommandType.StoredProcedure);
             }
         }

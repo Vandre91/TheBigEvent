@@ -7,12 +7,7 @@
     [City] NVARCHAR(MAX) NULL, 
     [Tel] INT NULL, 
     [Mail] NVARCHAR(MAX) NOT NULL, 
-<<<<<<< HEAD
-    [Pro] BIT NOT NULL, 
-    [Siret] INT NULL, 
-=======
     [Pro] BIT NULL, 
     [Siret] NVARCHAR(MAX) NULL, 
->>>>>>> master
     [Compagny] NVARCHAR(MAX) NULL
 )

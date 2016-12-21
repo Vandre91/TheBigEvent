@@ -7,11 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-<<<<<<< HEAD
-=======
 using TheBigEvent.Services;
 using TheBigEvent.Authentification;
->>>>>>> master
 
 namespace TheBigEvent
 {
@@ -42,12 +39,9 @@ namespace TheBigEvent
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc();
-<<<<<<< HEAD
-=======
 
             services.AddSingleton(p => new UserServices(Configuration["ConnectionStrings:TheBigEventDB"]));
             services.AddSingleton<TokenService>();
->>>>>>> master
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,14 +65,10 @@ namespace TheBigEvent
             app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseStaticFiles();
-<<<<<<< HEAD
-
-=======
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationScheme = CookieAuthentication.AuthenticationScheme
             });
->>>>>>> master
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

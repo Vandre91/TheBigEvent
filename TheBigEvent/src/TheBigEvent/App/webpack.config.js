@@ -7,10 +7,7 @@ module.exports = {
   output: {
     path: path.resolve(wwwroot, './dist'),
     publicPath: '/dist/',
-<<<<<<< HEAD
-=======
 //    filename: 'build.js'
->>>>>>> master
     filename: 'TheBigEvent.js'
   },
   module: {
