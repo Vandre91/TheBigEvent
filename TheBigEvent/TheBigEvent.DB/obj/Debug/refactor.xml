@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0">
+  <Operation Name="Rename Refactor" Key="e7b2643f-046b-42ef-9b13-5bc8196aac75" ChangeDateTime="01/03/2017 09:14:39" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[tTraiteur].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tTraiteur]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TraiteurId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a5af5a0b-b37b-436d-b57b-1bcc00e54672" ChangeDateTime="01/03/2017 09:17:12" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[tMenu].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tMenu]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MenuId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5b062012-e10a-428d-894b-3babebf37e94" ChangeDateTime="01/03/2017 09:18:11" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[tMenu].[Prix]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tMenu]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Cat" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2eeaa0d2-4175-4087-8c56-daad16aeb23b" ChangeDateTime="01/03/2017 09:18:16" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[tMenu].[NbPersonnes]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tMenu]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Prix" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="bd88ce11-1767-4c85-a766-f573723ab78b" ChangeDateTime="01/03/2017 09:21:42" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[tDeco].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tDeco]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DecoId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b18c5240-2db2-4607-890b-55f24f5f2192" ChangeDateTime="01/03/2017 09:30:07" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[tbe].[tEvent].[UserId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[tbe].[tEvent]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MenuId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2db07b5f-bef9-4007-aa56-0796d7049c91" ChangeDateTime="01/03/2017 09:30:18" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[tbe].[FK_tEvent_tUser]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[tbe].[tEvent]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_tEvent_tMenu]" />
+  </Operation>
+</Operations>

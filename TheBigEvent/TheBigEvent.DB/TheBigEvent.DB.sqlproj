@@ -62,5 +62,18 @@
     <Build Include="pUserAdd.sql" />
     <Build Include="tUser.sql" />
     <Build Include="tbe.sql" />
+    <Build Include="tEvent.sql" />
+    <Build Include="tSalle.sql" />
+    <Build Include="tTraiteur.sql" />
+    <Build Include="tMenu.sql" />
+    <Build Include="tDeco.sql" />
+    <Build Include="pUserUpdate.sql" />
+    <Build Include="pUserProfilUpdate.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="TheBigEvent.DB.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="pUserDelete.sql" />
   </ItemGroup>
 </Project>
