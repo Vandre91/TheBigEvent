@@ -19,7 +19,7 @@ namespace TheBigEvent.Services
             _options = options.Value;
         }
 
-        public Token GenerateToken(string userId, string email)
+        public Token GenerateToken(string userId, string email, bool id)
         {
             var now = DateTime.UtcNow;
 
@@ -29,6 +29,7 @@ namespace TheBigEvent.Services
             {
                 new Claim( JwtRegisteredClaimNames.Sub, userId ),
                 new Claim( JwtRegisteredClaimNames.Email, email ),
+                new Claim( JwtRegisteredClaimNames.Sub, id.ToString(), ClaimValueTypes.Boolean ),
                 new Claim( JwtRegisteredClaimNames.Iat, ( ( int )( now - new DateTime( 1970, 1, 1 ) ).TotalSeconds).ToString(), ClaimValueTypes.Integer64 )
             };
 

@@ -32,25 +32,25 @@ namespace TheBigEvent.Controllers
         [HttpPost]
         public IActionResult Login(string Mail, string Passe, byte Pro, string Siret, string Compagny)
         {
-            UserServices useService = new UserServices(@"Server = VIVI\SQLEXPRESS; Database =TheBigEvent.DB ; Trusted_Connection = True");
+            UserServices useService = new UserServices(@"Server = SHANE-PC\SQLEXPRESS; Database =TheBigEvent.DB ; Trusted_Connection = True");
             useService.addUser(Mail, Passe, Pro, Siret, Compagny);
             return View();
         }
 
         public IActionResult Conexion()
         {
-            UserServices useService = new UserServices(@"Server = VIVI\SQLEXPRESS; Database =TheBigEvent.DB ; Trusted_Connection = True");
+            UserServices useService = new UserServices(@"Server = SHANE-PC\SQLEXPRESS; Database =TheBigEvent.DB ; Trusted_Connection = True");
             ViewData["Firstname"] = "";
             return View();
         }
         [HttpPost]
         public async Task<IActionResult> Conexion(string Mail, string Passe)
         {
-            UserServices useService = new UserServices(@"Server = VIVI\SQLEXPRESS; Database =TheBigEvent.DB ; Trusted_Connection = True");
+            UserServices useService = new UserServices(@"Server = SHANE-PC\SQLEXPRESS; Database =TheBigEvent.DB ; Trusted_Connection = True");
             User user = useService.FindUser(Mail, Passe);
             if (user != null)
             {
-                await SignIn(user.Mail, user.UserId.ToString());
+                await SignIn(user.Mail, user.UserId.ToString(), user.Pro);
                 return RedirectToAction(nameof(Authenticated));
 
             }
@@ -67,9 +67,11 @@ namespace TheBigEvent.Controllers
         {
             string userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             string email = User.FindFirst(ClaimTypes.Email).Value;
-            Token token = _tokenService.GenerateToken(userId, email);
+            bool id = bool.Parse(User.FindFirst(ClaimTypes.Authentication).Value);
+            Token token = _tokenService.GenerateToken(userId, email, id);
             ViewData["Token"] = token;
             ViewData["Email"] = email;
+            ViewData["id"] = id;
             ViewData["NoLayout"] = true;
             return View();
         }
@@ -81,11 +83,12 @@ namespace TheBigEvent.Controllers
             ViewData["NoLayout"] = true;
             return View();
         }
-        async Task SignIn(string email, string userId)
+        async Task SignIn(string email, string userId, bool pro)
         {
             List<Claim> claims = new List<Claim>
             {
                 new Claim( ClaimTypes.Email, email, ClaimValueTypes.String ),
+                new Claim( ClaimTypes.Authentication, pro.ToString(), ClaimValueTypes.Boolean ),
                 new Claim( ClaimTypes.NameIdentifier, userId.ToString(), ClaimValueTypes.String )
             };
             ClaimsIdentity identity = new ClaimsIdentity(claims, "Cookies", ClaimTypes.Email, string.Empty);

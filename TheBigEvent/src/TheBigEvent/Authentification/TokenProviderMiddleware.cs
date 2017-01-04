@@ -58,7 +58,7 @@ namespace TheBigEvent.Authentification
                 return;
             }
 
-            Token token = _tokenService.GenerateToken(user.UserId.ToString(), username);
+            Token token = _tokenService.GenerateToken(user.UserId.ToString(), username, user.Pro);
             var response = new
             {
                 access_token = token.AccessToken,
