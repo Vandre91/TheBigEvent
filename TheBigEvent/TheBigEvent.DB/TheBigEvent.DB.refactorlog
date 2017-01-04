@@ -49,4 +49,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="[FK_tEvent_tMenu]" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="f0cb1335-cbaa-4f73-ac70-babff48a6930" ChangeDateTime="01/03/2017 13:55:48">
+    <Property Name="ElementName" Value="[tbe].[tEvent].[State]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[tbe].[tEvent]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Validation" />
+  </Operation>
 </Operations>
