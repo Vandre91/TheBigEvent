@@ -22,7 +22,7 @@
           </a></div>
       <div class="col-lg-3 col-sm-4 col-xs-6">
         <a title="Salle de mariage (en plein air !)" href="#">
-          <img img v-on:click="zoom" class="thumbnail img-responsive" src="../../img/deco/d4.jpg" />
+          <img v-on:click="zoom" class="thumbnail img-responsive" src="../../img/deco/d4.jpg" />
         </a>
       </div>
       <div class="col-lg-3 col-sm-4 col-xs-6">
