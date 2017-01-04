@@ -41,6 +41,7 @@ namespace TheBigEvent
             services.AddMvc();
 
             services.AddSingleton(p => new UserServices(Configuration["ConnectionStrings:TheBigEventDB"]));
+            services.AddSingleton(p => new EventService(Configuration["ConnectionStrings:TheBigEventDB"]));
             services.AddSingleton<TokenService>();
         }
 

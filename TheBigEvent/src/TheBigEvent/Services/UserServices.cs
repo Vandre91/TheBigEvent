@@ -24,5 +24,17 @@ namespace TheBigEvent.Services
             User user = _uLink.FindUser(Mail, Passe);
             return user;
         }
+        public void DeleteUser(int _id)
+        {
+            _uLink.Delete(_id);
+        }
+        public void UpdateUserName(int _UserId, string _firstName, string _lastName, string _City, int _Tel)
+        {
+            _uLink.UpdateName(_UserId, _firstName, _lastName, _City, _Tel);
+        }
+        public void UpdateUserMail(int _userId, string _mail, string _passe)
+        {
+            _uLink.UpdateMail(_userId, _mail, _passe);
+        }
     }
 }

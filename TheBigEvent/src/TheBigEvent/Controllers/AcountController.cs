@@ -73,6 +73,14 @@ namespace TheBigEvent.Controllers
             ViewData["NoLayout"] = true;
             return View();
         }
+        [HttpGet]
+        [Authorize(ActiveAuthenticationSchemes = CookieAuthentication.AuthenticationScheme)]
+        public async Task<IActionResult> LogOff()
+        {
+            await HttpContext.Authentication.SignOutAsync(CookieAuthentication.AuthenticationScheme);
+            ViewData["NoLayout"] = true;
+            return View();
+        }
         async Task SignIn(string email, string userId)
         {
             List<Claim> claims = new List<Claim>
