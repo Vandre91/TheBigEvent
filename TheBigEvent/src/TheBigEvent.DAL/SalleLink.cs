@@ -33,6 +33,16 @@ namespace TheBigEvent.DAL
                     commandType: CommandType.StoredProcedure);
             }
         }
+        public void Update(int _SalleId, string _NbPlace)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Execute(
+                    "tbe.pUpdateSalle",
+                    new { SalleId = _SalleId, Nbplace = _NbPlace },
+                    commandType: CommandType.StoredProcedure);
+            }
+        }
         public void Delete(int _SalleId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
