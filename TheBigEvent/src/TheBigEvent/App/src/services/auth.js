@@ -1,18 +1,33 @@
 class AuthService {
     constructor() {
-        this.providers = {}; //méthode de Connexion
-        this.allowedOrigins = []; //lien pour la connexion niveau serveur
+        this.providers = {}; //méthode de Connexion base | fb etc
+        this.allowedOrigins = []; 
 
         this.logoutEndpoint = null;
-
-        this.appRedirect = () => null; //en cas de déconnexion redirection
-
-        this.authenticatedCallbacks = []; //liste des gens  connecté
-        this.signedOutCallbacks = []; //les gens inscrit
+        this.authenticatedCallbacks = []; 
+        this.signedOutCallbacks = [];
 
         window.addEventListener("message", this.onMessage, false);
     }
 
+    get isConnected() {
+        return this.identity != null;
+    }
+
+    get accessToken() {
+        var identity = this.identity;
+        return identity ? identity.bearer.access_token : null;
+    }
+
+    isProfessionnal() {
+        var identity = this.identity;
+        return (identity.isProfessionnal);
+    }
+
+    hisEmail() {
+        var identity = this.identity;
+        return (identity.email);
+    }
 
 
     login (selectedProvider, authenticatedCallback)
@@ -37,10 +52,32 @@ class AuthService {
         this.signedOutCallbacks.splice(this.signedOutCallbacks.indexOf(cb), 1);
     }
 
-    onMessage(e) {
-        console.log(e);
+    onMessage = (e) => {
+        if(this.allowedOrigins.indexOf(e.origin) < 0) return;
+
+        var data = typeof e.data == 'string' ? JSON.parse(e.data) : e.data;
+
+        if(data.type == 'authenticated') this.onAuthenticated(data.payload);
+        else if(data.type == 'signedOut') this.onSignedOut();
+    }
+    onAuthenticated = (i) => {
+        this.identity = i;
+
+        for(var cb of this.authenticatedCallbacks) {
+            cb();
+        }
     }
 
+    onSignedOut = () => {
+        this.identity = null;
 
+        for(var cb of this.signedOutCallbacks) {
+            cb();
+        }
+    }
+    logout = () => {
+        var popup = window.open(this.logoutEndpoint, "Déconnexion, à Bientôt ", "menubar=no, status=no, scrollbars=no, menubar=no, width=700, height=600");        
+    }
 }
+
 export default new AuthService();

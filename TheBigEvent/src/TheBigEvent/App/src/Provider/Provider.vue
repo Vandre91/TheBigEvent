@@ -18,7 +18,7 @@
                 </button>
                 <router-link to="/Client">
                 <img src="../../img/logo1.gif" style="width:65px"></img>
-                <a>The Big Event</a>
+                <a>The Big Event Pro</a>
                 </router-link>
             </div>
             <!-- Top Menu Items -->

@@ -94,7 +94,14 @@ import Vue from 'vue'
             },
 
             onAuthenticated() {
-                 this.$router.replace('/');
+                if (!AuthService.isProfessionnal())
+                {
+                 this.$router.replace('/client');
+                }
+                else
+                {
+                 this.$router.replace('/pro');
+                }
             }
         },
     };

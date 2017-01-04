@@ -1,11 +1,6 @@
 <template>
   <div class="accueil">
-
-
-
     <div id="wrapper">
-
-
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -44,16 +39,16 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#228B22;"><i class="fa fa-user"></i> Shane Djafaraly<b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#228B22;"><i class="fa fa-user"></i> {{ email }} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                          <router-link to="/Client/Board" class="router">
+                            <router-link to="/client/profil" class="router">
                             <a style="color:black;"><i class="fa fa-fw fa-user"></i> Profile</a>
                           </router-link>
                         </li>
                         <li class="divider"></li>
                         <li>
-                          <router-link to="/Client/Board" class="router">
+                          <router-link to="/logout" class="router">
                             <a style="color:black;"><i class="fa fa-fw fa-power-off"></i> Déconnexion</a>
                           </router-link>
 
@@ -62,48 +57,53 @@
                 </li>
             </ul>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                      <router-link to="/Client/Board" class="router">
-                        <a><i class="fa fa-fw fa-dashboard"></i> DashBoard</a>
+                <ul  class="nav navbar-nav side-nav">
+                    <li v-bind:class="{ active: tab === 1}" v-on:click="tab = 1">
+                      <router-link to="/client" class="router">
+                        <a ><i class="fa fa-fw fa-dashboard"></i> DashBoard</a>
                       </router-link>
                     </li>
-                    <li>
-                      <router-link to="/Client/Board" class="router">
+                    <li v-bind:class="{ active: tab === 2}" v-on:click="tab = 2">
+                      <router-link to="/client/event" class="router">
                         <a><i class="fa fa-fw fa-table"></i> Crée un évènement</a>
                       </router-link>
                     </li>
-                    <li>
-                      <router-link to="/Client/Board" class="router">
+                    <li v-bind:class="{ active: tab === 3}" v-on:click="tab = 3">
+                      <router-link to="/client/Conversation" class="router">
                         <a><i class="fa fa-fw fa-edit"></i> Conversation</a>
-                      </router-link>
-                    </li>
-                    <li>
-                      <router-link to="/Client/Board" class="router">
-                        <a><i class="fa fa-fw fa-desktop"></i> Voir mes réservations</a>
-                      </router-link>
-                    </li>
-                    <li>
-                      <router-link to="/Client/Board" class="router">                      
-                        <a><i class="fa fa-fw fa-wrench"></i> Modifier son profil</a>
                       </router-link>
                     </li>
                 </ul>
             </div>
         </nav>
 </div>
+<div class="nav1"><router-view></router-view></div>
 </div>
 </template>
 
 <script>
+import AuthService from '../services/auth.js'
 export default {
-    
+  	data () {
+      return {
+		tab: 1,
+        email: null
+       }
+	},
+     mounted() {
+            this.email = AuthService.hisEmail();
+        }
 }
 </script>
 
 <style scoped>
 
 /* Top Navigation */
+
+.nav1 {
+    margin-left: 5%;
+    margin-top: 10%;
+}
 
 a {
   color: #9d9d9d;
@@ -177,6 +177,12 @@ ul.alert-dropdown {
 /* Side Navigation */
 
 @media(min-width:768px) {
+
+.nav1 {
+    margin-left: 16%;
+    margin-top: 5%;
+}
+
     .side-nav {
         position: fixed;
         top: 51px;
