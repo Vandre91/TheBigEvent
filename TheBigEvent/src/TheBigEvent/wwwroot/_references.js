@@ -1,5 +1,5 @@
 ﻿/// <autosync enabled="true" />
-/// <reference path="../app/src/helpers/auth.js" />
+/// <reference path="../app/src/helpers/req.js" />
 /// <reference path="../App/src/main.js" />
 /// <reference path="../App/src/services/auth.js" />
 /// <reference path="../app/src/services/eventservice.js" />
