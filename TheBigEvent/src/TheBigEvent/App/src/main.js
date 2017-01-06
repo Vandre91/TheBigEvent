@@ -1,8 +1,8 @@
+import 'babel-polyfill'
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import AuthService from './services/auth.js'
-//import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 
 // La Base
 import Home from './App.vue'
@@ -21,11 +21,9 @@ import Events from  './Client/Event.vue'
 import Conversation from './Client/Conversation.vue'
 import Board from './Client/board.vue'
 
-
 // Fournisseurs
 import Provider from './Provider/Provider.vue'
 Vue.use(VueRouter);
-
 
 function requireAuth (to, from, next)  {
   if (!AuthService.isConnected) {
@@ -44,25 +42,21 @@ function requireAuth (to, from, next)  {
 const router = new VueRouter({
   mode: 'history',
   routes: [
-   { path: '/', component: Home, redirect: 'home', children:[
-      { path : '/accueil', component: index, redirect: 'home' ,children :[
-        { path : '/home', component: Accueil },
-        { path: '/Partner', component: Partenaire},
-        { path: '/galerie', component: Galerie}
-      ]},
-   { path: '/client', component: Client, redirect: "board", beforeEnter: requireAuth, children:[
-        { path : '/board', component: Board, beforeEnter: requireAuth },
-        { path: '/Client/Event', component: Events, beforeEnter: requireAuth},
-        { path: '/Client/Conversation', component: Conversation, beforeEnter: requireAuth},
-        { path: '/Client/Profil', component: Profil, beforeEnter: requireAuth}
-   ]},
-   { path: '/pro', component: Provider, beforeEnter: requireAuth },
-
-   ]},
-   { path: '/logout', component: Logout, beforeEnter: requireAuth },
-
-
-   { path: '*', redirect:'/'}
+    { path: '/', component: Home, redirect: 'home', children:[
+        { path : '/accueil', component: index, redirect: 'home' ,children :[
+          { path : '/home', component: Accueil },
+          { path: '/Partner', component: Partenaire},
+          { path: '/galerie', component: Galerie}
+        ]},
+        { path: '/client', component: Client, redirect: "/Client/board", beforeEnter: requireAuth, children:[
+              { path : '/Client/board', component: Board, beforeEnter: requireAuth },
+              { path: '/Client/Event', component: Events, beforeEnter: requireAuth},
+              { path: '/Client/Conversation', component: Conversation, beforeEnter: requireAuth},
+              { path: '/Client/Profil', component: Profil, beforeEnter: requireAuth},
+        ]},
+   { path: '/pro', component: Provider, beforeEnter: requireAuth }
+    ]},
+   { path: '/logout', component: Logout, beforeEnter: requireAuth }
   ]
 })
 

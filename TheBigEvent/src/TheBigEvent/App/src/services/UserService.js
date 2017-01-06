@@ -1,4 +1,4 @@
-import { getAsync, postAsync, putAsync, deleteAsync } from '../helpers/apiHelper'
+import { getAsync, postAsync, putAsync, deleteAsync } from '../helpers/req'
 import AuthService from './auth'
 
 const endpoint = "/api/user";
@@ -8,23 +8,23 @@ class UserService {
     }
 
 //  On récupère les informations d'un utilisateur (celui qui est co)
-    async getUserAsync(id)
+    async getUserAsync(email)
     {
-        return await getAsync(endpoint, Id, AuthService.accessToken);
+        return await getAsync(endpoint, email, AuthService.accessToken);
     }
 
 // On récupère les informations des différents fournisseurs
-    async getTraiteurAsync(id)
+    async getTraiteurAsync(Id)
     {
         return await getAsync(endpoint, Id, AuthService.accessToken);
     }
 
-    async getDecoAsync(id)
+    async getDecoAsync(Id)
     {
         return await getAsync(endpoint, Id, AuthService.accessToken);
     }
 
-    async getSalleAsync(id)
+    async getSalleAsync(Id)
     {
         return await getAsync(endpoint, Id, AuthService.accessToken);
     }

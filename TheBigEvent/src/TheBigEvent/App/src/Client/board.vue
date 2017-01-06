@@ -57,9 +57,19 @@
             <router-link to="/client/event" class="router">
             <a href="javascript:;" class="shortcut"><i class="shortcut-icon fa fa-list-alt"></i><span class="shortcut-label"> Créer un évènement </span></a>
             </router-link>
+
+            <router-link to="/client/Conversation" class="router">
             <a href="javascript:;" class="shortcut"><i class="shortcut-icon fa fa-comment"></i><span class="shortcut-label">Discussion avec les fournisseurs</span></a>
+            </router-link>
+
+            <router-link to="/client/profil" class="router">
             <a href="javascript:;" class="shortcut"><i class="shortcut-icon fa fa-user"></i><span class="shortcut-label">Modifier<br /> son profil</span></a>
+            </router-link>
+
+            <router-link to="/client/event" class="router">
             <a href="javascript:;" class="shortcut"><i class="shortcut-icon fa fa-tag"></i><span class="shortcut-label"> Envoyer un mail au support</span> </a>
+            </router-link>
+
     </div>
         <!-- /shortcuts --> 
     </div>

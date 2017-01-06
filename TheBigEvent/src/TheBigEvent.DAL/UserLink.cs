@@ -50,13 +50,13 @@ namespace TheBigEvent.DAL
             }
         }
 
-        public User getUser(int _id)
+        public User getUser(string _Mail)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 return con.Query<User>(
-                        "select * from tbe.tUser where UserId = @id ;",
-                        new { id = _id })
+                        "select * from tbe.tUser where Mail = @Mail ;",
+                        new { Mail = _Mail })
                     .FirstOrDefault();
             }
         }

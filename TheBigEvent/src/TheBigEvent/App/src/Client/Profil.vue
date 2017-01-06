@@ -2,32 +2,33 @@
 
 <div class="container">
   <h1 class="page-header">Modifier son profil {{model}}</h1>
-  <div class="row">
+<!--  <h1 class="page-header">le profil {{ item }}</h1>-->
 
+  <div class="row">
 
       <form class="form-horizontal" role="form">
         <div class="form-group">
           <label class="col-lg-3 control-label">Prénom:</label>
           <div class="col-lg-8">
-            <input class="form-control" value="Sandya" type="text" required>
+            <input class="form-control" v-model="model.content.firstName" type="text" required>
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">Nom:</label>
           <div class="col-lg-8">
-            <input class="form-control" value="Madione" type="text" required>
+            <input class="form-control" v-model="model.content.lastName" type="text" required>
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">City: </label>
           <div class="col-lg-8">
-            <input class="form-control" value="" type="text">
+            <input class="form-control" v-model="model.content.city" type="text">
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">Telephone:</label>
           <div class="col-lg-8">
-            <input class="form-control" value="" type="text">
+            <input class="form-control" v-model="model.content.tel" type="text">
           </div>
         </div>
         <div class="form-group">
@@ -43,19 +44,19 @@
         <div class="form-group">
           <label class="col-lg-3 control-label">Email:</label>
           <div class="col-lg-8">
-            <input class="form-control" value="Madione@intechinfo.fr" type="text"required>
+            <input class="form-control" v-model="model.content.mail" type="email"required>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label">Mot de passe:</label>
           <div class="col-md-8">
-            <input class="form-control" value="11111122333" type="password">
+            <input class="form-control" v-model="model.content.pass" type="password">
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label"> Confirmation du mot de passe:</label>
           <div class="col-md-8">
-            <input class="form-control" value="11111122333" type="password">
+            <input class="form-control" type="password">
           </div>
         </div>
         <div class="form-group">
@@ -65,17 +66,37 @@
           <input class="btn btn-danger" value="Supprimer le compte" type="button">
           </div>
         </div>
+        <input class="btn btn-danger" value="Supprimer le compte" type="button">
   </div>
   </div>
+
 </template>
 
 <script>
 import AuthService from '../services/auth.js'
+import UserService from '../services/UserService.js'
 export default {
   	data () {
       return {
-        model: null,
-        email: null
+        model: {
+          content:{
+            firstName : null,
+            lastName : null,
+            city : null,
+            tel : null,
+            mail : null,
+            pass : null
+          }
+        },
+        email: null,
+        item :{
+          firstName : null,
+          lastName : null,
+          city : null,
+          tel : null,
+          mail : null,
+          pass : null
+        }
        }
   	},
     mounted() {
@@ -84,9 +105,10 @@ export default {
             this.loadModelUser(this.email);
         },
     methods: {
-            loadModelUser: function(userEmail) {
-              this.model = UserService.getUserAsync(this.email);
-            },
+            loadModelUser: async function(email) {
+              this.model = await UserService.getUserAsync(email);
+              console.log(this.model.content.mail);
+            }
         }
 }
 </script>

@@ -7,13 +7,13 @@
 <div id="my_carousel" class="carousel slide">
 	  <div class="carousel-inner">
 	    <div class="item active">
-	      <img src="../../img/1.jpg" style="margin:0px auto;"/>
+	      <img src="http://img11.hostingpics.net/pics/6531471.jpg" style="margin:0px auto;"/>
 	    </div>   
 	    <div class="item">
-	      <img src="../../img/2.jpg" style="margin:0px auto;"/>
+	      <img src="http://img11.hostingpics.net/pics/3897942.jpg" style="margin:0px auto;"/>
 	    </div>
 	    <div class="item">
-	      <img src="../../img/3.jpg" style="margin:0px auto;"/>
+	      <img src="http://img11.hostingpics.net/pics/7450703.jpg" style="margin:0px auto;"/>
 	    </div>     
 	  </div>
 	  <a class="left carousel-control" href="#my_carousel" data-slide="prev">
@@ -35,16 +35,6 @@ export default {
 </script>
 
 <style scoped>
-
-body {
-  background-image: url('../../img/header1.jpg');
-  background-repeat: no-repeat;
-  background-position: center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
 
 .accueil {
   top : 50%;

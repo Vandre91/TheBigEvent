@@ -25,14 +25,15 @@ namespace TheBigEvent.Controllers
             _userService = userService;
         }
 
-        [HttpGet("{id}", Name = "GetUser")]
-        public IActionResult GetUserList(int id)
+        [HttpGet("{email}")]
+        public IActionResult GetUser(string email)
         {
-            Services.Result<User> result = _userService.getUser(id);
-            return this.CreateResult<User, UserViewModel>(result, o =>
-            {
-                o.ToViewModel = c => c.ToUserViewModel();
-            });
+            Services.Result<User> result = _userService.getUser(email);
+            return new JsonResult(result);
+            //return this.CreateResult<User, UserViewModel>(result, o =>
+            //{
+            //    o.ToViewModel = c => c.ToUserViewModel();
+            //});
         }
 
 

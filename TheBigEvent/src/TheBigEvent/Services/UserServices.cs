@@ -21,9 +21,9 @@ namespace TheBigEvent.Services
             _uLink.AddUser(Mail, Passe, Pro, Siret, Compagny);
         }
 
-        public Result<User> getUser(int id)
+        public Result<User> getUser(string email)
         {
-            User user = _uLink.getUser(id);
+            User user = _uLink.getUser(email);
             return Result.Success(Status.Ok, user);
         }
 

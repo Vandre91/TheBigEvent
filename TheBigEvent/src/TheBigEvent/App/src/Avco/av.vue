@@ -111,7 +111,7 @@ import Vue from 'vue'
 <style>
 
 .fond {
-  background-image: url('../../img/header1.jpg');
+  background-image: url('http://img11.hostingpics.net/pics/977879header1.jpg');
   background-repeat: no-repeat;
   background-position: center center;
   -webkit-background-size: cover;

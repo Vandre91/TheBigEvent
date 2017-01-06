@@ -3,61 +3,61 @@
   <div class="row">
       <div class="col-lg-3 col-sm-4 col-xs-6">
         <a title="Suchi crevette !" href="#">
-          <img v-on:click="zoom" class="thumbnail img-responsive" src="../../img/traiteur/t1.jpg" />
+          <img v-on:click="zoom" class="thumbnail img-responsive" src="http://img11.hostingpics.net/pics/826425t1.jpg" />
         </a>
       </div>
       <div class="col-lg-3 col-sm-4 col-xs-6">
         <a title="Gâteau de mariage" href="#">
-          <img v-on:click="zoom" class="thumbnail img-responsive" src="../../img/traiteur/t3.jpg" />
+          <img v-on:click="zoom" class="thumbnail img-responsive" src="http://img11.hostingpics.net/pics/845174t3.jpg" />
         </a>
       </div>
       <div class="col-lg-3 col-sm-4 col-xs-6">
         <a title="Salle de fête" href="#">
-          <img v-on:click="zoom" class="thumbnail img-responsive" src="../../img/deco/d1.jpg" />
+          <img v-on:click="zoom" class="thumbnail img-responsive" src="http://img11.hostingpics.net/pics/740474d1.jpg" />
           </a>
           </div>
       <div class="col-lg-3 col-sm-4 col-xs-6">
         <a title="Dessert au chocolat" href="#">
-          <img v-on:click="zoom" class="thumbnail img-responsive" src="../../img/traiteur/t2.jpg" />
+          <img v-on:click="zoom" class="thumbnail img-responsive" src="http://img11.hostingpics.net/pics/973829t2.jpg" />
           </a></div>
       <div class="col-lg-3 col-sm-4 col-xs-6">
         <a title="Salle de mariage (en plein air !)" href="#">
-          <img v-on:click="zoom" class="thumbnail img-responsive" src="../../img/deco/d4.jpg" />
+          <img v-on:click="zoom" class="thumbnail img-responsive" src="http://img11.hostingpics.net/pics/139292d4.jpg" />
         </a>
       </div>
       <div class="col-lg-3 col-sm-4 col-xs-6">
         <a title="Salle de mariage" href="#">
-          <img v-on:click="zoom" class="thumbnail img-responsive" src="../../img/deco/d5.jpg" />
+          <img v-on:click="zoom" class="thumbnail img-responsive" src="http://img11.hostingpics.net/pics/855140d5.jpg" />
         </a>
       </div>
       <div class="col-lg-3 col-sm-4 col-xs-6">
         <a title="Des petits fours" href="#">
-          <img v-on:click="zoom" class="thumbnail img-responsive" src="../../img/traiteur/t4.jpg" />
+          <img v-on:click="zoom" class="thumbnail img-responsive" src="http://img11.hostingpics.net/pics/803314t4.jpg" />
         </a>
       </div>
       <div class="col-lg-3 col-sm-4 col-xs-6">
         <a title="Le Thonmate (tomate au thon)" href="#">
-          <img v-on:click="zoom" class="thumbnail img-responsive" src="../../img/traiteur/t5.jpg" />
+          <img v-on:click="zoom" class="thumbnail img-responsive" src="http://img11.hostingpics.net/pics/866955t5.jpg" />
         </a>
       </div>
       <div class="col-lg-3 col-sm-4 col-xs-6">
         <a title="Le Fourré au blanc" href="#">
-          <img v-on:click="zoom" class="thumbnail img-responsive" src="../../img/traiteur/t7.jpg" />
+          <img v-on:click="zoom" class="thumbnail img-responsive" src="http://img11.hostingpics.net/pics/457126t7.jpg" />
         </a>
       </div>
       <div class="col-lg-3 col-sm-4 col-xs-6">
         <a title="Appétissant !" href="#">
-          <img v-on:click="zoom" class="thumbnail img-responsive" src="../../img/traiteur/t6.jpg" />
+          <img v-on:click="zoom" class="thumbnail img-responsive" src="http://img11.hostingpics.net/pics/188934t6.jpg" />
         </a>
       </div>
       <div class="col-lg-3 col-sm-4 col-xs-6">
         <a title="Oui, je le veux !" href="#">
-          <img v-on:click="zoom" class="thumbnail img-responsive" src="../../img/deco/d7.jpg" />
+          <img v-on:click="zoom" class="thumbnail img-responsive" src="http://img11.hostingpics.net/pics/779141d7.jpg" />
         </a>
       </div>
       <div class="col-lg-3 col-sm-4 col-xs-6">
         <a title="La classe" href="#">
-          <img v-on:click="zoom" class="thumbnail img-responsive" src="../../img/deco/d8.jpg" />
+          <img v-on:click="zoom" class="thumbnail img-responsive" src="http://img11.hostingpics.net/pics/896176d8.jpg" />
         </a>
       </div>
   <div tabindex="-1" class="modal fade" id="myModal" role="dialog">
