@@ -50,6 +50,17 @@ namespace TheBigEvent.DAL
             }
         }
 
+        public User getUser(int _id)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<User>(
+                        "select * from tbe.tUser where UserId = @id ;",
+                        new { id = _id })
+                    .FirstOrDefault();
+            }
+        }
+
         public void Delete(int _UserId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))

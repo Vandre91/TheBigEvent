@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.DotNet.Cli.Utils.CommandParsing;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,6 +20,14 @@ namespace TheBigEvent.Services
         {
             _uLink.AddUser(Mail, Passe, Pro, Siret, Compagny);
         }
+
+        public Result<User> getUser(int id)
+        {
+            User user = _uLink.getUser(id);
+            return Result.Success(Status.Ok, user);
+        }
+
+
         public User FindUser(string Mail, string Passe)
         {
             User user = _uLink.FindUser(Mail, Passe);

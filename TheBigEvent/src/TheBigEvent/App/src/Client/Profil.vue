@@ -1,7 +1,7 @@
 <template>
 
 <div class="container">
-  <h1 class="page-header">Modifier son profil</h1>
+  <h1 class="page-header">Modifier son profil {{model}}</h1>
   <div class="row">
 
 
@@ -30,7 +30,6 @@
             <input class="form-control" value="" type="text">
           </div>
         </div>
-
         <div class="form-group">
           <label class="col-md-3 control-label"></label>
           <div class="col-md-8">
@@ -62,20 +61,33 @@
         <div class="form-group">
           <label class="col-md-3 control-label"></label>
           <div class="col-md-8">
-            <input class="btn btn-primary" value="Save Changes" type="button">
-            
+            <input class="btn btn-primary" value="Save Changes" type="button">            
           <input class="btn btn-danger" value="Supprimer le compte" type="button">
-
           </div>
-
         </div>
   </div>
   </div>
 </template>
 
 <script>
+import AuthService from '../services/auth.js'
 export default {
-    
+  	data () {
+      return {
+        model: null,
+        email: null
+       }
+  	},
+    mounted() {
+            this.email = AuthService.hisEmail();
+
+            this.loadModelUser(this.email);
+        },
+    methods: {
+            loadModelUser: function(userEmail) {
+              this.model = UserService.getUserAsync(this.email);
+            },
+        }
 }
 </script>
 
