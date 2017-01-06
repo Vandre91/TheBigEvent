@@ -9,6 +9,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using TheBigEvent.Services;
 using TheBigEvent.Authentification;
+using Microsoft.IdentityModel.Tokens;
+using TheBigEvent.Controllers;
+using System.Text;
+using TheBigEvent.DAL;
 
 namespace TheBigEvent
 {
@@ -35,21 +39,53 @@ namespace TheBigEvent
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddOptions();
+
+            string secretKey = Configuration["JwtBearer:SigningKey"];
+            SymmetricSecurityKey signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));
+
+            services.Configure<TokenProviderOptions>(o =>
+            {
+                o.Audience = Configuration["JwtBearer:Audience"];
+                o.Issuer = Configuration["JwtBearer:Issuer"];
+                o.SigningCredentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
+            });
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc();
 
             services.AddSingleton(p => new UserServices(Configuration["ConnectionStrings:TheBigEventDB"]));
-            services.AddSingleton(p => new EventService(Configuration["ConnectionStrings:TheBigEventDB"]));
             services.AddSingleton<TokenService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            string secretKey = Configuration["JwtBearer:SigningKey"];
+            SymmetricSecurityKey signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));
+
+            app.UseMiddleware<TokenProviderMiddleware>();
+
+            app.UseJwtBearerAuthentication(new JwtBearerOptions
+            {
+                AuthenticationScheme = JwtBearerAuthentication.AuthenticationScheme,
+                TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = signingKey,
+
+                    ValidateIssuer = true,
+                    ValidIssuer = Configuration["JwtBearer:Issuer"],
+
+                    ValidateAudience = true,
+                    ValidAudience = Configuration["JwtBearer:Audience"]
+                }
+            });
 
             app.UseApplicationInsightsRequestTelemetry();
 
