@@ -5,7 +5,7 @@
             <div class="row">
             <div class="col-md-6">
                 <label for="exampleInputEmail1">Nom de l'événement </label>
-                <input type="email" class="form-control"  id="exampleInputEmail1" placeholder="Nom de l'événement" minlength="4" maxlength="56" required />
+                <input type="email" v-model="name" class="form-control"  id="exampleInputEmail1" placeholder="Nom de l'événement" minlength="4" maxlength="56" required />
             </div>
             </div>
     </div>
@@ -21,19 +21,10 @@
                     <div class="control-group">
                         <label class="control-label">Villes</label>
                         <div class="controls">
-                            <select id="country"  name="country" class="input-xlarge">
-                        
-                                <option value="GH">Goussainville</option>
-                                <option value="GR">Grenoble</option>
-                                <option value="LV">Louvres</option>
-                                <option value="LU">Luxembourg</option>
-                                <option value="MO">Meaux</option>
-                                <option value="PR">Paris</option>
-                                <option value="SR">Sarcelles</option>
-                                <option value="CR">Creil</option>
-
-
-                                </select>
+                            <select v-model="ville">
+                                <option v-for="option in villes" v-bind:value="option.value">
+                                    {{ option.text }}
+                                </option>
                             </div>
                         </div>
                 </fieldset>
@@ -45,17 +36,26 @@
 
 
 <ul class="list-inline pull-right">
-    <li><button type="button" class="btn btn-primary next-step">Enregistrer et continuer</button></li>
+    <li><button type="button" class="btn btn-primary next-step" @click="nextStep()">Enregistrer et continuer</button></li>
 </ul>
 </div>
 </template>
 
 <script>
 export default {
-    mounted(){
-        setInterval(() => {
-            this.$emit("test", "FDP")
-        }, 2000)
+    props:["name", "ville"],
+    data(){
+        return {
+            villes: [
+                {value: "paris", text: "Paris"},
+                {value: "marseille", text: "Marseille"},
+            ]
+        }
+    },
+    methods:{
+        nextStep(){
+            this.$emit('nextStep', {method: "info", name: this.name, ville: this.ville})
+        }
     }
 }
 </script>

@@ -6,42 +6,42 @@
             <div class="wizard-inner">
                 <div class="connecting-line"></div>
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active">
+                    <li role="presentation" :class="maxTypes < 0 ? 'disabled' : ''  + actualTypes == 0 ? 'active' : '' ">
                         <a  role="tab" title="Info" @click="changeTab(0)">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-info-sign"></i>
                             </span>
                         </a>
                     </li>
-                    <li role="presentation" class="disabled">
+                    <li role="presentation" :class="maxTypes < 1 ? 'disabled' : ''  + actualTypes == 1 ? 'active' : '' ">
                         <a  role="tab" title="Traiteur" @click="changeTab(1)">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-cutlery"></i>
                             </span>
                         </a>
                     </li>
-                     <li role="presentation" class="disabled">
+                     <li role="presentation" :class="maxTypes < 2 ? 'disabled' : '' + actualTypes == 2 ? 'active' : '' ">
                         <a  role="tab" title="Menu" @click="changeTab(2)">
                             <span class="round-tab">
                                 <i class="fa fa-hand-o-up"></i>
                             </span>
                         </a>
                     </li>
-                    <li role="presentation" class="disabled">
+                    <li role="presentation" :class="maxTypes < 3 ? 'disabled' : '' + actualTypes == 3 ? 'active' : '' ">
                         <a role="tab" title="Décoration" @click="changeTab(3)">
                             <span class="round-tab">
                                 <i class="fa fa-star"></i>
                             </span>
                         </a>
                     </li>
-                    <li role="presentation" class="disabled">
+                    <li role="presentation" :class="maxTypes < 4 ? 'disabled' : '' + actualTypes == 4 ? 'active' : '' ">
                         <a role="tab" title="Salle" @click="changeTab(4)">
                             <span class="round-tab">
                                 <i class="fa fa-map"></i>
                             </span>
                         </a>
                     </li>
-                    <li role="presentation" class="disabled">
+                    <li role="presentation" :class="maxTypes < 5 ? 'disabled' : '' + actualTypes == 5 ? 'active' : '' ">
                         <a role="tab" title="Complete" @click="changeTab(5)">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-ok"></i>
@@ -53,7 +53,7 @@
                 </ul>
             </div>
 </div>
-<component :is="types[orderTypes[actualTypes]]"></component>
+<component :is="types[orderTypes[actualTypes]]" v-on:nextStep="updateData" :name="event.name" :ville="event.ville"></component>
 </section>
 </div>
 </div>
@@ -104,10 +104,6 @@ export default {
     mounted() {
             this.email = AuthService.hisEmail();
             this.loadModelUser(this.email);
-            this.$on('test', function (msg) {
-            console.log(msg)
-        })
-
     },
     methods: {
         loadModelUser: async function(email) {
@@ -115,8 +111,17 @@ export default {
         },
         changeTab(newTab)
         {
-            //if(newTab > this.maxTypes) return
+            if(newTab > this.maxTypes) return
             this.actualTypes = newTab
+        },
+        updateData(data){
+            switch(data.method){
+                case "info":
+                    this.event.name = data.name
+                    this.event.ville = data.ville 
+                    this.maxTypes = ++this.actualTypes
+                break
+            }
         }
         
     }
