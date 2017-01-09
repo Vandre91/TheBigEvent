@@ -76,10 +76,10 @@ namespace TheBigEvent.DAL
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                con.Execute(
-                    "tbe.pUserDelete",
-                    new { UserId = _UserId },
-                    commandType: CommandType.StoredProcedure);
+                con.Query(
+                    "DELETE FROM tbe.tUser WHERE UserId = @UserId",
+                    new { UserId = _UserId })
+                    .FirstOrDefault();
             }
         }
         public void UpdateName(int _UserId, string _firstName, string _lastName, string _City, int _Tel)
@@ -98,7 +98,7 @@ namespace TheBigEvent.DAL
             {
                 con.Execute(
                     "tbe.pUserProfilUpdate",
-                    new { UsertId = _userId, Mail = _mail, Passe = _passe },
+                    new { UserId = _userId, Mail = _mail, Passe = _passe },
                     commandType: CommandType.StoredProcedure);
             }
         }

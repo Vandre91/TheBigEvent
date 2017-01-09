@@ -36,6 +36,7 @@ namespace TheBigEvent.Services
         public void DeleteUser(int _id)
         {
             _uLink.Delete(_id);
+           // return Result.Success(Status.Ok ,_uLink.FindUserByID(_id));
         }
         public Result<User> UpdateUserName(int _UserId, string _firstName, string _lastName, string _City, int _Tel)
         {
@@ -43,9 +44,11 @@ namespace TheBigEvent.Services
             User user = _uLink.FindUserByID(_UserId);
             return Result.Success(Status.Ok, user);
         }
-        public void UpdateUserMail(int _userId, string _mail, string _passe)
+        public Result<User> UpdateUserMail(int _UserId, string _mail, string _passe)
         {
-            _uLink.UpdateMail(_userId, _mail, _passe);
+            _uLink.UpdateMail(_UserId, _mail, _passe);
+            User user = _uLink.FindUserByID(_UserId);
+            return Result.Success(Status.Ok, user);
         }
     }
 }

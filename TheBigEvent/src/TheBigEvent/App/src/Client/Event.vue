@@ -7,210 +7,120 @@
                 <div class="connecting-line"></div>
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active">
-                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="info">
+                        <a  role="tab" title="Info" @click="changeTab(0)">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-info-sign"></i>
                             </span>
                         </a>
                     </li>
                     <li role="presentation" class="disabled">
-                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Traiteur">
+                        <a  role="tab" title="Traiteur" @click="changeTab(1)">
                             <span class="round-tab">
-                                <i class="fa fa-map"></i>
+                                <i class="glyphicon glyphicon-cutlery"></i>
+                            </span>
+                        </a>
+                    </li>
+                     <li role="presentation" class="disabled">
+                        <a  role="tab" title="Menu" @click="changeTab(2)">
+                            <span class="round-tab">
+                                <i class="fa fa-hand-o-up"></i>
                             </span>
                         </a>
                     </li>
                     <li role="presentation" class="disabled">
-                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Décoration">
+                        <a role="tab" title="Décoration" @click="changeTab(3)">
                             <span class="round-tab">
                                 <i class="fa fa-star"></i>
                             </span>
                         </a>
                     </li>
                     <li role="presentation" class="disabled">
-                        <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab" title="Salle">
+                        <a role="tab" title="Salle" @click="changeTab(4)">
                             <span class="round-tab">
-                                <i class="glyphicon glyphicon-cutlery"></i>
+                                <i class="fa fa-map"></i>
                             </span>
                         </a>
                     </li>
                     <li role="presentation" class="disabled">
-                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                        <a role="tab" title="Complete" @click="changeTab(5)">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-ok"></i>
                             </span>
                         </a>
                     </li>
+
+                    
                 </ul>
             </div>
-
-            <form role="form">
-                <div class="tab-content">
-                    <div class="tab-pane active" role="tabpanel" id="step1">
-                    <div class="step1">
-                            <div class="row">
-                            <div class="col-md-6">
-                                <label for="exampleInputEmail1">Nom de l'événement</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="First Name" />
-                                <label for="exampleInputEmail1">Lieu de l'événement</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Lieu" />
-                            </div>
-                            </div>
-                    </div>
-                    <div class="container" >
-                    <div class="row">
-                        <form class="form-horizontal col-sm-7 col-sm-offset-2" action="" method="post">
-                            <div class="form-group registration-date">
-                                <label class="control-label col-sm-3" for="registration-date">Date:</label>
-                                <div class="input-group date registration-date-time">
-                                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
-                                    <input class="form-control" name="registration_date" id="registration-date" type="date">
-                                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
-                                    <input class="form-control" name="registration_time" id="registration-time" type="time">
-                                </div>
-                            </div>
-                        </form>
-                        
-                    </div>
-                </div>
-              <ul class="list-inline pull-right">
-                  <li><button type="button" class="btn btn-primary next-step">Enregistrer et continuer</button></li>
-              </ul>
-            </div>
-            <div class="tab-pane" role="tabpanel" id="step2">
-              <h3>Traiteur</h3>
-              <p>Choisissez votre traiteur</p>
-   <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel panel-success">                
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            Traiteur 1
-                        </h3>
-                        <a class="btn btn-success btn-clickable pull-right" href="#">
-                            <i class="fa fa-chevron-down"></i> 
-                        </a>
-                    </div>
-                    <div class="panel-body">
-                    </div>
-                </div> 
-            </div>
-        </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        Traiteur 2
-                    </h3>
-                    <a class="btn btn-info btn-clickable pull-right" href="#" style="margin-left:5px;">
-                        <i class="fa fa-chevron-right"></i> 
-                    </a>
-                     <a class="btn btn-info btn-clickable pull-right" href="#" style="margin-right:5px;">
-                        <i class="fa fa-chevron-left"></i> 
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
-     <ul class="list-inline pull-right">
-        <li><button type="button" class="btn btn-default prev-step">Précédent</button></li>
-        <li><button type="button" class="btn btn-primary next-step">Enregistrer et continuer</button></li>
-     </ul>
-</div>
-<div class="tab-pane" role="tabpanel" id="step3">
-    <h3>Décorateur</h3>
-    <p>Choisissez votre décorateur</p>
-    <ul class="list-inline pull-right">
-        <li><button type="button" class="btn btn-default prev-step">Précédent</button></li>
-        <li><button type="button" class="btn btn-primary btn-info-full next-step">Enregistrer et continuer</button></li>
-    </ul>
-</div>
-<div class="tab-pane" role="tabpanel" id="step4">
-    <h3>Salle</h3>
-    <p>Choisissez votre salle</p>
-    <ul class="list-inline pull-right">
-        <li><button type="button" class="btn btn-default prev-step">Précédent</button></li>
-        <li><button type="button" class="btn btn-primary btn-info-full next-step">Enregistrer et continuer</button></li>
-    </ul>
-</div>
-<div class="tab-pane" role="tabpanel" id="complete">
-    <h3>Valider</h3>
-    <p>Vous avez tout compléter</p>
-    <li><button type="button" class="btn btn-primary btn-info-full next-step">Enregistrer et continuer</button></li>
-    </div>
-    <div class="clearfix"></div>
-</div>
-</form>
-</div>
+<component :is="types[orderTypes[actualTypes]]"></component>
 </section>
 </div>
 </div>
 
+
+
+
 </template>
-<script src="http://momentjs.com/downloads/moment-timezone-with-data.js"></script>
-<script src="http://momentjs.com/downloads/moment-with-locales.js"></script>
-<script src="http://momentjs.com/downloads/moment-timezone-with-data.js"></script>
 
 <script>
+import AuthService from '../services/auth.js'
+import UserService from '../services/UserService.js'
+
+import Deco from './Event/Deco.vue'
+import Info from './Event/Info.vue'
+import Menu from './Event/Menu.vue'
+import Salle from './Event/Salle.vue'
+import Traiteur from './Event/Traiteur.vue'
+import Valid from './Event/Valid.vue'
+
 export default {
-}
-
-$(document).on('click', '.panel-heading .btn-clickable', function(e){
-    var $this = $(this);
-    if(!$this.hasClass('panel-collapsed')) {
-		$this.parents('.panel').find('.panel-body').slideUp();
-		$this.addClass('panel-collapsed');
-		$this.find('i').removeClass('fa-chevron-up').addClass('fa-chevron-down');
-	} else {
-		$this.parents('.panel').find('.panel-body').slideDown();
-		$this.removeClass('panel-collapsed');
-		$this.find('i').removeClass('fa-chevron-down').addClass('fa-chevron-up');
-	}
-})
-
-$(document).ready(function () {
-    //Initialize tooltips
-    $('.nav-tabs > li a[title]').tooltip();
-    //Wizard
-    $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
-        var $target = $(e.target);
- 
-        if ($target.parent().hasClass('disabled')) {
-            return false;
+    
+  	data () {
+      return {
+          types: {
+                'deco': Deco,
+                'info': Info, 
+                'menu': Menu,
+                'salle': Salle,
+                'traiteur': Traiteur,
+                'valid': Valid
+            },
+            actualTypes: 0,
+            maxTypes: 0,
+            orderTypes: ['info', 'traiteur', 'menu', 'deco', 'salle', 'valid'],
+            model: null,
+            email: null,
+            event: {
+                name: null,
+                ville: null,
+                id_traiter: null,
+                id_menu: null, 
+                id_deco: null,
+                id_salle: null
+            }
         }
-    });
+  	},
+    mounted() {
+            this.email = AuthService.hisEmail();
+            this.loadModelUser(this.email);
+            this.$on('test', function (msg) {
+            console.log(msg)
+        })
 
-    $(".next-step").click(function (e) {
-
-        var $active = $('.wizard .nav-tabs li.active');
-        $active.next().removeClass('disabled');
-        nextTab($active);
-
-    });
-    $(".prev-step").click(function (e) {
-
-        var $active = $('.wizard .nav-tabs li.active');
-        prevTab($active);
-
-    });
-});
-
-function nextTab(elem) {
-    $(elem).next().find('a[data-toggle="tab"]').click();
-}
-function prevTab(elem) {
-    $(elem).prev().find('a[data-toggle="tab"]').click();
-}
-
-function addNow() {
-  nowDate = moment().tz("Europe/London").format('YYYY-MM-DD');
-  nowTime = moment().tz("Europe/London").format('HH:mm:ss');
-  document.getElementById('registration-date').value = nowDate;
-  document.getElementById('registration-time').value = nowTime;
-  set = setTimeout(function () { addNow(); }, 1000);
+    },
+    methods: {
+        loadModelUser: async function(email) {
+            this.model = await UserService.getUserAsync(email);
+        },
+        changeTab(newTab)
+        {
+            //if(newTab > this.maxTypes) return
+            this.actualTypes = newTab
+        }
+        
+    }
+ 
 }
 </script>
 
@@ -236,7 +146,7 @@ function addNow() {
     height: 2px;
     background: #e0e0e0;
     position: absolute;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     left: 0;
     right: 0;
@@ -283,7 +193,7 @@ span.round-tab:hover {
 }
 
 .wizard .nav-tabs > li {
-    width: 20%;
+    width: 15%;
 }
 
 .wizard li:after {
@@ -355,5 +265,7 @@ span.round-tab:hover {
         position: absolute;
         left: 35%;
     }
+
+    
 }
  </style>

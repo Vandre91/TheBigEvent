@@ -41,7 +41,8 @@
 
 
 <h2 class="page-header">Modifier son Compte</h2>
-  <div class="row">       
+  <div class="row">
+    <form @submit="onSubmitPasse($event)" class="form-horizontal" role="form">    
         <div class="form-group">
           <label class="col-lg-3 control-label">Email:</label>
           <div class="col-lg-8">
@@ -51,22 +52,23 @@
         <div class="form-group">
           <label class="col-md-3 control-label">Mot de passe:</label>
           <div class="col-md-8">
-            <input class="form-control" v-model="model.content.pass" type="password">
+            <input class="form-control" v-model="newPass" type="password">
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label"> Confirmation du mot de passe:</label>
           <div class="col-md-8">
-            <input class="form-control" type="password">
+            <input class="form-control" v-model="confirmNewPass" type="password">
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label"></label>
           <div class="col-md-8">
-            <input class="btn btn-primary" value="Save Changes" type="button">            
-          <input class="btn btn-danger" value="Supprimer le compte" type="button">
+            <input name ="Save" class="btn btn-primary" value="Save Changes" type="submit">            
+            <a class="btn btn-danger" @click="deleteAccount">Supprimer le compte</a>
           </div>
         </div>
+        </form>
   </div>
   </div>
 
@@ -84,19 +86,12 @@ export default {
             lastName : null,
             city : null,
             tel : null,
-            mail : null,
-            pass : null
+            mail : null
           }
         },
         email: null,
-        item :{
-          firstName : null,
-          lastName : null,
-          city : null,
-          tel : null,
-          mail : null,
-          pass : null
-        }
+        newPass: null,
+        confirmNewPass: null
        }
   	},
     mounted() {
@@ -113,7 +108,20 @@ export default {
             e.preventDefault();
             var result = null;
             result = await UserService.postUserAsync(this.model);
-            if(result != null) this.$router.replace('./Client/board.vue');
+            if(result != null) this.$router.replace('/Client/board');
+            },
+            onSubmitPasse: async function(e) {
+            e.preventDefault();
+            if(this.newPass !== this.confirmNewPass) return 
+            this.model.content.Passe = this.newPass
+            var result = null;
+            result = await UserService.putUserAsync(this.model);
+            this.model.content.pass = null
+            if(result != null) this.$router.replace('/Client/board');
+            },
+            async deleteAccount(){
+              await UserService.deleteUserAsync(this.model.content.userId);
+              this.$router.replace('/');
             }
             
         }

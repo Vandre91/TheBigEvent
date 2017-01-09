@@ -13,9 +13,13 @@ class UserService {
         return await getAsync(endpoint, email, AuthService.accessToken);
     }
     async postUserAsync(model)
-        {
-            return await postAsync(endpoint, model.content.userId, AuthService.accessToken, model.content);
-        }
+    {
+        return await postAsync(endpoint, model.content.userId, AuthService.accessToken, model.content);
+    }
+    async putUserAsync(model)
+    {
+        return await putAsync(endpoint, model.content.userId, AuthService.accessToken, model.content);
+    }
 // On récupère les informations des différents fournisseurs
     async getTraiteurAsync(Id)
     {

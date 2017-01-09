@@ -26,6 +26,7 @@ import Provider from './Provider/Provider.vue'
 Vue.use(VueRouter);
 
 function requireAuth (to, from, next)  {
+  console.log("require auth");
   if (!AuthService.isConnected) {
     console.log("vous n'etes pas connecter");
     next({

@@ -45,7 +45,23 @@ namespace TheBigEvent.Controllers
                 o.ToViewModel = t => t.ToUserViewModel();
             });
         }
+        [HttpPut("{UserId}")]
+        public IActionResult UpdateUserMail([FromBody] UserViewModel model)
+        {
 
+            Services.Result<User> result = _userService.UpdateUserMail(model.UserId,model.Mail,model.Passe);
+            return this.CreateResult<User, UserViewModel>(result, o =>
+            {
+                o.ToViewModel = t => t.ToUserViewModel();
+            });
+        }
+
+        [HttpDelete("{UserId}")]
+        public void DeleteUserMail(int UserId)
+        {
+
+            _userService.DeleteUser(UserId);
+        }
 
 
 
