@@ -5,7 +5,7 @@
             <div class="row">
             <div class="col-md-6">
                 <label for="exampleInputEmail1">Nom de l'événement </label>
-                <input type="email" v-model="name" class="form-control"  id="exampleInputEmail1" placeholder="Nom de l'événement" minlength="4" maxlength="56" required />
+                <input type="email" v-model="name_edit" class="form-control"  id="exampleInputEmail1" placeholder="Nom de l'événement" minlength="4" maxlength="56" required />
             </div>
             </div>
     </div>
@@ -21,7 +21,7 @@
                     <div class="control-group">
                         <label class="control-label">Villes</label>
                         <div class="controls">
-                            <select v-model="ville">
+                            <select v-model="ville_edit">
                                 <option v-for="option in villes" v-bind:value="option.value">
                                     {{ option.text }}
                                 </option>
@@ -49,12 +49,14 @@ export default {
             villes: [
                 {value: "paris", text: "Paris"},
                 {value: "marseille", text: "Marseille"},
-            ]
+            ],
+            name_edit: this.name,
+            ville_edit: this.ville
         }
     },
     methods:{
         nextStep(){
-            this.$emit('nextStep', {method: "info", name: this.name, ville: this.ville})
+            this.$emit('nextStep', {method: "info", name: this.name_edit, ville: this.ville_edit})
         }
     }
 }

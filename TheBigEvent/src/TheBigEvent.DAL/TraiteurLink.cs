@@ -20,7 +20,7 @@ namespace TheBigEvent.DAL
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                return con.Query<Traiteur>("Select * From tbe.tTraiteur");
+                return con.Query<Traiteur>("Select *, tbe.tUser.Compagny as Compagny, tbe.tUser.City as City From tbe.tTraiteur join tbe.tUser ON tbe.tUser.UserId = tbe.tTraiteur.UserId");
             }
         }
         public void AddTraiteur(string _UserId)

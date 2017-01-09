@@ -12,7 +12,7 @@ using TheBigEvent.Services;
 
 namespace TheBigEvent.Controllers
 {
-    [Route("api/[controller]/fdp")]
+    [Route("api/[controller]")]
     [Authorize(ActiveAuthenticationSchemes = JwtBearerAuthentication.AuthenticationScheme)]
     public class EventController : Controller
     {
@@ -25,19 +25,24 @@ namespace TheBigEvent.Controllers
             _traiteurService = traiteurservice;
         }
 
-        [HttpGet("{method}",Name = "event")]
-        public IActionResult GetEvent()
+        [HttpGet("{method}")]
+        public IActionResult GetEvent(string method)
         {
-            Result<IEnumerable<Event>> result = _eventService.getEvent();
-            return new JsonResult(result);
+            switch (method)
+            {
+                case "Traiteur":
+                    Result<IEnumerable<Traiteur>> result_traiteur = _traiteurService.getAllTraiteur();
+                    return new JsonResult(result_traiteur);
+                break;
+
+                default:
+                    Result<IEnumerable<Event>> result_event = _eventService.getEvent();
+                    return new JsonResult(result_event);
+                break;
+            }
+            
         }
 
-        [HttpGet("{Traiteur}")]
-        public IActionResult GetTraiteur()
-        {
-            Result<IEnumerable<Event>> result = _eventService.getEvent();
-            return new JsonResult(result);
-        }
 
 
 

@@ -1,4 +1,4 @@
-import { getAsync, postAsync, putAsync, deleteAsync } from '../helpers/apiHelper'
+import { getAsync, postAsync, putAsync, deleteAsync, getAsyncSelect } from '../helpers/req'
 import AuthService from './auth'
 
 const endpoint = "/api/Event";
@@ -19,6 +19,10 @@ class EventService {
     async deleteUserAsync(Id)
     {
         return await deleteAsync(endpoint, Id, AuthService.accessToken);
+    }
+
+    async selectGetAsync(method){
+        return await getAsyncSelect(endpoint, method, AuthService.accessToken)
     }
 }
 

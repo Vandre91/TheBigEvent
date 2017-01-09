@@ -13,7 +13,7 @@ namespace TheBigEvent.Services
         {
             _eLink = new TraiteurLink(connectionString);
         }
-        public Result<IEnumerable<Traiteur>> getEvent()
+        public Result<IEnumerable<Traiteur>> getAllTraiteur()
         {
             return Result.Success(Status.Ok, _eLink.GetAlltraiteur());
         }

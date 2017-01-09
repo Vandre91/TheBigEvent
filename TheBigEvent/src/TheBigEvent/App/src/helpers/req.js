@@ -57,3 +57,15 @@ export async function deleteAsync(endpoint, id, token) {
         }
     });
 }
+
+export async function getAsyncSelect(endpoint, method, token) {
+    return await $.ajax({
+        method: 'GET',
+        url: endpoint.concat('/', method),
+        dataType: 'json',
+        dataFilter: dataFilter,
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+}

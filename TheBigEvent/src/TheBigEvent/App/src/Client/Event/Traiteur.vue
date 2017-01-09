@@ -39,7 +39,23 @@
 </template>
 
 <script>
+import AuthService from '../../services/auth.js'
+import EventService from '../../services/EventService.js'
+
 export default {
-    
+    data(){
+        return {
+            model: null
+        }
+    },
+    mounted(){
+        this.loadData()
+    },
+    methods:{
+        async loadData(){
+            this.model = await EventService.selectGetAsync("Traiteur")
+            console.log(this.model.content[0].compagny)
+        }
+    }
 }
 </script>
