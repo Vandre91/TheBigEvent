@@ -50,6 +50,17 @@ namespace TheBigEvent.DAL
             }
         }
 
+        public User FindUserByID(int Id)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<User>(
+                        "select UserId,Mail,Passe,Pro from tbe.tUser where UserId = @UserId;",
+                        new { UserId = Id })
+                    .FirstOrDefault();
+            }
+        }
+
         public User getUser(string _Mail)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
@@ -75,10 +86,10 @@ namespace TheBigEvent.DAL
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                con.Execute(
-                    "tbe.pUserUpdate",
-                    new { UserId = _UserId, FirstName = _firstName, LastName = _lastName, City = _City, Tel = _Tel },
-                    commandType: CommandType.StoredProcedure);
+                con.Query(
+                    "update tbe.tUser set FirstName = @FirstName,LastName = @LastName,City = @City,Tel = @Tel where UserId = @UserId",
+                    new { UserId = _UserId, FirstName = _firstName, LastName = _lastName, City = _City, Tel = _Tel })
+                    .FirstOrDefault();
             }
         }
         public void UpdateMail(int _userId, string _mail, string _passe)

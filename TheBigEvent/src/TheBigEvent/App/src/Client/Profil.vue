@@ -6,7 +6,7 @@
 
   <div class="row">
 
-      <form class="form-horizontal" role="form">
+      <form @submit="onSubmit($event)" class="form-horizontal" role="form">
         <div class="form-group">
           <label class="col-lg-3 control-label">Prénom:</label>
           <div class="col-lg-8">
@@ -34,8 +34,9 @@
         <div class="form-group">
           <label class="col-md-3 control-label"></label>
           <div class="col-md-8">
-            <input class="btn btn-primary" value="Save Changes" type="button">
+            <input class="btn btn-primary" value="Save Changes" type="submit">
           </div>
+          </form>
 </div>
 
 
@@ -66,7 +67,6 @@
           <input class="btn btn-danger" value="Supprimer le compte" type="button">
           </div>
         </div>
-        <input class="btn btn-danger" value="Supprimer le compte" type="button">
   </div>
   </div>
 
@@ -108,7 +108,14 @@ export default {
             loadModelUser: async function(email) {
               this.model = await UserService.getUserAsync(email);
               console.log(this.model.content.mail);
+            },
+            onSubmit: async function(e) {
+            e.preventDefault();
+            var result = null;
+            result = await UserService.postUserAsync(this.model);
+            if(result != null) this.$router.replace('./Client/board.vue');
             }
+            
         }
 }
 </script>
