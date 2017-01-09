@@ -4,9 +4,9 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import AuthService from './services/auth.js'
 
-
 // La Base
 import Home from './App.vue'
+import Logout from './logout.vue'
 
 // Les pages avant-connexion
 import index from './Avco/av.vue'
@@ -17,12 +17,12 @@ import Galerie from './Avco/Galerie.vue'
 // Client
 import Client from './Client/Client.vue'
 import Profil from  './Client/Profil.vue'
-import Event from  './Client/Event.vue'
+import Events from  './Client/Event.vue'
 import Conversation from './Client/Conversation.vue'
+import Board from './Client/board.vue'
 
 // Fournisseurs
 import Provider from './Provider/Provider.vue'
-
 Vue.use(VueRouter);
 
 function requireAuth (to, from, next)  {
@@ -35,7 +35,6 @@ function requireAuth (to, from, next)  {
     return; 
   }
   if (AuthService.isConnected) {
-    console.log("vous êtes connecter");
     next();
   }
 }
@@ -43,20 +42,21 @@ function requireAuth (to, from, next)  {
 const router = new VueRouter({
   mode: 'history',
   routes: [
-   { path: '/', component: Home, redirect: 'home', children:[
-      { path : '/accueil', component: index, redirect: 'home' ,children :[
-        { path : '/home', component: Accueil },
-        { path: '/Partner', component: Partenaire},
-        { path: '/galerie', component: Galerie}
-      ]}
-   ]},
-   { path: '/client', component: Client, children:[
-        { path: '/Client/Event', component: Event},
-        { path: '/Client/Conversation', component: Conversation},
-        { path: '/Client/Profil', component: Profil}
-   ] },
-   { path: '/pro', component: Provider, beforeEnter: requireAuth },
-   { path: '*', redirect:'/'}
+    { path: '/', component: Home, redirect: 'home', children:[
+        { path : '/accueil', component: index, redirect: 'home' ,children :[
+          { path : '/home', component: Accueil },
+          { path: '/Partner', component: Partenaire},
+          { path: '/galerie', component: Galerie}
+        ]},
+        { path: '/client', component: Client, redirect: "/Client/board", beforeEnter: requireAuth, children:[
+              { path : '/Client/board', component: Board, beforeEnter: requireAuth },
+              { path: '/Client/Event', component: Events, beforeEnter: requireAuth},
+              { path: '/Client/Conversation', component: Conversation, beforeEnter: requireAuth},
+              { path: '/Client/Profil', component: Profil, beforeEnter: requireAuth},
+        ]},
+   { path: '/pro', component: Provider, beforeEnter: requireAuth }
+    ]},
+   { path: '/logout', component: Logout, beforeEnter: requireAuth }
   ]
 })
 
@@ -72,13 +72,12 @@ AuthService.providers = {
   }
 };
 
-AuthService.appRedirect = () => router.replace('/');
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   template: '<App/>',
   render: h => h(App),
-  components: { App }
+  components: { App}
 })
+

@@ -1,41 +1,42 @@
 <template>
 
 <div class="container">
-  <h1 class="page-header">Modifier son profil</h1>
+  <h1 class="page-header">Modifier son profil {{model}}</h1>
+<!--  <h1 class="page-header">le profil {{ item }}</h1>-->
+
   <div class="row">
 
-
-      <form class="form-horizontal" role="form">
+      <form @submit="onSubmit($event)" class="form-horizontal" role="form">
         <div class="form-group">
           <label class="col-lg-3 control-label">Prénom:</label>
           <div class="col-lg-8">
-            <input class="form-control" value="Sandya" type="text" required>
+            <input class="form-control" v-model="model.content.firstName" type="text" required>
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">Nom:</label>
           <div class="col-lg-8">
-            <input class="form-control" value="Madione" type="text" required>
+            <input class="form-control" v-model="model.content.lastName" type="text" required>
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">City: </label>
           <div class="col-lg-8">
-            <input class="form-control" value="" type="text">
+            <input class="form-control" v-model="model.content.city" type="text">
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">Telephone:</label>
           <div class="col-lg-8">
-            <input class="form-control" value="" type="text">
+            <input class="form-control" v-model="model.content.tel" type="text">
           </div>
         </div>
-
         <div class="form-group">
           <label class="col-md-3 control-label"></label>
           <div class="col-md-8">
-            <input class="btn btn-primary" value="Save Changes" type="button">
+            <input class="btn btn-primary" value="Save Changes" type="submit">
           </div>
+          </form>
 </div>
 
 
@@ -44,84 +45,82 @@
         <div class="form-group">
           <label class="col-lg-3 control-label">Email:</label>
           <div class="col-lg-8">
-            <input class="form-control" value="Madione@intechinfo.fr" type="text"required>
+            <input class="form-control" v-model="model.content.mail" type="email"required>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label">Mot de passe:</label>
           <div class="col-md-8">
-            <input class="form-control" value="11111122333" type="password">
+            <input class="form-control" v-model="model.content.pass" type="password">
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label"> Confirmation du mot de passe:</label>
           <div class="col-md-8">
-            <input class="form-control" value="11111122333" type="password">
+            <input class="form-control" type="password">
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label"></label>
           <div class="col-md-8">
-            <input class="btn btn-primary" value="Save Changes" type="button">
-            
+            <input class="btn btn-primary" value="Save Changes" type="button">            
           <input class="btn btn-danger" value="Supprimer le compte" type="button">
-
           </div>
-
         </div>
   </div>
   </div>
+
 </template>
 
 <script>
+import AuthService from '../services/auth.js'
+import UserService from '../services/UserService.js'
 export default {
-    
+  	data () {
+      return {
+        model: {
+          content:{
+            firstName : null,
+            lastName : null,
+            city : null,
+            tel : null,
+            mail : null,
+            pass : null
+          }
+        },
+        email: null,
+        item :{
+          firstName : null,
+          lastName : null,
+          city : null,
+          tel : null,
+          mail : null,
+          pass : null
+        }
+       }
+  	},
+    mounted() {
+            this.email = AuthService.hisEmail();
+
+            this.loadModelUser(this.email);
+        },
+    methods: {
+            loadModelUser: async function(email) {
+              this.model = await UserService.getUserAsync(email);
+              console.log(this.model.content.mail);
+            },
+            onSubmit: async function(e) {
+            e.preventDefault();
+            var result = null;
+            result = await UserService.postUserAsync(this.model);
+            if(result != null) this.$router.replace('./Client/board.vue');
+            }
+            
+        }
 }
 </script>
 
-<style scoped>
-
-/* Top Navigation */
-
-.top-nav {
-    padding: 0 15px;
-}
-
-.top-nav>li {
-    display: inline-block;
-}
-
-.top-nav>li>a {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    line-height: 20px;
-    color: #999;
-}
-
-.top-nav>li>a:hover,
-.top-nav>li>a:focus,
-.top-nav>.open>a,
-.top-nav>.open>a:hover,
-.top-nav>.open>a:focus {
-    color: #fff;
-    background-color: #000;
-}
-
-.top-nav>.open>.dropdown-menu {
-    float: left;
-    position: absolute;
-    margin-top: 0;
-    border: 1px solid rgba(0,0,0,.15);
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    background-color: #fff;
-    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
-    box-shadow: 0 6px 12px rgba(0,0,0,.175);
-}
-
-.top-nav>.open>.dropdown-menu>li>a {
-    white-space: normal;
-}
+<style>
 
 ul.message-dropdown {
     padding: 0;
@@ -147,48 +146,4 @@ li.message-footer {
 ul.alert-dropdown {
     width: 200px;
 }
-/* Side Navigation */
-
-@media(min-width:768px) {
-    .side-nav {
-        position: fixed;
-        top: 51px;
-        left: 225px;
-        width: 225px;
-        margin-left: -225px;
-        border: none;
-        border-radius: 0;
-        overflow-y: auto;
-        background-color: #222;
-        bottom: 0;
-        overflow-x: hidden;
-        padding-bottom: 40px;
-    }
-
-    .side-nav>li>a {
-        width: 225px;
-    }
-
-    .side-nav li a:hover,
-    .side-nav li a:focus {
-        outline: none;
-        background-color: #000 !important;
-    }
-}
-
-.side-nav>li>ul {
-    padding: 0;
-}
-
-.side-nav>li>ul>li>a {
-    display: block;
-    padding: 10px 15px 10px 38px;
-    text-decoration: none;
-    color: #999;
-}
-
-.side-nav>li>ul>li>a:hover {
-    color: #fff;
-}
-
  </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="table">
-      <img class="col-xs-5 col-sm-6 col-lg-4" src="../../img/p1.png"></img>
+      <img class="col-xs-5 col-sm-6 col-lg-4" src="http://img11.hostingpics.net/pics/308798p1.png"></img>
       <div class="col-xs-7 col-sm-6 col-lg-8 txt" style="background-color:white;opacity:0.7;">
         <h3 style="font-weight:700">La rose proven'salle location de salle proche Avignon à Sorgues</h3>
         <p>Nous mettons à votre disposition une salle de location pour vos évènements.</p>
@@ -20,10 +20,10 @@
         <h3>Nos boutiques</h3>
         <p>Deux boutiques pour refléter notre passion du goût à travers une large gamme de produits.</p>
       </div>
-    <img class="col-xs-5 col-sm-6 col-lg-4" src="../../img/p2.png"></img>
+    <img class="col-xs-5 col-sm-6 col-lg-4" src="http://img11.hostingpics.net/pics/745593p2.png"></img>
     </div>
     <div class="table">
-      <img class="col-xs-5 col-sm-6 col-lg-4" src="../../img/p3.png"></img>
+      <img class="col-xs-5 col-sm-6 col-lg-4" src="http://img11.hostingpics.net/pics/257604p3.png"></img>
       <div class="col-xs-7 col-sm-6 col-lg-8 txt" style="background-color:white;opacity:0.7;">
         <h3 style="font-weight:700">Angeline Events est spécialisée en décoration éphémère pour vos événements privés ou professionnels dans les Yvelines (78) et le Val d’Oise (95).</h3>
         <p>Décoratrice événementielle, Angéline Guyader vous propose une décoration personnalisée adaptée à vos besoins et à votre budget pour tout type d’événements (mariage, baptême, anniversaire, soirée à thème…)</p>
