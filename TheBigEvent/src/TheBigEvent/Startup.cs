@@ -56,6 +56,8 @@ namespace TheBigEvent
             services.AddMvc();
 
             services.AddSingleton(p => new UserServices(Configuration["ConnectionStrings:TheBigEventDB"]));
+            services.AddSingleton(p => new EventService(Configuration["ConnectionStrings:TheBigEventDB"]));
+            services.AddSingleton(p => new TraiteurService(Configuration["ConnectionStrings:TheBigEventDB"]));
             services.AddSingleton<TokenService>();
         }
 
@@ -119,6 +121,9 @@ namespace TheBigEvent
                 routes.MapRoute(
                     name: "Conexion",
                     template: "{controller=Acount}/{action=Conexion}/{id?}");
+                routes.MapRoute(
+                    name: "Event",
+                    template: "{controller=Event}/{action=Event}/{method?}");
             });
         }
     }
