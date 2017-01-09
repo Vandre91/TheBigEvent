@@ -18,11 +18,15 @@ namespace TheBigEvent.Controllers
     {
         readonly EventService _eventService;
         readonly TraiteurService _traiteurService;
+        readonly MenuService _menuservice;
+        readonly SalleService _salleservice;
 
-        public EventController(EventService eventservice, TraiteurService traiteurservice)
+        public EventController(EventService eventservice, TraiteurService traiteurservice,MenuService menuservice,SalleService salleservice)
         {
             _eventService = eventservice;
             _traiteurService = traiteurservice;
+            _menuservice = menuservice;
+            _salleservice = salleservice;
         }
 
         [HttpGet("{method}",Name = "event")]
@@ -39,7 +43,19 @@ namespace TheBigEvent.Controllers
             return new JsonResult(result);
         }
 
+        [HttpGet("{Menu}")]
+        public IActionResult GetMenu()
+        {
+            Result<IEnumerable<Menu>> result = _menuservice.getmenu();
+            return new JsonResult(result);
+        }
 
+        [HttpGet("{Salle}")]
+        public IActionResult GetSalle()
+        {
+            Result<IEnumerable<Salle>> result = _salleservice.getm();
+            return new JsonResult(result);
+        }
 
 
 
