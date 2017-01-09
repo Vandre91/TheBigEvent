@@ -35,7 +35,16 @@ namespace TheBigEvent.Controllers
             //    o.ToViewModel = c => c.ToUserViewModel();
             //});
         }
-
+        [HttpPost("{UserId}")]
+        public IActionResult UpdateUser([FromBody] UserViewModel model)
+        {
+            
+            Services.Result<User> result = _userService.UpdateUserName(model.UserId, model.FirstName, model.LastName, model.City, model.Tel);
+            return this.CreateResult<User, UserViewModel>(result, o =>
+            {
+                o.ToViewModel = t => t.ToUserViewModel();
+            });
+        }
 
 
 

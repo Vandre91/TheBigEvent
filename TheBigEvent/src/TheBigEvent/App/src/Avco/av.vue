@@ -23,12 +23,6 @@
                 <li>
                     <router-link to="/Galerie">Galerie</router-link>
                 </li>
-                <li>
-                    <router-link to="/client">Client</router-link>
-                </li>
-                <li>
-                    <router-link to="/pro">Fournisseur</router-link>
-                </li>
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
