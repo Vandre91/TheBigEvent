@@ -39,7 +39,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#228B22;"><i class="fa fa-user"></i> {{ email }} <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#228B22;"><i class="fa fa-user"></i> Shane Djafaraly<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <router-link to="/client/profil" class="router">
@@ -48,7 +48,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                          <router-link to="/logout" class="router">
+                          <router-link to="/Client/Board" class="router">
                             <a style="color:black;"><i class="fa fa-fw fa-power-off"></i> Déconnexion</a>
                           </router-link>
 
@@ -77,22 +77,18 @@
             </div>
         </nav>
 </div>
-<div class="nav1"><router-view></router-view></div>
+<div class="nav1"><router-view> 	</router-view></div>
 </div>
 </template>
 
 <script>
-import AuthService from '../services/auth.js'
 export default {
   	data () {
       return {
-		tab: 1,
-        email: null
+		tab: 1
        }
-	},
-     mounted() {
-            this.email = AuthService.hisEmail();
-        }
+	}
+
 }
 </script>
 

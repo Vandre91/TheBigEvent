@@ -81,6 +81,7 @@
 </template>
 
 <script>
+import 'bootstrap'
     export default {        
         methods: {
             zoom() {
@@ -97,8 +98,8 @@
     }
 </script>
 
+<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 .modal-dialog
 {
   width: 500px;
@@ -108,6 +109,7 @@ modal-content
 {
   height:200px;
 }
+
 .thumbnail {margin-bottom:6px;}
 
 </style>

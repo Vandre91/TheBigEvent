@@ -36,16 +36,6 @@ export default {
 
 <style scoped>
 
-body {
-  background-image: url('../../img/header1.jpg');
-  background-repeat: no-repeat;
-  background-position: center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
 .accueil {
   top : 50%;
 }

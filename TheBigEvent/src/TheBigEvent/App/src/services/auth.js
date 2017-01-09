@@ -1,11 +1,14 @@
 class AuthService {
     constructor() {
-        this.providers = {}; //méthode de Connexion base | fb etc
-        this.allowedOrigins = []; 
+        this.providers = {}; //méthode de Connexion
+        this.allowedOrigins = []; //lien pour la connexion niveau serveur
 
         this.logoutEndpoint = null;
-        this.authenticatedCallbacks = []; 
-        this.signedOutCallbacks = [];
+
+        this.appRedirect = () => null; //en cas de déconnexion redirection
+
+        this.authenticatedCallbacks = []; //liste des gens  connecté
+        this.signedOutCallbacks = []; //les gens inscrit
 
         window.addEventListener("message", this.onMessage, false);
     }
@@ -16,19 +19,20 @@ class AuthService {
 
     get accessToken() {
         var identity = this.identity;
+
         return identity ? identity.bearer.access_token : null;
+    }
+
+    get email() {
+        var identity = this.identity;
+
+        return identity ? identity.email : null;
     }
 
     isProfessionnal() {
         var identity = this.identity;
         return (identity.isProfessionnal);
     }
-
-    hisEmail() {
-        var identity = this.identity;
-        return (identity.email);
-    }
-
 
     login (selectedProvider, authenticatedCallback)
     {
@@ -67,7 +71,6 @@ class AuthService {
             cb();
         }
     }
-
     onSignedOut = () => {
         this.identity = null;
 
@@ -78,6 +81,15 @@ class AuthService {
     logout = () => {
         var popup = window.open(this.logoutEndpoint, "Déconnexion, à Bientôt ", "menubar=no, status=no, scrollbars=no, menubar=no, width=700, height=600");        
     }
+
+
 }
+
+
+
+
+
+
+
 
 export default new AuthService();

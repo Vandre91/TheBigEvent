@@ -23,6 +23,12 @@
                 <li>
                     <router-link to="/Galerie">Galerie</router-link>
                 </li>
+                <li>
+                    <router-link to="/client">Client</router-link>
+                </li>
+                <li>
+                    <router-link to="/pro">Fournisseur</router-link>
+                </li>
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -105,7 +111,7 @@ import Vue from 'vue'
 <style>
 
 .fond {
-  background-image: url('http://img11.hostingpics.net/pics/977879header1.jpg');
+  background-image: url('../../img/header1.jpg');
   background-repeat: no-repeat;
   background-position: center center;
   -webkit-background-size: cover;
