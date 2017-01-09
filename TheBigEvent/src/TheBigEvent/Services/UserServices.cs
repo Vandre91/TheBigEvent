@@ -36,7 +36,6 @@ namespace TheBigEvent.Services
         public void DeleteUser(int _id)
         {
             _uLink.Delete(_id);
-           // return Result.Success(Status.Ok ,_uLink.FindUserByID(_id));
         }
         public Result<User> UpdateUserName(int _UserId, string _firstName, string _lastName, string _City, int _Tel)
         {
