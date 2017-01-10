@@ -53,7 +53,7 @@
                 </ul>
             </div>
 </div>
-<component :is="types[orderTypes[actualTypes]]" v-on:nextStep="updateData" :name="event.name" :ville="event.ville" :idTraiteur="event.id_traiteur"></component>
+<component :is="types[orderTypes[actualTypes]]" v-on:nextStep="updateData" :name="event.name" :ville="event.ville" :idTraiteur="event.id_traiteur" :idMenu="event.id_menu"></component>
 </section>
 </div>
 </div>
@@ -123,7 +123,13 @@ export default {
                     this.maxTypes = ++this.actualTypes
                 break
                 case "traiteur":
+                    if(data.id_traiteur=== null) return
                     this.event.id_traiteur = data.id_traiteur
+                    this.maxTypes = ++this.actualTypes
+                break
+                case "menu":
+                    if(data.id_menu === null) return
+                    this.event.id_menu = data.id_menu
                     this.maxTypes = ++this.actualTypes
                 break
             }
