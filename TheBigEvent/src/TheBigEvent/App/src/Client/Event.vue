@@ -53,7 +53,7 @@
                 </ul>
             </div>
 </div>
-<component :is="types[orderTypes[actualTypes]]" v-on:nextStep="updateData" :name="event.name" :ville="event.ville"></component>
+<component :is="types[orderTypes[actualTypes]]" v-on:nextStep="updateData" :name="event.name" :ville="event.ville" :idTraiteur="event.id_traiteur"></component>
 </section>
 </div>
 </div>
@@ -93,11 +93,12 @@ export default {
             email: null,
             event: {
                 name: null,
-                ville: null,
-                id_traiter: null,
+                ville: "paris",
+                id_traiteur: null,
                 id_menu: null, 
                 id_deco: null,
-                id_salle: null
+                id_salle: null,
+                id_user: null
             }
         }
   	},
@@ -119,6 +120,10 @@ export default {
                 case "info":
                     this.event.name = data.name
                     this.event.ville = data.ville 
+                    this.maxTypes = ++this.actualTypes
+                break
+                case "traiteur":
+                    this.event.id_traiteur = data.id_traiteur
                     this.maxTypes = ++this.actualTypes
                 break
             }
