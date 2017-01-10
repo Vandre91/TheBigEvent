@@ -25,7 +25,24 @@ namespace TheBigEvent.Controllers
                 Compagny = @this.Compagny
             };
         }
+        public static EventViewModels ToEventViewModel(this Event @this)
+        {
+            return new EventViewModels
+            {
+                EventId = @this.EventId,
+                NomEvent = @this.NomEvent,
+                NbInvite = @this.NbInvite,
+                Prix = @this.Prix,
+                Horaire = @this.Horaire,
+                MenuId = @this.MenuId,
+                SalleId = @this.SalleId,
+                TraiteurId = @this.TraiteurId,
+                DecoId = @this.DecoId,
+                Localisation = @this.Localisation,
+                UserId = @this.UserId
+            };
+        }
 
-        
+
     }
 }
