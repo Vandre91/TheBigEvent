@@ -60,6 +60,7 @@ namespace TheBigEvent
             services.AddSingleton(p => new TraiteurService(Configuration["ConnectionStrings:TheBigEventDB"]));
             services.AddSingleton(p => new SalleService(Configuration["ConnectionStrings:TheBigEventDB"]));
             services.AddSingleton(p => new DecoService(Configuration["ConnectionStrings:TheBigEventDB"]));
+            services.AddSingleton(p => new MenuService(Configuration["ConnectionStrings:TheBigEventDB"]));
             services.AddSingleton<TokenService>();
         }
 

@@ -63,14 +63,11 @@ namespace TheBigEvent.Controllers
             
         }
         [HttpPost]
-        public IActionResult UpdateUser([FromBody] EventViewModels model)
+        public void UpdateUser([FromBody] EventViewModels model)
         {
 
-            Services.Result<User> result = _eventService.addEvent( model.NomEvent, model.Localisation, model.MenuId, model.SalleId, model.TraiteurId, model.DecoId, model.UserId);
-            return this.CreateResult<User, UserViewModel>(result, o =>
-            {
-                o.ToViewModel = t => t.ToUserViewModel();
-            });
+            _eventService.addEvent( model.NomEvent, model.Localisation, model.MenuId, model.SalleId, model.TraiteurId, model.DecoId, model.UserId);
+            
         }
 
 
