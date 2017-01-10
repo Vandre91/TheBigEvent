@@ -14,12 +14,8 @@ namespace TheBigEvent.Services
         {
             _sLink = new SalleLink(connectionString);
         }
-
-        //public void addUser(string _Nom, string _Cat, string _Prix, string _NbPersonnes, string _TraiteurId)
-        //{
-        //    _sLink.AddMenu(_Nom, _Cat, _Prix, _NbPersonnes, _TraiteurId);
-        //}
-        public Result<IEnumerable<Menu>> getmenu()
+        
+        public Result<IEnumerable<Salle>> getSalle()
         {
             return Result.Success(Status.Ok, _sLink.GetAllSalle());
         }

@@ -17,9 +17,9 @@ namespace TheBigEvent.Services
         {
             return Result.Success(Status.Ok, _eLink.GetAllEvent());
         }
-        public void addEvent(string _NomEvent, string _NbInvite, string _Prix, DateTime _Horaire, int _MenuId, int _SalleId, int _TraiteurId, int _DecoId, string _Localisation, int _UserId, string _Validation)
+        public Result<Event> addEvent(string _NomEvent, string _Localisation, int _MenuId, int _SalleId, int _TraiteurId, int _DecoId, int _UserId)
         {
-            _eLink.AddEvent( _NomEvent,_NbInvite,_Prix, _Horaire, _MenuId, _SalleId, _TraiteurId,_DecoId,_Localisation,_UserId,_Validation);
+            _eLink.AddEvent( _NomEvent, _Localisation, _MenuId, _SalleId, _TraiteurId,_DecoId,_UserId);
         }
         public void DeleteEvent(int _EventId)
         {

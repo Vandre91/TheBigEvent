@@ -15,7 +15,7 @@ namespace TheBigEvent.Services
             _mLink = new MenuLink(connectionString);
         }
 
-        public void addUser(string _Nom, string _Cat, string _Prix, string _NbPersonnes, string _TraiteurId)
+        public void addMenu(string _Nom, string _Cat, string _Prix, string _NbPersonnes, string _TraiteurId)
         {
             _mLink.AddMenu(_Nom, _Cat, _Prix, _NbPersonnes, _TraiteurId);
         }

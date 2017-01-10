@@ -24,13 +24,13 @@ namespace TheBigEvent.DAL
             }
         }
         
-        public void AddEvent(string _NomEvent, string _NbInvite, string _Prix,DateTime _Horaire,int _MenuId,int _SalleId, int _TraiteurId, int _DecoId, string _Localisation, int _UserId,string _Validation)
+        public void AddEvent(string _NomEvent, string _Localisation, int _MenuId,int _SalleId, int _TraiteurId, int _DecoId, int _UserId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
                     "tbe.pCreatEvent",
-                    new { NomEvent = _NomEvent, NbInvite = _NbInvite, Prix = _Prix, Horaire = _Horaire, MenuId = _MenuId, SalleId = _SalleId, TraiteurId = _TraiteurId, DecoId= _DecoId, Localisation = _Localisation, UserId= _UserId,Validation = _Validation },
+                    new { NomEvent = _NomEvent, Localisation = _Localisation, MenuId = _MenuId, SalleId = _SalleId, TraiteurId = _TraiteurId, DecoId= _DecoId, UserId= _UserId },
                     commandType: CommandType.StoredProcedure);
             }
         }

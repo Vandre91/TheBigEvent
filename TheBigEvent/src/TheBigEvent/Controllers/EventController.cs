@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using TheBigEvent.Authentification;
 using TheBigEvent.DAL;
 using TheBigEvent.Services;
+using TheBigEvent.Models;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -18,15 +19,17 @@ namespace TheBigEvent.Controllers
     {
         readonly EventService _eventService;
         readonly TraiteurService _traiteurService;
-        readonly MenuService _menuservice;
-        readonly SalleService _salleservice;
+        readonly MenuService _menuService;
+        readonly SalleService _salleService;
+        readonly DecoService _decoService;
 
-        public EventController(EventService eventservice, TraiteurService traiteurservice,MenuService menuservice,SalleService salleservice)
+        public EventController(EventService eventservice, TraiteurService traiteurservice,MenuService menuservice,SalleService salleservice, DecoService decoservice)
         {
             _eventService = eventservice;
             _traiteurService = traiteurservice;
-            _menuservice = menuservice;
-            _salleservice = salleservice;
+            _menuService = menuservice;
+            _salleService = salleservice;
+            _decoService = decoservice;
         }
 
         [HttpGet("{method}")]
@@ -39,6 +42,19 @@ namespace TheBigEvent.Controllers
                     return new JsonResult(result_traiteur);
                 break;
 
+                case "Menu":
+                    Result<IEnumerable<Menu>> result_menu = _menuService.getmenu();
+                    return new JsonResult(result_menu);
+                break;
+                case "Salle":
+                    Result<IEnumerable<Salle>> result_salle = _salleService.getSalle();
+                    return new JsonResult(result_salle);
+                break;
+                case "Deco":
+                    Result<IEnumerable<Deco>> result_deco = _decoService.getDeco();
+                    return new JsonResult(result_deco);
+                    break;
+
                 default:
                     Result<IEnumerable<Event>> result_event = _eventService.getEvent();
                     return new JsonResult(result_event);
@@ -46,20 +62,15 @@ namespace TheBigEvent.Controllers
             }
             
         }
-
-
-        [HttpGet("{Menu}")]
-        public IActionResult GetMenu()
+        [HttpPost]
+        public IActionResult UpdateUser([FromBody] EventViewModels model)
         {
-            Result<IEnumerable<Menu>> result = _menuservice.getmenu();
-            return new JsonResult(result);
-        }
 
-        [HttpGet("{Salle}")]
-        public IActionResult GetSalle()
-        {
-            Result<IEnumerable<Salle>> result = _salleservice.getm();
-            return new JsonResult(result);
+            Services.Result<User> result = _eventService.addEvent( model.NomEvent, model.Localisation, model.MenuId, model.SalleId, model.TraiteurId, model.DecoId, model.UserId);
+            return this.CreateResult<User, UserViewModel>(result, o =>
+            {
+                o.ToViewModel = t => t.ToUserViewModel();
+            });
         }
 
 

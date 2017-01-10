@@ -1,30 +1,22 @@
 ﻿CREATE PROCEDURE tbe.pCreatEvent
 (
 	@NomEvent NVARCHAR(MAX),
-	@NbInvite NVARCHAR(MAX), 
-	@Prix NVARCHAR(50), 
-	@Horaire DATETIME,
 	@MenuId INT,
 	@SalleId INT,
 	@TraiteurId INT,
 	@DecoId INT,
 	@Localisation NVARCHAR(MAX),
-	@UserId INT,
-	@Validation NVARCHAR(MAX)
+	@UserId INT
 )
 AS
 BEGIN 
-	insert into tbe.tEvent(NomEvent,NbInvite,Prix,Horaire,MenuId,SalleId,TraiteurId,DecoId,Localisation,UserId,"Validation") 
-	VALUES(@NomEvent, 
-		@NbInvite, 
-		@Prix,
-		@Horaire,
+	insert into tbe.tEvent(NomEvent,MenuId,SalleId,TraiteurId,DecoId,Localisation,UserId) 
+	VALUES(@NomEvent,
 		@MenuId,
 		@SalleId,
 		@TraiteurId,
 		@DecoId,
 		@Localisation,
-		@UserId,
-		@Validation);
+		@UserId);
 	RETURN 0;
 end;
