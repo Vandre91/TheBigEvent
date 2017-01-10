@@ -29,7 +29,7 @@ namespace TheBigEvent.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
-                    "tbe.pCreatEvent",
+                    "tbe.pInsertEvent",
                     new { NomEvent = _NomEvent, Localisation = _Localisation, MenuId = _MenuId, SalleId = _SalleId, TraiteurId = _TraiteurId, DecoId= _DecoId, UserId= _UserId },
                     commandType: CommandType.StoredProcedure);
             }

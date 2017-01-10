@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE tbe.pCreatEvent
+﻿CREATE PROCEDURE tbe.pInsertEvent
 (
 	@NomEvent NVARCHAR(MAX),
 	@MenuId INT,

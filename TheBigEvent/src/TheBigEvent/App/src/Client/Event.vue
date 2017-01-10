@@ -53,7 +53,7 @@
                 </ul>
             </div>
 </div>
-<component :is="types[orderTypes[actualTypes]]" v-on:nextStep="updateData" :name="event.name" :ville="event.ville" :idTraiteur="event.id_traiteur" :idMenu="event.id_menu"></component>
+<component :is="types[orderTypes[actualTypes]]" v-on:nextStep="updateData" :name="event.name" :ville="event.ville" :idTraiteur="event.id_traiteur" :idMenu="event.id_menu" :idDeco="event.id_deco" :idSalle="event.id_salle"></component>
 </section>
 </div>
 </div>
@@ -66,6 +66,7 @@
 <script>
 import AuthService from '../services/auth.js'
 import UserService from '../services/UserService.js'
+import EventService from '../services/EventService.js'
 
 import Deco from './Event/Deco.vue'
 import Info from './Event/Info.vue'
@@ -89,7 +90,7 @@ export default {
             actualTypes: 0,
             maxTypes: 0,
             orderTypes: ['info', 'traiteur', 'menu', 'deco', 'salle', 'valid'],
-            model: null,
+            models: null,
             email: null,
             event: {
                 name: null,
@@ -98,7 +99,7 @@ export default {
                 id_menu: null, 
                 id_deco: null,
                 id_salle: null,
-                id_user: null
+                UserId: null
             }
         }
   	},
@@ -108,7 +109,7 @@ export default {
     },
     methods: {
         loadModelUser: async function(email) {
-            this.model = await UserService.getUserAsync(email);
+            this.models = await UserService.getUserAsync(email);
         },
         changeTab(newTab)
         {
@@ -131,6 +132,29 @@ export default {
                     if(data.id_menu === null) return
                     this.event.id_menu = data.id_menu
                     this.maxTypes = ++this.actualTypes
+                break
+                case "deco":
+                    if(data.id_deco === null) return
+                    this.event.id_deco = data.id_deco
+                    this.maxTypes = ++this.actualTypes
+                break
+                case "salle":
+                    if(data.id_salle === null) return
+                    this.event.id_salle = data.id_salle
+                    this.maxTypes = ++this.actualTypes
+                break
+                case "valid":
+                   this.event.UserId = this.models.content.userId
+                   this.event.NomEvent = this.event.name
+                   this.event.NbInvite = 5
+                   this.event.Prix = "5"
+                   this.event.MenuId = this.event.id_menu
+                   this.event.SalleId = this.event.id_salle
+                   this.event.TraiteurId = this.event.id_traiteur
+                   this.event.DecoId = this.event.id_deco
+                   this.event.Localisation = this.event.ville
+                   EventService.createEventAsync(this.event)
+                   this.$router.replace('/Client/board');
                 break
             }
         }

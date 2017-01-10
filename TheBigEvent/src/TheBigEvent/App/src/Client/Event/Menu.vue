@@ -15,14 +15,14 @@
                     </div>
                     <div class="panel-body">
                     <div class="col-md-6">
-                        <h4>{{models.prix}}</h4>
+                        <h4>{{models.prix}} €</h4>
 
                         <div class="funkyradio">
                         {{models.nbPersonnes}}
                         </div>
                         
                     </div>
-                    <input type="radio" value="models.menuId" v-model="id_menu_new">
+                    <input type="radio" :value="models.menuId" v-model="id_menu_new">
                     </div>
             </div>
         </div>

@@ -4,28 +4,28 @@
     <p>Choisissez votre décorateur</p>
     <div class="container" id="step2">
     <div class="list-group">
-
+                <form>
     			<a href="#" class="list-group-item">
                     <template v-for="models in model">
 					<div class="media">
 			        	<span class="label label-danger pull-right"></span>
 						<div class="checkbox pull-right">
 				    		<label>
-								<input type="checkbox" value="">				
+								<input type="radio" :value="models.decoId" v-model="id_deco_new">				
 							</label>
 						</div>
 						<div class="pull-left">
 						</div>
 						<div class="media-body">
 							<h4 class="media-heading" ></h4>
-                            Prix: 150€
+                            FAKE PRIX
 							<p>Marriage</p>
 						</div>
 
 					    </div>					
                     </template>
 			      </a>				
-
+                  </form>
 			</div>
     </div>
 
@@ -55,8 +55,6 @@ export default {
         async loadData(){
             this.model = await EventService.selectGetAsync("Deco")
             this.model = this.model.content
-            console.log(this.model)
-
         },
         nextStep(){
             this.$emit('nextStep', {method: "deco", id_deco: this.id_deco_new})

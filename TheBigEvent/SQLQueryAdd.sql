@@ -12,11 +12,11 @@ INSERT INTO tbe.tTraiteur(UserId) VALUES(3);
 INSERT INTO tbe.tTraiteur(UserId) VALUES(4);
 INSERT INTO tbe.tTraiteur(UserId) VALUES(5);
 
-INSERT INTO tbe.tMenu(Nom,Cat,Prix,NbPersonnes,TraiteurId) VALUES('Mariage','Plat',21,40,0);
-INSERT INTO tbe.tMenu(Nom,Cat,Prix,NbPersonnes,TraiteurId) VALUES('Anniv','Dessert',18,20,1);
-INSERT INTO tbe.tMenu(Nom,Cat,Prix,NbPersonnes,TraiteurId) VALUES('Reception','Plat',40,100,2);
-INSERT INTO tbe.tMenu(Nom,Cat,Prix,NbPersonnes,TraiteurId) VALUES('Barmitva','Entrer',100,10,3);
-INSERT INTO tbe.tMenu(Nom,Cat,Prix,NbPersonnes,TraiteurId) VALUES('Soiree','Plat',10,70,4);
+INSERT INTO tbe.tMenu(Nom,Cat,Prix,NbPersonnes,TraiteurId) VALUES('Mariage','Plat',21,40,1);
+INSERT INTO tbe.tMenu(Nom,Cat,Prix,NbPersonnes,TraiteurId) VALUES('Anniv','Dessert',18,20,2);
+INSERT INTO tbe.tMenu(Nom,Cat,Prix,NbPersonnes,TraiteurId) VALUES('Reception','Plat',40,100,3);
+INSERT INTO tbe.tMenu(Nom,Cat,Prix,NbPersonnes,TraiteurId) VALUES('Barmitva','Entrer',100,10,4);
+INSERT INTO tbe.tMenu(Nom,Cat,Prix,NbPersonnes,TraiteurId) VALUES('Soiree','Plat',10,70,5);
 
 INSERT INTO tbe.tDeco(UserId) VALUES(1);
 INSERT INTO tbe.tDeco(UserId) VALUES(2);
