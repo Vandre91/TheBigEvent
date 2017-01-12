@@ -38,8 +38,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#228B22;"><i class="fa fa-user"></i> {{ email }} <b class="caret"></b></a>
+              <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ email }} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <router-link to="/client/profil" class="router">
@@ -51,7 +51,6 @@
                           <router-link to="/logout" class="router">
                             <a style="color:black;"><i class="fa fa-fw fa-power-off"></i> Déconnexion</a>
                           </router-link>
-
                         </li>
                     </ul>
                 </li>
@@ -94,6 +93,8 @@ export default {
             this.email = AuthService.hisEmail();
         }
 }
+
+
 </script>
 
 <style scoped>

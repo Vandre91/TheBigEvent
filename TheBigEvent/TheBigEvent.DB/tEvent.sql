@@ -12,6 +12,7 @@
     [Localisation] NVARCHAR(MAX) NULL, 
     [UserId] INT NULL, 
     [Validation] NVARCHAR(MAX) NULL, 
+    [Date] DATE NULL, 
     CONSTRAINT [FK_tEvent_tMenu] FOREIGN KEY ([MenuId]) REFERENCES [tbe].[tMenu]([MenuId]), 
     CONSTRAINT [FK_tEvent_tSalle] FOREIGN KEY ([SalleId]) REFERENCES [tbe].[Salle]([SalleId]), 
     CONSTRAINT [FK_tEvent_tTraiteur] FOREIGN KEY ([TraiteurId]) REFERENCES [tbe].[tTraiteur]([TraiteurId]), 

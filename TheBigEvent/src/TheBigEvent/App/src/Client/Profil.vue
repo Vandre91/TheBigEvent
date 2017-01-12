@@ -1,7 +1,7 @@
 <template>
 
 <div class="container">
-  <h1 class="page-header">Modifier son profil {{model}}</h1>
+  <h1 class="page-header">Modifier son profil</h1>
 <!--  <h1 class="page-header">le profil {{ item }}</h1>-->
 
   <div class="row">
