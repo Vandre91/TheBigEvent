@@ -40,25 +40,25 @@ namespace TheBigEvent.Controllers
                 case "Traiteur":
                     Result<IEnumerable<Traiteur>> result_traiteur = _traiteurService.getAllTraiteur();
                     return new JsonResult(result_traiteur);
-                break;
+           //     break;
 
                 case "Menu":
                     Result<IEnumerable<Menu>> result_menu = _menuService.getmenu();
                     return new JsonResult(result_menu);
-                break;
+             //   break;
                 case "Salle":
                     Result<IEnumerable<Salle>> result_salle = _salleService.getSalle();
                     return new JsonResult(result_salle);
-                break;
+             //   break;
                 case "Deco":
                     Result<IEnumerable<Deco>> result_deco = _decoService.getDeco();
                     return new JsonResult(result_deco);
-                    break;
+              //      break;
 
                 default:
                     Result<IEnumerable<Event>> result_event = _eventService.getEvent();
                     return new JsonResult(result_event);
-                break;
+            //    break;
             }
             
         }
