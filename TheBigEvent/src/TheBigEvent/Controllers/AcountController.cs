@@ -33,13 +33,11 @@ namespace TheBigEvent.Controllers
         [HttpPost]
         public IActionResult Login(string Mail, string Passe, byte Pro, string Siret, string Compagny)
         {
-            UserServices useService = new UserServices(@"Server =  SHANE-PC\SQLEXPRESS; Database =TheBigEvent.DB ; Trusted_Connection = True");
-            useService.addUser(Mail, Passe, Pro, Siret, Compagny);
+            _userService.addUser(Mail, Passe, Pro, Siret, Compagny);
             return View();
         }
         public IActionResult Conexion()
         {
-            UserServices useService = new UserServices(@"Server =  SHANE-PC\SQLEXPRESS; Database =TheBigEvent.DB ; Trusted_Connection = True");
             ViewData["Firstname"] = "";
             return View();
         }
@@ -47,8 +45,7 @@ namespace TheBigEvent.Controllers
         [HttpPost]
         public async Task<IActionResult> Conexion(string Mail, string Passe)
         {
-            UserServices useService = new UserServices(@"Server =  SHANE-PC\SQLEXPRESS; Database =TheBigEvent.DB ; Trusted_Connection = True");
-            User user = useService.FindUser(Mail, Passe);
+            User user = _userService.FindUser(Mail, Passe);
             if (user != null)
             {
                 await SignIn(user.Mail, user.UserId.ToString(), user.Pro);
