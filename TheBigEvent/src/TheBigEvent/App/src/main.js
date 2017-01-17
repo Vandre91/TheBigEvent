@@ -20,6 +20,7 @@ import Profil from  './Client/Profil.vue'
 import Events from  './Client/Event.vue'
 import Conversation from './Client/Conversation.vue'
 import Board from './Client/board.vue'
+import Chat from './Client/Chat.vue'
 
 // Fournisseurs
 import Add from './Provider/add.vue'
@@ -62,6 +63,7 @@ const router = new VueRouter({
               { path: '/Client/Event', component: Events, beforeEnter: requireAuth},
               { path: '/Client/Conversation', component: Conversation, beforeEnter: requireAuth},
               { path: '/Client/Profil', component: Profil, beforeEnter: requireAuth},
+              { path: '/Client/Chat', component: Chat, beforeEnter: requireAuth}
         ]},
         { path: '/pro', component: Provider, redirect: "/Pro/board", beforeEnter: requireAuth, children:[
               { path : '/pro/add', component: Add, beforeEnter: requireAuth, children:[

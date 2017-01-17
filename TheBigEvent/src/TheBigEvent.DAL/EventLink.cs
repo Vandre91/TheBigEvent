@@ -23,13 +23,21 @@ namespace TheBigEvent.DAL
                 return con.Query<Event>("Select * From tbe.tEvent");
             }
         }
-        
+        public IEnumerable<Event> GetAllEventById(string id)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<Event>("Select * From tbe.tEvent where UserId = @Id",
+                        new { Id = id }); 
+            }
+        }
+
         public void AddEvent(string _NomEvent, string _Localisation, int _MenuId,int _SalleId, int _TraiteurId, int _DecoId, int _UserId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
-                    "tbe.pInsertEvent",
+                    "tbe.pCreatEvent",
                     new { NomEvent = _NomEvent, Localisation = _Localisation, MenuId = _MenuId, SalleId = _SalleId, TraiteurId = _TraiteurId, DecoId= _DecoId, UserId= _UserId },
                     commandType: CommandType.StoredProcedure);
             }
