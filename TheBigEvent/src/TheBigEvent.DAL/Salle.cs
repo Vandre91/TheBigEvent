@@ -10,5 +10,6 @@ namespace TheBigEvent.DAL
         public int SalleId { get; set; }
         public int NbPlace { get; set; }
         public int UserId { get; set; }
+        public string Description { get; set; }
     }
 }

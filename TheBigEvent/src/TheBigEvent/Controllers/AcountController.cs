@@ -30,7 +30,6 @@ namespace TheBigEvent.Controllers
             return View();
         }
 
-        //inscription
         [HttpPost]
         public IActionResult Login(string Mail, string Passe, byte Pro, string Siret, string Compagny)
         {
@@ -38,7 +37,6 @@ namespace TheBigEvent.Controllers
             useService.addUser(Mail, Passe, Pro, Siret, Compagny);
             return View();
         }
-        //connection sans utilisateur
         public IActionResult Conexion()
         {
             UserServices useService = new UserServices(@"Server =  SHANE-PC\SQLEXPRESS; Database =TheBigEvent.DB ; Trusted_Connection = True");
@@ -46,7 +44,6 @@ namespace TheBigEvent.Controllers
             return View();
         }
 
-        // connection avec le mail et mot de passe
         [HttpPost]
         public async Task<IActionResult> Conexion(string Mail, string Passe)
         {

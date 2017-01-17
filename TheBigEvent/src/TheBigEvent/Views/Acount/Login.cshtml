@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Inscription sur ";
 }
 <!DOCTYPE html>
 
@@ -19,6 +19,7 @@
 
     <div class="form-group">
         <form method="post" action="">
+
             <input name="Mail" class="form-control glyphicon-log-in" type="email" required="" placeholder="Email" /> <br>
             <input name="Passe" class="form-control glyphicon-log-in" type="password" required="" placeholder="Mot de passe" /><br>
             Professionnel : <input name="pro" value="0" onChange="verif();" type="checkbox" id="check"/><br>
@@ -48,7 +49,6 @@
                 <input id="siret" name="Siret" class="form-control glyphicon-log-in" placeholder="Numéro de siret" /><br>
                 <input id="compagny" name="Compagny" class="form-control glyphicon-log-in" placeholder="Nom de l'entrprise'" /><br>
             </div>
-
             <input type="submit" class="btn btn-default" />
         </form>
     </div>

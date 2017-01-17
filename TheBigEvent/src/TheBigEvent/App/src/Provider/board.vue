@@ -54,15 +54,20 @@
     <div class="widget-content">
         <div class="shortcuts">
 
-            <router-link to="/client/event" class="router">
-            <a href="javascript:;" class="shortcut"><i class="shortcut-icon fa fa-list-alt"></i><span class="shortcut-label"> Créer un évènement </span></a>
+            <router-link to="/pro/add" class="router">
+            <a href="javascript:;" class="shortcut"><i class="shortcut-icon fa fa fa-plus"></i><span class="shortcut-label"> Ajouter une prestation </span></a>
             </router-link>
 
-            <router-link to="/client/Conversation" class="router">
-            <a href="javascript:;" class="shortcut"><i class="shortcut-icon fa fa-comment"></i><span class="shortcut-label">Discussion avec les fournisseurs</span></a>
+
+            <router-link to="/pro/event" class="router">
+            <a href="javascript:;" class="shortcut"><i class="shortcut-icon fa fa-list-alt"></i><span class="shortcut-label"> Confirmer un évènement </span></a>
             </router-link>
 
-            <router-link to="/client/profil" class="router">
+            <router-link to="/pro/Conversation" class="router">
+            <a href="javascript:;" class="shortcut"><i class="shortcut-icon fa fa-comment"></i><span class="shortcut-label">Discussion avec les clients</span></a>
+            </router-link>
+
+            <router-link to="/pro/profil" class="router">
             <a href="javascript:;" class="shortcut"><i class="shortcut-icon fa fa-user"></i><span class="shortcut-label">Modifier<br /> son profil</span></a>
             </router-link>
 
@@ -71,8 +76,6 @@
             <router-link to="/logout" class="router">
             <a href="javascript:;" class="shortcut"><i class="shortcut-icon fa fa-power-off"></i><span class="shortcut-label"> Se <br /> déconnecter</span> </a>
             </router-link>
-
-
     </div>
         <!-- /shortcuts --> 
     </div>

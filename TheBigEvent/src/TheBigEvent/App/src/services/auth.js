@@ -57,7 +57,8 @@ class AuthService {
 
         var data = typeof e.data == 'string' ? JSON.parse(e.data) : e.data;
 
-        if(data.type == 'authenticated') this.onAuthenticated(data.payload);
+        if(data.type == 'authenticated')
+            this.onAuthenticated(data.payload);
         else if(data.type == 'signedOut') this.onSignedOut();
     }
     onAuthenticated = (i) => {

@@ -30,10 +30,6 @@ namespace TheBigEvent.Controllers
         {
             Services.Result<User> result = _userService.getUser(email);
             return new JsonResult(result);
-            //return this.CreateResult<User, UserViewModel>(result, o =>
-            //{
-            //    o.ToViewModel = c => c.ToUserViewModel();
-            //});
         }
         [HttpPost("{UserId}")]
         public IActionResult UpdateUser([FromBody] UserViewModel model)
@@ -62,11 +58,7 @@ namespace TheBigEvent.Controllers
 
             _userService.DeleteUser(UserId);
         }
-
-
-
-
-
+        
 
     }
 }

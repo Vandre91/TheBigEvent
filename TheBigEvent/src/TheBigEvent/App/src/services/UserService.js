@@ -14,11 +14,11 @@ class UserService {
     }
     async postUserAsync(model)
     {
-        return await postAsync(endpoint, model.content.userId, AuthService.accessToken, model.content);
+        return await postAsync(endpoint, model.userId, AuthService.accessToken, model);
     }
     async putUserAsync(model)
     {
-        return await putAsync(endpoint, model.content.userId, AuthService.accessToken, model.content);
+        return await putAsync(endpoint, model.userId, AuthService.accessToken, model);
     }
 // On récupère les informations des différents fournisseurs
     async getTraiteurAsync(Id)
@@ -51,7 +51,7 @@ class UserService {
 
 // Permet de modifier les informations de l'utilisateur ou du compte
     async updateUserAsync(model) {
-        return await putAsync(endpoint, model.content.userId, AuthService.accessToken, model);
+        return await putAsync(endpoint, model.userId, AuthService.accessToken, model);
     }
 // Permet de supprimer le compte utilisateur
     async deleteUserAsync(Id) {

@@ -23,7 +23,7 @@ namespace TheBigEvent.DAL
                 return con.Query<Salle>("Select * From tbe.Salle");
             }
         }
-        public void AddSalle(string _NbPlace, string _UserId)
+        public void AddSalle(string _NbPlace, int _UserId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {

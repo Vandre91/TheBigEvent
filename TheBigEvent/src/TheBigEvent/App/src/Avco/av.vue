@@ -44,7 +44,7 @@
 	        <li>74 bis avenue Maurice Thorez</li>
 	        <li>94200 IVRY-SUR-SEINE</li><br />
             <li><i class="fa fa-envelope-o fa-2x"></i></li><br />
-            <li><a style="color:#bbb;" href="mailto:admin-bnpparibas@admin.fr">Envoyer un mail</a></li>
+            <li><a style="color:#bbb;" href="mailto:thebigevent@intechinfo.fr">Envoyer un mail</a></li>
 	    </ul>
 	  </div>
 	  <div class="social">

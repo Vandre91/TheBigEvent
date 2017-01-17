@@ -22,13 +22,21 @@ import Conversation from './Client/Conversation.vue'
 import Board from './Client/board.vue'
 
 // Fournisseurs
+import Add from './Provider/add.vue'
+import Add_s from './Provider/add_salle.vue'
+import Add_d from './Provider/Add_deco.vue'
+import Add_t from './Provider/Add_traiteur.vue'
+
 import Provider from './Provider/Provider.vue'
+import EventsP from  './Provider/Event.vue'
+import ProfilP from  './Provider/Profil.vue'
+import ConversationP from './Provider/Conversation.vue'
+import BoardP from './Provider/board.vue'
+
 Vue.use(VueRouter);
 
 function requireAuth (to, from, next)  {
-  console.log("require auth");
   if (!AuthService.isConnected) {
-    console.log("vous n'etes pas connecter");
     next({
       path: '/',
       query: { redirect: to.fullPath }
@@ -55,14 +63,24 @@ const router = new VueRouter({
               { path: '/Client/Conversation', component: Conversation, beforeEnter: requireAuth},
               { path: '/Client/Profil', component: Profil, beforeEnter: requireAuth},
         ]},
-   { path: '/pro', component: Provider, beforeEnter: requireAuth }
+        { path: '/pro', component: Provider, redirect: "/Pro/board", beforeEnter: requireAuth, children:[
+              { path : '/pro/add', component: Add, beforeEnter: requireAuth, children:[
+              { path: '/pro/Add_salle', component: Add_s, beforeEnter: requireAuth},
+              { path: '/pro/Add_traiteur', component: Add_t, beforeEnter: requireAuth},
+              { path: '/pro/Add_deco', component: Add_d, beforeEnter: requireAuth}
+              ]},
+              { path : '/Pro/board', component: BoardP, beforeEnter: requireAuth },
+              { path: '/Pro/Event', component: EventsP, beforeEnter: requireAuth},
+              { path: '/Pro/Conversation', component: ConversationP, beforeEnter: requireAuth},
+              { path: '/Pro/Profil', component: ProfilP, beforeEnter: requireAuth},
+        ]},
     ]},
    { path: '/logout', component: Logout, beforeEnter: requireAuth }
   ]
 })
 
 AuthService.allowedOrigins = ['http://localhost:5000'];
-AuthService.logoutEndpoint = '/Account/LogOff';
+AuthService.logoutEndpoint = '/Acount/LogOff';
 
 AuthService.providers = {
   'Base': {

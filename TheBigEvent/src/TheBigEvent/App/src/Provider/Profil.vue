@@ -101,11 +101,12 @@ export default {
               this.model = await UserService.getUserAsync(email);
               this.model = this.model.content;
             },
+
             onSubmit: async function(e) {
-            e.preventDefault();
-            var result = null;
-            result = await UserService.postUserAsync(this.model);
-            if(result != null) this.$router.replace('/Client/board');
+              e.preventDefault();
+              var result = null;
+              result = await UserService.postUserAsync(this.model);
+              if(result != null) this.$router.replace('/pro/board');
             },
             onSubmitPasse: async function(e) {
             e.preventDefault();
@@ -114,7 +115,7 @@ export default {
             var result = null;
             result = await UserService.putUserAsync(this.model);
             this.model.pass = null
-            if(result != null) this.$router.replace('/Client/board');
+            if(result != null) this.$router.replace('/pro/board');
             },
             async deleteAccount(){
               await UserService.deleteUserAsync(this.model.userId);
