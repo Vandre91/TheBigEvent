@@ -30,7 +30,13 @@ INSERT INTO tbe.Salle(Nbplace,UserId) VALUES(300,3);
 INSERT INTO tbe.Salle(Nbplace,UserId) VALUES(400,4);
 INSERT INTO tbe.Salle(Nbplace,UserId) VALUES(500,3);
 
+INSERT INTO tbe.tEvent(NomEvent,NbInvite,Prix,MenuId,SalleId,TraiteurId,DecoId,Localisation,UserId) VALUES('Les bourer','60',1000,1,1,1,1,'Paris',0);
+INSERT INTO tbe.tEvent(NomEvent,NbInvite,Prix,MenuId,SalleId,TraiteurId,DecoId,Localisation,UserId) VALUES('The One','250',1000,2,2,2,2,'Paris',6);
+INSERT INTO tbe.tEvent(NomEvent,NbInvite,Prix,MenuId,SalleId,TraiteurId,DecoId,Localisation,UserId) VALUES('Les Enfoirer','300000',1000,2,3,3,3,'Paris',7);
+INSERT INTO tbe.tEvent(NomEvent,NbInvite,Prix,MenuId,SalleId,TraiteurId,DecoId,Localisation,UserId) VALUES('Sodomi du matin repo sdu vagin','4000',1000,2,3,0,1,'Marseille',8);
 
-
-
+INSERT INTO tbe.tMessage(UserId1,UserId2,Text) VALUES(0,3,'Bonjour');
+INSERT INTO tbe.tMessage(UserId1,UserId2,Text) VALUES(0,2,'Bonjour');
+INSERT INTO tbe.tMessage(UserId1,UserId2,Text) VALUES(0,3,'Bonjour');
+INSERT INTO tbe.tMessage(UserId1,UserId2,Text) VALUES(3,0,'Nope');
 

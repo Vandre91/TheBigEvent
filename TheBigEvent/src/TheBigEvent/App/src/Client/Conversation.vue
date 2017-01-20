@@ -11,37 +11,40 @@
                Event
                <span class="caret pull-right"></span>
                </button>
-               <ul v-for="e of event.content" class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li v-for="e of event.content"><a href="#"> {{ e.nomEvent }} </a>  
-                <ul class="sub_menu_ list-unstyled">
-                    <li><a href="#"> {{ e.eventId }}  </a> </li>
-                    <li><a href="#">deco1</a></li>
-                    <li><a href="#">salle1</a></li>
-                </ul>
-			   </li>
+               <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <li v-for="(e,index) of event.content"><a @click="updateData(index)"> {{ e.nomEvent }} </a>  
+                
+			        </li>  
                </ul>
             </div>
-            <div class="member_list">
-               <ul class="list-unstyled">
-                  <li class="left clearfix">
+
+            <!--<li class="left clearfix">
                      <div class="chat-body clearfix">
                         <div class="header_sec">
-                           <strong class="primary-font">Jack Sparrow</strong> <strong class="pull-right">
-                           09:45AM</strong>
+                           <strong class="primary-font">Selectioner un Event</strong> <strong class="pull-right"></strong>
                         </div>
-                        <div class="contact_sec">
-                           <strong class="primary-font">(123) 123-456</strong> 
+                     </div>
+                  </li>-->
+            <div class="member_list">
+               <ul v-if="allcompagny.tcompagny != ''" class="list-unstyled">
+                  <li class="left clearfix">
+                     <div class="chat-body clearfix">
+                        <div class="header_sec" @click="updateMessaget()">
+                           <strong class="primary-font">{{ allcompagny.tcompagny }}  </strong> 
                         </div>
                      </div>
                   </li>
                   <li class="left clearfix">
                      <div class="chat-body clearfix">
                         <div class="header_sec">
-                           <strong class="primary-font">Jack</strong> <strong class="pull-right ">
-                           09:45AM</strong>
+                           <strong class="primary-font">{{ allcompagny.dcompagny }}</strong> <strong class="pull-right"></strong>
                         </div>
-                        <div class="contact_sec">
-                           <strong class="primary-font">(123) 123-456</strong> 
+                     </div>
+                  </li>
+                  <li class="left clearfix">
+                     <div class="chat-body clearfix">
+                        <div class="header_sec">
+                           <strong class="primary-font">{{ allcompagny.scompagny }}</strong> <strong class="pull-right"></strong>
                         </div>
                      </div>
                   </li>
@@ -57,35 +60,33 @@
 		 
 		 <div class="chat_area">
 		 <ul class="list-unstyled">
-                  <li class="left clearfix"><span class="chat-img pull-left">
+                  <li v-for="m of message.content"class="left clearfix"><span class="chat-img pull-left">
                             <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
                         </span>
                             <div class="chat-body clearfix">
                                 <div class="header">
-                                    <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
+                                    <strong class="primary-font"></strong> <small class="pull-right text-muted">
                                         <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
                                 </div>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                    dolor, quis ullamcorper ligula sodales.
+                                    {{ m.text }}
                                 </p>
                             </div>
                         </li>
-                        <li class="left clearfix"><span class="chat-img pull-right">
+                        <!--<li class="left clearfix"><span class="chat-img pull-right">
                             <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
                         </span>
                             <div class="chat-body clearfix">
                                 <div class="header">
-                                    <strong class="primary-font pull-right">Jack Sparrow</strong> <small class="pull-right text-muted">
+                                    <strong class="primary-font pull-right"></strong> <small class="pull-right text-muted">
                                         <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
                                 </div>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                    dolor, quis ullamcorper ligula sodales.
+                                    {{ m.text }}
                                 </p>
                             </div>
-                        </li>
-		 </ul>
+                        </li>-->
+		          </ul>
 		 </div>
          <!--chat_area-->
 
@@ -112,6 +113,10 @@
 import AuthService from '../services/auth.js'
 import UserService from '../services/UserService.js'
 import EventService from '../services/EventService.js'
+import TraiteurService from '../services/TraiteurService.js'
+import DecoService from '../services/DecoService.js'
+import SalleService from '../services/SalleService.js'
+import MessageService from '../services/MessageService.js'
 import ConversationService from '../services/ConversationService.js'
 
 export default {
@@ -119,8 +124,21 @@ data () {
       return {
             model: null,
             event : [],
+            traiteur : [],
+            deco : [],
+            salle : [],
+            message : [],
             email: null,
-            userId : null
+            userId : null,
+            userIdt : null,
+            userIdd : null,
+            userIds : null,
+            allcompagny: {
+                tcompagny : "",
+                dcompagny : "",
+                scompagny : ""
+            }
+            
             
         }
   	},
@@ -128,6 +146,9 @@ data () {
             this.email = AuthService.hisEmail();
             await this.loadModelUser(this.email);
             await this.loadEventId();
+            await this.loadTraiteur();
+            await this.loadDeco();
+            await this.loadSalle();
     },
     methods: {
         loadModelUser: async function(email) {
@@ -138,7 +159,37 @@ data () {
         loadEventId: async function() {
             var e = await ConversationService.getEventIdAsync(this.userId);
             this.event = e;
+        },
+        loadTraiteur: async function() {
+            var e = await TraiteurService.getTraiteurIdAsync(this.userId);
+            this.traiteur = e;
+        },
+        loadDeco: async function() {
+            var e = await DecoService.getDecoIdAsync(this.userId);
+            this.deco = e;
+        },
+        loadSalle: async function() {
+            var e = await SalleService.getSalleIdAsync(this.userId);
+            this.salle = e;
+        },
+        updateData(i){
+            this.allcompagny.tcompagny = this.traiteur.content[i].compagny;
+            this.allcompagny.dcompagny = this.deco.content[i].compagny;
+            this.allcompagny.scompagny = this.salle.content[i].compagny;
+
+            this.userIdd = this.deco.content[i].userId;
+            this.userIds = this.salle.content[i].userId;
+            this.userIdt = this.traiteur.content[i].userId;
+        },
+        updateMessaget: async function() {
+          console.log("je suis passer");
+            var e = await MessageService.getMessageIdAsync(this.userId,this.userIdt);
+            this.message = e;
+
+            console.log(this.message);
+            
         }
+        
     }
 }
 </script>

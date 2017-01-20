@@ -7,6 +7,8 @@ namespace TheBigEvent.DAL
 {
     public class Traiteur
     {
+        public string NomEvent { get; set; }
+        public int Userid { get; set; }
         public int TraiteurId { get; set; }
         public int UserId { get; set; }
         public string City { get; set; }

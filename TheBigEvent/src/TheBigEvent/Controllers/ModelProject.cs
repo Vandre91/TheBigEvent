@@ -42,6 +42,14 @@ namespace TheBigEvent.Controllers
                 UserId = @this.UserId
             };
         }
+        public static MessageViewModel ToMessageViewModel(this Message @this)
+        {
+            return new MessageViewModel
+            {
+                 user1 = @this.UserId1,
+                 user2 = @this.UserId2
+            };
+        }
 
 
     }

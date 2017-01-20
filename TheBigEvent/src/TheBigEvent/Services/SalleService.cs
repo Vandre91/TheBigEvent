@@ -19,5 +19,9 @@ namespace TheBigEvent.Services
         {
             return Result.Success(Status.Ok, _sLink.GetAllSalle());
         }
+        public Result<IEnumerable<Salle>> getSalleByEvent(int _id)
+        {
+            return Result.Success(Status.Ok, _sLink.GetAllSalleByEvent(_id));
+        }
     }
 }

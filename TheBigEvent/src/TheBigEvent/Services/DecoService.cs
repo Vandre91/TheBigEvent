@@ -19,5 +19,9 @@ namespace TheBigEvent.Services
         {
             return Result.Success(Status.Ok, _dLink.GetAllDeco());
         }
+        public Result<IEnumerable<Deco>> getDecoByEvent(int _id)
+        {
+            return Result.Success(Status.Ok, _dLink.GetAllDecoByEvent(_id));
+        }
     }
 }

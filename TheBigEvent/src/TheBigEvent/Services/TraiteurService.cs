@@ -17,5 +17,9 @@ namespace TheBigEvent.Services
         {
             return Result.Success(Status.Ok, _eLink.GetAlltraiteur());
         }
+        public Result<IEnumerable<Traiteur>> getTraiteurByEvent(int _id)
+        {
+            return Result.Success(Status.Ok, _eLink.GetAlltraiteurByEvent(_id));
+        }
     }
 }
