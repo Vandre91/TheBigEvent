@@ -1,11 +1,6 @@
 <template>
   <div class="accueil">
-
-
-
     <div id="wrapper">
-
-
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -21,89 +16,69 @@
                 <a style="color:#1E90FF;"><strong> THE BIG EVENT</strong></a>
                 </router-link>
             </div>
-            <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#228B22;"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu message-dropdown">
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong> Shane Djafaraly </strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-footer">
-                            <a href="#">Read All New Messages</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#228B22;"><i class="fa fa-user"></i> Shane Djafaraly<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                          <router-link to="/Client/Board" class="router">
-                            <a style="color:black;"><i class="fa fa-fw fa-user"></i> Profile</a>
-                          </router-link>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                          <router-link to="/Client/Board" class="router">
-                            <a style="color:black;"><i class="fa fa-fw fa-power-off"></i> Déconnexion</a>
-                          </router-link>
-
-                        </li>
-                    </ul>
+                    <a href="javascript:void(0)" class="dropbtn" style="color:#228B22;"><i class="fa fa-user"></i> {{ email }}</a>
+                    <div class="dropdown-content">
+                    <router-link to="/client/profil" class="router">
+                        <a style="color:black;"><i class="fa fa-fw fa-user"></i> Profile</a>
+                    </router-link>
+                    <router-link to="/logout" class="router">
+                        <a style="color:black;"><i class="fa fa-fw fa-power-off"></i> Déconnexion</a>
+                    </router-link>
+                    </div>
                 </li>
             </ul>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                      <router-link to="/Client/Board" class="router">
-                        <a><i class="fa fa-fw fa-dashboard"></i> DashBoard</a>
+                <ul  class="nav navbar-nav side-nav">
+                    <li v-bind:class="{ active: tab === 1}" v-on:click="tab = 1">
+                      <router-link to="/client" class="router">
+                        <a ><i class="fa fa-fw fa-dashboard"></i> DashBoard</a>
                       </router-link>
                     </li>
-                    <li>
-                      <router-link to="/Client/Board" class="router">
+                    <li v-bind:class="{ active: tab === 2}" v-on:click="tab = 2">
+                      <router-link to="/client/event" class="router">
                         <a><i class="fa fa-fw fa-table"></i> Crée un évènement</a>
                       </router-link>
                     </li>
-                    <li>
-                      <router-link to="/Client/Board" class="router">
+                    <li v-bind:class="{ active: tab === 3}" v-on:click="tab = 3">
+                      <router-link to="/client/Conversation" class="router">
                         <a><i class="fa fa-fw fa-edit"></i> Conversation</a>
-                      </router-link>
-                    </li>
-                    <li>
-                      <router-link to="/Client/Board" class="router">
-                        <a><i class="fa fa-fw fa-desktop"></i> Voir mes réservations</a>
-                      </router-link>
-                    </li>
-                    <li>
-                      <router-link to="/Client/Board" class="router">                      
-                        <a><i class="fa fa-fw fa-wrench"></i> Modifier son profil</a>
                       </router-link>
                     </li>
                 </ul>
             </div>
         </nav>
 </div>
+<div class="nav1"><router-view></router-view></div>
 </div>
 </template>
 
 <script>
+import AuthService from '../services/auth.js'
 export default {
-    
+  	data () {
+      return {
+		tab: 1,
+        email: null
+       }
+	},
+     mounted() {
+            this.email = AuthService.hisEmail();
+        }
 }
+
+
 </script>
 
 <style scoped>
 
 /* Top Navigation */
+
+.nav1 {
+    margin-left: 5%;
+    margin-top: 10%;
+}
 
 a {
   color: #9d9d9d;
@@ -177,6 +152,12 @@ ul.alert-dropdown {
 /* Side Navigation */
 
 @media(min-width:768px) {
+
+.nav1 {
+    margin-left: 16%;
+    margin-top: 5%;
+}
+
     .side-nav {
         position: fixed;
         top: 51px;
@@ -216,6 +197,32 @@ ul.alert-dropdown {
 
 .side-nav>li>ul>li>a:hover {
     color: #fff;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
  </style>

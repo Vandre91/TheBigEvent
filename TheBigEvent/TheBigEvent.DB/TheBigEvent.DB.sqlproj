@@ -62,5 +62,32 @@
     <Build Include="pUserAdd.sql" />
     <Build Include="tUser.sql" />
     <Build Include="tbe.sql" />
+    <Build Include="tEvent.sql" />
+    <Build Include="tSalle.sql" />
+    <Build Include="tTraiteur.sql" />
+    <Build Include="tMenu.sql" />
+    <Build Include="tDeco.sql" />
+    <Build Include="pUserUpdate.sql" />
+    <Build Include="pUserProfilUpdate.sql" />
+    <Build Include="pCreatEvent.sql" />
+    <Build Include="pDeleteEvent.sql" />
+    <Build Include="pAddSalle.sql" />
+    <Build Include="pAddMenu.sql" />
+    <Build Include="pAddTraiteur.sql" />
+    <Build Include="pDeleteDeco.sql" />
+    <Build Include="pDeleteMenu.sql" />
+    <Build Include="pDeleteSalle.sql" />
+    <Build Include="pDeleteTraiteur.sql" />
+    <Build Include="pUpdateDeco.sql" />
+    <Build Include="pUpdateTraiteur.sql" />
+    <Build Include="pUpdateMenu.sql" />
+    <Build Include="pUpdateSalle.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="TheBigEvent.DB.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="pUserDelete.sql" />
+    <None Include="pAddDeco.sql" />
   </ItemGroup>
 </Project>

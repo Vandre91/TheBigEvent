@@ -1,11 +1,6 @@
 <template>
   <div class="accueil">
-
-
-
     <div id="wrapper">
-
-
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -16,84 +11,84 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <router-link to="/Client">
-                <img src="../../img/logo1.gif" style="width:65px"></img>
-                <a>The Big Event</a>
+                <router-link to="/pro">
+                <img src="../../img/logo1.gif" style="width:62px"></img>
+                <a style="color:#1E90FF;"><strong> THE BIG EVENT Pro</strong></a>
                 </router-link>
             </div>
-            <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu message-dropdown">
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>Shane Djafaraly</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-footer">
-                            <a href="#">Read All New Messages</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Shane Djafaraly<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-                        </li>
-                    </ul>
+                    <a href="javascript:void(0)" class="dropbtn" style="color:#228B22;"><i class="fa fa-user"></i> {{ email }}</a>
+                    <div class="dropdown-content">
+                    <router-link to="/pro/profil" >
+                        <a style="color:black;"><i class="fa fa-fw fa-user"></i> Profile</a>
+                    </router-link>
+                    <router-link to="/logout" >
+                        <a style="color:black;"><i class="fa fa-fw fa-power-off"></i> Déconnexion</a>
+                    </router-link>
+                    </div>
                 </li>
             </ul>
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                <ul  class="nav navbar-nav side-nav">
+                    <li v-bind:class="{ active: tab === 1}" v-on:click="tab = 1">
+                      <router-link to="/pro">
+                        <a ><i class="fa fa-fw fa-dashboard"></i> DashBoard</a>
+                      </router-link>
                     </li>
-                    <li>
-                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Crée un évènement</a>
+                    <li v-bind:class="{ active: tab === 2}" v-on:click="tab = 2">
+                      <router-link to="/pro/add">
+                        <a><i class="fa fa-fw fa fa-plus"></i> Ajouter une prestation</a>
+                      </router-link>
                     </li>
-                    <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Conversation</a>
+                    <li v-bind:class="{ active: tab === 3}" v-on:click="tab = 3">
+                      <router-link to="/pro/event">
+                        <a><i class="fa fa-fw fa-table"></i> Confirmer un évènement</a>
+                      </router-link>
                     </li>
-                    <li>
-                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Voir mes réservations</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Modifier son profil</a>
+                    <li v-bind:class="{ active: tab === 4}" v-on:click="tab = 4">
+                      <router-link to="/pro/Conversation">
+                        <a><i class="fa fa-fw fa-edit"></i> Conversation</a>
+                      </router-link>
                     </li>
                 </ul>
             </div>
         </nav>
 </div>
+<div class="nav1"><router-view></router-view></div>
 </div>
 </template>
 
 <script>
+import AuthService from '../services/auth.js'
 export default {
-    
+  	data () {
+      return {
+		tab: 1,
+        email: null
+       }
+	},
+     mounted() {
+            this.email = AuthService.hisEmail();
+        }
 }
+
+
 </script>
 
 <style scoped>
 
-body {
-background-image: none;
+/* Top Navigation */
+
+.nav1 {
+    margin-left: 5%;
+    margin-top: 10%;
 }
 
-/* Top Navigation */
+a {
+  color: #9d9d9d;
+  text-decoration:none
+}
 
 .top-nav {
     padding: 0 15px;
@@ -101,7 +96,6 @@ background-image: none;
 
 .top-nav>li {
     display: inline-block;
-    float: left;
 }
 
 .top-nav>li>a {
@@ -163,6 +157,12 @@ ul.alert-dropdown {
 /* Side Navigation */
 
 @media(min-width:768px) {
+
+.nav1 {
+    margin-left: 16%;
+    margin-top: 5%;
+}
+
     .side-nav {
         position: fixed;
         top: 51px;
@@ -202,6 +202,32 @@ ul.alert-dropdown {
 
 .side-nav>li>ul>li>a:hover {
     color: #fff;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
  </style>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.DotNet.Cli.Utils.CommandParsing;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,25 +16,39 @@ namespace TheBigEvent.Services
             _uLink = new UserLink(connectionString);
         }
 
-        public List<string> returnAllNameUser()
+        public void addUser(string Mail, string Passe, byte Pro, string Siret, string Compagny)
         {
-            List<string> tmpVar = new List<string>();
-
-            foreach (User i in _uLink.GetAll())
-            {
-                tmpVar.Add(i.FirstName);
-            }
-
-            return tmpVar;
+            _uLink.AddUser(Mail, Passe, Pro, Siret, Compagny);
         }
-        public void addUser(string Mail, string Passe, string FirstName, string LastName, string City, string Tel, string Pro, string Siret, string Compagny)
+
+
+        public Result<User> getUser(string email)
         {
-            _uLink.AddUser(Mail, Passe, FirstName, LastName, City, Tel, Pro, Siret, Compagny);
+            User user = _uLink.getUser(email);
+            return Result.Success(Status.Ok, user);
         }
+
+
         public User FindUser(string Mail, string Passe)
         {
             User user = _uLink.FindUser(Mail, Passe);
             return user;
+        }
+        public void DeleteUser(int _id)
+        {
+            _uLink.Delete(_id);
+        }
+        public Result<User> UpdateUserName(int _UserId, string _firstName, string _lastName, string _City, int _Tel)
+        {
+           _uLink.UpdateName(_UserId, _firstName, _lastName, _City, _Tel);
+            User user = _uLink.FindUserByID(_UserId);
+            return Result.Success(Status.Ok, user);
+        }
+        public Result<User> UpdateUserMail(int _UserId, string _mail, string _passe)
+        {
+            _uLink.UpdateMail(_UserId, _mail, _passe);
+            User user = _uLink.FindUserByID(_UserId);
+            return Result.Success(Status.Ok, user);
         }
     }
 }

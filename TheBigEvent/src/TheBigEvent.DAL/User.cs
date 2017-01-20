@@ -15,8 +15,8 @@ namespace TheBigEvent.DAL
         public string City { get; set; }
         public int Tel { get; set; }
         public string Mail { get; set; }
-        public byte Pro { get; set; }
-        public int Siret { get; set; }
+        public bool Pro { get; set; }
+        public String Siret { get; set; }
         public string Compagny { get; set; }
     
     }

@@ -23,17 +23,11 @@
                 <li>
                     <router-link to="/Galerie">Galerie</router-link>
                 </li>
-                <li>
-                    <router-link to="/client">Client</router-link>
-                </li>
-                <li>
-                    <router-link to="/pro">Fournisseur</router-link>
-                </li>
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#" @click="login('Base')">Connexion</a></li>
-                <li><a href="#" @click="login('Base1')">Incription</a></li>
+                <li><a href="#" @click="login('Base1')">Inscription</a></li>
             </ul>
     </nav>
 </header>
@@ -50,7 +44,7 @@
 	        <li>74 bis avenue Maurice Thorez</li>
 	        <li>94200 IVRY-SUR-SEINE</li><br />
             <li><i class="fa fa-envelope-o fa-2x"></i></li><br />
-            <li><a style="color:#bbb;" href="mailto:admin-bnpparibas@admin.fr">Envoyer un mail</a></li>
+            <li><a style="color:#bbb;" href="mailto:thebigevent@intechinfo.fr">Envoyer un mail</a></li>
 	    </ul>
 	  </div>
 	  <div class="social">
@@ -94,7 +88,14 @@ import Vue from 'vue'
             },
 
             onAuthenticated() {
-                 this.$router.replace('/');
+                if (!AuthService.isProfessionnal())
+                {
+                 this.$router.replace('/client');
+                }
+                else
+                {
+                 this.$router.replace('/pro');
+                }
             }
         },
     };
@@ -104,7 +105,7 @@ import Vue from 'vue'
 <style>
 
 .fond {
-  background-image: url('../../img/header1.jpg');
+  background-image: url('http://img11.hostingpics.net/pics/977879header1.jpg');
   background-repeat: no-repeat;
   background-position: center center;
   -webkit-background-size: cover;
