@@ -18,13 +18,6 @@
                </ul>
             </div>
 
-            <!--<li class="left clearfix">
-                     <div class="chat-body clearfix">
-                        <div class="header_sec">
-                           <strong class="primary-font">Selectioner un Event</strong> <strong class="pull-right"></strong>
-                        </div>
-                     </div>
-                  </li>-->
             <div class="member_list">
                <ul v-if="allcompagny.tcompagny != ''" class="list-unstyled">
                   <li class="left clearfix">
@@ -60,33 +53,40 @@
 		 
 		 <div class="chat_area">
 		 <ul class="list-unstyled">
-                  <li v-for="m of message.content"class="left clearfix"><span class="chat-img pull-left">
-                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
-                        </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="primary-font"></strong> <small class="pull-right text-muted">
-                                        <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
-                                </div>
-                                <p>
-                                    {{ m.text }}
-                                </p>
+       <template v-for="m of message.content">
+
+            <template v-if="userId === m.userId1">
+                <li class="left clearfix"><span class="chat-img pull-right">
+                    <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
+                </span>
+                    <div class="chat-body clearfix">
+                        <div class="header">
+                            <strong class="primary-font pull-right"></strong> <small class="pull-right text-muted">
+                        </div>
+                        <p class="pull-right text-muted">
+                            {{ m.text }}
+                        </p>
+                    </div>
+                </li>
+            </template>
+
+            <template v-else>
+                <li class="left clearfix"><span class="chat-img pull-left">
+                        <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
+                    </span>
+                        <div class="chat-body clearfix">
+                            <div class="header">
+                                <strong class="primary-font"></strong> <small class="pull-right text-muted">
                             </div>
-                        </li>
-                        <!--<li class="left clearfix"><span class="chat-img pull-right">
-                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
-                        </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="primary-font pull-right"></strong> <small class="pull-right text-muted">
-                                        <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
-                                </div>
-                                <p>
-                                    {{ m.text }}
-                                </p>
-                            </div>
-                        </li>-->
-		          </ul>
+                            <p class="pull-left text-muted">
+                                {{ m.text }}
+                            </p>
+                        </div>
+                    </li>
+            </template>
+
+         </template>
+          </ul>
 		 </div>
          <!--chat_area-->
 
