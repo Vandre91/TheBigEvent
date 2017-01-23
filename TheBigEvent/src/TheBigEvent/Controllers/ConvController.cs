@@ -32,5 +32,6 @@ namespace TheBigEvent.Controllers
             Result<IEnumerable<Event>> result = _eventService.getEventById(id);
             return new JsonResult(result);
         }
+
     }
 }
