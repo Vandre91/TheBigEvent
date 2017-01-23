@@ -31,6 +31,14 @@ namespace TheBigEvent.DAL
                         new { Id = id }); 
             }
         }
+        public IEnumerable<Event> GetAllEventProById(string id)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<Event>("Select NomEvent,tbe.tEvent.SalleId,tbe.tEvent.TraiteurId,tbe.tEvent.DecoId,tbe.tEvent.UserId,tbe.tUser.LastName From tbe.tEvent INNER JOIN tbe.tUser ON tbe.tEvent.UserId = tbe.tUser.UserId where MenuId = @Id or SalleId = @Id or DecoId = @Id",
+                        new { Id = id });
+            }
+        }
 
         public void AddEvent(string _NomEvent, string _Localisation, int _MenuId,int _SalleId, int _TraiteurId, int _DecoId, int _UserId)
         {

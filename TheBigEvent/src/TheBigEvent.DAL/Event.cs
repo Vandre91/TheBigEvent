@@ -18,5 +18,6 @@ namespace TheBigEvent.DAL
         public int DecoId { get; set; }
         public string Localisation { get; set; }
         public int UserId { get; set; }
+        public string LastName { get; set; }
     }
 }

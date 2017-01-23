@@ -10,6 +10,7 @@
 /// <reference path="../App/src/services/auth.js" />
 /// <reference path="../app/src/services/conversationservice.js" />
 /// <reference path="../app/src/services/decoservice.js" />
+/// <reference path="../app/src/services/eventproservice.js" />
 /// <reference path="../app/src/services/eventservice.js" />
 /// <reference path="../App/src/services/MessageService.js" />
 /// <reference path="../app/src/services/salleservice.js" />
