@@ -76,7 +76,19 @@ export default {
 
 </script>
 
-<style scoped>
+<style >
+
+strong{
+    color : #337ab7;    
+}
+
+.on {
+    display: block;
+}
+
+.off {
+    display: none;
+}
 
 /* Top Navigation */
 

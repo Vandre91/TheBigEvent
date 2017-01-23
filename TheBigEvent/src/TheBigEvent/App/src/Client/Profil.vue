@@ -1,6 +1,11 @@
 <template>
 
 <div class="container">
+
+  <div id="1" class="off">
+    <div id="snoAlertBox" class="alert alert-success" data-alert="alert">
+        <strong>Succès ! </strong> {{ message }}</div>
+  </div>  
   <h1 class="page-header">Modifier son profil</h1>
 
   <div class="row">
@@ -104,8 +109,17 @@ export default {
             onSubmit: async function(e) {
             e.preventDefault();
             var result = null;
+              if (this.model.tel.length == 0)
+                this.model.tel = 0;   
             result = await UserService.postUserAsync(this.model);
-            if(result != null) this.$router.replace('/Client/board');
+            if(result != null)
+            {
+              this.model = await UserService.getUserAsync(this.email);
+              this.model = this.model.content;
+              this.message = "Les modifications ont bien été apporté."
+              document.getElementById('1').className = 'on';
+              $("#snoAlertBox").fadeIn();
+            }
             },
             onSubmitPasse: async function(e) {
             e.preventDefault();
@@ -114,7 +128,14 @@ export default {
             var result = null;
             result = await UserService.putUserAsync(this.model);
             this.model.pass = null
-            if(result != null) this.$router.replace('/Client/board');
+            if(result != null)
+            {
+              this.model = await UserService.getUserAsync(this.email);
+              this.model = this.model.content;
+              this.message = "Les modifications ont bien été apporté."
+              document.getElementById('1').className = 'on';
+              $("#snoAlertBox").fadeIn();
+            }
             },
             async deleteAccount(){
               await UserService.deleteUserAsync(this.model.userId);
@@ -126,6 +147,10 @@ export default {
 </script>
 
 <style>
+
+strong{
+    color : #337ab7;    
+}
 
 ul.message-dropdown {
     padding: 0;

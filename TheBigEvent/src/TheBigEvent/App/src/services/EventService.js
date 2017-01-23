@@ -24,6 +24,12 @@ class EventService {
     async selectGetAsync(method){
         return await getAsyncSelect(endpoint, method, AuthService.accessToken)
     }
+
+    async getEvent()
+    {
+
+        
+    }
 }
 
 export default new EventService()
