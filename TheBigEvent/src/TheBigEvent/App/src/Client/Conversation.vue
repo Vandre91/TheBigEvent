@@ -132,6 +132,7 @@ data () {
             userIdt : null,
             userIdd : null,
             userIds : null,
+            chit : null,
             allcompagny: {
                 tcompagny : "",
                 dcompagny : "",
@@ -187,16 +188,19 @@ data () {
             var e = await MessageService.GetMessageByEvent(this.userId,this.userIdt);
             this.message = e;
             this.infoMessage.user2 = this.userIdt;
+            this.chit = "Traiteur"
         },
         updateMessaged: async function() {
             var e = await MessageService.GetMessageByEvent(this.userId,this.userIdd);
             this.message = e;
             this.infoMessage.user2 = this.userIdd;
+            this.chit = "Deco"
         },
         updateMessages: async function() {
             var e = await MessageService.GetMessageByEvent(this.userId,this.userIds);
             this.message = e;
             this.infoMessage.user2 = this.userIds;
+            this.chit = "Salle"
             
         },
         AddMessage: async function() {
@@ -204,7 +208,19 @@ data () {
             this.infoMessage.user1 = this.userId; 
             this.infoMessage.text = val;
             await MessageService.postMessageAsync(this.infoMessage);
-            document.getElementById("btn-input").value = "";
+            if(this.chit === "Deco"){
+                var e = await MessageService.GetMessageByEvent(this.userId,this.userIdd);
+                this.message = e;
+                document.getElementById("btn-input").value = "";
+            }else if(this.chit === "Salle"){
+                var e = await MessageService.GetMessageByEvent(this.userId,this.userIds);
+                this.message = e;
+                document.getElementById("btn-input").value = "";
+            }else{
+                var e = await MessageService.GetMessageByEvent(this.userId,this.userIdt);
+                this.message = e;
+                document.getElementById("btn-input").value = "";
+            }
         }
     }
 }

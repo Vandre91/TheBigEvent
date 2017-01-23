@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE tbe.pUserAdd
 (
-	@Passe NVARCHAR(MAX),
+	@Passe varbinary(128),
 	@Mail NVARCHAR(MAX), 
 	@Pro bit, 
 	@Siret NVARCHAR(MAX), 

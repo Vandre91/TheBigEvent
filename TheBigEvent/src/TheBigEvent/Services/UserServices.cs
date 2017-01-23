@@ -1,4 +1,5 @@
-﻿using Microsoft.DotNet.Cli.Utils.CommandParsing;
+﻿using ITI.PrimarySchool.WebApp;
+using Microsoft.DotNet.Cli.Utils.CommandParsing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +11,21 @@ namespace TheBigEvent.Services
     public class UserServices
     {
         readonly UserLink _uLink;
+        readonly PasswordHasher _passwordHasher;
 
         public UserServices(string connectionString)
         {
             _uLink = new UserLink(connectionString);
+            _passwordHasher = new PasswordHasher();
         }
 
         public void addUser(string Mail, string Passe, byte Pro, string Siret, string Compagny)
         {
-            _uLink.AddUser(Mail, Passe, Pro, Siret, Compagny);
+            if (Mail != null)
+            {
+                _uLink.AddUser(Mail, _passwordHasher.HashPassword(Passe), Pro, Siret, Compagny);
+            }
+            
         }
 
 
@@ -29,10 +36,19 @@ namespace TheBigEvent.Services
         }
 
 
-        public User FindUser(string Mail, string Passe)
+        public User FindUser(string Mail, string _Passe)
         {
-            User user = _uLink.FindUser(Mail, Passe);
-            return user;
+            User user = _uLink.FindByEmail(Mail);
+            if (user != null && _passwordHasher.VerifyHashedPassword(user.Passe, _Passe) == PasswordVerificationResult.Success)
+            {
+                return user;
+            }
+
+            return null;
+        }
+        public User FindUsermail(string email)
+        {
+            return _uLink.FindByEmail(email);
         }
         public void DeleteUser(int _id)
         {
@@ -44,7 +60,7 @@ namespace TheBigEvent.Services
             User user = _uLink.FindUserByID(_UserId);
             return Result.Success(Status.Ok, user);
         }
-        public Result<User> UpdateUserMail(int _UserId, string _mail, string _passe)
+        public Result<User> UpdateUserMail(int _UserId, string _mail, byte[] _passe)
         {
             _uLink.UpdateMail(_UserId, _mail, _passe);
             User user = _uLink.FindUserByID(_UserId);

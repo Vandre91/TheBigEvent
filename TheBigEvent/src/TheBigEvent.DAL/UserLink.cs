@@ -24,7 +24,7 @@ namespace TheBigEvent.DAL
                 return con.Query<User>("Select * From tbe.tUser");
             }
         }
-        public void AddUser(string _Mail, string _Passe, byte _Pro, string _Siret, string _Compagny)
+        public void AddUser(string _Mail, byte[] _Passe, byte _Pro, string _Siret, string _Compagny)
         {
             if (_Pro == 0)
             {
@@ -46,6 +46,16 @@ namespace TheBigEvent.DAL
                 return con.Query<User>(
                         "select UserId,Mail,Passe,Pro from tbe.tUser where Mail = @Mail and Passe = @Passe ;",
                         new { Mail = _Mail, Passe = _Passe })
+                    .FirstOrDefault();
+            }
+        }
+        public User FindByEmail(string email)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<User>(
+                        "select UserId,Mail,Passe,Pro from tbe.tUser where Mail = @Mail",
+                        new { Mail = email })
                     .FirstOrDefault();
             }
         }
@@ -92,7 +102,7 @@ namespace TheBigEvent.DAL
                     .FirstOrDefault();
             }
         }
-        public void UpdateMail(int _userId, string _mail, string _passe)
+        public void UpdateMail(int _userId, string _mail, byte[] _passe)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {

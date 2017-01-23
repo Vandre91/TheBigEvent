@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [tbe].[tUser]
 (
 	[UserId] INT NOT NULL PRIMARY KEY identity(0, 1), 
-    [Passe] NVARCHAR(MAX) NOT NULL, 
+    [Passe] varbinary(128) not null,
     [FirstName] NVARCHAR(MAX) NULL, 
     [LastName] NVARCHAR(MAX) NULL, 
     [City] NVARCHAR(MAX) NULL, 

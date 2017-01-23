@@ -8,7 +8,7 @@ namespace TheBigEvent.Models
     public class UserViewModel
     {
         public int UserId { get; set; }
-        public string Passe { get; set; }
+        public byte[] Passe { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string City { get; set; }
