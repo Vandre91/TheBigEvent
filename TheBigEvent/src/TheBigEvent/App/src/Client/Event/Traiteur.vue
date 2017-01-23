@@ -67,7 +67,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 strong{
     color : seagreen;
 }

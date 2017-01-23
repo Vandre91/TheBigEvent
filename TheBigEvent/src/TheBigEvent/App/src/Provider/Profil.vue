@@ -1,6 +1,11 @@
 <template>
 
 <div class="container">
+
+  <div id="1" class="off">
+    <div id="snoAlertBox" class="alert alert-success" data-alert="alert">
+        <strong>Succès ! </strong> {{ message }}</div>
+  </div>
   <h1 class="page-header">Modifier son profil</h1>
 
   <div class="row">
@@ -88,7 +93,8 @@ export default {
         },
         email: null,
         newPass: null,
-        confirmNewPass: null
+        confirmNewPass: null,
+        message:null
        }
   	},
     mounted() {
@@ -98,15 +104,25 @@ export default {
         },
     methods: {
             loadModelUser: async function(email) {
-              this.model = await UserService.getUserAsync(email);
+              this.model = await UserService.getUserAsync(this.email);
               this.model = this.model.content;
             },
 
             onSubmit: async function(e) {
               e.preventDefault();
               var result = null;
+              if (this.model.tel.length == 0)
+                this.model.tel = 0;              
+
               result = await UserService.postUserAsync(this.model);
-              if(result != null) this.$router.replace('/pro/board');
+              if(result != null)
+                {
+                  this.model = await UserService.getUserAsync(this.email);
+                  this.model = this.model.content;
+                  this.message = "Les modifications ont bien été apporté."
+                  document.getElementById('1').className = 'on';
+                  $("#snoAlertBox").fadeIn();
+                }
             },
             onSubmitPasse: async function(e) {
             e.preventDefault();
@@ -115,7 +131,14 @@ export default {
             var result = null;
             result = await UserService.putUserAsync(this.model);
             this.model.pass = null
-            if(result != null) this.$router.replace('/pro/board');
+            if(result != null)
+              {
+                this.model = await UserService.getUserAsync(email);
+                this.model = this.model.content;
+                this.message = "Les modifications ont bien été apporté."
+                document.getElementById('1').className = 'on';
+                $("#snoAlertBox").fadeIn();                
+              }            
             },
             async deleteAccount(){
               await UserService.deleteUserAsync(this.model.userId);

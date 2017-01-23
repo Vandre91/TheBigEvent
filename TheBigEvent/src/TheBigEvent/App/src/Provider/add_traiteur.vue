@@ -1,5 +1,12 @@
 <template>
 <div class="container">
+
+
+<div id="3" class="off">
+    <div id="snoAlertBox" class="alert alert-danger" data-alert="alert">
+        <strong>Erreur ! </strong> {{ message }}</div>
+</div>
+
 <h4 style="text-align:center;"> Vous pouvez ici vous proposer en tant que Traiteur. Une fois inscrit en tant que traiteur, vous pourrez proposer des menus.
 <br>Les menus sont catégorisés par Entré | Plat | Dessert et leurs prix diffèrent par rapport au nombre de personne.
 <br>Exemple : un gâteau pour une personne coûtent 10€.
@@ -38,11 +45,11 @@
                     <br /><br />
                     <div class="form-group">
                         <label>*Quantité de personnes : </label>
-                        <input v-model="model_menu.Nbpersonnes" class="form-control" required>
+                        <input v-on:keyup="alertw()" v-model="model_menu.Nbpersonnes" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>*Prix approximatif (en €) par rapport à la quantité de personnes :  </label>
-                        <input v-model="model_menu.Prix" class="form-control" required>
+                        <input v-on:keyup="alertw()" v-model="model_menu.Prix" class="form-control" required>
                     </div>
                     <button type="submit" class="btn btn-default">Submit Button</button>
                     <button type="reset" class="btn btn-default">Reset Button</button>
@@ -72,7 +79,8 @@ export default {
         },
         model_recept : {},
         user: {},
-        email: null
+        email: null,
+        message: "Aucun"
        }
   	},
     mounted() {
@@ -94,10 +102,7 @@ export default {
                 this.model_traiteur.userId = this.user.userId;
                 result = await UserService.addTraiteurAsync(this.model_traiteur);
                 if(result != false)
-                {
-                    console.log("Un traiteur vien d'être rajouter");
                     this.$router.replace('/pro/my_services');
-                }
             },
 
             onSubmit2: async function(e) {
@@ -111,16 +116,34 @@ export default {
                     return;
                 result = await UserService.addMenuAsync(this.model_menu);
                 if(result != false)
-                {
-                    console.log("Un Menu vien d'être rajouter");
                     this.$router.replace('/pro/my_services');
-                }
             },
             addClassOn: async function()
             {
                 document.getElementById('2').className = 'on';
                 document.getElementById('1').className = 'off';
-            }
+            },
+            alertw() {
+                var reg = /^\d+$/;
+                if (reg.test(this.model_menu.Nbpersonnes) == false && this.model_menu.Nbpersonnes != null && this.model_menu.Nbpersonnes.length != 0)
+                {
+                    this.message = "Le nombre de place ne doit contenir que des chiffres."
+                    document.getElementById('3').className = 'on';
+                    $("#snoAlertBox").fadeIn();
+                    return;
+                }
+                else
+                    document.getElementById('3').className = 'off';
+                if (reg.test(this.model_menu.Prix) == false && this.model_menu.Prix != null && this.model_menu.Prix.length != 0)
+                {
+                    this.message = "Le prix ne doit contenir que des chiffres."
+                    document.getElementById('3').className = 'on';
+                    $("#snoAlertBox").fadeIn();
+                    return;
+                }
+                else
+                    document.getElementById('3').className = 'off';
+            }            
         }
 }
 
@@ -130,13 +153,4 @@ export default {
 .btn {
     margin-top: 0px;
 }
-
-.on {
-    display: block;
-}
-
-.off {
-    display: none;
-}
-
  </style>

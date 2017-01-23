@@ -47,7 +47,6 @@ class UserService {
     }
     async addMenuAsync(model)
     {
-        console.log(model);
         return await postAsync(endpoint, 'menu/' + model.userId, AuthService.accessToken, model);
     }
 

@@ -53,7 +53,6 @@ namespace TheBigEvent.Controllers
                     Result<IEnumerable<Event>> result_event = _eventService.getEvent();
                     return new JsonResult(result_event);
             }
-            
         }
 
         [HttpPost]
@@ -61,8 +60,6 @@ namespace TheBigEvent.Controllers
         {
             _eventService.addEvent( model.NomEvent, model.Localisation, model.MenuId, model.SalleId, model.TraiteurId, model.DecoId, model.UserId);
         }
-
-
 
     }
 }

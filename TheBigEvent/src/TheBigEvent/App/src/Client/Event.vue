@@ -90,6 +90,7 @@ export default {
             event: {
                 name: null,
                 ville: "paris",
+                NbInvite: 0,
                 id_traiteur: null,
                 id_menu: null, 
                 id_deco: null,
@@ -115,7 +116,8 @@ export default {
             switch(data.method){
                 case "info":
                     this.event.name = data.name
-                    this.event.ville = data.ville 
+                    this.event.ville = data.ville
+                    this.event.NbInvite = data.NbInvite
                     this.maxTypes = ++this.actualTypes
                 break
                 case "traiteur":
@@ -141,7 +143,7 @@ export default {
                 case "valid":
                    this.event.UserId = this.models.content.userId
                    this.event.NomEvent = this.event.name
-                   this.event.NbInvite = 5
+                   this.event.NbInvite = this.event.NbInvite
                    this.event.Prix = "5"
                    this.event.MenuId = this.event.id_menu
                    this.event.SalleId = this.event.id_salle
