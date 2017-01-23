@@ -19,5 +19,9 @@ namespace TheBigEvent.Services
         {
             return Result.Success(Status.Ok, _mLink.GetAllMessage(id1,id2));
         }
+        public void addMessage( int _UserId1, int _UserId2, string _Text)
+        {
+            _mLink.AddMessage(_UserId1, _UserId2, _Text);
+        }
     }
 }

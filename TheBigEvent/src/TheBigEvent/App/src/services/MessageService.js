@@ -12,6 +12,10 @@ class MessageService {
             console.log(id2);
             return await getAsync(endpoint, id1 + id2, AuthService.accessToken);
         }
+    async addMessageAsync(infoMessage) 
+    {
+        return await postAsync(endpoint, '', AuthService.accessToken, infoMessage);
+    }
 
 }
 

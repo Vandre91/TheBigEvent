@@ -29,5 +29,10 @@ namespace TheBigEvent.Controllers
             Result<IEnumerable<Message>> result = _messageService.getMessage(user2, user1);
             return new JsonResult(result);
         }
+        [HttpPost]
+        public void AddMessage([FromBody] MessageViewModel model)
+        {
+            _messageService.addMessage(model.user1, model.user2, model.text);
+        }
     }
 }

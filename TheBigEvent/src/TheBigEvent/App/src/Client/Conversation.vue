@@ -12,8 +12,7 @@
                <span class="caret pull-right"></span>
                </button>
                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li v-for="(e,index) of event.content"><a @click="updateData(index)"> {{ e.nomEvent }} </a>  
-                
+                    <li v-if= "event.content != null" v-for="(e,index) of event.content"><a @click="updateData(index)"> {{ e.nomEvent }} </a>  
 			        </li>  
                </ul>
             </div>
@@ -28,14 +27,14 @@
                      </div>
                   </li>
                   <li class="left clearfix">
-                     <div class="chat-body clearfix">
+                     <div class="chat-body clearfix" @click="updateMessaged()">
                         <div class="header_sec">
                            <strong class="primary-font">{{ allcompagny.dcompagny }}</strong> <strong class="pull-right"></strong>
                         </div>
                      </div>
                   </li>
                   <li class="left clearfix">
-                     <div class="chat-body clearfix">
+                     <div class="chat-body clearfix" @click="updateMessages()">
                         <div class="header_sec">
                            <strong class="primary-font">{{ allcompagny.scompagny }}</strong> <strong class="pull-right"></strong>
                         </div>
@@ -53,7 +52,7 @@
 		 
 		 <div class="chat_area">
 		 <ul class="list-unstyled">
-       <template v-for="m of message.content">
+       <template v-if= "message.content != null" v-for="m of message.content">
 
             <template v-if="userId === m.userId1">
                 <li class="left clearfix"><span class="chat-img pull-right">
@@ -98,7 +97,7 @@
                     <div class="input-group">
                         <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
                         <span class="input-group-btn">
-                            <button class="btn btn-warning btn-sm" id="btn-chat">
+                            <button @click="AddMessage()"class="btn btn-warning btn-sm" id="btn-chat" type="submit">
                                 Send</button>
                         </span>
                     </div>
@@ -137,6 +136,11 @@ data () {
                 tcompagny : "",
                 dcompagny : "",
                 scompagny : ""
+            },
+            infoMessage: {
+                user1 : "",
+                user2 : "",
+                text : ""
             }
             
             
@@ -182,12 +186,27 @@ data () {
             this.userIdt = this.traiteur.content[i].userId;
         },
         updateMessaget: async function() {
-          console.log("je suis passer");
             var e = await MessageService.getMessageIdAsync(this.userId,this.userIdt);
             this.message = e;
-
-            console.log(this.message);
+            this.infoMessage.user2 = this.userIdt;
+        },
+        updateMessaged: async function() {
+            var e = await MessageService.getMessageIdAsync(this.userId,this.userIdd);
+            this.message = e;
+            this.infoMessage.user2 = this.userIdd;
+        },
+        updateMessages: async function() {
+            var e = await MessageService.getMessageIdAsync(this.userId,this.userIds);
+            this.message = e;
+            this.infoMessage.user2 = this.userIds;
             
+        },
+        AddMessage: async function() {
+            var val = document.getElementById("btn-input").value;
+            this.infoMessage.user1 = this.userId; 
+            this.infoMessage.text = val;
+            await MessageService.addMessageAsync(this.infoMessage);
+            document.getElementById("btn-input").value = "";
         }
         
     }

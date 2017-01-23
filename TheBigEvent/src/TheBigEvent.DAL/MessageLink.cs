@@ -23,5 +23,13 @@ namespace TheBigEvent.DAL
                         new { Id = id1,Id2 =id2  });
             }
         }
+        public void AddMessage(int _UserId1, int _UserId2,string _text)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Query<Message>("INSERT INTO tbe.tMessage(UserId1,UserId2,Text) VALUES(@Id,@Id2,@Text);",
+                    new { Id = _UserId1, Id2 = _UserId2,Text = _text });
+            }
+        }
     }
 }
