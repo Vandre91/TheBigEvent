@@ -7,10 +7,9 @@
     <div class="list-group">
         <form>
 
-    			<a href="#" class="list-group-item">
-                    <template v-for="models in model">
+    			<a v-for="models in model" class="list-group-item">
+                    <template>
 					<div class="media">
-			        	<span class="label label-danger pull-right">Le plus cher</span>
 						<div class="checkbox pull-right">
 				    		<label>
 								<input type="radio" :value="models.salleId" v-model="id_salle_new">				
@@ -18,10 +17,12 @@
 						</div>
 						<div class="pull-left">
 						</div>
-						<div class="media-body">
-							<h4 class="media-heading" >Salle</h4>
-							<p>Accueillir: {{models.nbPlace}} invités</p>
-						</div>
+                            <div class="media-body">
+                                <h4 class="media-heading" style="text-decoration:underline;" ><strong>{{models.nom}}</strong></h4>
+                                <strong>Prix</strong> : <p>{{models.prix}}</p>
+                                <strong>Nombre de place</strong> : <p>{{models.nbPlace}}</p>
+                                <strong>Description</strong> : <p>{{models.descriptions}}</p>
+                            </div>
 
 					</div>					
                     </template>
@@ -63,3 +64,10 @@ export default {
     }
 }
 </script>
+
+<style>
+strong{
+    color : seagreen;
+}
+
+</style>

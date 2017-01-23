@@ -23,21 +23,26 @@ namespace TheBigEvent.DAL
                 return con.Query<Traiteur>("Select *, tbe.tUser.Compagny as Compagny, tbe.tUser.City as City From tbe.tTraiteur join tbe.tUser ON tbe.tUser.UserId = tbe.tTraiteur.UserId");
             }
         }
-        public IEnumerable<Traiteur> GetAlltraiteurByEvent(int _id)
+
+
+        public Traiteur getTraiteur(int _UserId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                return con.Query<Traiteur>("select NomEvent,tbe.tEvent.UserId,tbe.tEvent.TraiteurId,tbe.tTraiteur.UserId,tbe.tUser.Compagny from tbe.tEvent INNER JOIN tbe.tTraiteur ON tbe.tEvent.TraiteurId = tbe.tTraiteur.TraiteurId INNER JOIN tbe.tUser ON tbe.tTraiteur.UserId = tbe.tUser.UserId where tbe.tEvent.UserId = @Id",
-                        new { Id = _id });
+                return con.Query<Traiteur>(
+                        "select * from tbe.tTraiteur where UserId = @UserId ;",
+                        new { UserId = _UserId })
+                    .FirstOrDefault();
             }
         }
-        public void AddTraiteur(string _UserId)
+
+        public void AddTraiteur(int _UserId, string _Descriptions, string _Nom)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
                     "tbe.pAddTraiteur",
-                    new { UserId = _UserId },
+                    new { UserId = _UserId, Descriptions = _Descriptions, Nom = _Nom },
                     commandType: CommandType.StoredProcedure);
             }
         }

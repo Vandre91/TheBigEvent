@@ -11,6 +11,8 @@ export default {
     methods:{
         nextStep(){
              this.$emit('nextStep', {method: "valid"})
+
+             
         }
     }
 }

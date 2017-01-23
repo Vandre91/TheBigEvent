@@ -11,6 +11,10 @@
     <div class="widget-content">
         <div class="shortcuts">
 
+            <router-link to="/pro/my_services">   
+            <a href="javascript:;" class="shortcut"><i class="shortcut-icon fa fa-plus"></i><span class="shortcut-label">Vos prestations actuelle : </span></a>
+            </router-link>
+
             <router-link to="/pro/Add_salle">   
             <a href="javascript:;" class="shortcut"><i class="shortcut-icon fa fa-plus"></i><span class="shortcut-label"> S'ajouter en tant que locataire.</span></a>
             </router-link>
@@ -21,11 +25,10 @@
             </router-link>
 
             <router-link to="/pro/Add_traiteur">   
-            <a href="javascript:;" class="shortcut"><i class="shortcut-icon fa fa-plus"></i><span class="shortcut-label">S'ajouter en tant que traiteur.</span></a>
+            <a href="javascript:;" class="shortcut"><i class="shortcut-icon fa fa-plus"></i><span class="shortcut-label">S'ajouter en tant que traiteur et ajouter des menus.</span></a>
             </router-link>
 
     </div>
-        <!-- /shortcuts --> 
     </div>
     <!-- /widget-content --> 
     </div>

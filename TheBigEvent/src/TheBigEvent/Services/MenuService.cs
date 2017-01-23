@@ -15,13 +15,30 @@ namespace TheBigEvent.Services
             _mLink = new MenuLink(connectionString);
         }
 
-        public void addMenu(string _Nom, string _Cat, string _Prix, string _NbPersonnes, string _TraiteurId)
-        {
-            _mLink.AddMenu(_Nom, _Cat, _Prix, _NbPersonnes, _TraiteurId);
-        }
         public Result<IEnumerable<Menu>> getmenu()
         {
             return Result.Success(Status.Ok, _mLink.GetAllMenu());
+        }
+
+        public bool addMenuByTraiteurId(string nom, string cat, int Prix, int NbPersonnes, int TraiteurId)
+        {
+            _mLink.AddMenu(nom, cat, Prix, NbPersonnes, TraiteurId);
+            return (true);
+        }
+
+        public Result<IEnumerable<Menu>> getMenubyid(int id)
+        {
+            return Result.Success(Status.Ok, _mLink.getMenu(id));
+        }
+
+        public void DeleteAllMenubyId(int TraiteurId)
+        {
+            _mLink.DeleteAllMenubyId(TraiteurId);
+        }
+
+        public void DeleteMenu(int _id)
+        {
+            _mLink.Delete(_id);
         }
 
     }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TheBigEvent.DAL
+namespace TheBigEvent.Models
 {
-    public class Menu
+    public class MenuViewModels
     {
         public int MenuId { get; set; }
         public string Nom { get; set; }

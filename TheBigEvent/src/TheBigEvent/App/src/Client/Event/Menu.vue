@@ -1,7 +1,7 @@
 <template>
 <div class="tab-pane" role="tabpanel" id="step6">
     <h3>menu</h3>
-    <p>Choisissez votre menu </p>
+    <p>Choisissez votre menu</p>
 
     <div class="row">
         <form>
@@ -9,21 +9,20 @@
             <div class="col-md-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading clickable">
-                        <h3 class="panel-title">
-                            {{models.compagny}}</h3>
+                        <h3 class="panel-title">{{models.nom}}</h3>
                         <span class="pull-right "></span>
                     </div>
                     <div class="panel-body">
                     <div class="col-md-6">
-                        <h4>{{models.prix}} €</h4>
-
-                        <div class="funkyradio">
-                        {{models.nbPersonnes}}
-                        </div>
-                        
-                    </div>
-                    <input type="radio" :value="models.menuId" v-model="id_menu_new">
-                    </div>
+                    <div class="checkbox pull-right">
+                        <label>
+                            <input type="radio" :value="models.menuId" v-model="id_menu_new">			
+                        </label>
+                    </div>                
+                        <h4><strong> Prix approximatif : </strong></h4>{{models.prix}} €
+                        <h4><strong> Catégorie : </strong></h4>{{models.cat}}
+                        <h4><strong>{{models.cat }}</strong> pour <strong>{{ models.nbPersonnes }}</strong> Personnes</h4>
+                        <h4><strong>Compagnie :</strong></h4> {{ models.compagny }}
             </div>
         </div>
         </template>
@@ -64,3 +63,10 @@ export default {
     }
 }
 </script>
+
+<style>
+strong{
+    color : seagreen;
+}
+
+</style>

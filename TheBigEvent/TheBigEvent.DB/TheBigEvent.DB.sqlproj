@@ -82,8 +82,6 @@
     <Build Include="pUpdateTraiteur.sql" />
     <Build Include="pUpdateMenu.sql" />
     <Build Include="pUpdateSalle.sql" />
-    <Build Include="tMessage.sql" />
-    <Build Include="pAddMessage.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TheBigEvent.DB.refactorlog" />
@@ -91,5 +89,6 @@
   <ItemGroup>
     <None Include="pUserDelete.sql" />
     <None Include="pAddDeco.sql" />
+    <None Include="pDeleteMenubyId.sql" />
   </ItemGroup>
 </Project>

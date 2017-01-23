@@ -20,43 +20,80 @@ class UserService {
     {
         return await putAsync(endpoint, model.userId, AuthService.accessToken, model);
     }
-// On récupère les informations des différents fournisseurs
-    async getTraiteurAsync(Id)
-    {
-        return await getAsync(endpoint, Id, AuthService.accessToken);
-    }
-
-    async getDecoAsync(Id)
-    {
-        return await getAsync(endpoint, Id, AuthService.accessToken);
-    }
-
-    async getSalleAsync(Id)
-    {
-        return await getAsync(endpoint, Id, AuthService.accessToken);
-    }
-
-// On permet de modifier tout les informations des fournisseurs 
-    async updateTraiteurAsync(model) {
-        return await putAsync(endpoint, model.Id, AuthService.accessToken, model);
-    }
-
-    async updateDecoAsync(model) {
-        return await putAsync(endpoint, model.Id, AuthService.accessToken, model);
-    }
-
-    async updateSalleAsync(model) {
-        return await putAsync(endpoint, model.Id, AuthService.accessToken, model);
-    }
-
-// Permet de modifier les informations de l'utilisateur ou du compte
-    async updateUserAsync(model) {
-        return await putAsync(endpoint, model.userId, AuthService.accessToken, model);
-    }
 // Permet de supprimer le compte utilisateur
-    async deleteUserAsync(Id) {
+    async deleteUserAsync(Id)
+    {
         return await deleteAsync(endpoint, Id, AuthService.accessToken);
     }
+
+// Ajouter une prestation    
+   async addSalleAsync(model)
+    {
+        return await postAsync(endpoint, 'salle/' + model.userId, AuthService.accessToken, model);
+    }
+
+    async adddecoAsync(model)
+    {
+        return await postAsync(endpoint, 'deco/' + model.userId, AuthService.accessToken, model);
+    }
+// Pour le traiteur, on a besoin de savoir si c'est un traiteur ou non, si c'est le cas il peut  crée un Menu
+    async getTraiteurAsync(Id)
+    {
+        return await getAsync(endpoint, 'getTraiteur/' + Id, AuthService.accessToken);        
+    }
+    async addTraiteurAsync(model)
+    {
+        return await postAsync(endpoint, 'traiteur/' + model.userId, AuthService.accessToken, model);
+    }
+    async addMenuAsync(model)
+    {
+        console.log(model);
+        return await postAsync(endpoint, 'menu/' + model.userId, AuthService.accessToken, model);
+    }
+
+// Ici on veut récupèrer toute les informations de tout les prestations pour le fournisseur en question
+
+    async getsallebyid(Id)
+    {
+        return await getAsync(endpoint, 'getSalle/' + Id, AuthService.accessToken);
+    }
+
+    async getdecobyid(Id)
+    {
+        return await getAsync(endpoint, 'getDeco/' + Id, AuthService.accessToken);
+    }
+
+    async getmenubyid(Id)
+    {
+        return await getAsync(endpoint, 'getMenu/' + Id, AuthService.accessToken);
+    }
+
+
+
+// Ici on permet la suppression d'une prestation
+
+    async deleteSalle(Id)
+    {
+        return await deleteAsync(endpoint, 'deleteSalle/' + Id, AuthService.accessToken);
+    }
+
+    async deleteDeco(Id)
+    {
+        return await deleteAsync(endpoint, 'deleteDeco/' + Id, AuthService.accessToken);
+    }
+
+    async deleteTraiteur(Id)
+    {
+        return await deleteAsync(endpoint, 'deleteTraiteur/' + Id, AuthService.accessToken);
+    }
+
+    async deleteMenu(Id)
+    {
+        return await deleteAsync(endpoint, 'deleteMenu/' + Id, AuthService.accessToken);
+    }
+
+
+
 }
 
 export default new UserService()

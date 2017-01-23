@@ -4,9 +4,10 @@
     <p>Choisissez votre décorateur</p>
     <div class="container" id="step2">
     <div class="list-group">
+
+   			<a class="list-group-item" v-for="models in model">
                 <form>
-    			<a href="#" class="list-group-item">
-                    <template v-for="models in model">
+                    <template>
 					<div class="media">
 			        	<span class="label label-danger pull-right"></span>
 						<div class="checkbox pull-right">
@@ -16,16 +17,16 @@
 						</div>
 						<div class="pull-left">
 						</div>
-						<div class="media-body">
-							<h4 class="media-heading" ></h4>
-                            FAKE PRIX
-							<p>Marriage</p>
-						</div>
+                            <div class="media-body">
+                                <h4 class="media-heading" style="text-decoration:underline;" ><strong>{{models.nom}}</strong></h4>
+                                <strong>Prix approximatif</strong> : <p>{{models.prix}}</p>
+                                <strong>Description</strong> : <p>{{models.descriptions}}</p>
+                            </div>
 
 					    </div>					
                     </template>
-			      </a>				
                   </form>
+    	      </a>				
 			</div>
     </div>
 
@@ -62,3 +63,10 @@ export default {
     }
 }
 </script>
+
+<style>
+strong{
+    color : seagreen;
+}
+
+</style>

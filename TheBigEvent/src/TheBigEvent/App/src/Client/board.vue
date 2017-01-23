@@ -8,14 +8,36 @@
     <table class="table">
         <thead>
             <tr>
+                <th>#</th>
                 <th>Nom de votre réservations</th>
+                <th>Date</th>
                 <th>Lieu</th>
             </tr>
         </thead>
         <tbody>
-            <tr v-for="e of event.content">
-                <td>{{ e.nomEvent }}</td>
-                <td>{{ e.localisation }}</td>
+            <tr class="success">
+                <td>1</td>
+                <td>Noêl</td>
+                <td>25/12/2016</td>
+                <td>Londre</td>
+            </tr>
+            <tr class="success">
+                <td>2</td>
+                <td>Nouvel an</td>
+                <td>31/12/2016</td>
+                <td>Paris</td>
+            </tr>
+            <tr class="warning">
+                <td>3</td>
+                <td>Itération PI</td>
+                <td>10/01/2017</td>
+                <td>In'Tech</td>
+            </tr>
+            <tr class="danger">
+                <td>4</td>
+                <td>Forum PI</td>
+                <td>23/01/2017</td>
+                <td>In'Tech</td>
             </tr>
         </tbody>
     </table>
@@ -62,46 +84,15 @@
 </template>
 
 <script>
-
-import AuthService from '../services/auth.js'
-import UserService from '../services/UserService.js'
-import EventService from '../services/EventService.js'
-import ConversationService from '../services/ConversationService.js'
-
 export default {
-data () {
-      return {
-            model: null,
-            event : [],
-            email: null,
-            userId : null
-            
-        }
-  	},
-    async mounted() {
-            this.email = AuthService.hisEmail();
-            await this.loadModelUser(this.email);
-            await this.loadEventId();
-    },
-    methods: {
-        loadModelUser: async function(email) {
-            var model = await UserService.getUserAsync(email);
-            this.model = model;
-            this.userId = this.model.content.userId
-        },
-        loadEventId: async function() {
-            var e = await ConversationService.getEventIdAsync(this.userId);
-            this.event = e;
-        }
-    }
 }
+
 </script>
 
 <style scoped>
 
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.css";
-
 
 .shortcuts {
 	text-align: center;	

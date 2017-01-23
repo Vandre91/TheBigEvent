@@ -95,8 +95,6 @@ export default {
 <style scoped>
 
 @import "~bootstrap/dist/css/bootstrap.min.css";
-@import "~font-awesome/css/font-awesome.css";
-
 
 .shortcuts {
 	text-align: center;	

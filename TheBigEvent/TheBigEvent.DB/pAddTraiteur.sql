@@ -1,10 +1,12 @@
 ﻿CREATE PROCEDURE tbe.pAddTraiteur
 (
-	@UserId INT
+	@UserId INT,
+	@Nom NVARCHAR(MAX),
+	@Descriptions NVARCHAR(MAX)
 )
 AS
 BEGIN 
-	insert into tbe.tTraiteur(UserId) 
-	VALUES(@UserId);
+	insert into tbe.tTraiteur(UserId,Nom,Descriptions) 
+	VALUES(@UserId,@Nom,@Descriptions);
 	RETURN 0;
 end;
