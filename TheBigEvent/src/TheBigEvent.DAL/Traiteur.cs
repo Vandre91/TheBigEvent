@@ -13,5 +13,6 @@ namespace TheBigEvent.DAL
         public string Compagny { get; set; }
         public string Nom { get; set; }
         public string Descriptions { get; set; }
+        public int Userid { get; set; }
     }
 }

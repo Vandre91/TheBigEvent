@@ -23,6 +23,14 @@ namespace TheBigEvent.DAL
                 return con.Query<Salle>("Select * From tbe.Salle");
             }
         }
+        public IEnumerable<Salle> GetAllSalleByEvent(int _id)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<Salle>("select NomEvent,tbe.tEvent.UserId,tbe.tEvent.SalleId,tbe.Salle.UserId,tbe.tUser.Compagny from tbe.tEvent INNER JOIN tbe.Salle ON tbe.tEvent.SalleId = tbe.Salle.SalleId INNER JOIN tbe.tUser ON tbe.Salle.UserId = tbe.tUser.UserId where tbe.tEvent.UserId = @Id",
+                        new { Id = _id });
+            }
+        }
         public void AddSalle(int _NbPlace, int _UserId, string _Descriptions, float _Prix, string _Nom)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))

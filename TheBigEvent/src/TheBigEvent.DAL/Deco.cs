@@ -12,5 +12,8 @@ namespace TheBigEvent.DAL
         public string Descriptions { get; set; }
         public float Prix { get; set; }
         public string nom { get; set; }
+        public string NomEvent { get; set; }
+        public int Userid { get; set; }
+        public string Compagny { get; set; }
     }
 }
