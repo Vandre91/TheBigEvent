@@ -175,11 +175,10 @@ data () {
             this.salle = e;
         },
         updateData(i){
-            console.log("je suis  la");
             this.allcompagny.tcompagny = this.traiteur.content[i].compagny;
             this.allcompagny.dcompagny = this.deco.content[i].compagny;
             this.allcompagny.scompagny = this.salle.content[i].compagny;
-            console.log(i);
+            
             this.userIdd = this.deco.content[i].userId;
             this.userIds = this.salle.content[i].userId;
             this.userIdt = this.traiteur.content[i].userId;
