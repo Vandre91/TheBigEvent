@@ -23,21 +23,27 @@ namespace TheBigEvent.DAL
                 return con.Query<Deco>("Select * From tbe.tDeco");
             }
         }
-        public IEnumerable<Deco> GetAllDecoByEvent(int _id)
+
+        public IEnumerable<Deco> getDeco(int _UserId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                return con.Query<Deco>("select NomEvent,tbe.tEvent.UserId,tbe.tEvent.DecoId,tbe.tDeco.UserId,tbe.tUser.Compagny from tbe.tEvent INNER JOIN tbe.tDeco ON tbe.tEvent.DecoId = tbe.tDeco.DecoId INNER JOIN tbe.tUser ON tbe.tDeco.UserId = tbe.tUser.UserId where tbe.tEvent.UserId = @Id",
-                        new { Id = _id });
+                return con.Query<Deco>("select * from tbe.tDeco where UserId = @UserId ;",
+                        new
+                        {
+                            UserId = _UserId
+                        });
             }
         }
-        public void AddDeco(string _UserId)
+
+
+        public void AddDeco(int _UserId, string _Descriptions, float _Prix, string _Nom)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
                     "tbe.pAddDeco",
-                    new { UserId = _UserId },
+                    new { UserId = _UserId, Descriptions = _Descriptions, Prix = _Prix, Nom = _Nom },
                     commandType: CommandType.StoredProcedure);
             }
         }

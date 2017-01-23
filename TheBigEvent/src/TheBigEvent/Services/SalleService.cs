@@ -19,9 +19,21 @@ namespace TheBigEvent.Services
         {
             return Result.Success(Status.Ok, _sLink.GetAllSalle());
         }
-        public Result<IEnumerable<Salle>> getSalleByEvent(int _id)
+
+        public bool addSalleByUserId(int NbPlace, int UserId, string Description, float Prix, string Nom)
         {
-            return Result.Success(Status.Ok, _sLink.GetAllSalleByEvent(_id));
+            _sLink.AddSalle(NbPlace, UserId, Description, Prix, Nom);
+            return (true);
+        }
+
+        public Result<IEnumerable<Salle>> getSallebyid(int id)
+        {
+            return Result.Success(Status.Ok, _sLink.getSalle(id));
+        }
+
+        public void DeleteSalle(int _id)
+        {
+            _sLink.Delete(_id);
         }
     }
 }

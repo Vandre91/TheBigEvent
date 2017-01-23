@@ -21,6 +21,7 @@ namespace TheBigEvent.Services
             _uLink.AddUser(Mail, Passe, Pro, Siret, Compagny);
         }
 
+
         public Result<User> getUser(string email)
         {
             User user = _uLink.getUser(email);

@@ -48,6 +48,7 @@
                             </span>
                         </a>
                     </li>
+
                 </ul>
             </div>
 </div>
@@ -55,10 +56,6 @@
 </section>
 </div>
 </div>
-
-
-
-
 </template>
 
 <script>
@@ -152,6 +149,7 @@ export default {
                    this.event.DecoId = this.event.id_deco
                    this.event.Localisation = this.event.ville
                    EventService.createEventAsync(this.event)
+                   
                    this.$router.replace('/Client/board');
                 break
             }

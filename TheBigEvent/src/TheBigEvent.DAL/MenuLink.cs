@@ -23,7 +23,23 @@ namespace TheBigEvent.DAL
                 return con.Query<Menu>("Select *, tbe.tUser.Compagny as Compagny From tbe.tMenu join tbe.tTraiteur ON tbe.tTraiteur.TraiteurId = tbe.tMenu.TraiteurId JOIN tbe.tUser ON tbe.tUser.UserId = tbe.tTraiteur.UserId");
             }
         }
-        public void AddMenu(string _Nom, string _Cat, string _Prix, string _NbPersonnes, string _TraiteurId)
+
+        public IEnumerable<Menu> getMenu(int _TraiteurId)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<Menu>("select * from tbe.tMenu where TraiteurId = @TraiteurId ;",
+                        new
+                        {
+                            TraiteurId = _TraiteurId
+                        });
+            }
+        }
+
+
+
+
+        public void AddMenu(string _Nom, string _Cat, int _Prix, int _NbPersonnes, int _TraiteurId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
@@ -50,6 +66,17 @@ namespace TheBigEvent.DAL
                 con.Execute(
                     "tbe.pDeleteMenu",
                     new { MenuId = _MenuId },
+                    commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void DeleteAllMenubyId(int _TraiteurId)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Execute(
+                    "tbe.pDeleteMenubyId",
+                    new { TraiteurId = _TraiteurId },
                     commandType: CommandType.StoredProcedure);
             }
         }

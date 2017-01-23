@@ -6,11 +6,10 @@
                 <div class="container" id="step2">
                     <div class="list-group">
 
-    			<a href="#" class="list-group-item">
-                <form>
-                    <template v-for="models in model">
+    			<a class="list-group-item" v-for="models in model">
+                <form >
+                    <template>
                         <div class="media">
-                            <span class="label label-danger pull-right">Cheapest</span>
                             <div class="checkbox pull-right">
                                 <label>
                                     <input type="radio" :value="models.traiteurId" v-model="id_traiteur_new">				
@@ -19,10 +18,13 @@
                             <div class="pull-left">
                             </div>
                             <div class="media-body">
-                                <h4 class="media-heading" >{{models.compagny}}</h4>
-                                <p>{{models.city}}</p>
+                                <h4 class="media-heading" style="text-decoration:underline;" ><strong>{{models.nom}}</strong></h4>
+                                <strong> Compagnie</strong> : <p>{{models.compagny}}</p>
+                                <strong>Description</strong> : <p>{{models.descriptions}}</p>
+                                <strong>Ville</strong> <p v-if="models.city != null">{{models.city}}</p>
+                                <p v-else>Non indiqué </p>
                             </div>
-
+                            <br>
                         </div>
                     </template>
                 </form>
@@ -64,3 +66,10 @@ export default {
     }
 }
 </script>
+
+<style>
+strong{
+    color : seagreen;
+}
+
+</style>

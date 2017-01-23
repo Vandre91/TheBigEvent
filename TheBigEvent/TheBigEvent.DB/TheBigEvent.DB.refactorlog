@@ -63,18 +63,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="Descriptions" />
   </Operation>
-  <Operation Name="Rename Refactor" Key="2f7a1bb5-422c-431f-8f20-8296c08c0fb0" ChangeDateTime="01/19/2017 14:50:04">
-    <Property Name="ElementName" Value="[tbe].[tMessage].[Id]" />
+  <Operation Name="Rename Refactor" Key="f9801447-b249-4d75-b0e2-053863b2bff5" ChangeDateTime="01/19/2017 11:27:45">
+    <Property Name="ElementName" Value="[tbe].[tDeco].[Description]" />
     <Property Name="ElementType" Value="SqlSimpleColumn" />
-    <Property Name="ParentElementName" Value="[tbe].[tMessage]" />
+    <Property Name="ParentElementName" Value="[tbe].[tDeco]" />
     <Property Name="ParentElementType" Value="SqlTable" />
-    <Property Name="NewName" Value="MessageId" />
+    <Property Name="NewName" Value="Descriptions" />
   </Operation>
-  <Operation Name="Rename Refactor" Key="654cfbeb-7d6d-4ea1-90f3-f5667859a774" ChangeDateTime="01/19/2017 15:01:08">
-    <Property Name="ElementName" Value="[tbe].[tMessage].[Message]" />
+  <Operation Name="Rename Refactor" Key="66f38b7b-18e1-4b30-b328-c4cab07ad75c" ChangeDateTime="01/19/2017 13:15:52">
+    <Property Name="ElementName" Value="[tbe].[tTraiteur].[Description]" />
     <Property Name="ElementType" Value="SqlSimpleColumn" />
-    <Property Name="ParentElementName" Value="[tbe].[tMessage]" />
+    <Property Name="ParentElementName" Value="[tbe].[tTraiteur]" />
     <Property Name="ParentElementType" Value="SqlTable" />
-    <Property Name="NewName" Value="Text" />
+    <Property Name="NewName" Value="Descriptions" />
   </Operation>
 </Operations>

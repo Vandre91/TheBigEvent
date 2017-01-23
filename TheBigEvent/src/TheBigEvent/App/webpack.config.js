@@ -1,6 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
-var wwwroot = "../../wwwroot";
+var wwwroot = "../../TheBigEvent/wwwroot";
 
 module.exports = {
   entry: './src/main.js',
@@ -25,7 +25,8 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'url-loader',
         options: {
-          name: '[name].[ext]?[hash]'
+          name: '[name].[ext]?[hash]',
+          limit: 10000
         }
         
       },
@@ -33,7 +34,8 @@ module.exports = {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          name: '[name].[ext]?[hash]'
+          name: '[name].[ext]?[hash]',
+          limit: 10000
         }
       }
     ]

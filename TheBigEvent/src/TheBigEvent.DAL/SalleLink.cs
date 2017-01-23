@@ -23,24 +23,29 @@ namespace TheBigEvent.DAL
                 return con.Query<Salle>("Select * From tbe.Salle");
             }
         }
-        public IEnumerable<Salle> GetAllSalleByEvent(int _id)
-        {
-            using (SqlConnection con = new SqlConnection(_connectionString))
-            {
-                return con.Query<Salle>("select NomEvent,tbe.tEvent.UserId,tbe.tEvent.SalleId,tbe.Salle.UserId,tbe.tUser.Compagny from tbe.tEvent INNER JOIN tbe.Salle ON tbe.tEvent.SalleId = tbe.Salle.SalleId INNER JOIN tbe.tUser ON tbe.Salle.UserId = tbe.tUser.UserId where tbe.tEvent.UserId = @Id",
-                        new { Id = _id });
-            }
-        }
-        public void AddSalle(string _NbPlace, int _UserId)
+        public void AddSalle(int _NbPlace, int _UserId, string _Descriptions, float _Prix, string _Nom)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
                     "tbe.pAddSalle",
-                    new { Nbplace = _NbPlace, UserId = _UserId },
+                    new { Nbplace = _NbPlace, UserId = _UserId, Descriptions = _Descriptions, Prix = _Prix, Nom = _Nom},
                     commandType: CommandType.StoredProcedure);
             }
         }
+
+        public IEnumerable<Salle> getSalle(int _UserId)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<Salle>("select * from tbe.Salle where UserId = @UserId ;",
+                        new
+                        {
+                            UserId = _UserId
+                        });
+            }
+        }
+
         public void Update(int _SalleId, string _NbPlace)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))

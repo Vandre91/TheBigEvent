@@ -24,6 +24,7 @@ import Chat from './Client/Chat.vue'
 
 // Fournisseurs
 import Add from './Provider/add.vue'
+import My_serv from './Provider/my_services.vue'
 import Add_s from './Provider/add_salle.vue'
 import Add_d from './Provider/Add_deco.vue'
 import Add_t from './Provider/Add_traiteur.vue'
@@ -66,7 +67,8 @@ const router = new VueRouter({
               { path: '/Client/Chat', component: Chat, beforeEnter: requireAuth}
         ]},
         { path: '/pro', component: Provider, redirect: "/Pro/board", beforeEnter: requireAuth, children:[
-              { path : '/pro/add', component: Add, beforeEnter: requireAuth, children:[
+              { path : '/pro/add', component: Add, redirect: "/Pro/my_services", beforeEnter: requireAuth, children:[
+              { path: '/pro/my_services', component: My_serv, beforeEnter: requireAuth},
               { path: '/pro/Add_salle', component: Add_s, beforeEnter: requireAuth},
               { path: '/pro/Add_traiteur', component: Add_t, beforeEnter: requireAuth},
               { path: '/pro/Add_deco', component: Add_d, beforeEnter: requireAuth}
