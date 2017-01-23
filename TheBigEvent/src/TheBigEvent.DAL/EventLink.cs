@@ -40,6 +40,15 @@ namespace TheBigEvent.DAL
             }
         }
 
+        public IEnumerable<Event> GetEventById(int id)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<Event>("Select * From tbe.tEvent where SalleId = @Id or TraiteurId = @Id or DecoId = @Id",
+                        new { Id = id });
+            }
+        }
+
         public void AddEvent(string _NomEvent, string _Localisation, int _MenuId,int _SalleId, int _TraiteurId, int _DecoId, int _UserId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))

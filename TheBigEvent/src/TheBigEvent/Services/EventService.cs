@@ -29,6 +29,10 @@ namespace TheBigEvent.Services
         {
             _eLink.AddEvent( _NomEvent, _Localisation, _MenuId, _SalleId, _TraiteurId,_DecoId,_UserId);
         }
+        public Result<IEnumerable<Event>> getEventByIdP(int id)
+        {
+            return Result.Success(Status.Ok, _eLink.GetEventById(id));
+        }
         public void DeleteEvent(int _EventId)
         {
             _eLink.Delete(_EventId);

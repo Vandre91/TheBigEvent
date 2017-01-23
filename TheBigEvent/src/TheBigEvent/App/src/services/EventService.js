@@ -25,10 +25,10 @@ class EventService {
         return await getAsyncSelect(endpoint, method, AuthService.accessToken)
     }
 
-    async getEvent()
-    {
 
-        
+    async getEventbyid(id)
+    {
+        return await getAsyncSelect(endpoint, id, AuthService.accessToken)        
     }
 }
 

@@ -61,5 +61,12 @@ namespace TheBigEvent.Controllers
             _eventService.addEvent( model.NomEvent, model.Localisation, model.MenuId, model.SalleId, model.TraiteurId, model.DecoId, model.UserId);
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetEventbyid(int id)
+        {
+            Result<IEnumerable<Event>> result = _eventService.getEventByIdP(id);
+            return new JsonResult(result);
+        }
+
     }
 }
