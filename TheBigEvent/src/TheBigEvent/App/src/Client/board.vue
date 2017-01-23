@@ -12,9 +12,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="e of event.content">
+            <tr v-for="e of event">
                 <td>{{ e.nomEvent }}</td>
-                <td>{{ e.city }}</td>
+                <td>{{ e.localisation }}</td>
             </tr>
         </tbody>
     </table>
@@ -90,7 +90,8 @@ export default {
         },
         loadEventId: async function() {
             var e = await ConversationService.getEventIdAsync(this.userId);
-            this.event = e;
+            this.event = e.content;
+            console.log(this.event);
         }
     }
 }
