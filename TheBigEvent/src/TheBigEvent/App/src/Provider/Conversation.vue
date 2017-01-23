@@ -19,24 +19,10 @@
 
             <div class="member_list">
                <ul class="list-unstyled">
-                  <li class="left clearfix">
+                  <li v-if= "lastname != null" class="left clearfix">
                      <div class="chat-body clearfix">
-                        <div class="header_sec" @click="updateMessaget()">
-                           <strong class="primary-font">  </strong> 
-                        </div>
-                     </div>
-                  </li>
-                  <li class="left clearfix">
-                     <div class="chat-body clearfix" @click="updateMessaged()">
-                        <div class="header_sec">
-                           <strong class="primary-font"></strong> <strong class="pull-right"></strong>
-                        </div>
-                     </div>
-                  </li>
-                  <li class="left clearfix">
-                     <div class="chat-body clearfix" @click="updateMessages()">
-                        <div class="header_sec">
-                           <strong class="primary-font"></strong> <strong class="pull-right"></strong>
+                        <div class="header_sec" @click="updateMessage()">
+                           <strong class="primary-font">{{ lastname }}  </strong> 
                         </div>
                      </div>
                   </li>
@@ -112,6 +98,7 @@
 import AuthService from '../services/auth.js'
 import UserService from '../services/UserService.js'
 import EventProService from '../services/EventProService.js'
+import MessageService from '../services/MessageService.js'
 
 export default {
 data () {
@@ -121,6 +108,8 @@ data () {
             message : [],
             email: null,
             userId : null,
+            userIdevent: null,
+            lastname: null,
             infoMessage: {
                 user1 : "",
                 user2 : "",
@@ -144,35 +133,21 @@ data () {
             this.event = e;
         },
         updateData(i){
-            this.allcompagny.tcompagny = this.traiteur.content[i].compagny;
-            this.allcompagny.dcompagny = this.deco.content[i].compagny;
-            this.allcompagny.scompagny = this.salle.content[i].compagny;
-            
-            this.userIdd = this.deco.content[i].userId;
-            this.userIds = this.salle.content[i].userId;
-            this.userIdt = this.traiteur.content[i].userId;
+            this.lastname = this.event.content[i].lastName;
+            this.userIdevent = this.event.content[i].userId;
         },
-        updateMessaget: async function() {
-            var e = await MessageService.GetMessageByEvent(this.userId,this.userIdt);
+        updateMessage: async function() {
+            var e = await MessageService.GetMessageByEvent(this.userId,this.userIdevent);
             this.message = e;
-            this.infoMessage.user2 = this.userIdt;
-        },
-        updateMessaged: async function() {
-            var e = await MessageService.GetMessageByEvent(this.userId,this.userIdd);
-            this.message = e;
-            this.infoMessage.user2 = this.userIdd;
-        },
-        updateMessages: async function() {
-            var e = await MessageService.GetMessageByEvent(this.userId,this.userIds);
-            this.message = e;
-            this.infoMessage.user2 = this.userIds;
-            
         },
         AddMessage: async function() {
             var val = document.getElementById("btn-input").value;
             this.infoMessage.user1 = this.userId; 
+            this.infoMessage.user2 = this.userIdevent;
             this.infoMessage.text = val;
             await MessageService.postMessageAsync(this.infoMessage);
+            var e = await MessageService.GetMessageByEvent(this.userId,this.userIdevent);
+            this.message = e;
             document.getElementById("btn-input").value = "";
         }
     }
