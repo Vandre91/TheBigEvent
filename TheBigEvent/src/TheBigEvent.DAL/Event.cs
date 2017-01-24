@@ -19,5 +19,10 @@ namespace TheBigEvent.DAL
         public string Localisation { get; set; }
         public int UserId { get; set; }
         public string LastName { get; set; }
+        public byte ValidationT { get; set; }
+        public byte ValidationS { get; set; }
+        public byte ValidationD { get; set; }
+
+
     }
 }

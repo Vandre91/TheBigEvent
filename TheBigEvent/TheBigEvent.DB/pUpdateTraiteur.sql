@@ -1,4 +1,4 @@
-﻿CREATE PROC tbe.pUpdateTraiteur
+﻿create PROC tbe.pUpdateTraiteur
 (
 	@TraiteurId INT, 
 	@UserId INT,
