@@ -23,7 +23,7 @@ namespace TheBigEvent.Controllers
         readonly SalleService _salleService;
         readonly DecoService _decoService;
 
-        public EventController(EventService eventservice, TraiteurService traiteurservice,MenuService menuservice,SalleService salleservice, DecoService decoservice)
+        public EventController(EventService eventservice, TraiteurService traiteurservice, MenuService menuservice, SalleService salleservice, DecoService decoservice)
         {
             _eventService = eventservice;
             _traiteurService = traiteurservice;
@@ -58,15 +58,46 @@ namespace TheBigEvent.Controllers
         [HttpPost]
         public void UpdateUser([FromBody] EventViewModels model)
         {
-            _eventService.addEvent( model.NomEvent, model.Localisation, model.MenuId, model.SalleId, model.TraiteurId, model.DecoId, model.UserId);
+            _eventService.addEvent(model.NomEvent, model.Localisation, model.MenuId, model.SalleId, model.TraiteurId, model.DecoId, model.UserId);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetEventbyid(int id)
+        [HttpGet("event/traiteur/{id}")]
+        public IActionResult GetEventbyidT(int id)
         {
-            Result<IEnumerable<Event>> result = _eventService.getEventByIdP(id);
+            Result<IEnumerable<Event>> result = _eventService.getEventByIdPT(id);
             return new JsonResult(result);
         }
 
+        [HttpGet("event/deco/{id}")]
+        public IActionResult GetEventbyidD(int id)
+        {
+            Result<IEnumerable<Event>> result = _eventService.getEventByIdPD(id);
+            return new JsonResult(result);
+        }
+
+        [HttpGet("event/salle/{id}")]
+        public IActionResult GetEventbyidS(int id)
+        {
+            Result<IEnumerable<Event>> result = _eventService.getEventByIdPS(id);
+            return new JsonResult(result);
+        }
+
+        [HttpPost("validT")]
+        public void validT([FromBody] EventViewModels model)
+        {
+            _eventService.validT(model.EventId, model.value);
+        }
+
+        [HttpPost("validD")]
+        public void validD([FromBody] EventViewModels model)
+        {
+            _eventService.validD(model.EventId, model.value);
+        }
+
+        [HttpPost("validS")]
+        public void validS([FromBody] EventViewModels model)
+        {
+            _eventService.validS(model.EventId, model.value);
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿create PROCEDURE tbe.pAddSalle
+﻿CREATE PROCEDURE tbe.pAddSalle
 (
 	@Nbplace NVARCHAR(MAX),
 	@UserId INT,

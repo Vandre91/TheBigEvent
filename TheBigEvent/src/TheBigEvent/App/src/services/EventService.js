@@ -25,11 +25,37 @@ class EventService {
         return await getAsyncSelect(endpoint, method, AuthService.accessToken)
     }
 
-
-    async getEventbyid(id)
+    async getEventbyidPD(id)
     {
-        return await getAsyncSelect(endpoint, id, AuthService.accessToken)        
+        return await getAsyncSelect(endpoint, 'event/deco/' + id, AuthService.accessToken)        
     }
+    async getEventbyidPT(id)
+    {
+        return await getAsyncSelect(endpoint, 'event/traiteur/' + id, AuthService.accessToken)        
+    }
+    async getEventbyidPS(id)
+    {
+        return await getAsyncSelect(endpoint,'event/salle/' + id, AuthService.accessToken)        
+    }
+
+    async validT(model) 
+    {
+        return await postAsync(endpoint, 'validT', AuthService.accessToken, model);
+    }
+
+    async validD(model) 
+    {
+        return await postAsync(endpoint, 'validD', AuthService.accessToken, model);
+    }
+
+    async validS(model) 
+    {
+        return await postAsync(endpoint, 'validS', AuthService.accessToken, model);
+    }
+
+
+
+
 }
 
 export default new EventService()

@@ -6,7 +6,7 @@
             <div class="panel panel-default panel-table">
               <div class="panel-heading">
                 <div class="row">
-                    <h5><strong>Les évènements</strong></h5>
+                    <h5><strong>Les événements</strong></h5>
                 </div>
               </div>
               <div class="panel-body">
@@ -22,18 +22,55 @@
                     </tr> 
                   </thead>
                   <tbody>
-                <tr v-if="event.length == 0">
-                    <td colspan="4" style="text-align:center;width:100%;">Il n'y a actuellement aucun Salle.</td>
+                <tr v-if="eventT.length == 0">
                 </tr>
-                <tr v-for="i in event">
+                <tr v-for="i in eventT">
                     <td>{{ i.nomEvent }}</td>
                     <td>{{ i.nbPlace }}</td>
                     <td>{{ i.prix }}</td>
                     <td>{{ i.localisation }}</td>
-<!--                    <td>{{ i.validation }}</td>-->
-                    <td align="center">
-                        <a @click="deleteSalle(i.salleId)" class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
+                    <td v-if="i.validationT == 0">Non-validé</td>
+                    <td v-else="i.validationT == 1">Validé</td>
+                    <td v-if="i.validationT == 0" align="center">
+                        <a @click="validT(i.validationT, i.eventId)" class="btn  btn-default"><em class="fa fa-check-circle"></em></a>
+                    </td>
+                    <td v-else="i.validationT == 1" align="center">
+                        <a @click="validT(i.validationT, i.eventId)" class="btn btn-success"><em class="fa fa-check-circle"></em></a>
+                    </td>
+
+                </tr>
+
+                <tr v-if="eventD.length == 0">
+                </tr>
+                <tr v-for="i in eventD">
+                    <td>{{ i.nomEvent }}</td>
+                    <td>{{ i.nbPlace }}</td>
+                    <td>{{ i.prix }}</td>
+                    <td>{{ i.localisation }}</td>
+                    <td v-if="i.validationD == 1">Validé</td>
+                    <td v-else="i.validationD == 0">Non-validé</td>
+                    <td v-if="i.validationD == 0" align="center">
+                        <a @click="validD(i.validationD, i.eventId)" class="btn  btn-default"><em class="fa fa-check-circle"></em></a>
+                    </td>
+                    <td v-else="i.validationD == 1" align="center">
+                        <a @click="validD(i.validationD, i.eventId)" class="btn  btn-success"><em class="fa fa-check-circle"></em></a>
+                    </td>
+                </tr>
+
+                <tr v-if="eventS.length == 0">
+                </tr>
+                <tr v-for="i in eventS">
+                    <td>{{ i.nomEvent }}</td>
+                    <td>{{ i.nbPlace }}</td>
+                    <td>{{ i.prix }}</td>
+                    <td>{{ i.localisation }}</td>
+                    <td v-if="i.validationS == 1">Validé</td>
+                    <td v-else="i.validationS == 0">Non-validé</td>
+                    <td v-if="i.validationS == 0" align="center">
+                        <a @click="validS(i.validationS, i.eventId)" class="btn btn-default"><em class="fa fa-check-circle"></em></a>
+                    </td>
+                    <td v-else="i.validationS == 1" align="center">
+                        <a @click="validS(i.validationS, i.eventId)" class="btn btn-success"><em class="fa fa-check-circle"></em></a>
                     </td>
                 </tr>
                 </tbody>
@@ -54,14 +91,33 @@ export default {
     data () {
       return {
             model: null,
-            event : [
+            eventT : [
                 {nomEvent: null},
                 {nbInvite: null},
                 {prix: null},
                 {localisation: null},
-                {Validation: null}
+                {validationT: null}
             ],
-            email: null           
+            eventD : [
+                {nomEvent: null},
+                {nbInvite: null},
+                {prix: null},
+                {localisation: null},
+                {validationD: null}
+            ],
+            eventS : [
+                {nomEvent: null},
+                {nbInvite: null},
+                {prix: null},
+                {localisation: null},
+                {validationS: null}
+            ],
+            email: null,
+            model2 : {
+                value : null,
+                EventId : null
+
+            }
         }
   	},
     async mounted() {
@@ -76,9 +132,48 @@ export default {
             this.userId = this.model.userId
         },
         loadEventId: async function() {
-            this.event = await EventService.getEventbyid(this.userId);
-            this.event = this.event.content;
-        }
+            this.eventT = await EventService.getEventbyidPT(this.userId);
+            this.eventT = this.eventT.content;
+            this.eventD = await EventService.getEventbyidPD(this.userId);
+            this.eventD = this.eventD.content;
+            this.eventS = await EventService.getEventbyidPS(this.userId);
+            this.eventS = this.eventS.content;
+
+        },
+        validT: async function(id, eventId){
+            if (id == 0)
+                id = 1;            
+            else
+                id = 0;
+            this.model2.value = id;
+            this.model2.EventId = eventId;
+            await EventService.validT(this.model2);
+            this.eventT = await EventService.getEventbyidPT(this.userId);
+            this.eventT = this.eventT.content;
+        },
+        validD: async function(id, eventId){
+            if (id == 0)
+                id = 1;            
+            else
+                id = 0;
+            this.model2.value = id;
+            this.model2.EventId = eventId;
+            await EventService.validD(this.model2);
+            this.eventD = await EventService.getEventbyidPD(this.userId);
+            this.eventD = this.eventD.content;
+        },
+        validS: async function(id, eventId){
+            if (id == 0)
+                id = 1;            
+            else
+                id = 0;
+            this.model2.value = id;
+            this.model2.EventId = eventId;
+            await EventService.validS(this.model2);
+            this.eventS = await EventService.getEventbyidPS(this.userId);
+            this.eventS = this.eventS.content;
+        },
+        
     }
 }
 </script>

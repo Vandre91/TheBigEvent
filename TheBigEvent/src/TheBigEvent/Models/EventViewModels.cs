@@ -18,5 +18,6 @@ namespace TheBigEvent.Models
         public int DecoId { get; set; }
         public string Localisation { get; set; }
         public int UserId { get; set; }
+        public int value { get; set; }
     }
 }

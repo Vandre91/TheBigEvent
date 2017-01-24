@@ -88,8 +88,8 @@
     <RefactorLog Include="TheBigEvent.DB.refactorlog" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="pUserDelete.sql" />
-    <None Include="pAddDeco.sql" />
-    <None Include="pDeleteMenubyId.sql" />
+    <Build Include="pUserDelete.sql" />
+    <Build Include="pAddDeco.sql" />
+    <Build Include="pDeleteMenubyId.sql" />
   </ItemGroup>
 </Project>
