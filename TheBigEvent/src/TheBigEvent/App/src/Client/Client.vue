@@ -73,11 +73,20 @@ export default {
 
 <style>
 
+.on {
+    display: block;
+}
+
+.off {
+    display: none;
+}
+
+
 /* Top Navigation */
 
 .nav1 {
     margin-left: 5%;
-    margin-top: 10%;
+    margin-top: 20%;
 }
 
 a {
@@ -154,7 +163,7 @@ ul.alert-dropdown {
 @media(min-width:768px) {
 
 .nav1 {
-    margin-left: 16%;
+    margin-left: 23%;
     margin-top: 5%;
 }
 

@@ -52,7 +52,7 @@
                 </ul>
             </div>
 </div>
-<component :is="types[orderTypes[actualTypes]]" v-on:nextStep="updateData" :name="event.name" :ville="event.ville" :idTraiteur="event.id_traiteur" :idMenu="event.id_menu" :idDeco="event.id_deco" :idSalle="event.id_salle"></component>
+<component :is="types[orderTypes[actualTypes]]" v-on:nextStep="updateData" :prix="event.Prix" :name="event.name" :ville="event.ville" :NbInvite="event.NbInvite" :idTraiteur="event.id_traiteur" :idMenu="event.id_menu" :idDeco="event.id_deco" :idSalle="event.id_salle"></component>
 </section>
 </div>
 </div>
@@ -95,7 +95,8 @@ export default {
                 id_menu: null, 
                 id_deco: null,
                 id_salle: null,
-                UserId: null
+                UserId: null,
+                Prix: 0
             }
         }
   	},
@@ -128,30 +129,32 @@ export default {
                 case "menu":
                     if(data.id_menu === null) return
                     this.event.id_menu = data.id_menu
+                    this.event.Prix = data.prix
                     this.maxTypes = ++this.actualTypes
                 break
                 case "deco":
                     if(data.id_deco === null) return
                     this.event.id_deco = data.id_deco
+                    this.event.Prix = data.prix
                     this.maxTypes = ++this.actualTypes
                 break
                 case "salle":
                     if(data.id_salle === null) return
                     this.event.id_salle = data.id_salle
+                    this.event.Prix = data.prix
                     this.maxTypes = ++this.actualTypes
                 break
                 case "valid":
                    this.event.UserId = this.models.content.userId
                    this.event.NomEvent = this.event.name
                    this.event.NbInvite = this.event.NbInvite
-                   this.event.Prix = "5"
+                   this.event.Prix = this.event.Prix
                    this.event.MenuId = this.event.id_menu
                    this.event.SalleId = this.event.id_salle
                    this.event.TraiteurId = this.event.id_traiteur
                    this.event.DecoId = this.event.id_deco
                    this.event.Localisation = this.event.ville
                    EventService.createEventAsync(this.event)
-                   
                    this.$router.replace('/Client/board');
                 break
             }

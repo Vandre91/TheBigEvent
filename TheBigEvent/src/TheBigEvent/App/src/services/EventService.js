@@ -11,7 +11,7 @@ class EventService {
 
     async createEventAsync(model) 
     {
-        return await postAsync(endpoint, '', AuthService.accessToken, model);
+        return await postAsync(endpoint, 'createEvent/', AuthService.accessToken, model);
     }
 
 // On supprime un évènement
@@ -37,6 +37,10 @@ class EventService {
     {
         return await getAsyncSelect(endpoint,'event/salle/' + id, AuthService.accessToken)        
     }
+    async getEventbyidPM(id)
+    {
+        return await getAsyncSelect(endpoint,'event/menu/' + id, AuthService.accessToken)        
+    }
 
     async validT(model) 
     {
@@ -54,6 +58,25 @@ class EventService {
     }
 
 
+    async UpdateSalleIdbynull(eventId)
+    {
+        return await postAsync(endpoint, 'UpdateSalleIdbynull/' + eventId, AuthService.accessToken);
+    }
+
+    async UpdateTraiteurIdbynull(eventId)
+    {
+        return await postAsync(endpoint, 'UpdateTraiteurIdbynull/' + eventId, AuthService.accessToken);
+    }
+
+    async UpdateDecoIdbynull(eventId)
+    {
+        return await postAsync(endpoint, 'UpdateDecoIdbynull/' + eventId, AuthService.accessToken);
+    }
+
+    async UpdateMenuIdbynull(eventId)
+    {
+        return await postAsync(endpoint, 'UpdateMenuIdbynull/' + eventId, AuthService.accessToken);
+    }
 
 
 }
