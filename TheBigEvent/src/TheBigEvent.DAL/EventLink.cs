@@ -49,6 +49,15 @@ namespace TheBigEvent.DAL
             }
         }
 
+        public IEnumerable<Event> GetEventByIdM(int id)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<Event>("Select * from tbe.tMenu, tbe.tEvent, tbe.tTraiteur where tbe.tMenu.MenuId = tbe.tEvent.MenuId and tbe.tTraiteur.TraiteurId = tbe.tEvent.TraiteurId and tbe.tTraiteur.UserId = @Id; ",
+                        new { Id = id });
+            }
+        }
+
         public IEnumerable<Event> GetEventByIdD(int id)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
@@ -62,7 +71,7 @@ namespace TheBigEvent.DAL
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                return con.Query<Event>("Select* from tbe.tTraiteur, tbe.tEvent where tbe.tTraiteur.TraiteurId = tbe.tEvent.TraiteurId and tbe.tTraiteur.TraiteurId = @Id",
+                return con.Query<Event>("Select* from tbe.tTraiteur, tbe.tEvent where tbe.tTraiteur.TraiteurId = tbe.tEvent.TraiteurId and tbe.tTraiteur.UserId = @Id",
                         new { Id = id });
             }
         }
@@ -100,8 +109,6 @@ namespace TheBigEvent.DAL
             }
         }
 
-
-
         public void UpdateName(int _UserId, string _firstName, string _lastName, string _City, int _Tel)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
@@ -113,20 +120,17 @@ namespace TheBigEvent.DAL
             }
         }
 
-
-
-
-
-        public void AddEvent(string _NomEvent, string _Localisation, int _MenuId,int _SalleId, int _TraiteurId, int _DecoId, int _UserId)
+        public void AddEvent(string _NomEvent, string _Localisation, int _MenuId,int _SalleId, int _TraiteurId, int _DecoId, int _UserId, int _NbInvite, int _Prix)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
                     "tbe.pCreatEvent",
-                    new { NomEvent = _NomEvent, Localisation = _Localisation, MenuId = _MenuId, SalleId = _SalleId, TraiteurId = _TraiteurId, DecoId= _DecoId, UserId= _UserId },
+                    new { NomEvent = _NomEvent, Localisation = _Localisation, MenuId = _MenuId, SalleId = _SalleId, TraiteurId = _TraiteurId, DecoId= _DecoId, UserId= _UserId, Nbinvite = _NbInvite, Prix = _Prix },
                     commandType: CommandType.StoredProcedure);
             }
         }
+
         public void Delete(int _EventId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
@@ -137,5 +141,50 @@ namespace TheBigEvent.DAL
                     commandType: CommandType.StoredProcedure);
             }
         }
+
+        public void UpdateSalleIdbynull(int _Id)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Query(
+                    "update tbe.tevent set SalleId = null where EventId = @EventId",
+                    new { EventId = _Id })
+                    .FirstOrDefault();
+            }
+        }
+        public void UpdateTraiteurIdbynull(int _Id)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Query(
+                    "update tbe.tevent set TraiteurId = null, MenuId = null where EventId = @EventId",
+                    new { EventId = _Id })
+                    .FirstOrDefault();
+            }
+        }
+        public void UpdateMenuIdbynull(int _Id)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Query(
+                    "update tbe.tevent set MenuId = null where EventId = @EventId",
+                    new { EventId = _Id })
+                    .FirstOrDefault();
+            }
+        }
+        public void UpdateDecoIdbynull(int _Id)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Query(
+                    "update tbe.tevent set DecoId = null where EventId = @EventId",
+                    new { EventId = _Id })
+                    .FirstOrDefault();
+            }
+        }
+
+
+
+
     }
 }

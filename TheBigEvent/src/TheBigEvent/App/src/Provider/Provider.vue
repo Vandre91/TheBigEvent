@@ -76,7 +76,7 @@ export default {
 
 </script>
 
-<style >
+<style>
 
 strong{
     color : #337ab7;    

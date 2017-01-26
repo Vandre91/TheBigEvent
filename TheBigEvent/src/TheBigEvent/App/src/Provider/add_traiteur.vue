@@ -8,48 +8,49 @@
 </div>
 
 <h4 style="text-align:center;"> Vous pouvez ici vous proposer en tant que Traiteur. Une fois inscrit en tant que traiteur, vous pourrez proposer des menus.
-<br>Les menus sont catégorisés par Entré | Plat | Dessert et leurs prix diffèrent par rapport au nombre de personne.
+<br>Les menus sont catégorisés par Entré | Plat | Dessert et leurs prix diffèrent par rapport au nombre de personnes.
 <br>Exemple : un gâteau pour une personne coûtent 10€.
 </h4>
         <div id="1" class="on">
-            <div @submit="onSubmit($event)" class=".col-lg-12 forms">
+            <div @submit="onSubmit($event)" class="col-lg-12 forms">
                 <form role="form">
                     <div class="form-group">
                         <label>*Nom : </label>
-                        <input v-model="model_traiteur.nom" class="form-control" required>
+                        <input v-model="model_traiteur.nom" class="form-control input" required>
                     </div>
                     <div class="form-group">
                         <label>Description de vos spécialités : </label>
-                        <textarea v-model="model_traiteur.descriptions" class="form-control" rows="5"></textarea>
+                        <textarea v-model="model_traiteur.descriptions" class="form-control input" rows="5"></textarea>
                     </div>
                     <button type="submit" class="btn btn-default">Submit Button</button>
                     <button type="reset" class="btn btn-default">Reset Button</button>
                 </form>
             </div>
         </div>
-        <br /><br />
 
         <div id="2" class="off">
-            <div @submit="onSubmit2($event)" class=".col-lg-12 forms">
+            <div @submit="onSubmit2($event)" class="col-lg-12 forms">
                 <form role="form">
                     <div class="form-group">
                         <label>*Nom : </label>
-                        <input v-model="model_menu.nom" class="form-control" required>
+                        <input v-model="model_menu.nom" class="form-control input" required>
                     </div>
+                    <div class="form-group">
                     <label>*Catégories : </label>
+                    <br />
                     <select v-model="model_menu.cat" required>
                         <option value="Entrer">Entré</option>
                         <option value="Plat">Plat</option>
                         <option value="Dessert">Dessert</option>
                     </select>
-                    <br /><br />
+                    </div>
                     <div class="form-group">
                         <label>*Quantité de personnes : </label>
-                        <input v-on:keyup="alertw()" v-model="model_menu.Nbpersonnes" class="form-control" required>
+                        <input v-on:keyup="alertw()" v-model="model_menu.Nbpersonnes" class="form-control input" required>
                     </div>
                     <div class="form-group">
                         <label>*Prix approximatif (en €) par rapport à la quantité de personnes :  </label>
-                        <input v-on:keyup="alertw()" v-model="model_menu.Prix" class="form-control" required>
+                        <input v-on:keyup="alertw()" v-model="model_menu.Prix" class="form-control input" required>
                     </div>
                     <button type="submit" class="btn btn-default">Submit Button</button>
                     <button type="reset" class="btn btn-default">Reset Button</button>
@@ -153,4 +154,15 @@ export default {
 .btn {
     margin-top: 0px;
 }
+
+
+    .input {
+        position: relative;
+        left:37%;
+    }
+
+    .form-group {
+        text-align: center;
+    }
+
  </style>

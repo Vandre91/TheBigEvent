@@ -16,7 +16,7 @@
                     <div class="col-md-6">
                     <div class="checkbox pull-right">
                         <label>
-                            <input type="radio" :value="models.menuId" v-model="id_menu_new">			
+                            <input type="radio" v-on:click="prices(models.prix)" :value="models.menuId" v-model="id_menu_new">			
                         </label>
                     </div>                
                         <h4><strong> Prix approximatif : </strong></h4>{{models.prix}} €
@@ -41,11 +41,13 @@ import AuthService from '../../services/auth.js'
 import EventService from '../../services/EventService.js'
 
 export default {
-    props:["idMenu"],
+    props:["idMenu", "prix"],
     data(){
         return {
             model: null,
-            id_menu_new: this.idMenu
+            id_menu_new: this.idMenu,
+            _prix: 0,
+            price: this.prix,
         }
     },
     mounted(){
@@ -55,10 +57,14 @@ export default {
         async loadData(){
             this.model = await EventService.selectGetAsync("Menu")
             this.model = this.model.content
-
+        },
+        prices(prix)
+        {
+            this._prix = prix;
         },
         nextStep(){
-            this.$emit('nextStep', {method: "menu", id_menu: this.id_menu_new})
+            this.price = this.price + this._prix;
+            this.$emit('nextStep', {method: "menu", id_menu: this.id_menu_new, prix:this.price})
         }
     }
 }

@@ -26,7 +26,9 @@
     "TheBigEvent.DAL": "1.0.0-*",
     "System.IdentityModel.Tokens.Jwt": "5.1.0",
     "Microsoft.AspNetCore.Authentication.JwtBearer": "1.0.0",
-    "Microsoft.AspNetCore.Cryptography.KeyDerivation": "1.0.0"
+    "Microsoft.AspNetCore.Cryptography.KeyDerivation": "1.0.0",
+    "MailKit": "1.10.1",
+    "MimeKit": "1.10.0"
   },
 
   "tools": {

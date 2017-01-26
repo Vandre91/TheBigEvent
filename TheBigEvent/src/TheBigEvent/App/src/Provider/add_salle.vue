@@ -6,25 +6,24 @@
         <strong>Erreur ! </strong> {{ message }}</div>
 </div>
 
-
 <h4 style="text-align:center;"> Vous pouvez ici proposer vos salles. Le nom, le nombre de place, le prix est nécessaire, une description est conseillée. </h4>
-        <div @submit="onSubmit($event)" class=".col-lg-12 forms">
+        <div @submit="onSubmit($event)" class="col-lg-12 forms">
             <form role="form">
                 <div class="form-group">
                     <label>*Nom de la Salle : </label>
-                    <input v-model="model.Nom" class="form-control" required>
+                    <input v-model="model.Nom" class="form-control input" required>
                 </div>
                 <div class="form-group">
                     <label>*Nombre de place disponible : </label>
-                    <input v-on:keyup="alertw()" v-model="model.Nbplace" class="form-control" required>
+                    <input v-on:keyup="alertw()" v-model="model.Nbplace" class="form-control input" required>
                 </div>
                 <div class="form-group">
                     <label>*Prix approximatif (en €) :  </label>
-                    <input v-on:keyup="alertw()" v-model="model.Prix" class="form-control" required>
+                    <input v-on:keyup="alertw()" v-model="model.Prix" class="form-control input" required>
                 </div>
                 <div class="form-group">
                     <label>Description :</label>
-                    <textarea v-model="model.Description" class="form-control" rows="5"></textarea>
+                    <textarea v-model="model.Description" class="form-control input" rows="5"></textarea>
                 </div>
                 <button type="submit" class="btn btn-default">Submit Button</button>
                 <button type="reset" class="btn btn-default">Reset Button</button>
@@ -106,4 +105,15 @@ export default {
         margin-bottom: 10%;
         float: left;
     }
+
+    .input {
+        position: relative;
+        left:37%;
+    }
+
+    .form-group {
+        text-align: center;
+    }
+
+
 </style>
