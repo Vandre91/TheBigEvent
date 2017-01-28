@@ -39,7 +39,30 @@ namespace TheBigEvent.DAL
                         new { Id = id });
             }
         }
-
+        public IEnumerable<Event> GetEventSalle(int id)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<Event>("Select NomEvent,tbe.tEvent.SalleId,tbe.tEvent.TraiteurId, tEvent.DecoId,tbe.tEvent.UserId,tbe.tUser.LastName From tbe.tEvent INNER JOIN tbe.tUser ON tbe.tEvent.UserId = tbe.tUser.UserId where SalleId = @Id",
+                        new { Id = id });
+            }
+        }
+        public IEnumerable<Event> GetEventDeco(int id)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<Event>("Select NomEvent,tbe.tEvent.SalleId,tbe.tEvent.TraiteurId, tEvent.DecoId,tbe.tEvent.UserId,tbe.tUser.LastName From tbe.tEvent INNER JOIN tbe.tUser ON tbe.tEvent.UserId = tbe.tUser.UserId where DecoId = @Id",
+                        new { Id = id });
+            }
+        }
+        public IEnumerable<Event> GetEventTraiteur(int id)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<Event>("Select NomEvent,tbe.tEvent.SalleId,tbe.tEvent.TraiteurId, tEvent.DecoId,tbe.tEvent.UserId,tbe.tUser.LastName From tbe.tEvent INNER JOIN tbe.tUser ON tbe.tEvent.UserId = tbe.tUser.UserId where TraiteurId = @Id",
+                        new { Id = id });
+            }
+        }
         public IEnumerable<Event> GetEventByIdS(int id)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))

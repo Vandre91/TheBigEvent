@@ -21,6 +21,18 @@ namespace TheBigEvent.Services
         {
             return Result.Success(Status.Ok, _eLink.GetAllEventById(id));
         }
+        public Result<IEnumerable<Event>> getEventSalle(int id)
+        {
+            return Result.Success(Status.Ok, _eLink.GetEventSalle(id));
+        }
+        public Result<IEnumerable<Event>> getEventDeco(int id)
+        {
+            return Result.Success(Status.Ok, _eLink.GetEventDeco(id));
+        }
+        public Result<IEnumerable<Event>> getEventTraiteur(int id)
+        {
+            return Result.Success(Status.Ok, _eLink.GetEventTraiteur(id));
+        }
         public Result<IEnumerable<Event>> getEventProById(string id)
         {
             return Result.Success(Status.Ok, _eLink.GetAllEventProById(id));

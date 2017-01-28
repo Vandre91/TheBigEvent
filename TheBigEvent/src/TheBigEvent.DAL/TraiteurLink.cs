@@ -35,6 +35,14 @@ namespace TheBigEvent.DAL
                     .FirstOrDefault();
             }
         }
+        public IEnumerable<Traiteur> GetTraiteurById(int _id)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<Traiteur>("Select * From tbe.tTraiteur where UserId = @id ",
+                    new { id = _id });
+            }
+        }
         public IEnumerable<Traiteur> GetAlltraiteurByEvent(int _id)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))

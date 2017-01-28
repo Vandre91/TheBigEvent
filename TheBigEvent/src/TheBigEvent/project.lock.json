@@ -5637,7 +5637,7 @@
       ]
     },
     "Microsoft.IdentityModel.Protocols/2.0.0": {
-      "sha512": "ACezwKCnK5e+SECvwo1l7VWTd6tMdXhg2UPXOAJ7rh/v06q72VBFmc1hb40QEglDVRyV132HBI9zWRfHDCO2Gw==",
+      "sha512": "dHV39tCYxj8yMySDOUhNGakFQSNl3PZcweBWevtHyUeX/8UbroL0sQUHNjE38/UE0c4RS43WvWn+GO39R0PqOA==",
       "type": "package",
       "path": "Microsoft.IdentityModel.Protocols/2.0.0",
       "files": [
@@ -5650,7 +5650,7 @@
       ]
     },
     "Microsoft.IdentityModel.Protocols.OpenIdConnect/2.0.0": {
-      "sha512": "JNVtDo5nnrBL15wSFQPuXxDd+bhuqjLHSVpkoEK9j7uKNG6oT1G7jheM8B9zHhcmQAUtnuFabRtZy+HadGBcNw==",
+      "sha512": "0TVkFvDN2fnDt7DelqZ5w7SEwpOiCycNc/CV1ZZjFEBY0Kn4EwG100Lhf7nvylm5CrgiDWYHb6Db8hnDDTpiWg==",
       "type": "package",
       "path": "Microsoft.IdentityModel.Protocols.OpenIdConnect/2.0.0",
       "files": [

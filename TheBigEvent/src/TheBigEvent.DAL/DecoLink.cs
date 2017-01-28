@@ -35,6 +35,14 @@ namespace TheBigEvent.DAL
                         });
             }
         }
+        public IEnumerable<Deco> GetDecoById(int _id)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<Deco>("Select * From tbe.tDeco where UserId = @id ",
+                    new { id = _id });
+            }
+        }
 
         public IEnumerable<Deco> GetAllDecoByEvent(int _id)
         {

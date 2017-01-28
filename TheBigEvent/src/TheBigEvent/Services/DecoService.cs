@@ -23,6 +23,10 @@ namespace TheBigEvent.Services
         {
             return Result.Success(Status.Ok, _dLink.GetAllDecoByEvent(_id));
         }
+        public Result<IEnumerable<Deco>> getDecoById(int _id)
+        {
+            return Result.Success(Status.Ok, _dLink.GetDecoById(_id));
+        }
         public bool addDecoByUserId(int UserId, string Descriptions, float Prix, string Nom)
         {
             _dLink.AddDeco(UserId, Descriptions, Prix, Nom);

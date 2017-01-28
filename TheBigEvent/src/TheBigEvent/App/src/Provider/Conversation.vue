@@ -12,17 +12,24 @@
                <span class="caret pull-right"></span>
                </button>
                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li v-if= "event.content != null" v-for="(e,index) of event.content"><a @click="updateData(index)"> {{ e.nomEvent }} </a>  
-			        </li>  
+                    <li v-if= "salleid.content != null" v-for="(e,index) of salleid.content">
+                      <a @click="updateDatas(index)"> Salle : {{ e.nom }} </a>
+			        </li>
+              <li v-if= "decoid.content != null" v-for="(e,index) of decoid.content">
+                      <a @click="updateDatad(index)"> Deco : {{ e.nom }} </a>
+			        </li>
+              <li v-if= "traiteurid.content != null" >
+                      <a @click="updateDatat()"> Traiteur : {{ traiteurid.content[0].nom }} </a>  
+			        </li>
                </ul>
             </div>
 
             <div class="member_list">
                <ul class="list-unstyled">
-                  <li v-if= "lastname != null" class="left clearfix">
+                  <li v-if= "event.content != null" v-for="(e,index) of event.content"class="left clearfix">
                      <div class="chat-body clearfix">
                         <div class="header_sec" @click="updateMessage()">
-                           <strong class="primary-font">{{ lastname }}  </strong> 
+                           <strong class="primary-font">{{ e.nomEvent }}  </strong> 
                         </div>
                      </div>
                   </li>
@@ -99,6 +106,7 @@ import AuthService from '../services/auth.js'
 import UserService from '../services/UserService.js'
 import EventProService from '../services/EventProService.js'
 import MessageService from '../services/MessageService.js'
+import ConversationService from '../services/ConversationService.js'
 
 export default {
 data () {
@@ -109,6 +117,9 @@ data () {
             email: null,
             userId : null,
             userIdevent: null,
+            traiteurid : [],
+            salleid : [],
+            decoid : [],
             lastname: null,
             infoMessage: {
                 user1 : "",
@@ -120,7 +131,9 @@ data () {
     async mounted() {
             this.email = AuthService.hisEmail();
             await this.loadModelUser(this.email);
-            await this.loadEventId();
+            await this.loadSalleId();
+            await this.loadDecoId();
+            await this.loadTraiteurId();
     },
     methods: {
         loadModelUser: async function(email) {
@@ -128,13 +141,33 @@ data () {
             this.model = model;
             this.userId = this.model.content.userId
         },
-        loadEventId: async function() {
-            var e = await EventProService.getEventAsync(this.userId);
-            this.event = e;
+        loadSalleId: async function() {
+            var e = await EventProService.getSalleAsync(this.userId);
+            this.salleid = e;
+
         },
-        updateData(i){
-            this.lastname = this.event.content[i].lastName;
+        loadDecoId: async function() {
+            var e = await EventProService.getDecoAsync(this.userId);
+            this.decoid = e;
+        },
+        loadTraiteurId: async function() {
+            var e = await EventProService.getTraiteurAsync(this.userId);
+            this.traiteurid = e;
+        },
+        updateDatas: async function(i) {
+            var e = await EventProService.getEventBySalleIdAsync(this.salleid.content[i].salleId);
+            this.event = e;
             this.userIdevent = this.event.content[i].userId;
+        },
+        updateDatad: async function(i) {
+            var e = await EventProService.getEventByDecoIdAsync(this.decoid.content[i].decoId);
+            this.event = e;
+            this.userIdevent = this.event.content[i].userId;
+        },
+        updateDatat: async function() {
+            var e = await EventProService.getEventByTraiteurIdAsync(this.traiteurid.content[0].traiteurId);
+            this.event = e;
+            this.userIdevent = this.event.content[0].userId;
         },
         updateMessage: async function() {
             var e = await MessageService.GetMessageByEvent(this.userId,this.userIdevent);

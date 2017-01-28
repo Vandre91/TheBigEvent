@@ -19,21 +19,21 @@
 
             <div class="member_list">
                <ul v-if="allcompagny.tcompagny != ''" class="list-unstyled">
-                  <li class="left clearfix">
+                  <li  class="left clearfix">
                      <div class="chat-body clearfix">
                         <div class="header_sec" @click="updateMessaget()">
                            <strong class="primary-font">{{ allcompagny.tcompagny }}  </strong> 
                         </div>
                      </div>
                   </li>
-                  <li class="left clearfix">
+                  <li v-if="allcompagny.dcompagny != allcompagny.tcompagny" class="left clearfix">
                      <div class="chat-body clearfix" @click="updateMessaged()">
                         <div class="header_sec">
                            <strong class="primary-font">{{ allcompagny.dcompagny }}</strong> <strong class="pull-right"></strong>
                         </div>
                      </div>
                   </li>
-                  <li class="left clearfix">
+                  <li v-else-if="allcompagny.tcompagny != allcompagny.dcompagny && allcompagny.scompagny != allcompagny.dcompagny && allcompagny.scompagny != allcompagny.tcompagny " class="left clearfix">
                      <div class="chat-body clearfix" @click="updateMessages()">
                         <div class="header_sec">
                            <strong class="primary-font">{{ allcompagny.scompagny }}</strong> <strong class="pull-right"></strong>

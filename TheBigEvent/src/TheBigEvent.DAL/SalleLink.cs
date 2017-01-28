@@ -31,6 +31,14 @@ namespace TheBigEvent.DAL
                         new { Id = _id });
             }
         }
+        public IEnumerable<Salle> GetSalleById(int _id)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<Salle>("Select * From tbe.Salle where UserId = @id ",
+                    new { id = _id });
+            }
+        }
         public void AddSalle(int _NbPlace, int _UserId, string _Descriptions, float _Prix, string _Nom)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))

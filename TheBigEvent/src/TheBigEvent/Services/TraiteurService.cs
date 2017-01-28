@@ -21,6 +21,10 @@ namespace TheBigEvent.Services
         {
             return Result.Success(Status.Ok, _eLink.GetAlltraiteurByEvent(_id));
         }
+        public Result<IEnumerable<Traiteur>> getTraiteurById(int _id)
+        {
+            return Result.Success(Status.Ok, _eLink.GetTraiteurById(_id));
+        }
         public Result<Traiteur> getTraiteur(int id)
         {
             Traiteur traiteur = _eLink.getTraiteur(id);
