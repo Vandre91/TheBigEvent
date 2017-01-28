@@ -27,14 +27,26 @@ namespace TheBigEvent.Controllers
         // GET: /<controller>/
         public IActionResult Login()
         {
+            ViewData["Exist"] = "";
+            ViewData["Chek"] = "";
             return View();
         }
 
         [HttpPost]
         public IActionResult Login(string Mail, string Passe, byte Pro, string Siret, string Compagny)
         {
-            _userService.addUser(Mail, Passe, Pro, Siret, Compagny);
-            return View();
+            User user = _userService.FindUsermail(Mail);
+            if (user != null)
+            {
+                ViewData["Exist"] = "Erreur L'adresse mail existe déja !";
+
+            }
+            else
+            {
+                _userService.addUser(Mail, Passe, Pro, Siret, Compagny);
+                ViewData["Chek"] = "Vous êtes inscrit !";
+            }
+                return View();
         }
         public IActionResult Conexion()
         {

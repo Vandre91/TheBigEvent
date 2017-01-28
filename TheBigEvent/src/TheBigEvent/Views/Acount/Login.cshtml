@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewData["Title"] = "Inscription sur ";
+    ViewData["Title"] = "Inscription";
 }
 <!DOCTYPE html>
 
@@ -18,6 +18,8 @@
     <h1 class="title"> Inscription</h1>
 
     <div class="form-group">
+        <span style="color: red;">@ViewData["Exist"]</span>
+        <span style="color: forestgreen;">@ViewData["Chek"]</span>
         <form method="post" action="">
 
             <input name="Mail" class="form-control glyphicon-log-in" type="email" required="" placeholder="Email" /> <br>
