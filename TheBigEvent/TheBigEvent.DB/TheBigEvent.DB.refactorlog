@@ -84,4 +84,46 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ValidationT" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="14eee716-ca2d-4058-97eb-62eef1e2240d" ChangeDateTime="01/30/2017 09:47:43">
+    <Property Name="ElementName" Value="[dbo].[tInvite].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tInvite]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="InviteId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8455f07b-db23-455f-8fca-414d741d5bec" ChangeDateTime="01/30/2017 09:48:52">
+    <Property Name="ElementName" Value="[dbo].[tInvite].[InviteId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tInvite]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BigSelectId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="abb2b74e-459f-4c7f-854b-5f87e98df017" ChangeDateTime="01/30/2017 09:50:43">
+    <Property Name="ElementName" Value="[dbo].[tInvite].[BigSelectId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tInvite]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BigSelecteId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0b2b35f9-ea05-4835-b6e8-8fab62f72015" ChangeDateTime="01/30/2017 09:53:06">
+    <Property Name="ElementName" Value="[dbo].[tInvite].[BigSelecteId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tInvite]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="InviteId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="92598c07-94c1-4e6d-93dd-0fc0fbd736bb" ChangeDateTime="01/30/2017 09:57:11">
+    <Property Name="ElementName" Value="[tbe].[tBigSelecte].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[tbe].[tBigSelecte]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BigSelecteId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="498f9348-5b95-4044-8c33-fff17737536c" ChangeDateTime="01/30/2017 10:01:12">
+    <Property Name="ElementName" Value="[dbo].[tProposition].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tProposition]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PropositionId" />
+  </Operation>
 </Operations>
