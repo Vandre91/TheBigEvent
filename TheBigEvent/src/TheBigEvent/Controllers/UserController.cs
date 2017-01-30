@@ -157,9 +157,5 @@ namespace TheBigEvent.Controllers
             _menuService.DeleteMenu(MenuId);
             return (true);
         }
-
-
-
-
     }
 }

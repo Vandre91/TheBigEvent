@@ -16,9 +16,9 @@ class EventService {
 
 // On supprime un évènement
 
-    async deleteUserAsync(Id)
+    async deleteEvent(Id)
     {
-        return await deleteAsync(endpoint, Id, AuthService.accessToken);
+        return await deleteAsync(endpoint, 'deleteEvent/' + Id, AuthService.accessToken);
     }
 
     async selectGetAsync(method){

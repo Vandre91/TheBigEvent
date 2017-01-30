@@ -11,7 +11,7 @@ namespace TheBigEvent.DAL
         public string NomEvent { get; set; }
         public int NbInvite { get; set; }
         public int Prix { get; set; }
-        public DateTime Horaire { get; set; }
+        public DateTime Dates { get; set; }
         public int MenuId { get; set; }
         public int SalleId { get; set; }
         public int TraiteurId { get; set; }
@@ -22,7 +22,8 @@ namespace TheBigEvent.DAL
         public byte ValidationT { get; set; }
         public byte ValidationS { get; set; }
         public byte ValidationD { get; set; }
-
-
+        public int existPS { get; set; }
+        public int existPD { get; set; }
+        public int existPT { get; set; }
     }
 }

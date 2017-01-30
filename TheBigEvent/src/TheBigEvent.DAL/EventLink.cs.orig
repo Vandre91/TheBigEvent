@@ -143,13 +143,21 @@ namespace TheBigEvent.DAL
             }
         }
 
+<<<<<<< HEAD
+        public void AddEvent(string _NomEvent, string _Localisation, int _MenuId,int _SalleId, int _TraiteurId, int _DecoId, int _UserId, int _NbInvite, int _Prix)
+=======
         public void AddEvent(string _NomEvent, string _Localisation, int _MenuId,int _SalleId, int _TraiteurId, int _DecoId, int _UserId, int _NbInvite, int _Prix, DateTime _Dates)
+>>>>>>> Shane
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
                     "tbe.pCreatEvent",
+<<<<<<< HEAD
+                    new { NomEvent = _NomEvent, Localisation = _Localisation, MenuId = _MenuId, SalleId = _SalleId, TraiteurId = _TraiteurId, DecoId= _DecoId, UserId= _UserId, Nbinvite = _NbInvite, Prix = _Prix },
+=======
                     new { NomEvent = _NomEvent, Localisation = _Localisation, MenuId = _MenuId, SalleId = _SalleId, TraiteurId = _TraiteurId, DecoId= _DecoId, UserId= _UserId, Nbinvite = _NbInvite, Prix = _Prix, Dates = _Dates },
+>>>>>>> Shane
                     commandType: CommandType.StoredProcedure);
             }
         }

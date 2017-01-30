@@ -11,7 +11,7 @@ namespace TheBigEvent.Models
         public string NomEvent { get; set; }
         public int NbInvite { get; set; }
         public int Prix { get; set; }
-        public DateTime Horaire { get; set; }
+        public DateTime Dates { get; set; }
         public int MenuId { get; set; }
         public int SalleId { get; set; }
         public int TraiteurId { get; set; }

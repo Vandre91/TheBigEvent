@@ -56,10 +56,12 @@ namespace TheBigEvent.Controllers
         }
 
         [HttpPost("createEvent/")]
-        public void createEvent([FromBody] EventViewModels model)
+        public bool createEvent([FromBody] EventViewModels model)
         {
-            _eventService.addEvent(model.NomEvent, model.Localisation, model.MenuId, model.SalleId, model.TraiteurId, model.DecoId, model.UserId, model.NbInvite, model.Prix);
+            _eventService.addEvent(model.NomEvent, model.Localisation, model.MenuId, model.SalleId, model.TraiteurId, model.DecoId, model.UserId, model.NbInvite, model.Prix, model.Dates);
+            return (true);
         }
+       
 
         [HttpGet("event/traiteur/{id}")]
         public IActionResult GetEventbyidT(int id)
@@ -137,5 +139,13 @@ namespace TheBigEvent.Controllers
             _eventService.UpdateDecoIdbynull(eventId);
             return;
         }
+        
+        [HttpDelete("deleteEvent/{eventId}")]
+        public bool DeleteEvent(int eventId)
+        {
+            _eventService.DeleteEvent(eventId);
+            return (true);
+        }
+
     }
 }

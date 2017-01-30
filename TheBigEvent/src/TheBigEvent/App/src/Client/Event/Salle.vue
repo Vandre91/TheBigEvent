@@ -19,7 +19,6 @@
 						</div>
                             <div class="media-body">
                                 <h4 class="media-heading" style="text-decoration:underline;" ><strong>{{models.nom}}</strong></h4>
-                                <strong>id_salle</strong> : <p>{{models.id_salle}}</p>
                                 <strong>Prix</strong> : <p>{{models.prix}}</p>
                                 <strong>Nombre de place</strong> : <p>{{models.nbPlace}}</p>
                                 <strong>Description</strong> : <p>{{models.descriptions}}</p>
@@ -43,13 +42,14 @@ import AuthService from '../../services/auth.js'
 import EventService from '../../services/EventService.js'
 
 export default {
-    props:["idSalle", "prix"],
+    props:["idSalle", "prix", "salle"],
     data(){
         return {
             model: null,
             id_salle_new: this.idSalle,
             _prix: 0,
             price: this.prix,
+            model2: this.salle    
         }
     },
     mounted(){
@@ -66,7 +66,11 @@ export default {
         },        
         nextStep(){
             this.price = this.price + this._prix;
-            this.$emit('nextStep', {method: "salle", id_salle: this.id_salle_new, prix: this.price})
+            if (this.model[this.id_salle_new] != null)
+            this.model2 = this.model[this.id_salle_new];
+            else
+                this.model2 = this.model;
+            this.$emit('nextStep', {method: "salle", id_salle: this.id_salle_new, prix: this.price, salle: this.model2})
         }
     }
 }

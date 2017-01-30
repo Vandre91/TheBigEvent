@@ -8,11 +8,12 @@
 	@Localisation NVARCHAR(MAX),
 	@UserId INT,
 	@NbInvite INT,
-	@Prix INT
+	@Prix INT,
+	@Dates Datetime2
 )
 AS
 BEGIN 
-	insert into tbe.tEvent(NomEvent,MenuId,SalleId,TraiteurId,DecoId,Localisation,UserId,NbInvite,Prix) 
+	insert into tbe.tEvent(NomEvent,MenuId,SalleId,TraiteurId,DecoId,Localisation,UserId,NbInvite,Prix,Dates) 
 	VALUES(@NomEvent,
 		@MenuId,
 		@SalleId,
@@ -21,6 +22,7 @@ BEGIN
 		@Localisation,
 		@UserId,
 		@NbInvite,
-		@Prix);
+		@Prix,
+		@Dates);
 	RETURN 0;
 end;

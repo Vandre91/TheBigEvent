@@ -62,7 +62,7 @@ namespace TheBigEvent.DAL
             }
         }
 
-        public void Update(int _SalleId, string _NbPlace)
+        public void Update(int _SalleId, int _NbPlace)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {

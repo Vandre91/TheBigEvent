@@ -42,13 +42,14 @@ import AuthService from '../../services/auth.js'
 import EventService from '../../services/EventService.js'
 
 export default {
-    props:["idDeco", "prix"],
+    props:["idDeco", "prix", "deco"],
     data(){
         return {
             model: null,
             id_deco_new: this.idDeco,
             _prix: 0,
             price: this.prix,
+            model2: this.deco
         }
     },
     mounted(){
@@ -65,8 +66,12 @@ export default {
             this._prix = prix;
         },
         nextStep(){
-            this.price = this.price + this._prix;            
-            this.$emit('nextStep', {method: "deco", id_deco: this.id_deco_new, prix: this.price})
+            this.price = this.price + this._prix;
+            if (this.model[this.id_deco_new] != null)
+                this.model2 = this.model[this.id_deco_new];
+            else
+                this.model2 = this.model;
+            this.$emit('nextStep', {method: "deco", id_deco: this.id_deco_new, prix: this.price, deco: this.model2})
         }
     }
 }

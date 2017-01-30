@@ -90,9 +90,6 @@ class UserService {
     {
         return await deleteAsync(endpoint, 'deleteMenu/' + Id, AuthService.accessToken);
     }
-
-
-
 }
 
 export default new UserService()

@@ -1,20 +1,44 @@
 <template>
-<div class="container">
+<div class="container" style="margin:0;width:100%;">
 
-<div class="col-lg-6 col-md-6">
+<div class="col-lg-7">
     <h1>Vos réservations</h1>
     <div class="table-responsive">
     <table class="table">
         <thead>
             <tr>
+                <th>Date</th>                
                 <th>Nom de votre réservations</th>
                 <th>Lieu</th>
+                <th>Prix approximatif</th>
+                <th>Validation du décorateur</th>
+                <th>Validation de la salle</th>
+                <th>Validation du traiteur</th>
+                <th>Supprimer</th>
+
             </tr>
         </thead>
         <tbody>
             <tr v-for="e of event">
+                <td> {{ formatDate(e.dates) }} </td>
                 <td>{{ e.nomEvent }}</td>
                 <td>{{ e.localisation }}</td>
+                <td>{{ e.prix }}</td>
+
+                <td v-if="e.existPD == -1"><a class="btn btn-default"><em class="fa fa-user-times"></em></a></td>
+                <td v-else-if="e.validationD == 0"><a class="btn btn-default"><em class="fa fa-check-circle"></em></a></td>
+                <td v-else-if="e.validationD == 1"><a class="btn btn-success"><em class="fa fa-check-circle"></em></a></td>
+
+                <td v-if="e.existPS == -1"><a class="btn btn-default"><em class="fa fa-user-times"></em></a></td>
+                <td v-else-if="e.validationS == 0"><a class="btn btn-default"><em class="fa fa-check-circle"></em></a></td>
+                <td v-else-if="e.validationS == 1"><a class="btn btn-success"><em class="fa fa-check-circle"></em></a></td>
+
+                <td v-if="e.existPT == -1"><a class="btn btn-default"><em class="fa fa-user-times"></em></a></td>
+                <td v-else-if="e.validationT == 0"><a class="btn btn-default"><em class="fa fa-check-circle"></em></a></td>
+                <td v-else-if="e.validationT == 1"><a class="btn btn-success"><em class="fa fa-check-circle"></em></a></td>
+                <td align="center">
+                    <a  @click="deleteEvent(e.eventId)" class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -22,40 +46,33 @@
 </div>
 
 
-<div class="col-lg-6 col-md-6">
-    <div class="widget">
-    <div class="widget-header">
-        <h1>Raccourcis</h1>
+    <div class="col-lg-5">
+        <div class="widget">
+            <div class="widget-header"><h1>Raccourcis</h1></div>
+            <div class="widget-content">
+                <div class="shortcuts">
+
+                    <router-link to="/client/event" class="router">
+                    <a href="javascript:;" class="shortcut"><i class="shortcut-icon fa fa-list-alt"></i><span class="shortcut-label"> Créer un évènement </span></a>
+                    </router-link>
+
+                    <router-link to="/client/Conversation" class="router">
+                    <a href="javascript:;" class="shortcut"><i class="shortcut-icon fa fa-comment"></i><span class="shortcut-label">Discussion avec les fournisseurs</span></a>
+                    </router-link>
+
+                    <router-link to="/client/profil" class="router">
+                    <a href="javascript:;" class="shortcut"><i class="shortcut-icon fa fa-user"></i><span class="shortcut-label">Modifier<br /> son profil</span></a>
+                    </router-link>
+
+                    <a href="mailto:thebigevent@intechinfo.fr" class="shortcut"><i class="shortcut-icon fa fa-tag"></i><span class="shortcut-label"> Envoyer un mail au support</span> </a>
+
+                    <router-link to="/logout" class="router">
+                    <a href="javascript:;" class="shortcut"><i class="shortcut-icon fa fa-power-off"></i><span class="shortcut-label"> Se <br /> déconnecter</span> </a>
+                    </router-link>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- /widget-header -->
-    <div class="widget-content">
-        <div class="shortcuts">
-
-            <router-link to="/client/event" class="router">
-            <a href="javascript:;" class="shortcut"><i class="shortcut-icon fa fa-list-alt"></i><span class="shortcut-label"> Créer un évènement </span></a>
-            </router-link>
-
-            <router-link to="/client/Conversation" class="router">
-            <a href="javascript:;" class="shortcut"><i class="shortcut-icon fa fa-comment"></i><span class="shortcut-label">Discussion avec les fournisseurs</span></a>
-            </router-link>
-
-            <router-link to="/client/profil" class="router">
-            <a href="javascript:;" class="shortcut"><i class="shortcut-icon fa fa-user"></i><span class="shortcut-label">Modifier<br /> son profil</span></a>
-            </router-link>
-
-            <a href="mailto:thebigevent@intechinfo.fr" class="shortcut"><i class="shortcut-icon fa fa-tag"></i><span class="shortcut-label"> Envoyer un mail au support</span> </a>
-
-            <router-link to="/logout" class="router">
-            <a href="javascript:;" class="shortcut"><i class="shortcut-icon fa fa-power-off"></i><span class="shortcut-label"> Se <br /> déconnecter</span> </a>
-            </router-link>
-
-
-    </div>
-        <!-- /shortcuts --> 
-    </div>
-    <!-- /widget-content --> 
-    </div>
-
 
 </div>
 </template>
@@ -74,7 +91,6 @@ export default {
             event : [],
             email: null,
             userId : null
-            
         }
   	},
     async mounted() {
@@ -91,6 +107,33 @@ export default {
         loadEventId: async function() {
             var e = await ConversationService.getEventIdAsync(this.userId);
             this.event = e.content;
+            console.log(this.event)      
+        },
+        deleteEvent: async function(id) {
+
+            var confirme2 = confirm("Vous êtes sur le point de supprimer un événement. Êtes-vous sûr ?");
+            if(confirme2 != false)
+            {
+                var result = await EventService.deleteEvent(id);
+                if(result != false)
+                {
+                    var e = await ConversationService.getEventIdAsync(this.userId);
+                    this.event = e.content;
+                }
+            }
+        },
+     formatDate (input) {
+            if (input != null)
+            {
+                input = new Date(input);
+                    var dd = input.getDate();
+                    var mm = input.getMonth()+1;
+                    var yyyy = input.getFullYear(); 
+                    if(dd<10){dd='0'+dd} 
+                    if(mm<10){mm='0'+mm} 
+                    input = dd + '/' + mm + '/' + yyyy; 
+                    return (input);
+            }
         }
     }
 }
@@ -107,7 +150,7 @@ export default {
 }
 
 .shortcuts .shortcut { 
-	width: 22.50%;
+	width: 25.5%;
 	display: inline-block;
 	padding: 12px 0;
 	margin: 0 .9% 1em;
@@ -147,5 +190,13 @@ export default {
 	color: #545454;
 }
 
+th, td, a {
+    text-align:center;
+    vertical-align:middle;    
+}
+
+.btn {
+    float: none;
+}
 
  </style>

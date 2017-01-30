@@ -44,11 +44,12 @@ import AuthService from '../../services/auth.js'
 import EventService from '../../services/EventService.js'
 
 export default {
-    props:["idTraiteur"],
+    props:["idTraiteur", "traiteur"],
     data(){
         return {
             model: null,
-            id_traiteur_new: this.idTraiteur
+            id_traiteur_new: this.idTraiteur,
+            model2: this.traiteur            
         }
     },
     mounted(){
@@ -58,10 +59,13 @@ export default {
         async loadData(){
             this.model = await EventService.selectGetAsync("Traiteur")
             this.model = this.model.content
-
         },
         nextStep(){
-            this.$emit('nextStep', {method: "traiteur", id_traiteur: this.id_traiteur_new})
+            if (this.model[this.id_traiteur_new] != null)
+                this.model2 = this.model[this.id_traiteur_new]
+            else
+                this.model2 = this.model;         
+            this.$emit('nextStep', {method: "traiteur", id_traiteur: this.id_traiteur_new, traiteur: this.model2})
         }
     }
 }

@@ -1,15 +1,16 @@
 <template>
 
 <div class="container">
-
   <div id="1" class="off">
     <div id="snoAlertBox" class="alert alert-success" data-alert="alert">
         <strong>Succès ! </strong> {{ message }}</div>
   </div>
+  <div id="2" class="off">
+    <div id="snoAlertBox2" class="alert alert-danger" data-alert="alert">
+        <strong>Action refusé ! </strong> {{ message }}</div>
+  </div>
   <h1 class="page-header">Modifier son profil</h1>
-
   <div class="row">
-
       <form @submit="onSubmit($event)" class="form-horizontal" role="form">
         <div class="form-group">
           <label class="col-lg-3 control-label">Prénom:</label>
@@ -43,10 +44,9 @@
           </form>
 </div>
 
-
 <h2 class="page-header">Modifier son Compte</h2>
   <div class="row">
-    <form @submit="onSubmitPasse($event)" class="form-horizontal" role="form">    
+    <form @submit="onSubmitPasse($event)" class="form-horizontal" role="form">
         <div class="form-group">
           <label class="col-lg-3 control-label">Email:</label>
           <div class="col-lg-8">
@@ -68,7 +68,7 @@
         <div class="form-group">
           <label class="col-md-3 control-label"></label>
           <div class="col-md-8">
-            <input name ="Save" class="btn btn-primary" value="Save Changes" type="submit">            
+            <input name ="Save" class="btn btn-primary" value="Save Changes" type="submit">
             <a class="btn btn-danger" @click="deleteAccount">Supprimer le compte</a>
           </div>
         </div>
@@ -81,6 +81,8 @@
 <script>
 import AuthService from '../services/auth.js'
 import UserService from '../services/UserService.js'
+import EventService from '../services/EventService.js'
+
 export default {
   	data () {
       return {
@@ -94,26 +96,44 @@ export default {
         email: null,
         newPass: null,
         confirmNewPass: null,
-        message:null
+        message:null,
+        eventT : [
+            {eventId: null},
+            {traiteurId: null},
+            {validationT: null}
+        ],
+        eventD : [
+            {eventId: null},
+            {decoId: null},
+            {validationD: null}
+        ],
+        eventS : [
+            {eventId: null},
+            {salleId: null},
+            {validationS: null}
+        ]
        }
   	},
     mounted() {
             this.email = AuthService.hisEmail();
-
             this.loadModelUser(this.email);
         },
     methods: {
             loadModelUser: async function(email) {
               this.model = await UserService.getUserAsync(this.email);
               this.model = this.model.content;
+              this.eventS = await EventService.getEventbyidPS(this.model.userId);
+              this.eventS = this.eventS.content;
+              this.eventD = await EventService.getEventbyidPD(this.model.userId);
+              this.eventD = this.eventD.content;
+              this.eventT = await EventService.getEventbyidPT(this.model.userId);
+              this.eventT = this.eventT.content;
             },
-
             onSubmit: async function(e) {
               e.preventDefault();
               var result = null;
               if (this.model.tel.length == 0)
-                this.model.tel = 0;              
-
+                this.model.tel = 0;
               result = await UserService.postUserAsync(this.model);
               if(result != null)
                 {
@@ -121,7 +141,9 @@ export default {
                   this.model = this.model.content;
                   this.message = "Les modifications ont bien été apporté."
                   document.getElementById('1').className = 'on';
-                  $("#snoAlertBox").fadeIn();
+                  window.setTimeout(function() {
+                  document.getElementById('1').className = 'off';
+                  }, 4000);
                 }
             },
             onSubmitPasse: async function(e) {
@@ -137,14 +159,79 @@ export default {
                 this.model = this.model.content;
                 this.message = "Les modifications ont bien été apporté."
                 document.getElementById('1').className = 'on';
-                $("#snoAlertBox").fadeIn();                
-              }            
+                window.setTimeout(function() {
+                document.getElementById('1').className = 'off';
+                }, 4000);
+              }
             },
             async deleteAccount(){
-              await UserService.deleteUserAsync(this.model.userId);
-              this.$router.replace('/');
-            }
-            
+              var i = 0;
+              for (i = 0; i < this.eventT.length; i++)
+              {
+                    if (this.eventT[i].validationT == 1) 
+                    {
+                        this.message = "Votre Traiteur est réservé à un événement. "
+                        document.getElementById('2').className = 'on';
+                        window.setTimeout(function() {
+                        document.getElementById('2').className = 'off';
+                        }, 4000);
+                        return;
+                    }
+              }
+              for (i = 0; i < this.eventD.length; i++)
+              {
+                  if (this.eventD[i].validationD == 1)
+                  {
+                      this.message = "Votre décorateur est réservé à un événement."
+                      document.getElementById('2').className = 'on';
+                      window.setTimeout(function() {
+                      document.getElementById('2').className = 'off';
+                      }, 4000);
+                      return;
+                  }
+              }
+              for (i = 0; i < this.eventS.length; i++)
+              {
+                  if (this.eventS[i].validationS == 1)
+                  {
+                      this.message = "Votre salle est réservé à un événement."
+                      document.getElementById('2').className = 'on';
+                      window.setTimeout(function() {
+                      document.getElementById('2').className = 'off'; 
+                      }, 4000);
+                      return;
+                  }
+              }
+              var confirme = confirm("Vous êtes sur le point de supprimer votre compte. Êtes-vous sûr ?");
+              if(confirme != false)
+              {
+                for (i = 0; i < this.eventS.length; i++)
+                  await EventService.UpdateSalleIdbynull(this.eventS[i].eventId);
+                for (i = 0; i < this.eventD.length; i++)
+                  await EventService.UpdateDecoIdbynull(this.eventD[i].eventId);
+                for (i = 0; i < this.eventT.length; i++)
+                  await EventService.UpdateTraiteurIdbynull(this.eventT[i].eventId);
+              }
+
+              var model_salle = await UserService.getsallebyid(this.model.userId);
+              model_salle = model_salle.content;
+
+
+              var model_deco = await UserService.getdecobyid(this.model.userId);
+              model_deco = model_deco.content;
+
+
+              var model_traiteur = await UserService.getTraiteurAsync(this.model.userId);
+              model_traiteur = model_traiteur.content;
+
+                await UserService.deleteTraiteur(model_traiteur.traiteurId);
+                for (i = 0; i < model_salle.length; i++)
+                  await UserService.deleteSalle(model_salle[i].salleId);
+                for (i = 0; i < model_deco.length; i++)
+                  await UserService.deleteDeco(model_deco[i].decoId);
+                await UserService.deleteUserAsync(this.model.userId);
+                this.$router.replace('/');
+              }
         }
 }
 </script>

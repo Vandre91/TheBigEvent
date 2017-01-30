@@ -4,7 +4,6 @@
     [NomEvent] NVARCHAR(MAX) NOT NULL, 
     [NbInvite] NVARCHAR(MAX) NULL, 
     [Prix] NVARCHAR(MAX) NULL, 
-    [Horaire] DATETIME NULL, 
     [MenuId] INT NULL, 
     [SalleId] INT NULL, 
     [TraiteurId] INT NULL, 
