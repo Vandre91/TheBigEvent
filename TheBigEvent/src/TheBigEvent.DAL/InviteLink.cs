@@ -15,12 +15,12 @@ namespace TheBigEvent.DAL
         {
             _connectionString = connectionString;
         }
-        public void AddBigSelecte(int _id,int _select, string _nom, string _mail)
+        public void AddInvite(int _select, string _nom, string _mail)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                 con.Query("insert into tbe.tInvite (InviteId,BigSelectId,Nom,Mail) values (@id, @select,@nom,@mail)",
-                    new { id = _id, select= _select ,nom = _nom, mail= _mail });
+                 con.Query("insert into tbe.tInvite (BigSelectId,Nom,Mail) values (@select,@nom,@mail)",
+                    new { select= _select ,nom = _nom, mail= _mail });
             }
         }
     }

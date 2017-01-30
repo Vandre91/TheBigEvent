@@ -7,5 +7,8 @@ namespace TheBigEvent.Models
 {
     public class ValidationViewModels
     {
+        public int ValidationId { get; set; }
+        public int PropositionId { get; set; }
+        public int InviteId { get; set; }
     }
 }

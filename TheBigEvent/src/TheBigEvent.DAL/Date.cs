@@ -8,7 +8,7 @@ namespace TheBigEvent.DAL
     public class Date
     {
         public int DateId { get; set; }
-        public int Dates { get; set; }
+        public DateTime Dates { get; set; }
         public int BigSelecteId { get; set; }
     }
 }

@@ -36,19 +36,19 @@ namespace TheBigEvent.Controllers
             _bigselecteService.addBigSelecte( model.UserId, model.Nom, model.Ville, model.Description);
         }
         [HttpPost("createInvite/")]
-        public void createInvite([FromBody] EventViewModels model)
+        public void createInvite([FromBody] InviteViewModels model)
         {
-            _inviteService.addInvite(model.NomEvent, model.Localisation, model.MenuId, model.SalleId, model.TraiteurId, model.DecoId, model.UserId, model.NbInvite, model.Prix, model.Dates);
+            _inviteService.addInvite(model.BigSelecteId, model.Nom, model.Mail);
         }
         [HttpPost("createDate/")]
-        public void createDate([FromBody] EventViewModels model)
+        public void createDate([FromBody] DateViewModels model)
         {
-            _dateService.addDate(model.NomEvent, model.Localisation, model.MenuId, model.SalleId, model.TraiteurId, model.DecoId, model.UserId, model.NbInvite, model.Prix, model.Dates);
+            _dateService.addDate(model.Dates, model.BigSelecteId);
         }
         [HttpPost("createValidation/")]
-        public void createValidation([FromBody] EventViewModels model)
+        public void createValidation([FromBody] ValidationViewModels model)
         {
-            _validationService.addValidation(model.NomEvent, model.Localisation, model.MenuId, model.SalleId, model.TraiteurId, model.DecoId, model.UserId, model.NbInvite, model.Prix, model.Dates);
+            _validationService.addValidation(model.PropositionId, model.ValidationId);
         }
     }
 }

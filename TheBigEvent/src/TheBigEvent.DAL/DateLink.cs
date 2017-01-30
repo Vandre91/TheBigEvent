@@ -15,12 +15,12 @@ namespace TheBigEvent.DAL
         {
             _connectionString = connectionString;
         }
-        public void AddDate(int _id, DateTime _dates, int _bigselecteId)
+        public void AddDate( DateTime _dates, int _bigselecteId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                con.Query<Date>("insert into tbe.tDate (DateId,Dates,BigSelectedId) values (@id,@Dates,@BigSelectedId)",
-                   new { id = _id, date = _dates, BigSelecteId = _bigselecteId});
+                con.Query("insert into tbe.tDate (Dates,BigSelectedId) values (@Dates,@BigSelectedId)",
+                   new {  date = _dates, BigSelecteId = _bigselecteId});
             }
         }
     }

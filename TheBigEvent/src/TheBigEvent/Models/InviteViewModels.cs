@@ -7,5 +7,9 @@ namespace TheBigEvent.Models
 {
     public class InviteViewModels
     {
+        public int InviteId { get; set; }
+        public int BigSelecteId { get; set; }
+        public string Nom { get; set; }
+        public string Mail { get; set; }
     }
 }

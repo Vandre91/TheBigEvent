@@ -15,11 +15,11 @@ namespace TheBigEvent.DAL
         {
             _connectionString = connectionString;
         }
-        public void AddValidation(int _id, int inviteid)
+        public void AddValidation(int _id, int _inviteid)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                con.Query<Validation>("insert into tbe.tBigSelecte (ValidationId, InviteId) values (@id,@inviteid)",
+                con.Query<Validation>("insert into tbe.tValidation (PropositionId, InviteId) values (@id,@inviteid)",
                    new { id = _id, InviteId = _inviteid});
             }
         }
