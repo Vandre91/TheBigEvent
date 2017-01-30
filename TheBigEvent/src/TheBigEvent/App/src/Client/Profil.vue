@@ -171,7 +171,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 strong{
     color : #337ab7;    

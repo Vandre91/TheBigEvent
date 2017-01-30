@@ -46,6 +46,11 @@
                         <a><i class="fa fa-fw fa-edit"></i> Conversation</a>
                       </router-link>
                     </li>
+                     <li v-bind:class="{ active: tab === 4}" v-on:click="tab = 4">
+                      <router-link to="/client/BigSelect" class="router">
+                        <a><i class="fa fa-fw fa-edit"></i> BigSelect</a>
+                      </router-link>
+                    </li>
                 </ul>
             </div>
         </nav>

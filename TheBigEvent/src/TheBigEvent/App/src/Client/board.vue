@@ -107,7 +107,6 @@ export default {
         loadEventId: async function() {
             var e = await ConversationService.getEventIdAsync(this.userId);
             this.event = e.content;
-            console.log(this.event)      
         },
         deleteEvent: async function(id) {
 
