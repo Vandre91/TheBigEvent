@@ -1,10 +1,8 @@
 <template>
 
-<div class="container">
+<div class="container" style="margin:0;width:100%;">
 
-<div class="col-lg-6 col-md-6">
-
-
+<div class="col-lg-7">
             <div class="panel panel-default panel-table">
               <div class="panel-heading">
                 <div class="row">
@@ -15,20 +13,26 @@
                 <table class="table table-striped table-bordered table-list">
                   <thead>
                     <tr>
+                        <th>Date</th>
                         <th>Nom</th>
                         <th>Nombre d'invité</th>
                         <th>Prix</th>
                         <th>Localisation</th>
-                        <th>Validation</th>                        
+                        <th>Validation</th>
                         <th><em class="fa fa-cog"></em></th>
                     </tr> 
                   </thead>
                   <tbody>
+
+                <th class="span" colspan="7" scope="colgroup">
+                    <h4>Les traiteurs</h4>
+                </th>
                 <tr v-if="eventT.length == 0">
-                </tr>
+                </tr>                
                 <tr v-for="i in eventT">
+                    <td> {{ formatDate(i.dates) }} </td>
                     <td>{{ i.nomEvent }}</td>
-                    <td>{{ i.nbPlace }}</td>
+                    <td>{{ i.nbInvite }}</td>
                     <td>{{ i.prix }}</td>
                     <td>{{ i.localisation }}</td>
                     <td v-if="i.validationT == 0">Non-validé</td>
@@ -39,14 +43,17 @@
                     <td v-else="i.validationT == 1" align="center">
                         <a @click="validT(i.validationT, i.eventId)" class="btn btn-success"><em class="fa fa-check-circle"></em></a>
                     </td>
-
                 </tr>
 
-                <tr v-if="eventD.length == 0">
+
+                <th class="span" colspan="7" scope="colgroup">
+                    <h4>Les décorateurs</h4>
+                </th>                <tr v-if="eventD.length == 0">
                 </tr>
                 <tr v-for="i in eventD">
+                    <td> {{ formatDate(i.dates) }} </td>
                     <td>{{ i.nomEvent }}</td>
-                    <td>{{ i.nbPlace }}</td>
+                    <td>{{ i.nbInvite }}</td>
                     <td>{{ i.prix }}</td>
                     <td>{{ i.localisation }}</td>
                     <td v-if="i.validationD == 1">Validé</td>
@@ -59,11 +66,15 @@
                     </td>
                 </tr>
 
+                <th class="span" colspan="7" scope="colgroup">
+                    <h4>Les salles</h4>
+                </th>
                 <tr v-if="eventS.length == 0">
                 </tr>
                 <tr v-for="i in eventS">
+                    <td> {{ formatDate(i.dates) }} </td>
                     <td>{{ i.nomEvent }}</td>
-                    <td>{{ i.nbPlace }}</td>
+                    <td>{{ i.nbInvite }}</td>
                     <td>{{ i.prix }}</td>
                     <td>{{ i.localisation }}</td>
                     <td v-if="i.validationS == 1">Validé</td>
@@ -85,7 +96,7 @@
 </div>
 
 
-<div class="col-lg-6 col-md-6">
+<div class="col-lg-5">
     <div class="widget">
     <div class="widget-header">
         <h1>Raccourcis</h1>
@@ -161,7 +172,6 @@ export default {
             model2 : {
                 value : null,
                 EventId : null
-
             }
         }
   	},
@@ -183,11 +193,10 @@ export default {
             this.eventD = this.eventD.content;
             this.eventS = await EventService.getEventbyidPS(this.userId);
             this.eventS = this.eventS.content;
-
         },
         validT: async function(id, eventId){
             if (id == 0)
-                id = 1;            
+                id = 1;
             else
                 id = 0;
             this.model2.value = id;
@@ -198,7 +207,7 @@ export default {
         },
         validD: async function(id, eventId){
             if (id == 0)
-                id = 1;            
+                id = 1;
             else
                 id = 0;
             this.model2.value = id;
@@ -209,7 +218,7 @@ export default {
         },
         validS: async function(id, eventId){
             if (id == 0)
-                id = 1;            
+                id = 1;
             else
                 id = 0;
             this.model2.value = id;
@@ -218,7 +227,19 @@ export default {
             this.eventS = await EventService.getEventbyidPS(this.userId);
             this.eventS = this.eventS.content;
         },
-        
+        formatDate (input) {
+                if (input != null)
+                {
+                    input = new Date(input);
+                    var dd = input.getDate();
+                    var mm = input.getMonth()+1;
+                    var yyyy = input.getFullYear(); 
+                    if(dd<10){dd='0'+dd} 
+                    if(mm<10){mm='0'+mm} 
+                    input = dd + '/' + mm + '/' + yyyy; 
+                    return (input);
+                }
+            }
     }
 }
 </script>
@@ -230,7 +251,7 @@ export default {
 }
 
 .shortcuts .shortcut { 
-	width: 22.50%;
+	width: 25.50%;
 	display: inline-block;
 	padding: 12px 0;
 	margin: 0 .9% 1em;
@@ -275,8 +296,20 @@ h5 {
     font-size: 22px;
 }
 
+th, td, a {
+    text-align:center;
+    vertical-align:middle;
+}
 
+.btn {
+    float: none;
+}
 
+h4 {
+    text-align: center;
+    font-weight: 700;
+    color: forestgreen;
+}
 
 .panel-table .panel-body{
   padding:0;
@@ -333,7 +366,5 @@ used to vertically center elements, may need modification if you're not using de
 .panel-table .panel-body .table-bordered > tbody > tr > td{
   line-height: 34px;
 }
-
-
 
  </style>

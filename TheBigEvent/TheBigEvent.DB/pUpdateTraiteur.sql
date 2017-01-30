@@ -1,4 +1,4 @@
-﻿create PROC tbe.pUpdateTraiteur
+﻿CREATE PROC tbe.pUpdateTraiteur
 (
 	@TraiteurId INT, 
 	@UserId INT,
@@ -8,7 +8,7 @@
 as
 begin
 	update tbe.tTraiteur
-	set UserId = @UserId, NOM = @NOM, Descriptions = @Descriptions
+	set UserId = @UserId, Nom = @Nom, Descriptions = @Descriptions
 	where TraiteurId = @TraiteurId;
 	return 0;
 end;

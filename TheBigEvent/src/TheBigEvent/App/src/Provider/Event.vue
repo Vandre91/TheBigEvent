@@ -22,6 +22,11 @@
                     </tr> 
                   </thead>
                   <tbody>
+                <tr>
+        <th  class="span" colspan="6" scope="colgroup" style="text-align:center;font-size:17px;font-weight:600;color:crimson;">
+            Traiteur
+        </th>
+                </tr>
                 <tr v-if="eventT.length == 0">
                 </tr>
                 <tr v-for="i in eventT">
@@ -39,7 +44,11 @@
                     </td>
 
                 </tr>
-
+                <tr>
+        <th  class="span" colspan="6" scope="colgroup" style="text-align:center;font-size:17px;font-weight:600;color:crimson;">
+            Decorateur
+        </th>
+                </tr>
                 <tr v-if="eventD.length == 0">
                 </tr>
                 <tr v-for="i in eventD">
@@ -55,6 +64,11 @@
                     <td v-else="i.validationD == 1" align="center">
                         <a @click="validD(i.validationD, i.eventId)" class="btn  btn-success"><em class="fa fa-check-circle"></em></a>
                     </td>
+                </tr>
+                <tr>
+        <th  class="span" colspan="6" scope="colgroup" style="text-align:center;font-size:17px;font-weight:600;color:crimson;">
+            Salle
+        </th>
                 </tr>
 
                 <tr v-if="eventS.length == 0">

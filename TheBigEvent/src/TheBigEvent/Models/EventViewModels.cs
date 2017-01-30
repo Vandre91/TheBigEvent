@@ -9,9 +9,9 @@ namespace TheBigEvent.Models
     {
         public int EventId { get; set; }
         public string NomEvent { get; set; }
-        public string NbInvite { get; set; }
-        public string Prix { get; set; }
-        public string Horaire { get; set; }
+        public int NbInvite { get; set; }
+        public int Prix { get; set; }
+        public DateTime Dates { get; set; }
         public int MenuId { get; set; }
         public int SalleId { get; set; }
         public int TraiteurId { get; set; }

@@ -4,7 +4,7 @@
 	@UserId INT,
 	@Descriptions NVARCHAR(MAX),
 	@Prix FLOAT,
-	@NOM NVARCHAR(MAX)
+	@Nom NVARCHAR(MAX)
 )
 AS
 BEGIN 

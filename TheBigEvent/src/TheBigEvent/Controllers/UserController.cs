@@ -130,32 +130,32 @@ namespace TheBigEvent.Controllers
 
 
         [HttpDelete("deleteSalle/{SalleId}")]
-        public void DeleteSalle(int SalleId)
+        public bool DeleteSalle(int SalleId)
         {
             _salleService.DeleteSalle(SalleId);
+            return (true);
         }
 
         [HttpDelete("deleteDeco/{DecoId}")]
-        public void DeleteDeco(int DecoId)
+        public bool DeleteDeco(int DecoId)
         {
             _decoService.DeleteDeco(DecoId);
+            return (true);
         }
 
         [HttpDelete("deleteTraiteur/{TraiteurId}")]
-        public void DeleteTraiteur(int TraiteurId)
+        public bool DeleteTraiteur(int TraiteurId)
         {
             _menuService.DeleteAllMenubyId(TraiteurId);
             _traiteurService.DeleteTraiteur(TraiteurId);
+            return (true);
         }
 
         [HttpDelete("deleteMenu/{MenuId}")]
-        public void DeleteMenu(int MenuId)
+        public bool DeleteMenu(int MenuId)
         {
             _menuService.DeleteMenu(MenuId);
+            return (true);
         }
-
-
-
-
     }
 }

@@ -76,7 +76,7 @@ namespace TheBigEvent.DAL
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 return con.Query<User>(
-                        "select * from tbe.tUser where Mail = @Mail ;",
+                        "select UserId, FirstName, LastName, City, Tel, Pro, Compagny from tbe.tUser where Mail = @Mail ;",
                         new { Mail = _Mail })
                     .FirstOrDefault();
             }

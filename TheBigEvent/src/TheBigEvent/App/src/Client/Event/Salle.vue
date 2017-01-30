@@ -12,7 +12,7 @@
 					<div class="media">
 						<div class="checkbox pull-right">
 				    		<label>
-								<input type="radio" :value="models.salleId" v-model="id_salle_new">				
+								<input type="radio" v-on:click="prices(models.prix)" :value="models.salleId" v-model="id_salle_new">				
 							</label>
 						</div>
 						<div class="pull-left">
@@ -42,11 +42,14 @@ import AuthService from '../../services/auth.js'
 import EventService from '../../services/EventService.js'
 
 export default {
-    props:["idSalle"],
+    props:["idSalle", "prix", "salle"],
     data(){
         return {
             model: null,
-            id_salle_new: this.idSalle
+            id_salle_new: this.idSalle,
+            _prix: 0,
+            price: this.prix,
+            model2: this.salle    
         }
     },
     mounted(){
@@ -56,10 +59,18 @@ export default {
         async loadData(){
             this.model = await EventService.selectGetAsync("Salle")
             this.model = this.model.content
-
         },
+        prices(prix)
+        {
+            this._prix = prix;
+        },        
         nextStep(){
-            this.$emit('nextStep', {method: "salle", id_salle: this.id_salle_new})
+            this.price = this.price + this._prix;
+            if (this.model[this.id_salle_new] != null)
+            this.model2 = this.model[this.id_salle_new];
+            else
+                this.model2 = this.model;
+            this.$emit('nextStep', {method: "salle", id_salle: this.id_salle_new, prix: this.price, salle: this.model2})
         }
     }
 }

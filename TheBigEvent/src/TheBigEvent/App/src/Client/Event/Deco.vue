@@ -12,7 +12,7 @@
 			        	<span class="label label-danger pull-right"></span>
 						<div class="checkbox pull-right">
 				    		<label>
-								<input type="radio" :value="models.decoId" v-model="id_deco_new">				
+								<input type="radio" v-on:click="prices(models.prix)" :value="models.decoId" v-model="id_deco_new">				
 							</label>
 						</div>
 						<div class="pull-left">
@@ -42,11 +42,14 @@ import AuthService from '../../services/auth.js'
 import EventService from '../../services/EventService.js'
 
 export default {
-    props:["idDeco"],
+    props:["idDeco", "prix", "deco"],
     data(){
         return {
             model: null,
-            id_deco_new: this.idDeco
+            id_deco_new: this.idDeco,
+            _prix: 0,
+            price: this.prix,
+            model2: this.deco
         }
     },
     mounted(){
@@ -56,9 +59,19 @@ export default {
         async loadData(){
             this.model = await EventService.selectGetAsync("Deco")
             this.model = this.model.content
+
+        },
+        prices(prix)
+        {
+            this._prix = prix;
         },
         nextStep(){
-            this.$emit('nextStep', {method: "deco", id_deco: this.id_deco_new})
+            this.price = this.price + this._prix;
+            if (this.model[this.id_deco_new] != null)
+                this.model2 = this.model[this.id_deco_new];
+            else
+                this.model2 = this.model;
+            this.$emit('nextStep', {method: "deco", id_deco: this.id_deco_new, prix: this.price, deco: this.model2})
         }
     }
 }

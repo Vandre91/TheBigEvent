@@ -25,9 +25,9 @@ namespace TheBigEvent.Services
         {
             return Result.Success(Status.Ok, _eLink.GetAllEventProById(id));
         }
-        public void addEvent(string _NomEvent, string _Localisation, int _MenuId, int _SalleId, int _TraiteurId, int _DecoId, int _UserId)
+        public void addEvent(string _NomEvent, string _Localisation, int _MenuId, int _SalleId, int _TraiteurId, int _DecoId, int _UserId, int NbInvite, int Prix, DateTime Dates)
         {
-            _eLink.AddEvent( _NomEvent, _Localisation, _MenuId, _SalleId, _TraiteurId,_DecoId,_UserId);
+            _eLink.AddEvent( _NomEvent, _Localisation, _MenuId, _SalleId, _TraiteurId,_DecoId,_UserId, NbInvite, Prix, Dates);
         }
         public Result<IEnumerable<Event>> getEventByIdPT(int id)
         {
@@ -40,6 +40,10 @@ namespace TheBigEvent.Services
         public Result<IEnumerable<Event>> getEventByIdPS(int id)
         {
             return Result.Success(Status.Ok, _eLink.GetEventByIdS(id));
+        }
+        public Result<IEnumerable<Event>> getEventByIdPM(int id)
+        {
+            return Result.Success(Status.Ok, _eLink.GetEventByIdM(id));
         }
 
         public void validT(int id, int value)
@@ -57,6 +61,32 @@ namespace TheBigEvent.Services
             _eLink.validS(id, value);
             return;
         }
+
+        public void UpdateTraiteurIdbynull(int id)
+        {
+            _eLink.UpdateTraiteurIdbynull(id);
+            return;
+        }
+
+        public void UpdateMenuIdbynull(int id)
+        {
+            _eLink.UpdateMenuIdbynull(id);
+            return;
+        }
+
+        public void UpdateSalleIdbynull(int id)
+        {
+            _eLink.UpdateSalleIdbynull(id);
+            return;
+        }
+
+        public void UpdateDecoIdbynull(int id)
+        {
+            _eLink.UpdateDecoIdbynull(id);
+            return;
+        }
+
+
 
         public void DeleteEvent(int _EventId)
         {

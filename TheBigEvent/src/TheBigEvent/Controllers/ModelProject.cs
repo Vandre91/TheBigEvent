@@ -33,7 +33,7 @@ namespace TheBigEvent.Controllers
                 NomEvent = @this.NomEvent,
                 NbInvite = @this.NbInvite,
                 Prix = @this.Prix,
-                Horaire = @this.Horaire,
+                Dates = @this.Dates,
                 MenuId = @this.MenuId,
                 SalleId = @this.SalleId,
                 TraiteurId = @this.TraiteurId,

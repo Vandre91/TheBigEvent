@@ -1,47 +1,41 @@
 <template>
 <div class="tab-content">
-    <div class="tab-pane active" role="tabpanel" id="step1">
+
+<div class="tab-pane active" role="tabpanel" id="step1">
+
+<div class="col-md-6">
     <div class="step1">
             <div class="row">
-            <div class="col-md-6">
                 <label for="InputName">Nom de l'événement </label>
                 <input type="text" v-model="name_edit" class="form-control"  id="InputName" placeholder="Nom de l'événement" minlength="4" maxlength="56" required />
             </div>
-            </div>
     </div>
-<br>
-    
     <div class="step1">
             <div class="row">
-            <div class="col-md-6">
-                <label for="InputNb">Nombre d'invité </label>
-                <input type="text" v-model="Inv" class="form-control"  id="InputNb" placeholder="Nombre d'invité'" required />
-            </div>
+                <label>Nombre d'invité </label>
+                <input type="text"  class="form-control" v-model="Inv" id="InputNb" placeholder="Nombre d'invité" required/>
             </div>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <form class="form-horizontal">
-                <fieldset>
-                    <!-- country select -->
-                    <div class="control-group">
-                        <label class="control-label">Villes</label>
-                        <div class="controls">
-                            <select v-model="ville_edit">
-                                <option v-for="option in villes" v-bind:value="option.value">
-                                    {{ option.text }}
-                                </option>
-                            </div>
-                        </div>
-                </fieldset>
-            </form>
-        </div>
+    <div class="step1">
+            <div class="row">
+
+                <label class="control-label">Villes</label>
+                <div class="controls">
+                    <select v-model="ville_edit">
+                        <option v-for="option in villes" v-bind:value="option.value">
+                            {{ option.text }}
+                        </option>
+                 </div>
+            </div>
+    </div>
     </div>
 
+</div>
 
-
-
+    <div class="col-md-6">
+        <datepicker :format="format" :disabled="disabled" v-model="datevent" placeholder="Select Date" language="fr" :inline="true"></datepicker>
+    </div>
 <ul class="list-inline pull-right">
     <li><button type="button" class="btn btn-primary next-step" @click="nextStep()">Enregistrer et continuer</button></li>
 </ul>
@@ -49,8 +43,13 @@
 </template>
 
 <script>
+import Datepicker from 'vuejs-datepicker'
+
 export default {
-    props:["name", "ville", "NbInvite"],
+    components: {
+        Datepicker
+    },
+    props:["name", "ville", "NbInvite", "date"],
     data(){
         return {
             villes: [
@@ -153,13 +152,28 @@ export default {
             ],
             name_edit: this.name,
             ville_edit: this.ville,
-            Inv : this.NbInvite 
+            Inv : this.NbInvite,
+            format: 'yyyy-MM-dd',
+            disabled: { 
+                to: new Date()
+            },
+            datevent: new Date()
         }
     },
     methods:{
         nextStep(){
-            this.$emit('nextStep', {method: "info", name: this.name_edit, ville: this.ville_edit, NbInvite: this.Inv})
+            if (this.name_edit == null || this.name_edit.length == 0)
+                return;
+            if (this.Inv < 1)
+                return;
+            if (this.datevent < (Date.now()))
+                return;
+
+           this.$emit('nextStep', {method: "info", name: this.name_edit, ville: this.ville_edit, NbInvite: this.Inv, date:this.datevent})
         }
     }
 }
 </script>
+
+
+

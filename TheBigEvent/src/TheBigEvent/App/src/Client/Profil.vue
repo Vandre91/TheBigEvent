@@ -81,6 +81,8 @@
 <script>
 import AuthService from '../services/auth.js'
 import UserService from '../services/UserService.js'
+import EventService from '../services/EventService.js'
+import ConversationService from '../services/ConversationService.js'
 export default {
   	data () {
       return {
@@ -91,6 +93,7 @@ export default {
             tel : null,
             mail : null
         },
+        message : null,
         email: null,
         newPass: null,
         confirmNewPass: null
@@ -98,7 +101,6 @@ export default {
   	},
     mounted() {
             this.email = AuthService.hisEmail();
-
             this.loadModelUser(this.email);
         },
     methods: {
@@ -116,9 +118,11 @@ export default {
             {
               this.model = await UserService.getUserAsync(this.email);
               this.model = this.model.content;
-              this.message = "Les modifications ont bien été apporté."
+              this.message = "Les modifications ont bien été apporté.";
               document.getElementById('1').className = 'on';
-              $("#snoAlertBox").fadeIn();
+              window.setTimeout(function() {
+              document.getElementById('1').className = 'off';                
+              }, 4000);
             }
             },
             onSubmitPasse: async function(e) {
@@ -134,12 +138,33 @@ export default {
               this.model = this.model.content;
               this.message = "Les modifications ont bien été apporté."
               document.getElementById('1').className = 'on';
-              $("#snoAlertBox").fadeIn();
+              window.setTimeout(function() {
+              document.getElementById('1').className = 'off';                
+              }, 4000);              
             }
             },
             async deleteAccount(){
-              await UserService.deleteUserAsync(this.model.userId);
-              this.$router.replace('/');
+
+            var model = await UserService.getUserAsync(this.email);
+            model = model.content;
+
+            model = await ConversationService.getEventIdAsync(this.model.userId);
+            model = model.content;
+
+            var confirme2 = confirm("Vous êtes sur le point de supprimer un compte. Tout vos événements vont êtres supprimer. Êtes-vous sûr ?");
+              if(confirme2 != false)
+              {
+                  var i = 0;
+                  while (i != model.length)
+                  {
+                      var result = await EventService.deleteEvent(model[i].eventId);
+                      if(result == false)
+                        return;
+                        i++;
+                  }
+                  await UserService.deleteUserAsync(this.model.userId);
+                  this.$router.replace('/');             
+              }
             }
             
         }

@@ -95,7 +95,7 @@ AuthService.providers = {
   }
 };
 
-/* eslint-disable no-new */
+
 new Vue({
   el: '#app',
   router,
@@ -105,3 +105,10 @@ new Vue({
 })
 
 
+import Datepicker from 'vuejs-datepicker';
+
+Vue.component('my-component', {
+    components: {
+        Datepicker
+    }
+});
