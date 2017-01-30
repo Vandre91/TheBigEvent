@@ -8,6 +8,7 @@ namespace TheBigEvent.DAL
     public class Validation
     {
         public int ValidationId { get; set; }
+        public int PropositionId { get; set; }
         public int InviteId { get; set; }
     }
 }

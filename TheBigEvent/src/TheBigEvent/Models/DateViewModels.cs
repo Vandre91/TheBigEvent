@@ -7,5 +7,8 @@ namespace TheBigEvent.Models
 {
     public class DateViewModels
     {
+        public int DateId { get; set; }
+        public DateTime Dates { get; set; }
+        public int BigSelecteId { get; set; }
     }
 }

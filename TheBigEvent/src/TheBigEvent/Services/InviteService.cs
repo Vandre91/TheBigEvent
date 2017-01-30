@@ -14,9 +14,9 @@ namespace TheBigEvent.Services
         {
             _iLink = new InviteLink(connectionString);
         }
-        public void addInvite(int _id, int _select, string _nom, string _mail)
+        public void addInvite( int _select, string _nom, string _mail)
         {
-            _iLink.AddInvite( _id,  _select,  _nom,  _mail);
+            _iLink.AddInvite( _select,  _nom,  _mail);
         }
     }
 }
