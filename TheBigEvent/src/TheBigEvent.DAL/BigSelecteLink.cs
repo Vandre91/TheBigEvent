@@ -15,12 +15,14 @@ namespace TheBigEvent.DAL
         {
             _connectionString = connectionString;
         }
-        public IEnumerable<BigSelecte> AddBigSelecte(int _id,string _nom,string _ville,string _description)
+        public BigSelecte AddBigSelecte(int _id,string _nom,string _ville,string _description)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                return con.Query<BigSelecte>("insert into tbe.tBigSelecte (UserId,Nom,Ville,Description) values (@id,@nom,@ville,@description)",
-                    new { id = _id, nom = _nom, ville = _ville, description = _description });
+
+
+                return con.Query<BigSelecte>("INSERT INTO tbe.tBigSelecte (Nom, UserId, Ville, Description) OUTPUT Inserted.BigSelecteId VALUES (@nom, @id,@ville, @description)",
+                    new { id = _id, nom = _nom, ville = _ville, description = _description }).FirstOrDefault(); 
             }
         }
     }

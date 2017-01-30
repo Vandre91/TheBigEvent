@@ -51,7 +51,7 @@
     <br /><br />
 <div class="col-md-12" style="padding-left: 0;">
     <li v-for="item in date_edit" >
-      <span> {{ formatDate(item.date) }} </span>
+      <span> {{ formatDate(item.dates) }} </span>
       <button v-on:click="supp(item)">Supprimer </button>
       <br />
     </li>
@@ -92,7 +92,7 @@ export default {
     components: {
         Datepicker
     },    
-    props:["name", "ville","description", "invite", "date"],
+    props:["nom", "ville","description", "invite", "date"],
     data(){
         return {
             villes: [
@@ -193,7 +193,7 @@ export default {
                 {value:"creteil", text:"Créteil (94)"},
                 {value:"pontoise", text:"Pontoise (95)"}
             ],
-            name_edit: this.name,
+            name_edit: this.nom,
             ville_edit: this.ville,
             description_edit: this.description,
             disabled: { 
@@ -237,7 +237,7 @@ export default {
               }, 4000);
               return;
             }
-            this.$emit('nextStep', {method: "valid", name: this.name_edit, ville: this.ville_edit, description: this.description_edit, invite: this.invite_edit, date : this.date_edit})
+            this.$emit('nextStep', {method: "valid", nom: this.name_edit, ville: this.ville_edit, description: this.description_edit, invite: this.invite_edit, date : this.date_edit})
         },
         supp : function (item) {
             let idx = this.date.indexOf(item); 
@@ -246,7 +246,7 @@ export default {
         adds : function (item) {
             if (item.length != 0)
             {
-                let todo = {date : item}
+                let todo = {BigSelecteId: 0, dates : item}
                 this.date_edit.push(todo);
             }
         },
@@ -257,7 +257,7 @@ export default {
         adds2 : function (item, item2) {
             if (item.length != 0 && item2.length != 0)
             {
-                let todo = {nom : item, mail : item2}
+                let todo = {BigSelecteId: 0, nom : item, mail : item2}
                 this.invite_edit.push(todo);
             }
         },

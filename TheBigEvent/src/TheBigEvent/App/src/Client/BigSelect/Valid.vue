@@ -60,10 +60,10 @@
 
 <script>
 export default {
-    props:["name", "ville","description", "invite", "date"],
+    props:["nom", "ville","description", "invite", "date"],
     data(){
         return {
-            name_edit: this.name,
+            name_edit: this.nom,
             ville_edit: this.ville,
             description_edit: this.description,
             date_edit: this.date,

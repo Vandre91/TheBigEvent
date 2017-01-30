@@ -22,7 +22,7 @@
                 </ul>
             </div>
 </div>
-<component :is="types[orderTypes[actualTypes]]" v-on:nextStep="updateData" :name="bigselect.name" :ville="bigselect.ville" :invite="bigselect.invite" :description="bigselect.description" :date="bigselect.date"></component>
+<component :is="types[orderTypes[actualTypes]]" v-on:nextStep="updateData" :nom="bigselect.nom" :ville="bigselect.ville" :invite="bigselect.invite" :description="bigselect.description" :date="bigselect.date"></component>
 
 </section>
 </div>
@@ -51,7 +51,7 @@ export default {
             models: null,
             email: null,
             bigselect:{
-                name: null,
+                nom: null,
                 ville:"paris",
                 invite: [],
                 date: [],
@@ -72,10 +72,10 @@ export default {
             if(newTab > this.maxTypes) return
             this.actualTypes = newTab
         },
-        updateData(data){
+        updateData: async function(data){
             switch(data.method){
                 case "info":
-                    this.bigselect.name = data.name
+                    this.bigselect.nom = data.nom
                     this.bigselect.ville = data.ville 
                     this.bigselect.description = data.description 
                     this.bigselect.date = data.date
@@ -84,12 +84,28 @@ export default {
                 break
                  case "valid":
                    this.bigselect.UserId = this.models.content.userId
-                    this.bigselect.name = data.name
+                    this.bigselect.nom = data.nom
                     this.bigselect.ville = data.ville 
                     this.bigselect.description = data.description 
                     this.bigselect.date = data.date
                     this.bigselect.invite = data.invite;
                     this.maxTypes = ++this.actualTypes
+
+
+                    var doodleId = await BigSelectService.createBigSelectAsync(this.bigselect);
+
+                    var i;
+                    for (i = 0; i < this.bigselect.invite.length; i++) {
+                        this.bigselect.invite[i].BigSelecteId = doodleId.content.bigSelecteId;
+
+                        await BigSelectService.addGuestAsync(this.bigselect.invite[i]);
+                    }
+                    for (i = 0; i < this.bigselect.date.length; i++) {
+                        this.bigselect.date[i].BigSelecteId = doodleId.content.bigSelecteId;
+
+                        await BigSelectService.addDateAsync(this.bigselect.date[i]);
+                    }
+
 
 
 //                   this.$router.replace('/Client/board');

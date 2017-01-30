@@ -19,7 +19,7 @@ namespace TheBigEvent.DAL
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                con.Query("insert into tbe.tDate (Dates,BigSelectedId) values (@Dates,@BigSelectedId)",
+                con.Query("insert into tbe.tProposition (Date,BigSelecteId) values (@date,@BigSelecteId)",
                    new {  date = _dates, BigSelecteId = _bigselecteId});
             }
         }

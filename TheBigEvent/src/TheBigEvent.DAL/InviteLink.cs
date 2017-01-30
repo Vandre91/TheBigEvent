@@ -19,7 +19,7 @@ namespace TheBigEvent.DAL
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                 con.Query("insert into tbe.tInvite (BigSelectId,Nom,Mail) values (@select,@nom,@mail)",
+                 con.Query("insert into tbe.tInvite (BigSelecteId,Nom,Mail) values (@select,@nom,@mail)",
                     new { select= _select ,nom = _nom, mail= _mail });
             }
         }

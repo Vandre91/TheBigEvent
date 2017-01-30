@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using TheBigEvent.Authentification;
 using TheBigEvent.Services;
 using TheBigEvent.Models;
+using TheBigEvent.DAL;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -30,10 +31,10 @@ namespace TheBigEvent.Controllers
             _validationService = validationservice;
         }
 
-        [HttpPost("createBigSelecte/")]
-        public void createBigSelecte([FromBody] BigSelecteViewModels model)
+        [HttpPost("createBigSelect/")]
+        public Result<BigSelecte> createBigSelect([FromBody] BigSelecteViewModels model)
         {
-            _bigselecteService.addBigSelecte( model.UserId, model.Nom, model.Ville, model.Description);
+            return _bigselecteService.addBigSelecte( model.UserId, model.Nom, model.Ville, model.Description);
         }
         [HttpPost("createInvite/")]
         public void createInvite([FromBody] InviteViewModels model)

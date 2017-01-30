@@ -6,7 +6,7 @@ function dataFilter(data, type) {
 }
 
 export async function postAsync(endpoint, id, token, data) {
-    console.log(JSON.stringify(data));
+ //   console.log(JSON.stringify(data));
     return await $.ajax({
         method: 'POST',
         url: endpoint.concat('/', id),

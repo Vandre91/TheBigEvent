@@ -7,19 +7,19 @@ class BigSelectService {
     constructor() {
     }
 
-    async createDoodleAsync(model) 
+    async createBigSelectAsync(model) 
     {
-        return await postAsync(endpoint, 'createDoodle/', AuthService.accessToken, model);
+        return await postAsync(endpoint, 'createBigSelect/', AuthService.accessToken, model);
     }
 
     async addDateAsync(model) 
     {
-        return await postAsync(endpoint, 'addDate/', AuthService.accessToken, model);
+        return await postAsync(endpoint, 'createDate/', AuthService.accessToken, model);
     }
 
     async addGuestAsync(model) 
     {
-        return await postAsync(endpoint, 'addGuest/', AuthService.accessToken, model);
+        return await postAsync(endpoint, 'createInvite/', AuthService.accessToken, model);
     }
 
 

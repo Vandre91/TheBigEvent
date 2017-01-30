@@ -14,9 +14,9 @@ namespace TheBigEvent.Services
         {
             _bLink = new BigSelecteLink(connectionString);
         }
-        public void addBigSelecte(int _id, string _nom, string _ville, string _description)
+        public Result<BigSelecte> addBigSelecte(int _id, string _nom, string _ville, string _description)
         {
-            _bLink.AddBigSelecte( _id, _nom, _ville, _description);
+            return Result.Success(Status.Ok, _bLink.AddBigSelecte( _id, _nom, _ville, _description));
         }
     }
 }
