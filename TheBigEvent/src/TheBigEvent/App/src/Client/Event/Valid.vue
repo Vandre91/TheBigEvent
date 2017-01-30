@@ -1,5 +1,5 @@
 <template>
-<div class="tab-pane" role="tabpanel" id="complete">
+<div class="tab-panel" role="tabpanel" id="complete">
     <h3>Valider</h3>
     <p>Vous avez tout compléter</p>
 
