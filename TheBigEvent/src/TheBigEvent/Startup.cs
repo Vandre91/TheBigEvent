@@ -62,6 +62,12 @@ namespace TheBigEvent
             services.AddSingleton(p => new DecoService(Configuration["ConnectionStrings:TheBigEventDB"]));
             services.AddSingleton(p => new MenuService(Configuration["ConnectionStrings:TheBigEventDB"]));
             services.AddSingleton(p => new MessageService(Configuration["ConnectionStrings:TheBigEventDB"]));
+            services.AddSingleton(p => new BigSelecteService(Configuration["ConnectionStrings:TheBigEventDB"]));
+            services.AddSingleton(p => new InviteService(Configuration["ConnectionStrings:TheBigEventDB"]));
+            services.AddSingleton(p => new DateService(Configuration["ConnectionStrings:TheBigEventDB"]));
+            services.AddSingleton(p => new ValidationService(Configuration["ConnectionStrings:TheBigEventDB"]));
+
+
             services.AddSingleton<TokenService>();
         }
 
