@@ -1,12 +1,10 @@
 class AuthService {
     constructor() {
-        this.providers = {}; //méthode de Connexion base | fb etc
+        this.providers = {};
         this.allowedOrigins = []; 
-
         this.logoutEndpoint = null;
         this.authenticatedCallbacks = []; 
         this.signedOutCallbacks = [];
-
         window.addEventListener("message", this.onMessage, false);
     }
 
@@ -29,7 +27,6 @@ class AuthService {
         return (identity.email);
     }
 
-
     login (selectedProvider, authenticatedCallback)
     {
         var provider = this.providers[selectedProvider];
@@ -43,7 +40,6 @@ class AuthService {
         this.authenticatedCallbacks.splice(this.authenticatedCallbacks.indexOf(cb), 1);
     }
 
-
     registerSignedOutCallback(cb) {
         this.signedOutCallbacks.push(cb);
     }
@@ -54,16 +50,13 @@ class AuthService {
 
     onMessage = (e) => {
         if(this.allowedOrigins.indexOf(e.origin) < 0) return;
-
         var data = typeof e.data == 'string' ? JSON.parse(e.data) : e.data;
-
         if(data.type == 'authenticated')
             this.onAuthenticated(data.payload);
         else if(data.type == 'signedOut') this.onSignedOut();
     }
     onAuthenticated = (i) => {
         this.identity = i;
-
         for(var cb of this.authenticatedCallbacks) {
             cb();
         }
@@ -71,7 +64,6 @@ class AuthService {
 
     onSignedOut = () => {
         this.identity = null;
-
         for(var cb of this.signedOutCallbacks) {
             cb();
         }

@@ -41,7 +41,7 @@ namespace TheBigEvent.Controllers
             return _bigselecteService.addBigSelecte( model.UserId, model.Nom, model.Ville, model.Description);
         }
         [HttpPost("createInvite/")]
-        public async void createInvite([FromBody] InviteViewModels model)
+        public void createInvite([FromBody] InviteViewModels model)
         {
             _inviteService.addInvite(model.BigSelecteId, model.Nom, model.Mail);
 
