@@ -15,7 +15,7 @@ namespace TheBigEvent.Controllers
 
             public string Audience { get; set; }
 
-            public TimeSpan Expiration { get; set; } = TimeSpan.FromDays(365);
+            public TimeSpan Expiration { get; set; } = TimeSpan.FromHours(2);
 
             public SigningCredentials SigningCredentials { get; set; }
         
