@@ -1,4 +1,5 @@
 <template>
+<div>
 <div class="tab-panel" role="tabpanel" id="complete">
     <h3>Valider</h3>
     <p>Vous avez tout compléter</p>
@@ -7,18 +8,18 @@
 
             <div class="panel-heading">
             <div class="row">
-                <h5><strong> Nom du BigSelect : </strong>{{name_edit}}</h5>
+                <h5><strong> Nom du BigSelect : </strong>{{model.nom}}</h5>
             </div>
             </div>
 
             <div class="panel-heading">
             <div class="row">
-                <h5><strong>Ville : </strong>{{ville_edit}}</h5>
+                <h5><strong>Ville : </strong>{{model.ville}}</h5>
             </div>
             </div>
 
             <div class="panel-heading">
-            <div v-if="description_edit != null" class="row">
+            <div v-if="description != null" class="row">
                 <h5><strong>Description : </strong>{{description_edit }}</h5>
             </div>
             </div>
@@ -31,7 +32,7 @@
             </tr> 
             </thead>
             <tbody>
-            <tr v-for="i in date_edit">
+            <tr v-for="i in date">
                 <td>{{ formatDate(i.date) }}</td>
             </tr>
         </tbody>
@@ -45,7 +46,7 @@
             </tr> 
             </thead>
             <tbody>
-            <tr v-for="i in invite_edit">
+            <tr v-for="i in invite">
                 <td>{{ i.nom }}</td>
                 <td>{{ i.mail }}</td>
             </tr>
@@ -55,28 +56,38 @@
 
     <li><button type="button" class="btn btn-primary btn-info-full next-step" @click="nextStep()">Enregistrer et continuer</button></li>
 </div>
+
+</div>
 </template>
 
 <script>
+import BigSelectService from '../services/BigSelect.js'
+
 export default {
-    props:["nom", "ville","description", "invite", "date"],
-    data(){
+    data() {
         return {
-            name_edit: this.nom,
-            ville_edit: this.ville,
-            description_edit: this.description,
-            date_edit: this.date,
-            invite_edit: this.invite
+            model : [
+            { nom: "" },
+            { ville: "" },
+            { description: "" }
+            ],
+            model2: [],
+            model3: [],
+            code : ""
             }
         },
+        mounted: async function()
+        {
+           this.model =  await BigSelectService.getBigSelect(code)
+
+
+        },
         methods: {
-            nextStep(){
-                this.$emit('nextStep', {method: "valid"})
-            },
-        formatDate (input) {
+            formatDate (input)
+            {
                 if (input != null)
                 {
-                        input = new Date(input);                    
+                        input = new Date(input);
                         var dd = input.getDate();
                         var mm = input.getMonth()+1;
                         var yyyy = input.getFullYear(); 
@@ -85,16 +96,11 @@ export default {
                         input = dd + '/' + mm + '/' + yyyy; 
                         return (input);
                 }
-            }            
+            }
     }
 }
 </script>
 
-
-<style>
-
-th {
-    text-align: center;
-}
+<style scoped>
 
 </style>

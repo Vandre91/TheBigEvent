@@ -26,6 +26,9 @@
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <router-link to="/Invite">Invite</router-link>
+                </li>
                 <li><a href="#" @click="login('Base')">Connexion</a></li>
                 <li><a href="#" @click="login('Base1')">Inscription</a></li>
             </ul>
@@ -86,7 +89,6 @@ import Vue from 'vue'
             login(provider) {
                     AuthService.login(provider);
             },
-
             onAuthenticated() {
                 if (!AuthService.isProfessionnal())
                 {
@@ -105,13 +107,15 @@ import Vue from 'vue'
 <style>
 
 .fond {
-  background-image: url('http://img11.hostingpics.net/pics/977879header1.jpg');
+/*  background-image: url('http://img11.hostingpics.net/pics/977879header1.jpg');
   background-repeat: no-repeat;
   background-position: center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover;*/
+
+  background-color: whitesmoke;
 }
 
 header {
