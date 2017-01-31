@@ -18,5 +18,9 @@ namespace TheBigEvent.Services
         {
             return Result.Success(Status.Ok, _bLink.AddBigSelecte( _id, _nom, _ville, _description));
         }
+        public Result<IEnumerable<BigSelecte>> getBigSelectById(int _id)
+        {
+            return Result.Success(Status.Ok, _bLink.GetBigSelectById(_id));
+        }
     }
 }

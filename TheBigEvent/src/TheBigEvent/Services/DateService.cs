@@ -18,5 +18,9 @@ namespace TheBigEvent.Services
         {
             _dLink.AddDate( _dates, _bigselecteId);
         }
+        public Result<IEnumerable<Date>> getDateById(int _id)
+        {
+            return Result.Success(Status.Ok, _dLink.GetDateById(_id));
+        }
     }
 }

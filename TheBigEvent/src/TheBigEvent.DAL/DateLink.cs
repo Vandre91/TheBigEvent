@@ -23,5 +23,13 @@ namespace TheBigEvent.DAL
                    new {  date = _dates, BigSelecteId = _bigselecteId});
             }
         }
+        public IEnumerable<Date> GetDateById(int _id)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<Date>("select [Date] from tbe.tProposition where BigSelecteId = @id",
+                        new { id = _id });
+            }
+        }
     }
 }

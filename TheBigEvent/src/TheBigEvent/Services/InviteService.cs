@@ -18,5 +18,9 @@ namespace TheBigEvent.Services
         {
             _iLink.AddInvite( _select,  _nom,  _mail);
         }
+        public Result<IEnumerable<Invite>> getCodeById(string _code)
+        {
+            return Result.Success(Status.Ok, _iLink.GetCodeById(_code));
+        }
     }
 }

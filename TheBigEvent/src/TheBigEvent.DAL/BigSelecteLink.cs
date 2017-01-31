@@ -25,5 +25,13 @@ namespace TheBigEvent.DAL
                     new { id = _id, nom = _nom, ville = _ville, description = _description }).FirstOrDefault(); 
             }
         }
+        public IEnumerable<BigSelecte> GetBigSelectById(int _id)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<BigSelecte>("select BigSelecteId,UserId,Nom,Ville,Description from tbe.tBigSelecte where BigSelecteId = @id",
+                        new { id = _id });
+            }
+        }
     }
 }

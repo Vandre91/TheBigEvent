@@ -23,5 +23,13 @@ namespace TheBigEvent.DAL
                     new { select= _select ,nom = _nom, mail= _mail });
             }
         }
+        public IEnumerable<Invite> GetCodeById(string _code)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<Invite>("select Nom,Mail,BigSelecteId,Code from tbe.tInvite where Code = @code",
+                        new { code = _code });
+            }
+        }
     }
 }

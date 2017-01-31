@@ -35,13 +35,32 @@ namespace TheBigEvent.Controllers
             _validationService = validationservice;
         }
 
+        [HttpGet("getInvite/{code}")]
+        public IActionResult GetInvitebycode(string code)
+        {
+            Result<IEnumerable<Invite>> result = _inviteService.getCodeById(code);
+            return new JsonResult(result);
+        }
+        [HttpGet("getBigSelect/{id}")]
+        public IActionResult GetBigSelectbyid(int id)
+        {
+            Result<IEnumerable<BigSelecte>> result = _bigselecteService.getBigSelectById(id);
+            return new JsonResult(result);
+        }
+        [HttpGet("getDate/{id}")]
+        public IActionResult GetDatebyid(int id)
+        {
+            Result<IEnumerable<Date>> result = _dateService.getDateById(id);
+            return new JsonResult(result);
+        }
+
         [HttpPost("createBigSelect/")]
         public Result<BigSelecte> createBigSelect([FromBody] BigSelecteViewModels model)
         {
             return _bigselecteService.addBigSelecte( model.UserId, model.Nom, model.Ville, model.Description);
         }
         [HttpPost("createInvite/")]
-        public async void createInvite([FromBody] InviteViewModels model)
+        public bool createInvite([FromBody] InviteViewModels model)
         {
             _inviteService.addInvite(model.BigSelecteId, model.Nom, model.Mail);
 
@@ -54,13 +73,6 @@ namespace TheBigEvent.Controllers
             emailMessage.Subject = _subject;
             emailMessage.Body = new TextPart("plain") { Text = _message };
 
-            //using (var client = new SmtpClient())
-            //{
-            //    client.LocalDomain = "gmail.com";
-            //    await client.ConnectAsync("smtp.gmail.com", 25, SecureSocketOptions.None).ConfigureAwait(false);
-            //    await client.SendAsync(emailMessage).ConfigureAwait(false);
-            //    await client.DisconnectAsync(true).ConfigureAwait(false);
-            //}
             using (var client = new SmtpClient())
             {
                 client.Connect("aspmx.l.google.com", 25, false);
@@ -69,17 +81,19 @@ namespace TheBigEvent.Controllers
                 client.Send(emailMessage);
                 client.Disconnect(true);
             }
+            return true;
 
         }
         [HttpPost("createDate/")]
-        public void createDate([FromBody] DateViewModels model)
+        public bool createDate([FromBody] DateViewModels model)
         {
             _dateService.addDate(model.Dates, model.BigSelecteId);
+            return true;
         }
         [HttpPost("createValidation/")]
         public void createValidation([FromBody] ValidationViewModels model)
         {
-            _validationService.addValidation(model.PropositionId, model.ValidationId);
+            _validationService.addValidation(model.PropositionId, model.InviteId);
         }
     }
 }
