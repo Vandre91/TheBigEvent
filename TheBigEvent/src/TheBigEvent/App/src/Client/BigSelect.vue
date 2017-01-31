@@ -84,31 +84,18 @@ export default {
                 break
                  case "valid":
                    this.bigselect.UserId = this.models.content.userId
-                    this.bigselect.nom = data.nom
-                    this.bigselect.ville = data.ville 
-                    this.bigselect.description = data.description 
-                    this.bigselect.date = data.date
-                    this.bigselect.invite = data.invite;
-                    this.maxTypes = ++this.actualTypes
-
-
-                    var doodleId = await BigSelectService.createBigSelectAsync(this.bigselect);
+                   var doodleId = await BigSelectService.createBigSelectAsync(this.bigselect);
 
                     var i;
                     for (i = 0; i < this.bigselect.invite.length; i++) {
                         this.bigselect.invite[i].BigSelecteId = doodleId.content.bigSelecteId;
-
                         await BigSelectService.addGuestAsync(this.bigselect.invite[i]);
                     }
                     for (i = 0; i < this.bigselect.date.length; i++) {
                         this.bigselect.date[i].BigSelecteId = doodleId.content.bigSelecteId;
-
                         await BigSelectService.addDateAsync(this.bigselect.date[i]);
                     }
-
-
-
-//                   this.$router.replace('/Client/board');
+                   this.$router.replace('/Client/board');
                 break
 
             }

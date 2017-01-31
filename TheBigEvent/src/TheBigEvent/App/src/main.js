@@ -13,6 +13,9 @@ import index from './Avco/av.vue'
 import Accueil from './Avco/accueil.vue'
 import Partenaire from './Avco/Partenaire.vue'
 import Galerie from './Avco/Galerie.vue'
+import Invite from './Avco/invite.vue'
+import Biginvite from './Avco/biginvite.vue'
+
 
 // Client
 import Client from './Client/Client.vue'
@@ -45,11 +48,9 @@ function requireAuth (to, from, next)  {
       path: '/',
       query: { redirect: to.fullPath }
     });
-    return; 
+    return;
   }
-  if (AuthService.isConnected) {
-    next();
-  }
+  next();
 }
 
 const router = new VueRouter({
@@ -59,7 +60,9 @@ const router = new VueRouter({
         { path : '/accueil', component: index, redirect: 'home' ,children :[
           { path : '/home', component: Accueil },
           { path: '/Partner', component: Partenaire},
-          { path: '/galerie', component: Galerie}
+          { path: '/galerie', component: Galerie},
+          { path: '/invite', component: Invite},
+          { path: '/biginvite', component: Biginvite}          
         ]},
         { path: '/client', component: Client, redirect: "/Client/board", beforeEnter: requireAuth, children:[
               { path : '/Client/board', component: Board, beforeEnter: requireAuth },

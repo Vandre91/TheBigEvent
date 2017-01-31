@@ -37,14 +37,16 @@ namespace TheBigEvent.Controllers
             return _bigselecteService.addBigSelecte( model.UserId, model.Nom, model.Ville, model.Description);
         }
         [HttpPost("createInvite/")]
-        public void createInvite([FromBody] InviteViewModels model)
+        public bool createInvite([FromBody] InviteViewModels model)
         {
             _inviteService.addInvite(model.BigSelecteId, model.Nom, model.Mail);
+            return (true);
         }
         [HttpPost("createDate/")]
-        public void createDate([FromBody] DateViewModels model)
+        public bool createDate([FromBody] DateViewModels model)
         {
             _dateService.addDate(model.Dates, model.BigSelecteId);
+            return (true);
         }
         [HttpPost("createValidation/")]
         public void createValidation([FromBody] ValidationViewModels model)

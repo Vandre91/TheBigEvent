@@ -22,8 +22,10 @@ class BigSelectService {
         return await postAsync(endpoint, 'createInvite/', AuthService.accessToken, model);
     }
 
-
-
+    async codeinvite(code)
+    {
+        return await postAsync(endpoint, 'codeinvite/', AuthService.accessToken, model);
+    }
 
 
 }

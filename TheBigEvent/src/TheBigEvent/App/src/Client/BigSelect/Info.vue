@@ -237,7 +237,8 @@ export default {
               }, 4000);
               return;
             }
-            this.$emit('nextStep', {method: "valid", nom: this.name_edit, ville: this.ville_edit, description: this.description_edit, invite: this.invite_edit, date : this.date_edit})
+
+            this.$emit('nextStep', {method: "info", nom: this.name_edit, ville: this.ville_edit, description: this.description_edit, invite: this.invite_edit, date : this.date_edit})
         },
         supp : function (item) {
             let idx = this.date.indexOf(item); 
