@@ -16,7 +16,6 @@ import Galerie from './Avco/Galerie.vue'
 import Invite from './Avco/invite.vue'
 import Biginvite from './Avco/biginvite.vue'
 
-
 // Client
 import Client from './Client/Client.vue'
 import Profil from  './Client/Profil.vue'
@@ -26,14 +25,12 @@ import Board from './Client/board.vue'
 import Chat from './Client/Chat.vue'
 import BigSelect from './Client/BigSelect.vue'
 
-
 // Fournisseurs
 import Add from './Provider/add.vue'
 import My_serv from './Provider/my_services.vue'
 import Add_s from './Provider/add_salle.vue'
 import Add_d from './Provider/Add_deco.vue'
 import Add_t from './Provider/Add_traiteur.vue'
-
 import Provider from './Provider/Provider.vue'
 import EventsP from  './Provider/Event.vue'
 import ProfilP from  './Provider/Profil.vue'
