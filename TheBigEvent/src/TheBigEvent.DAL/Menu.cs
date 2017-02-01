@@ -9,7 +9,9 @@ namespace TheBigEvent.DAL
     {
         public int MenuId { get; set; }
         public string Nom { get; set; }
-        public string Cat { get; set; }
+        public string Entrer { get; set; }
+        public string Plat { get; set; }
+        public string Dessert { get; set; }
         public int Prix { get; set; }
         public int NbPersonnes { get; set; }
         public int TraiteurId { get; set; }

@@ -20,9 +20,9 @@ namespace TheBigEvent.Services
             return Result.Success(Status.Ok, _mLink.GetAllMenu());
         }
 
-        public bool addMenuByTraiteurId(string nom, string cat, int Prix, int NbPersonnes, int TraiteurId)
+        public bool addMenuByTraiteurId(string nom, string entrer, string plat, string dessert, int Prix, int NbPersonnes, int TraiteurId)
         {
-            _mLink.AddMenu(nom, cat, Prix, NbPersonnes, TraiteurId);
+            _mLink.AddMenu(nom, entrer,plat,dessert, Prix, NbPersonnes, TraiteurId);
             return (true);
         }
 

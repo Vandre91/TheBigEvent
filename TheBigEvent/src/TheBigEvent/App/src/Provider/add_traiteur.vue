@@ -36,13 +36,19 @@
                         <input v-model="model_menu.nom" class="form-control input" required>
                     </div>
                     <div class="form-group">
-                    <label>*Catégories : </label>
+                    <label>*Entrer : </label>
                     <br />
-                    <select v-model="model_menu.cat" required>
-                        <option value="Entrer">Entré</option>
-                        <option value="Plat">Plat</option>
-                        <option value="Dessert">Dessert</option>
-                    </select>
+                    <input v-model="model_menu.entrer" class="form-control input" required>
+                    </div>
+                    <div class="form-group">
+                    <label>*Plat : </label>
+                    <br />
+                    <input v-model="model_menu.plat" class="form-control input" required>
+                    </div>
+                    <div class="form-group">
+                    <label>*Dessert : </label>
+                    <br />
+                    <input v-model="model_menu.dessert" class="form-control input" required>
                     </div>
                     <div class="form-group">
                         <label>*Quantité de personnes : </label>
@@ -73,7 +79,9 @@ export default {
         },
         model_menu : {
             nom : null,
-            cat : null,
+            entrer : null,
+            plat : null,
+            dessert : null,
             Nbpersonnes : null,
             Prix : null,
             TraiteurId : null

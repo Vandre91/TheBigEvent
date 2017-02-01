@@ -32,7 +32,6 @@
                     <td>{{ i.descriptions }}</td>
                     <td align="center">
                         <a @click="deleteSalle(i.salleId)" class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
                     </td>
                 </tr>
                 </tbody>
@@ -68,7 +67,6 @@
                     <td>{{ i.descriptions }}</td>
                     <td align="center">
                         <a @click="deleteDeco(i.decoId)" class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                        <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
                     </td>
                 </tr>
                 </tbody>
@@ -100,7 +98,6 @@
                         <td>{{ model_traiteur.descriptions }}</td>
                         <td align="center">
                             <a @click="deleteTraiteur(model_traiteur.traiteurId)" class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                            <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
                         </td>
                     </tr>
                 </tbody>
@@ -119,7 +116,9 @@
                   <thead>
                     <tr>
                         <th>Nom</th>
-                        <th>Catégorique</th>
+                        <th>Entré</th>
+                        <th>Plat</th>
+                        <th>Dessert</th>
                         <th>Prix</th>
                         <th>Nombre de Personnes</th>
                         <th><em class="fa fa-cog"></em></th>
@@ -131,12 +130,13 @@
                     </tr>
                     <tr v-else v-for="i in model_menu">
                         <td>{{ i.nom }}</td>
-                        <td>{{ i.cat }}</td>
+                        <td>{{ i.entrer }}</td>
+                        <td>{{ i.plat }}</td>
+                        <td>{{ i.dessert }}</td>
                         <td>{{ i.prix }}</td>
                         <td>{{ i.nbPersonnes }}</td>
                         <td align="center">
                             <a @click="deleteMenu(i.menuId)" class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                            <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
                         </td>
                     </tr>
                 </tbody>
