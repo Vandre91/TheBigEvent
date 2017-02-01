@@ -107,7 +107,7 @@ namespace TheBigEvent.Controllers
         public bool AddMenu([FromBody] MenuViewModels model)
         {
             bool result = false;
-            result = _menuService.addMenuByTraiteurId(model.Nom, model.Cat, model.Prix, model.NbPersonnes, model.TraiteurId);
+            result = _menuService.addMenuByTraiteurId(model.Nom, model.Entrer, model.Plat, model.Dessert, model.Prix, model.NbPersonnes, model.TraiteurId);
             return (result);
         }
 

@@ -2,7 +2,9 @@
 (
 	[MenuId] INT NOT NULL PRIMARY KEY identity(0, 1), 
     [Nom] NVARCHAR(MAX) NULL, 
-    [Cat] NVARCHAR(MAX) NULL, 
+    [Entrer] NVARCHAR(MAX) NULL,
+	[Plat] NVARCHAR(MAX) NULL,
+	[Dessert] NVARCHAR(MAX) NULL, 
     [Prix] NVARCHAR(MAX) NULL, 
     [NbPersonnes] NVARCHAR(MAX) NULL, 
     [TraiteurId] INT NULL, 

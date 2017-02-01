@@ -10,7 +10,6 @@ as
 begin
 	update tbe.tMenu
 	set Nom = @Nom,
-	Cat = @Cat,
 	Prix = @Prix,
 	NbPersonnes = @NbPersonnes
 	where MenuId = @MenuId;

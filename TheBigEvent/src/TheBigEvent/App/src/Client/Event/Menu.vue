@@ -21,7 +21,9 @@
                         </label>
                     </div>                
                         <h4><strong> Prix approximatif : </strong></h4>{{m.prix}} €
-                        <h4><strong> Catégorie : </strong></h4>{{m.cat}}
+                        <h4><strong> Entrer : </strong></h4>{{m.entrer}}
+                        <h4><strong> Plat : </strong></h4>{{m.plat}}
+                        <h4><strong> Dessert : </strong></h4>{{m.dessert}}
                         <h4><strong>{{m.cat }}</strong> pour <strong>{{ m.nbPersonnes }}</strong> Personnes</h4>
                         <h4><strong>Compagnie :</strong></h4> {{ m.compagny }}
             </div>

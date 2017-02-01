@@ -40,13 +40,13 @@ namespace TheBigEvent.DAL
 
 
 
-        public void AddMenu(string _Nom, string _Cat, int _Prix, int _NbPersonnes, int _TraiteurId)
+        public void AddMenu(string _Nom, string _entrer, string _plat, string _dessert, int _Prix, int _NbPersonnes, int _TraiteurId)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Execute(
                     "tbe.pAddMenu",
-                    new { Nom = _Nom, Cat = _Cat, Prix = _Prix, NbPersonnes = _NbPersonnes, TraiteurId = _TraiteurId },
+                    new { Nom = _Nom, Entrer = _entrer, Plat = _plat, Dessert = _dessert, Prix = _Prix, NbPersonnes = _NbPersonnes, TraiteurId = _TraiteurId },
                     commandType: CommandType.StoredProcedure);
             }
         }
