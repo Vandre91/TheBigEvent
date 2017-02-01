@@ -59,8 +59,13 @@
             </div>
         </div>
     </div>
-    <div class="col-md-12" style="background-color: #c2cdd6;height: 1px;"></div>
+<<<<<<< HEAD
 
+
+    <div class="col-md-12" style="height: 1px;"></div>
+=======
+    <div class="col-md-12" style="background-color: #c2cdd6;height: 1px;"></div>
+>>>>>>> Client
 
 <div class="col-md-4">
     <label>Date de BigSelect</label><br />
@@ -261,6 +266,18 @@ export default {
               }, 4000);
               return;
             }
+<<<<<<< HEAD
+            if (this.code_edit == null || this.code_edit.length < 1)
+            {
+              this.message = "Vous devez ajouter un code."
+              document.getElementById('1').className = 'on';
+              window.setTimeout(function() {
+              document.getElementById('1').className = 'off';                
+              }, 4000);
+              return;
+            }
+            this.$emit('nextStep', {method: "info", nom: this.name_edit, code: this.code_edit, ville: this.ville_edit, description: this.description_edit, invite: this.invite_edit, date : this.date_edit})
+=======
                 var i;
                 var mailreg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 
@@ -277,6 +294,8 @@ export default {
                         return;
                     }
                 }
+            this.$emit('nextStep', {method: "info", nom: this.name_edit, ville: this.ville_edit, description: this.description_edit, invite: this.invite_edit, date : this.date_edit})
+>>>>>>> Client
         },
         supp : function (item) {
             let idx = this.date.indexOf(item); 

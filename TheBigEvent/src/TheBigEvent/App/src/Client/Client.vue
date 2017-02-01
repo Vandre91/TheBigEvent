@@ -21,7 +21,7 @@
                     <a href="javascript:void(0)" class="dropbtn" style="color:#228B22;"><i class="fa fa-user"></i> {{ email }}</a>
                     <div class="dropdown-content">
                     <router-link to="/client/profil" class="router">
-                        <a style="color:black;"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        <a style="color:black;"><i class="fa fa-fw fa-user"></i> Profil</a>
                     </router-link>
                     <router-link to="/logout" class="router">
                         <a style="color:black;"><i class="fa fa-fw fa-power-off"></i> Déconnexion</a>
@@ -38,7 +38,7 @@
                     </li>
                     <li v-bind:class="{ active: tab === 2}" v-on:click="tab = 2">
                       <router-link to="/client/event" class="router">
-                        <a><i class="fa fa-fw fa-table"></i> Crée un évènement</a>
+                        <a><i class="fa fa-fw fa-table"></i> Créer un évènement</a>
                       </router-link>
                     </li>
                     <li v-bind:class="{ active: tab === 3}" v-on:click="tab = 3">

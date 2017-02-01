@@ -15,16 +15,19 @@
                 <router-link to="/"><img src="../../img/logo.jpg" style="width:55px"></img></router-link>
             </a>
         </div>
+
+
+
         <div class="collapse navbar-collapse" id = "mynav">
             <ul class="nav navbar-nav navbar-left ">
-                <li>
-                    <router-link to="/Partner">Partenaire</router-link>
-                </li>
-                <li>
-                    <router-link to="/Galerie">Galerie</router-link>
-                </li>
+
 
             </ul>
+                            <ul class="nav navbar-nav navbar-center ">
+                <li >
+                <h3 style="margin-left:850px"> The Big Event </h3>
+                </li>
+                </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <router-link to="/Invite">Invite</router-link>
