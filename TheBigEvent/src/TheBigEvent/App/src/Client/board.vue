@@ -8,7 +8,7 @@
         <thead>
             <tr>
                 <th>Date</th>                
-                <th>Nom de votre réservations</th>
+                <th>Nom de vos réservations</th>
                 <th>Lieu</th>
                 <th>Prix approximatif</th>
                 <th>Validation du décorateur</th>
@@ -46,7 +46,7 @@
 </div>
 
 
-    <div class="col-lg-5">
+    <div class="col-lg-5" style="background-color:#cecece; border-radius:25px">
         <div class="widget">
             <div class="widget-header"><h1>Raccourcis</h1></div>
             <div class="widget-content">

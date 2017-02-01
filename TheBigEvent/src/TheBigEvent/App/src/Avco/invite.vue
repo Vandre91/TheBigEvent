@@ -4,13 +4,13 @@
 <div class="row db-padding-btm db-attached">
     <div class="col-md-4"> </div>
       <div class="col-md-4">
-          <div class="db-wrapper">
+          <div class="db-wrapper" style="width:140%">
             <div class="db-pricing-eleven db-bk-color-three">
 
                 <div class="price">
                   <small>
-                  Si vous avez recu un mail, vous pouvez inscrire le mot de passe afin de pouvoir 
-                  fsdfjsdpfjisdfjisdjfpsdfjposdfposdfjsdpjfsdpj
+                  Si vous avez reçu un mail, vous pouvez inscrire le mot de passe afin de pouvoir 
+                  donné vos disponibilités
                   </small>
                 </div>
 

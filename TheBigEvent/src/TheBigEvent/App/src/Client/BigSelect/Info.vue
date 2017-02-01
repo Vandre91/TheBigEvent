@@ -1,5 +1,13 @@
 <template>
 <div class="tab-content">
+
+
+<h4> The BigSelect vous permet d'avoir la disponibilité de vos invités.<p>
+   Entrez les adresses e-mail de vos invités, un code leur sera envoyé une fois que vous aurez validé.<p>
+    Proposez vos dates à vos invités et ils choisiront.
+    Vous pourrez ensuite créer votre événement en fonction du BigSelect.</h4>
+
+
     <div class="tab-pane active" role="tabpanel" id="step1">
 
 
@@ -8,13 +16,13 @@
         <strong>Alert ! </strong> {{ message }}</div>
   </div>  
 
+
 <div class="col-md-6">
     <label for="Name">Nom de l'événement </label>
     <input type="text" v-model="name_edit" class="form-control"  id="Name" placeholder="Nom de l'événement" minlength="4" maxlength="56" required />
 </div>
 
 <div class="col-md-6" style="margin-bottom: 1%">
-  <div class="container">
         <div class="row">
             <form class="form-horizontal">
                 <fieldset>
@@ -31,7 +39,6 @@
                 </fieldset>
            </form>
         </div>
-    </div>
 </div> 
 
     <div class="col-md-6">
@@ -42,17 +49,17 @@
             </div>
         </div>
     </div>
-    <div class="col-md-12" style="height: 1px;"></div>
+    <div class="col-md-12" style="background-color: #c2cdd6;height: 1px;"></div>
 
 <div class="col-md-4">
     <label>Date de BigSelect</label><br />
     <datepicker  style="display: inline-block; float: left;" :format="format" :disabled="disabled" v-model="datevent" placeholder="Select Date" language="fr" ></datepicker>
-    <button v-on:click="adds(datevent)" style="float: left;">Ajouter </button>
+    <button v-on:click="adds(datevent)" style="float: left;"class="btn btn-primary">+ </button>
     <br /><br />
 <div class="col-md-12" style="padding-left: 0;">
     <li v-for="item in date_edit" >
       <span> {{ formatDate(item.dates) }} </span>
-      <button v-on:click="supp(item)">Supprimer </button>
+      <button v-on:click="supp(item)"class="btn fa fa-trash"> </button>
       <br />
     </li>
 </div>
@@ -63,26 +70,31 @@
         <label>Liste des invités</label><br />
             <input style="display: inline-block" type="text" v-model="nom_invite" class="form-control" placeholder="Nom de l'invité"></input>
             <input style="display: inline-block" type="mail" v-model="mail_invite" class="form-control" placeholder="Mail@invite.fr"></input>
-            <button v-on:keyup.enter="adds2()" v-on:click="adds2(nom_invite, mail_invite)">Ajouter </button>
+            <button v-on:keyup.enter="adds2()" v-on:click="adds2(nom_invite, mail_invite)"class="btn btn-primary">+ </button>
    </div>
+
+
 <div class="col-md-12" style="padding-left: 0;">
     <li v-for="item in invite_edit" >
       <span>Nom : {{ item.nom }} </span>
       <span>Mail : {{ item.mail }} </span>
-      <button v-on:click="supp2(item)">Supprimer </button>
+      <button v-on:click="supp2(item)"class="btn fa fa-trash"> </button>
       <br />
     </li>
 </div>
 <br />   
 </div>
 
+
+</div>
 <ul class="list-inline pull-right">
-    <li><button type="button" class="btn btn-primary next-step" @click="nextStep()">Enregistrer et continuer</button></li>
+    <li><button type="button" class="btn btn-primary next-step" @click="nextStep()" style="margin-top:3%">Enregistrer et continuer</button></li>
 </ul>
  
 
 </div>
-</div>
+
+
 </template>
 
 <script>
@@ -237,7 +249,22 @@ export default {
               }, 4000);
               return;
             }
+                var i;
+                var mailreg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                
+                console.log(this.invite_edit.mail);
 
+                for( i = 0; i < this.invite_edit.length; i++) {
+                    if(!this.invite_edit[i].mail.match(mailreg))
+                    {
+                         this.message = "Certains adresses e-mail sont incorrects."
+                        document.getElementById('1').className = 'on';
+                        window.setTimeout(function() {
+                        document.getElementById('1').className = 'off';                
+                        }, 4000);
+                        return;
+                    }
+                }
             this.$emit('nextStep', {method: "info", nom: this.name_edit, ville: this.ville_edit, description: this.description_edit, invite: this.invite_edit, date : this.date_edit})
         },
         supp : function (item) {
@@ -280,6 +307,28 @@ export default {
 </script>
 
 <style>
+ .cont2{
+    overflow: hidden;
+    margin-top: -50px;
+    padding-top: -100px;
+    border-radius: 17px;
+    background-color: #414444;
+    margin-top: 25px;
+    color:white;
+    width: 705px;
+    box-shadow: 2px 2px 2px 2px #E0E0E0;
+    
+}   
+
+.btn {
+    float:right;
+    margin-top: 0%;
+}
+
+h4{
+    text-align: -webkit-center;
+    font-weight: 700;
+}
 #step1{
     padding-top: 100px;
 

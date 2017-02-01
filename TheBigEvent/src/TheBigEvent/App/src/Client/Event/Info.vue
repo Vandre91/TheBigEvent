@@ -2,6 +2,12 @@
 <div class="tab-content">
 
 <div class="tab-pane active" role="tabpanel" id="step1">
+    
+    <div class="tab-pane active" role="tabpanel" id="step1">
+  <div id="1" class="off">
+    <div id="snoAlertBox" class="alert alert-danger" data-alert="alert">
+        <strong>Alert ! </strong> {{ message }}</div>
+  </div>  
 
 <div class="col-md-6">
     <div class="step1">
@@ -157,18 +163,36 @@ export default {
             disabled: { 
                 to: new Date()
             },
-            datevent: new Date()
+            datevent: new Date(),
+            message:""
         }
     },
     methods:{
         nextStep(){
-            if (this.name_edit == null || this.name_edit.length == 0)
-                return;
-            if (this.Inv < 1)
-                return;
-            if (this.datevent < (Date.now()))
-                return;
-
+            if (this.name_edit == null || this.name_edit.length == 0){
+              this.message = "Un événement sans nom ?"
+              document.getElementById('1').className = 'on';
+              window.setTimeout(function() {
+              document.getElementById('1').className = 'off';                
+              }, 4000);
+              return;
+            }
+            if (this.Inv < 1) {
+              this.message = "Vous voulez dansé tout seul ?"
+              document.getElementById('1').className = 'on';
+              window.setTimeout(function() {
+              document.getElementById('1').className = 'off';                
+              }, 4000);
+              return;
+            }
+            if (this.datevent < (Date.now())){
+              this.message = "Comment voulez vous organiser votre événement aujourd'hui ?"
+              document.getElementById('1').className = 'on';
+              window.setTimeout(function() {
+              document.getElementById('1').className = 'off';                
+              }, 4000);
+              return;
+            }
            this.$emit('nextStep', {method: "info", name: this.name_edit, ville: this.ville_edit, NbInvite: this.Inv, date:this.datevent})
         }
     }

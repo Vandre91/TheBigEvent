@@ -15,7 +15,7 @@
                 <li role="presentation" :class="maxTypes < 1 ? 'disabled' : ''  + actualTypes == 1 ? 'active' : '' ">
                     <a  role="tab" title="valid" @click="changeTab(1)">
                     <h4 class="list-group-item-heading">Validation</h4>
-                    <p class="list-group-item-text">Vérifier et valider votre BigSelect</p>
+                    <p class="list-group-item-text">Vérifiez et validez votre BigSelect</p>
                 </a>
                 </li>
                 
