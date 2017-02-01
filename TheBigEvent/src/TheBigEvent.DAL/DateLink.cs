@@ -27,7 +27,7 @@ namespace TheBigEvent.DAL
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                return con.Query<Date>("select [Date] from tbe.tProposition where BigSelecteId = @id",
+                return con.Query<Date>("select Dates = [Date] from tbe.tProposition where BigSelecteId = @id",
                         new { id = _id });
             }
         }

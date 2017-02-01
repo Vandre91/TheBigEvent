@@ -22,11 +22,30 @@ class BigSelectService {
         return await postAsync(endpoint, 'createInvite/', AuthService.accessToken, model);
     }
 
-    async codeinvite(code)
+/*    async codeinvite(code)
     {
         return await postAsync(endpoint, 'codeinvite/', AuthService.accessToken, model);
     }
+*/
+    async getInvitebycode(code)
+    {
+        return await getAsync(endpoint, 'getInviteSelect/' + code, AuthService.accessToken);
+    }
 
+    async getBigSelect(id)
+    {
+        return await getAsync(endpoint, 'getBigSelect/' + id, AuthService.accessToken);
+    }
+
+    async getDatebyid(id)
+    {
+        return await getAsync(endpoint, 'getDate/' + id, AuthService.accessToken);
+    }
+    
+    async getallbyinviteid(id)
+    {
+        return await getAsync(endpoint, 'getAllInvite/' + id, AuthService.accessToken);
+    }
 
 }
 

@@ -34,6 +34,16 @@
     </div>
 </div> 
 
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class=" control-label"  for="textarea">Votre code</label><span> Ce code permet à vos invités d'accéder a l'événement </span>
+            <div class="" >                     
+                <input type="textarea" class="form-control" v-model="code_edit"  name="textarea">Toutes informations sur l'event à venir</input>
+            </div>
+        </div>
+    </div>
+
     <div class="col-md-6">
         <div class="form-group">
             <label class=" control-label"  for="textarea">Description</label>
@@ -42,6 +52,8 @@
             </div>
         </div>
     </div>
+
+
     <div class="col-md-12" style="height: 1px;"></div>
 
 <div class="col-md-4">
@@ -92,7 +104,7 @@ export default {
     components: {
         Datepicker
     },    
-    props:["nom", "ville","description", "invite", "date"],
+    props:["nom", "ville","description", "invite", "date", "code"],
     data(){
         return {
             villes: [
@@ -194,6 +206,7 @@ export default {
                 {value:"pontoise", text:"Pontoise (95)"}
             ],
             name_edit: this.nom,
+            code_edit: this.code,
             ville_edit: this.ville,
             description_edit: this.description,
             disabled: { 
@@ -230,15 +243,23 @@ export default {
             }
             if (this.date_edit == null || this.date_edit.length < 1)
             {
-              this.message = "Vous devez ajouter des date."
+              this.message = "Vous devez ajouter des dates."
               document.getElementById('1').className = 'on';
               window.setTimeout(function() {
               document.getElementById('1').className = 'off';                
               }, 4000);
               return;
             }
-
-            this.$emit('nextStep', {method: "info", nom: this.name_edit, ville: this.ville_edit, description: this.description_edit, invite: this.invite_edit, date : this.date_edit})
+            if (this.code_edit == null || this.code_edit.length < 1)
+            {
+              this.message = "Vous devez ajouter un code."
+              document.getElementById('1').className = 'on';
+              window.setTimeout(function() {
+              document.getElementById('1').className = 'off';                
+              }, 4000);
+              return;
+            }
+            this.$emit('nextStep', {method: "info", nom: this.name_edit, code: this.code_edit, ville: this.ville_edit, description: this.description_edit, invite: this.invite_edit, date : this.date_edit})
         },
         supp : function (item) {
             let idx = this.date.indexOf(item); 

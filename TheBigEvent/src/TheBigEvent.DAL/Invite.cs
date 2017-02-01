@@ -11,5 +11,8 @@ namespace TheBigEvent.DAL
         public int BigSelecteId { get; set; }
         public string Nom { get; set; }
         public string Mail { get; set; }
+        public string PropositionId{ get; set; }
+        public DateTime Date { get; set; }
+        public int Etat { get; set; }
     }
 }

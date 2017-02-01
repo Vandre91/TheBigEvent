@@ -11,5 +11,6 @@ namespace TheBigEvent.Models
         public int BigSelecteId { get; set; }
         public string Nom { get; set; }
         public string Mail { get; set; }
+        public string Code { get; set; }
     }
 }

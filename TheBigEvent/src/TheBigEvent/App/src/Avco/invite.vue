@@ -13,8 +13,6 @@
                   fsdfjsdpfjisdfjisdjfpsdfjposdfposdfjsdpjfsdpj
                   </small>
                 </div>
-
-
                 <div class="type">
                   Invité
                 </div>
@@ -30,14 +28,9 @@
                   <router-link to="/biginvite"><a @click="code('code_invite')" class="db-button-color-square btn-lg">Valider</a></router-link>
                  </div>
                 </ul>
-
-
             </div>
           </div>
-
       </div>
-
-
   </div>
 </template>
 
@@ -52,24 +45,13 @@ import BigSelectService from '../services/BigSelect.js'
         },
         methods: {
           code: async function(code) {
-              await BigSelectService.codeinvite(code);
+   //           await BigSelectService.codeinvite(code);
           }
         }
     }
 </script>
 
 <style scoped>
-/*=============================================================
-    Authour URL: www.designbootstrap.com
-    
-    http://www.designbootstrap.com/
-
-    License: MIT     
-========================================================  */
-
-/*============================================================
-BACKGROUND COLORS
-============================================================*/
 
 .db-bk-color-two {
     background-color: #46A6F7;
@@ -78,9 +60,6 @@ BACKGROUND COLORS
 .db-bk-color-three {
     background-color: #47887E;
 }
-/*============================================================
-PRICING STYLES
-==========================================================*/
 
 .db-button-color-square {
     color: #fff;
@@ -92,11 +71,11 @@ PRICING STYLES
 
 }
 
-    .db-button-color-square:hover {
-        color: #fff;
-        background-color: rgba(0, 0, 0, 0.50);
-        border: none;
-    }
+.db-button-color-square:hover {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.50);
+    border: none;
+}
 
 
 .db-pricing-eleven {

@@ -41,9 +41,9 @@ namespace TheBigEvent.Controllers
             return _bigselecteService.addBigSelecte( model.UserId, model.Nom, model.Ville, model.Description);
         }
         [HttpPost("createInvite/")]
-        public void createInvite([FromBody] InviteViewModels model)
+        public bool createInvite([FromBody] InviteViewModels model)
         {
-            _inviteService.addInvite(model.BigSelecteId, model.Nom, model.Mail);
+            _inviteService.addInvite(model.BigSelecteId, model.Nom, model.Mail, model.Code);
 
             string _subject = "Invitation a un evenement";
             string _message = "Voici votre code";
@@ -54,32 +54,61 @@ namespace TheBigEvent.Controllers
             emailMessage.Subject = _subject;
             emailMessage.Body = new TextPart("plain") { Text = _message };
 
-            //using (var client = new SmtpClient())
-            //{
-            //    client.LocalDomain = "gmail.com";
-            //    await client.ConnectAsync("smtp.gmail.com", 25, SecureSocketOptions.None).ConfigureAwait(false);
-            //    await client.SendAsync(emailMessage).ConfigureAwait(false);
-            //    await client.DisconnectAsync(true).ConfigureAwait(false);
-            //}
             using (var client = new SmtpClient())
             {
-                client.Connect("aspmx.l.google.com", 25, false);
+                client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+                client.Connect("smtp.gmail.com", 465, true);
                 client.AuthenticationMechanisms.Remove("XOAUTH2");
-                // Note: since we don't have an OAuth2 token, disable 	// the XOAUTH2 authentication mechanism.     client.Authenticate("anuraj.p@example.com", "password");
+                client.Authenticate("TheBigEventPi@gmail.com", "thebigevent");
                 client.Send(emailMessage);
                 client.Disconnect(true);
             }
-
+            return (true);
         }
+        [AllowAnonymous]
+        [HttpGet("getInviteSelect/{code}")]
+        public IActionResult GetInvitebycode(string code)
+        {
+            Result<IEnumerable<Invite>> result = _inviteService.getCodeById(code);
+            return new JsonResult(result);
+        }
+        [AllowAnonymous]
+        [HttpGet("getBigSelect/{id}")]
+        public IActionResult GetBigSelectbyid(int id)
+        {
+            Result<IEnumerable<BigSelecte>> result = _bigselecteService.getBigSelectById(id);
+            return new JsonResult(result);
+        }
+        [AllowAnonymous]
+        [HttpGet("getDate/{id}")]
+        public IActionResult GetDatebyid(int id)
+        {
+            Result<IEnumerable<Date>> result = _dateService.getDateById(id);
+
+            return new JsonResult(result);
+        }
+        [AllowAnonymous]
+        [HttpGet("getAllInvite/{id}")]
+        public IActionResult Getallinvitebyid(int id)
+        {
+            Result<IEnumerable<GuestAnswer>> result = _inviteService.getAllInviteById(id);
+
+            return new JsonResult(result);
+        }
+
+
         [HttpPost("createDate/")]
-        public void createDate([FromBody] DateViewModels model)
+        public bool createDate([FromBody] DateViewModels model)
         {
             _dateService.addDate(model.Dates, model.BigSelecteId);
+            return (true);
         }
+        [AllowAnonymous]
         [HttpPost("createValidation/")]
-        public void createValidation([FromBody] ValidationViewModels model)
+        public bool createValidation([FromBody] ValidationViewModels model)
         {
-            _validationService.addValidation(model.PropositionId, model.ValidationId);
+            _validationService.addValidation(model.PropositionId, model.InviteId);
+            return (true);
         }
     }
 }

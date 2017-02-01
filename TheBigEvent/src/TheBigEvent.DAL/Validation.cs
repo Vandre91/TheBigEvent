@@ -10,5 +10,6 @@ namespace TheBigEvent.DAL
         public int ValidationId { get; set; }
         public int PropositionId { get; set; }
         public int InviteId { get; set; }
+        public int Etat { get; set; }
     }
 }

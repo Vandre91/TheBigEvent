@@ -1,11 +1,6 @@
 <template>
-<div>
 <div class="tab-panel" role="tabpanel" id="complete">
-    <h3>Valider</h3>
-    <p>Vous avez tout compléter</p>
-    <br />
         <div class="panel panel-default panel-table" style="text-align: center">
-
             <div class="panel-heading">
             <div class="row">
                 <h5><strong> Nom du BigSelect : </strong>{{model.nom}}</h5>
@@ -19,44 +14,33 @@
             </div>
 
             <div class="panel-heading">
-            <div v-if="description != null" class="row">
-                <h5><strong>Description : </strong>{{description_edit }}</h5>
+            <div v-if="model.description != null" class="row">
+                <h5><strong>Description : </strong>{{model.description }}</h5>
             </div>
             </div>
         </div>
-
-        <table class="table table-striped table-bordered table-list" style="text-align: center">
-            <thead>
-            <tr>
-                <th>Les dates proposées</th>
-            </tr> 
-            </thead>
-            <tbody>
-            <tr v-for="i in date">
-                <td>{{ formatDate(i.date) }}</td>
-            </tr>
-        </tbody>
-        </table>            
-
-        <table class="table table-striped table-bordered table-list" style="text-align: center">
-            <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Email</th>
-            </tr> 
-            </thead>
-            <tbody>
-            <tr v-for="i in invite">
-                <td>{{ i.nom }}</td>
-                <td>{{ i.mail }}</td>
-            </tr>
-        </tbody>
-        </table>  
+            <table class="table table-striped table-bordered table-list" style="text-align: center;">
+                <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Dates proposées</th>
+                </tr> 
+                </thead>
+                <tbody>
+                    <tr v-for="i in all">
+                        <td>{{ i.name }}</td>
+                        <td>{{ i.email }}</td>
 
 
-    <li><button type="button" class="btn btn-primary btn-info-full next-step" @click="nextStep()">Enregistrer et continuer</button></li>
-</div>
-
+                        <p v-for="e in i.answers" style="margin:0;">
+                       <label v-if="e.state == 1"  class="btn btn-danger" style="float:left;margin:0;">{{ formatDate(e.date) }}</label>
+                        <label v-else-if="e.state == 2"  class="btn btn-success" style="float:left;margin:0;">{{ formatDate(e.date) }}</label>
+                        <label v-else  class="btn btn-warning" style="float:left;margin:0;">{{ formatDate(e.date) }}</label>
+                        </p>
+                    </tr>
+                </tbody>
+            </table>  
 </div>
 </template>
 
@@ -67,20 +51,24 @@ export default {
     data() {
         return {
             model : [
+            { BigSelecteId: null },
             { nom: "" },
             { ville: "" },
             { description: "" }
             ],
-            model2: [],
-            model3: [],
-            code : ""
+            all: [],
+            invite:[],
+            code : "test1",
             }
         },
         mounted: async function()
         {
-           this.model =  await BigSelectService.getBigSelect(code)
-
-
+            this.invite =  await BigSelectService.getInvitebycode(this.code)
+            this.invite = this.invite.content;
+            this.all = await BigSelectService.getallbyinviteid(this.invite[0].bigSelecteId)
+            this.all = this.all.content;
+            this.model = await BigSelectService.getBigSelect(this.invite[0].bigSelecteId)
+            this.model = this.model.content[0];
         },
         methods: {
             formatDate (input)

@@ -22,7 +22,7 @@
                 </ul>
             </div>
 </div>
-<component :is="types[orderTypes[actualTypes]]" v-on:nextStep="updateData" :nom="bigselect.nom" :ville="bigselect.ville" :invite="bigselect.invite" :description="bigselect.description" :date="bigselect.date"></component>
+<component :is="types[orderTypes[actualTypes]]" v-on:nextStep="updateData" :code="bigselect.code" :nom="bigselect.nom" :ville="bigselect.ville" :invite="bigselect.invite" :description="bigselect.description" :date="bigselect.date"></component>
 
 </section>
 </div>
@@ -51,6 +51,7 @@ export default {
             models: null,
             email: null,
             bigselect:{
+                code: null,
                 nom: null,
                 ville:"paris",
                 invite: [],
@@ -76,6 +77,7 @@ export default {
             switch(data.method){
                 case "info":
                     this.bigselect.nom = data.nom
+                    this.bigselect.code = data.code
                     this.bigselect.ville = data.ville 
                     this.bigselect.description = data.description 
                     this.bigselect.date = data.date
@@ -85,8 +87,12 @@ export default {
                  case "valid":
                    this.bigselect.UserId = this.models.content.userId
                    var doodleId = await BigSelectService.createBigSelectAsync(this.bigselect);
-
                     var i;
+
+                    for (i = 0; i < this.bigselect.invite.length; i++) {
+                        this.bigselect.invite[i].code = this.bigselect.code;
+                    }
+
                     for (i = 0; i < this.bigselect.invite.length; i++) {
                         this.bigselect.invite[i].BigSelecteId = doodleId.content.bigSelecteId;
                         await BigSelectService.addGuestAsync(this.bigselect.invite[i]);

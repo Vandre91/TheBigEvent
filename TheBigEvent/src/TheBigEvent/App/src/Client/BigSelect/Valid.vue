@@ -32,7 +32,7 @@
             </thead>
             <tbody>
             <tr v-for="i in date_edit">
-                <td>{{ formatDate(i.date) }}</td>
+                <td>{{ formatDate(i.dates) }}</td>
             </tr>
         </tbody>
         </table>            

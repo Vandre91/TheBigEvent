@@ -6,7 +6,7 @@
 <br /><br /><br />
 
 
-
+<!--
 <div class="col-md-3"></div>
 <div class="col-md-6">
     <div class="art-layout-cell layout-item-2">
@@ -22,7 +22,7 @@
           </span></p>
     </div>
 </div>
-<div class="col-md-12">
+<div class="col-md-12">-->
   <div id="my_carousel" class="carousel slide">
 	  <div class="carousel-inner">
 	    <div class="item active">
@@ -42,7 +42,6 @@
 	    <span class="glyphicon glyphicon-chevron-right"></span>
 	  </a>
 	</div>
-</div>
 <br /><br /><br />
 </div>
 </template>
