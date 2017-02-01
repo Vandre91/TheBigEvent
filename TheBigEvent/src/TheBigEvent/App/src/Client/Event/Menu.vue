@@ -5,26 +5,28 @@
 
     <div class="row">
         <form>
-        <template v-for="models in model">
+        <template v-for="m in model">
+            <template v-if=" m.traiteurId === data_idtraiteur">
             <div class="col-md-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading clickable">
-                        <h3 class="panel-title">{{models.nom}}</h3>
+                        <h3 class="panel-title">{{m.nom}}</h3>
                         <span class="pull-right "></span>
                     </div>
                     <div class="panel-body">
                     <div class="col-md-6">
                     <div class="checkbox pull-right">
                         <label>
-                            <input type="radio" v-on:click="prices(models.prix)" :value="models.menuId" v-model="id_menu_new">			
+                            <input type="radio" v-on:click="prices(m.prix)" :value="m.menuId" v-model="id_menu_new">			
                         </label>
                     </div>                
-                        <h4><strong> Prix approximatif : </strong></h4>{{models.prix}} €
-                        <h4><strong> Catégorie : </strong></h4>{{models.cat}}
-                        <h4><strong>{{models.cat }}</strong> pour <strong>{{ models.nbPersonnes }}</strong> Personnes</h4>
-                        <h4><strong>Compagnie :</strong></h4> {{ models.compagny }}
+                        <h4><strong> Prix approximatif : </strong></h4>{{m.prix}} €
+                        <h4><strong> Catégorie : </strong></h4>{{m.cat}}
+                        <h4><strong>{{m.cat }}</strong> pour <strong>{{ m.nbPersonnes }}</strong> Personnes</h4>
+                        <h4><strong>Compagnie :</strong></h4> {{ m.compagny }}
             </div>
         </div>
+        </template>
         </template>
         </form>
     </div>
@@ -41,11 +43,12 @@ import AuthService from '../../services/auth.js'
 import EventService from '../../services/EventService.js'
 
 export default {
-    props:["idMenu", "prix"],
+    props:["idTraiteur","idMenu", "prix"],
     data(){
         return {
             model: null,
             id_menu_new: this.idMenu,
+            data_idtraiteur: this.idTraiteur,
             _prix: 0,
             price: this.prix,
         }
@@ -57,6 +60,7 @@ export default {
         async loadData(){
             this.model = await EventService.selectGetAsync("Menu")
             this.model = this.model.content
+            console.log(this.model)
         },
         prices(prix)
         {
