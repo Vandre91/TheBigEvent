@@ -34,9 +34,9 @@
 
 
                         <p v-for="e in i.answers" style="margin:0;">
-                       <label v-if="e.state == 1"  class="btn btn-danger" style="float:left;margin:0;">{{ formatDate(e.date) }}</label>
-                        <label v-else-if="e.state == 2"  class="btn btn-success" style="float:left;margin:0;">{{ formatDate(e.date) }}</label>
-                        <label v-else  class="btn btn-warning" style="float:left;margin:0;">{{ formatDate(e.date) }}</label>
+                       <label @click="confirm(e.dateid, i.guestId, e.state)" v-if="e.state == 1"  class="btn btn-danger" style="float:left;margin:0;">{{ formatDate(e.date) }}</label>
+                        <label @click="confirm(e.dateid, i.guestId, e.state)" v-else-if="e.state == 2"  class="btn btn-success" style="float:left;margin:0;">{{ formatDate(e.date) }}</label>
+                        <label @click="confirm(e.dateid, i.guestId, e.state)" v-else  class="btn btn-warning" style="float:left;margin:0;">{{ formatDate(e.date) }}</label>
                         </p>
                     </tr>
                 </tbody>
@@ -58,17 +58,21 @@ export default {
             ],
             all: [],
             invite:[],
-            code : "test1",
+            code : "",
             }
         },
         mounted: async function()
         {
+            this.code = this.$route.params.code;
             this.invite =  await BigSelectService.getInvitebycode(this.code)
             this.invite = this.invite.content;
-            this.all = await BigSelectService.getallbyinviteid(this.invite[0].bigSelecteId)
-            this.all = this.all.content;
-            this.model = await BigSelectService.getBigSelect(this.invite[0].bigSelecteId)
-            this.model = this.model.content[0];
+            if (this.invite != null && this.invite[0] != null)
+            {
+                this.all = await BigSelectService.getallbyinviteid(this.invite[0].bigSelecteId)
+                this.all = this.all.content;
+                this.model = await BigSelectService.getBigSelect(this.invite[0].bigSelecteId)
+                this.model = this.model.content[0];
+            }
         },
         methods: {
             formatDate (input)
@@ -84,7 +88,24 @@ export default {
                         input = dd + '/' + mm + '/' + yyyy; 
                         return (input);
                 }
+            },
+            confirm: async function(dateid, guestId, state)
+            {
+
+                if (state == 1)
+                    state = 2;
+                else if (state == 2)
+                    state = 1;
+                else
+                    state = 2;
+                let tmp = {dateid : dateid, inviteId : guestId, Etat : state};
+                await BigSelectService.confirmBigSelect(tmp)
+                this.all = await BigSelectService.getallbyinviteid(this.invite[0].bigSelecteId)
+                this.all = this.all.content;
+                this.model = await BigSelectService.getBigSelect(this.invite[0].bigSelecteId)
+                this.model = this.model.content[0];
             }
+
     }
 }
 </script>

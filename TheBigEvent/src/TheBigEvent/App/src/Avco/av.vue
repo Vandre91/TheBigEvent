@@ -24,9 +24,7 @@
 
             </ul>
                             <ul class="nav navbar-nav navbar-center ">
-                <li >
-                <h3 style="margin-left:850px"> The Big Event </h3>
-                </li>
+
                 </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>

@@ -25,13 +25,13 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="col-lg-3 control-label">City: </label>
+          <label class="col-lg-3 control-label">Ville: </label>
           <div class="col-lg-8">
             <input class="form-control" v-model="model.city" type="text">
           </div>
         </div>
         <div class="form-group">
-          <label class="col-lg-3 control-label">Telephone:</label>
+          <label class="col-lg-3 control-label">Téléphone (+33):</label>
           <div class="col-lg-8">
             <input class="form-control" v-model="model.tel" type="text">
           </div>
@@ -39,7 +39,7 @@
         <div class="form-group">
           <label class="col-md-3 control-label"></label>
           <div class="col-md-8">
-            <input class="btn btn-primary" value="Save Changes" type="submit">
+            <input class="btn btn-primary" value="Enregistrer" type="submit">
           </div>
           </form>
 </div>
@@ -68,7 +68,7 @@
         <div class="form-group">
           <label class="col-md-3 control-label"></label>
           <div class="col-md-8">
-            <input name ="Save" class="btn btn-primary" value="Save Changes" type="submit">
+            <input name ="Save" class="btn btn-primary" value="Enregistrer" type="submit">
             <a class="btn btn-danger" @click="deleteAccount">Supprimer le compte</a>
           </div>
         </div>

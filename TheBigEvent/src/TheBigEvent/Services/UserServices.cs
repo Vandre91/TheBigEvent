@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TheBigEvent.DAL;
+using TheBigEvent.Models;
 
 namespace TheBigEvent.Services
 {
@@ -60,9 +61,11 @@ namespace TheBigEvent.Services
             User user = _uLink.FindUserByID(_UserId);
             return Result.Success(Status.Ok, user);
         }
-        public Result<User> UpdateUserMail(int _UserId, string _mail, byte[] _passe)
+        public Result<User> UpdateUserMail(int _UserId, string _mail, string _passe)
         {
-            _uLink.UpdateMail(_UserId, _mail, _passe);
+            UserViewModel test = new UserViewModel();
+            test._pass = _passwordHasher.HashPassword(_passe);
+            _uLink.UpdateMail(_UserId, _mail, test._pass);
             User user = _uLink.FindUserByID(_UserId);
             return Result.Success(Status.Ok, user);
         }

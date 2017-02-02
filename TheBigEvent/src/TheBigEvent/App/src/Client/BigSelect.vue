@@ -86,6 +86,7 @@ export default {
                 break
                  case "valid":
                    this.bigselect.UserId = this.models.content.userId
+                   console.log(this.bigselect);
                    var doodleId = await BigSelectService.createBigSelectAsync(this.bigselect);
                     var i;
 

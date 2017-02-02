@@ -10,6 +10,8 @@ namespace TheBigEvent.DAL
         
         public int UserId { get; set; }
         public byte[] Passe { get; set; }
+        public string _pass { get; set; }
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string City { get; set; }

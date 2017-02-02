@@ -17,11 +17,11 @@
                     <div class="col-md-6">
                     <div class="checkbox pull-right">
                         <label>
-                            <input type="radio" v-on:click="prices(m.prix)" :value="m.menuId" v-model="id_menu_new">			
+                            <input id="checkbox2" type="radio" v-on:click="prices(m.prix)" :value="m.menuId" v-model="id_menu_new">			
                         </label>
                     </div>                
                         <h4><strong> Prix approximatif : </strong></h4>{{m.prix}} €
-                        <h4><strong> Entrer : </strong></h4>{{m.entrer}}
+                        <h4><strong> Entrée : </strong></h4>{{m.entrer}}
                         <h4><strong> Plat : </strong></h4>{{m.plat}}
                         <h4><strong> Dessert : </strong></h4>{{m.dessert}}
                         <h4><strong>{{m.cat }}</strong> pour <strong>{{ m.nbPersonnes }}</strong> Personnes</h4>
@@ -58,19 +58,23 @@ export default {
     mounted(){
         this.loadData()
     },
+    updated()
+    {
+        document.getElementById("checkbox2").checked = false;
+    },
     methods:{
         async loadData(){
             this.model = await EventService.selectGetAsync("Menu")
-            this.model = this.model.content
-            console.log(this.model)
+            this.model = this.model.content;
         },
         prices(prix)
         {
             this._prix = prix;
         },
         nextStep(){
-            this.price = this.price + this._prix;
-            this.$emit('nextStep', {method: "menu", id_menu: this.id_menu_new, prix:this.price})
+            this.price = this._prix;
+            if (this.price > 0)
+                this.$emit('nextStep', {method: "menu", id_menu: this.id_menu_new, prix:this.price})                
         }
     }
 }

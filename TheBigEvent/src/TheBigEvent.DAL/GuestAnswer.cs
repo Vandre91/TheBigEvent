@@ -16,6 +16,7 @@ namespace TheBigEvent.DAL
     public class Answer
     {
         public DateTime Date { get; set; }
+        public int Dateid { get; set; }
         public AnswerState State { get; set; }
     }
 

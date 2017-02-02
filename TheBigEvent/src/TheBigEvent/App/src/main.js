@@ -59,7 +59,7 @@ const router = new VueRouter({
           { path: '/Partner', component: Partenaire},
           { path: '/galerie', component: Galerie},
           { path: '/invite', component: Invite},
-          { path: '/biginvite', component: Biginvite}          
+          { path: '/biginvite/:code?', component: Biginvite}          
         ]},
         { path: '/client', component: Client, redirect: "/Client/board", beforeEnter: requireAuth, children:[
               { path : '/Client/board', component: Board, beforeEnter: requireAuth },

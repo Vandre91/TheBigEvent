@@ -264,8 +264,6 @@ export default {
                 var i;
                 var mailreg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 
-                console.log(this.invite_edit.mail);
-
                 for( i = 0; i < this.invite_edit.length; i++) {
                     if(!this.invite_edit[i].mail.match(mailreg))
                     {
@@ -277,13 +275,14 @@ export default {
                         return;
                     }
                 }
+            this.$emit('nextStep', {method: "info", nom: this.name_edit, code: this.code_edit, ville: this.ville_edit, description: this.description_edit, invite: this.invite_edit, date : this.date_edit})
         },
         supp : function (item) {
             let idx = this.date.indexOf(item); 
             this.date_edit.splice(idx, 1);
         },
         adds : function (item) {
-            if (item.length != 0)
+            if (item != null && item.length != 0)
             {
                 let todo = {BigSelecteId: 0, dates : item}
                 this.date_edit.push(todo);
@@ -294,7 +293,7 @@ export default {
             this.invite_edit.splice(idx, 1);
         },
         adds2 : function (item, item2) {
-            if (item.length != 0 && item2.length != 0)
+            if (item != null && item2 != null &&  item.length != 0 && item2.length != 0)
             {
                 let todo = {BigSelecteId: 0, nom : item, mail : item2}
                 this.invite_edit.push(todo);
@@ -339,10 +338,6 @@ export default {
 h4{
     text-align: -webkit-center;
     font-weight: 700;
-}
-#step1{
-    padding-top: 100px;
-
 }
 
 </style>

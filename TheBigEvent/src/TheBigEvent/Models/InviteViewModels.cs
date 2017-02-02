@@ -12,5 +12,7 @@ namespace TheBigEvent.Models
         public string Nom { get; set; }
         public string Mail { get; set; }
         public string Code { get; set; }
+        public int dateid { get; set; }
+        public int Etat { get; set; }
     }
 }

@@ -22,11 +22,11 @@ class BigSelectService {
         return await postAsync(endpoint, 'createInvite/', AuthService.accessToken, model);
     }
 
-/*    async codeinvite(code)
+    async getInvitecode(code)
     {
-        return await postAsync(endpoint, 'codeinvite/', AuthService.accessToken, model);
+        return await getAsync(endpoint, 'getInvitecode/' + code, AuthService.accessToken);
     }
-*/
+    
     async getInvitebycode(code)
     {
         return await getAsync(endpoint, 'getInviteSelect/' + code, AuthService.accessToken);
@@ -47,6 +47,10 @@ class BigSelectService {
         return await getAsync(endpoint, 'getAllInvite/' + id, AuthService.accessToken);
     }
 
+    async confirmBigSelect(model)
+    {
+        return await postAsync(endpoint, 'confirmBigSelect/', AuthService.accessToken, model);
+    }
 }
 
 export default new BigSelectService()

@@ -12,7 +12,7 @@
 					<div class="media">
 						<div class="checkbox pull-right">
 				    		<label>
-								<input type="radio" v-on:click="prices(models.prix)" :value="models.salleId" v-model="id_salle_new">				
+								<input type="radio" id="checkbox2" v-on:click="prices(models.prix)" :value="models.salleId" v-model="id_salle_new">				
 							</label>
 						</div>
 						<div class="pull-left">
@@ -54,6 +54,10 @@ export default {
     },
     mounted(){
         this.loadData()
+    },
+    updated()    
+    {
+        document.getElementById("checkbox2").checked = false;
     },
     methods:{
         async loadData(){

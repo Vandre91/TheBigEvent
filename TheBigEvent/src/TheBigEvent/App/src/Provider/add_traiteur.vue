@@ -36,7 +36,7 @@
                         <input v-model="model_menu.nom" class="form-control input" required>
                     </div>
                     <div class="form-group">
-                    <label>*Entrer : </label>
+                    <label>*Entré : </label>
                     <br />
                     <input v-model="model_menu.entrer" class="form-control input" required>
                     </div>

@@ -14,7 +14,7 @@ namespace TheBigEvent.Controllers
             return new UserViewModel
             {
                 UserId = @this.UserId,
-                Passe = @this.Passe,
+                _pass = @this.Passe,
                 FirstName = @this.FirstName,
                 LastName = @this.LastName,
                 City = @this.City,

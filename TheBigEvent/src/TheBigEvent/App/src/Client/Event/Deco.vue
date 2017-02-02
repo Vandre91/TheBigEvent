@@ -12,7 +12,7 @@
 			        	<span class="label label-danger pull-right"></span>
 						<div class="checkbox pull-right">
 				    		<label>
-								<input type="radio" v-on:click="prices(models.prix)" :value="models.decoId" v-model="id_deco_new">				
+								<input id="checkbox2" type="radio" v-on:click="prices(models.prix)" :value="models.decoId" v-model="id_deco_new">				
 							</label>
 						</div>
 						<div class="pull-left">
@@ -55,6 +55,10 @@ export default {
     mounted(){
         this.loadData()
     },
+    updated()    
+    {
+        document.getElementById("checkbox2").checked = false;
+    },        
     methods:{
         async loadData(){
             this.model = await EventService.selectGetAsync("Deco")

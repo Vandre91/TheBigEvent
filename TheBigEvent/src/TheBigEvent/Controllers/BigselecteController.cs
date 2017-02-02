@@ -40,13 +40,28 @@ namespace TheBigEvent.Controllers
         {
             return _bigselecteService.addBigSelecte( model.UserId, model.Nom, model.Ville, model.Description);
         }
+        [AllowAnonymous]
+        [HttpPost("confirmBigSelect/")]
+        public bool confirmBigSelect([FromBody] InviteViewModels model)
+        {
+            var i =_inviteService.findValide( model.InviteId,model.dateid);
+            if (i.Content.Count() == 0)
+            {
+                _inviteService.confirmBigSelect(model.InviteId, model.dateid, model.Etat);
+            }
+            else
+                _inviteService.updateValide(model.InviteId, model.dateid, model.Etat);
+            return true;
+        }
+
+
         [HttpPost("createInvite/")]
         public bool createInvite([FromBody] InviteViewModels model)
         {
             _inviteService.addInvite(model.BigSelecteId, model.Nom, model.Mail, model.Code);
 
             string _subject = "Invitation a un evenement";
-            string _message = "Voici votre code";
+            string _message = "Voici votre code "+model.Code+".";
             var emailMessage = new MimeMessage();
 
             emailMessage.From.Add(new MailboxAddress("thebigevent", "TheBigEventPi@gmail.com"));
@@ -71,6 +86,17 @@ namespace TheBigEvent.Controllers
         {
             Result<IEnumerable<Invite>> result = _inviteService.getCodeById(code);
             return new JsonResult(result);
+        }
+        [AllowAnonymous]
+        [HttpGet("getInviteCode/{code}")]
+        public int GetInviteCode(string code)
+        {
+            Result<IEnumerable<Invite>> result = _inviteService.getCodeById(code);
+            if(result.Content.Count() != 0)
+            {
+                return 1;
+            }
+            return 0;
         }
         [AllowAnonymous]
         [HttpGet("getBigSelect/{id}")]

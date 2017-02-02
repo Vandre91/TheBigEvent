@@ -23,6 +23,33 @@ namespace TheBigEvent.DAL
                     new { select= _select ,nom = _nom, mail= _mail, code = _code });
             }
         }
+
+        public void ConfirmBigSelect(int _inviteid, int _dateid, int _etat)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Query("insert into tbe.tValide(PropositionId, InviteId, Etat) values (@dateid, @inviteid, @etat)",
+                   new { inviteid = _inviteid, dateid = _dateid, etat = _etat });
+            }
+        }
+        public IEnumerable<Invite> FindValide(int _inviteid, int _dateid)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                return con.Query<Invite>("select PropositionId,InviteId from tbe.tValide where PropositionId = @dateid and InviteId = @inviteid ",
+                   new { inviteid = _inviteid, dateid = _dateid });
+            }
+        }
+        public void UpdateValide(int _inviteid, int _dateid, int _etat)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Query("update tbe.tValide set Etat = @etat where PropositionId = @dateid and InviteId = @inviteid ",
+                   new { inviteid = _inviteid, dateid = _dateid, etat = _etat });
+            }
+        }
+
+
         public IEnumerable<Invite> GetCodeById(string _code)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
@@ -42,13 +69,14 @@ namespace TheBigEvent.DAL
                                                left outer join tbe.tValide v on v.PropositionId = p.PropositionId and v.InviteId = i.InviteId
                                            where bs.BigSelecteId = @id;",
                 new { id = _id })
-                .GroupBy(i => new { i.InviteId, i.Nom, i.Mail })
+                .GroupBy(i => new { i.InviteId, i.Nom, i.Mail})
                 .Select(i => new GuestAnswer
                 {
                     GuestId = i.Key.InviteId,
                     Email = i.Key.Mail,
                     Name = i.Key.Nom,
-                    Answers = i.Select(a => new Answer { Date = a.Date, State = (AnswerState)a.Etat })
+                    
+                    Answers = i.Select(a => new Answer { Date = a.Date, Dateid = int.Parse(a.PropositionId),  State = (AnswerState)a.Etat })
                 });
             }
         }

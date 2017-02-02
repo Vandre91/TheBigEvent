@@ -1,10 +1,9 @@
 <template>
-<div>
 
 <div class="row db-padding-btm db-attached">
     <div class="col-md-4"> </div>
       <div class="col-md-4">
-          <div class="db-wrapper" style="width:140%">
+          <div class="db-wrapper" style="width:100%">
             <div class="db-pricing-eleven db-bk-color-three">
 
                 <div class="price">
@@ -25,7 +24,7 @@
                       <input type="text" v-model="code_invite" class="form-control" style="margin:auto;text-align: center;" placeholder="Insérer votre code" minlength="4" maxlength="56" required />
                   </div>
                   </div>
-                  <router-link to="/biginvite"><a @click="code('code_invite')" class="db-button-color-square btn-lg">Valider</a></router-link>
+                  <a @click="code(code_invite)" class="db-button-color-square btn-lg">Valider</a>
                  </div>
                 </ul>
             </div>
@@ -41,11 +40,17 @@ import BigSelectService from '../services/BigSelect.js'
         data () {
           return {
                 code_invite:"",
+                check:"",
             }
         },
         methods: {
           code: async function(code) {
-   //           await BigSelectService.codeinvite(code);
+
+             var e = await BigSelectService.getInvitecode(code)
+             this.check = e;
+             if(e == 1) {
+                 this.$router.replace('/biginvite/' + code);
+             }
           }
         }
     }

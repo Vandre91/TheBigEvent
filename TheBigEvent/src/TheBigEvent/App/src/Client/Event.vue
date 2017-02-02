@@ -136,12 +136,14 @@ export default {
                     if(data.id_menu === null) return
                     this.event.id_menu = data.id_menu
                     this.event.Prix = data.prix
+                //    console.log(this.event.Prix);
                     this.maxTypes = ++this.actualTypes
                 break
                 case "deco":
                     if(data.id_deco === null) return
                     this.event.id_deco = data.id_deco
                     this.event.Prix = data.prix
+                //    console.log(this.event.Prix);
                     this.deco = data.deco
                     this.maxTypes = ++this.actualTypes
                 break
@@ -149,10 +151,14 @@ export default {
                     if(data.id_salle === null) return
                     this.event.id_salle = data.id_salle
                     this.event.Prix = data.prix
+                //    console.log(this.event.Prix);
                     this.salle = data.salle
                     this.maxTypes = ++this.actualTypes
                 break
                 case "valid":
+                 /*  console.log(this.event);
+                    console.log(this.event.Prix);
+*/
                    this.event.UserId = this.models.content.userId
                    this.event.Dates = this.event.Dates
                    this.event.NomEvent = this.event.name

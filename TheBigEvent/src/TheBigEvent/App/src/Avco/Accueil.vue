@@ -1,7 +1,7 @@
 <template>
   <div class="accueil">
 
-    <img class="logo" src="../../img/logo.jpg"></img>
+    <img class="logo" src="../../img/logo1.gif"></img>
     <h1>The Big Event</h1>
 <br /><br /><br />
 
@@ -56,9 +56,9 @@
                 <div class="square pull-left">
                     <img src="http://revesdedieu.com/wp-content/uploads/2014/08/point-d-interrogation-phrase-interrogative.png" alt="" class="" />
                 </div>
-                         <p class="quotation-mark1">
+                         <p class="quotation-mark2">
         “
-                <h4>The Big Event, qu'est ce que c'est ? </h4>
+              <h4>The Big Event, qu'est ce que c'est ? </h4>
                    <h5>C'est un site événementiel permettant d'organiser votre événement.
                      <p> En quelque clics choisissez tout ce dont vous avez besoin.<p>
                      <p> Inscrivez-vous pour en profiter !
@@ -159,7 +159,7 @@
         <p>25 ans au service de la gastronomie et du plaisir de recevoir dans l’Allier, en Auvergne.</p>
         <h4>Atelier performant</h4>
         <p>L’équipe de production travaille dans un lieu conçu en fonction des dernières normes d’hygiène et de sécurité</p>
-        <h>Nos boutiques</h4>
+        <h4>>Nos boutiques</h4>
         <p>Deux boutiques pour refléter notre passion du goût à travers une large gamme de produits.</p>
 
     						<a href="http://thierry-traiteur.fr/">
@@ -224,7 +224,7 @@ a, p, h2{text-decoration:none;}
 
 .glyphicon-lg{font-size:3em}
 .blockquote-box{border-right:5px solid #E6E6E6;margin-bottom:25px}
-.blockquote-box .square{width:100px;min-height:50px;margin-right:22px;text-align:center!important;background-color:#E6E6E6;padding:20px 0}
+.blockquote-box .square{width:100px;min-height:50px;margin-right:22px;text-align:center!important;padding:20px 0}
 .blockquote-box.blockquote-primary{border-color:#357EBD}
 .blockquote-box.blockquote-primary .square{background-color:#428BCA;color:#FFF}
 .blockquote-box.blockquote-success{border-color:#4CAE4C}
@@ -290,6 +290,18 @@ blockquote{
     margin-top: -45px;
     font-weight: bold;
     margin-left:21%;
+    font-size:100px;
+    position: absolute;
+    color:black;
+    font-family: "Times New Roman", Georgia, Serif;
+    
+}
+
+.quotation-mark2{
+    
+    margin-top: -45px;
+    font-weight: bold;
+    margin-left:12%;
     font-size:100px;
     position: absolute;
     color:black;

@@ -18,6 +18,20 @@ namespace TheBigEvent.Services
         {
             _iLink.AddInvite( _select,  _nom,  _mail, _code);
         }
+
+        public void confirmBigSelect(int inviteid, int dateid, int etat)
+        {
+            _iLink.ConfirmBigSelect(inviteid, dateid, etat);
+        }
+        public void updateValide(int inviteid, int dateid, int etat)
+        {
+            _iLink.UpdateValide(inviteid, dateid, etat);
+        }
+        public Result<IEnumerable<Invite>> findValide(int inviteid, int dateid)
+        {
+            return Result.Success(Status.Ok, _iLink.FindValide(inviteid,dateid));
+        }
+
         public Result<IEnumerable<Invite>> getCodeById(string _code)
         {
             return Result.Success(Status.Ok, _iLink.GetCodeById(_code));
